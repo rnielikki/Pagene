@@ -16,7 +16,6 @@ namespace Pagene.Models
         /// <summary>
         /// Content of the blog item. It is part of static blog post content.
         /// </summary>
-        /// <note>Content does not contain tags, but still contains title.</note>
         public string Content { get; private set; }
         /// <summary>
         /// The time, when the post was created.
