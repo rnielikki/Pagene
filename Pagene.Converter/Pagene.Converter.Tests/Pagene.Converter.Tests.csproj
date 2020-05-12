@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Pagene.Models\Pagene.Models\Pagene.Models.csproj" />
+    <ProjectReference Include="..\..\Pagene.Models\Pagene.Models.csproj" />
     <ProjectReference Include="..\Pagene.Converter\Pagene.Converter.csproj" />
   </ItemGroup>
 

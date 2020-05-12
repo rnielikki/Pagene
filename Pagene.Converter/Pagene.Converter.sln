@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Converter", "Pagene.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Converter.Tests", "Pagene.Converter.Tests\Pagene.Converter.Tests.csproj", "{CABB5B7E-66F4-4CE1-A2C1-9DAB21F950A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Models", "..\Pagene.Models\Pagene.Models\Pagene.Models.csproj", "{4DFCA826-B189-4313-BF3D-B246F192030E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Models", "..\Pagene.Models\Pagene.Models.csproj", "{4DFCA826-B189-4313-BF3D-B246F192030E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
