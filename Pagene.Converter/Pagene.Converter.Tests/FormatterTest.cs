@@ -6,6 +6,7 @@ using Xunit;
 
 namespace Pagene.Converter.Tests
 {
+    /*
     public class FormatterTest
     {
         private readonly Formatter formatter = new Formatter();
@@ -54,4 +55,5 @@ namespace Pagene.Converter.Tests
             { FormatterTestModel.error2, string.Empty, false }
         };
     }
+    */
 }

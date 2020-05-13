@@ -8,28 +8,46 @@ namespace Pagene.Converter.Tests
 {
     public class FileChangeTest
     {
+        private const string testpath = "testpath";
         [Fact]
         public async System.Threading.Tasks.Task FileChangeDetectTest()
         {
             var fileSystem = new MockFileSystem(
                 new Dictionary<string, MockFileData>(){
-                    { @"C:\immutable.txt", new MockFileData("not changed!") },
-                    { @"C:\mutable.txt", new MockFileData("this will be changed") },
-                    { @"C:\willchange.txt", new MockFileData("wait until changed.") },
-                    { @"C:\notchange.txt", new MockFileData("should not edited.") }
+                    { @$"{testpath}\immutable.md", new MockFileData("not changed!") },
+                    { @$"{testpath}\mutable.md", new MockFileData("this will be changed") },
+                    { @$"{testpath}\willchange.md", new MockFileData("wait until changed.") },
+                    { @$"{testpath}\notchange.md", new MockFileData("should not edited.") }
                 }
             );
-            var changeDetector = new ChangeDetector(fileSystem);
-            Assert.Equal(fileSystem.AllFiles.OrderBy(str=>str), await changeDetector.DetectAsync().Select(file=>file.FullName).OrderBy(str=>str));
+            var changeDetector = new ChangeDetector(fileSystem, testpath);
+            Assert.Equal(fileSystem.AllFiles.OrderBy(str=>str), changeDetector.DetectAsync().Select(file=>file.FullName).OrderBy(str=>str).ToEnumerable());
 
-            using (System.IO.Stream writeStream = fileSystem.FileInfo.FromFileName(@"C:\mutable.txt").OpenWrite())
+            using (System.IO.Stream writeStream = fileSystem.FileInfo.FromFileName(@$"{testpath}\mutable.md").OpenWrite())
             {
                 await writeStream.WriteAsync(Encoding.ASCII.GetBytes("whatever"));
             }
 
-            fileSystem.AddFile(@"C:\dir\newfile.txt", new MockFileData("hello world, this is new file!"));
-            fileSystem.FileInfo.FromFileName(@"C:\willchange.txt").Delete();
-            Assert.Equal(new string[] { @"C:\mutable.txt", @"C:\dir\newfile.txt", @"C:\willchange.txt" }, await changeDetector.DetectAsync().Select(file=>file.FullName).OrderBy(str=>str));
+            fileSystem.AddFile(@$"{testpath}\newfile.md", new MockFileData("hello world, this is new file!"));
+            fileSystem.AddFile(@"xdir\newfaile.md", new MockFileData("This shouldn't be on the list"));
+            fileSystem.FileInfo.FromFileName(@$"{testpath}\willchange.md").Delete();
+            changeDetector = new ChangeDetector(fileSystem, testpath); // regeneration
+            Assert.Equal(new string[] { @$"mutable.md", @$"newfile.md" }, changeDetector.DetectAsync().Select(file=>file.Name).OrderBy(str=>str).ToEnumerable());
+        }
+        [Fact]
+        public void HashRemoveTest()
+        {
+            string filePath = @$"{testpath}\willRemoved.md";
+            var fileSystem = new MockFileSystem(
+                new Dictionary<string, MockFileData>(){
+                    { filePath, new MockFileData("will removed!") },
+                }
+            );
+            var changeDetector = new ChangeDetector(fileSystem, testpath);
+            _ =  changeDetector.DetectAsync();
+            fileSystem.FileInfo.FromFileName(filePath).Delete();
+            _ = changeDetector.DetectAsync();
+            Assert.False(fileSystem.FileExists(filePath));
         }
     }
 }
