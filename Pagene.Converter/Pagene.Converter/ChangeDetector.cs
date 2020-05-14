@@ -3,24 +3,23 @@ using System.IO.Abstractions;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
+using System;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Pagene.Converter.Tests")]
 namespace Pagene.Converter
 {
     internal class ChangeDetector
     {
+        private readonly DirSettings _setting;
         private readonly IFileSystem _fileSystem;
-        private readonly Dictionary<string, IFileInfo> _mdFiles;
-        private readonly Dictionary<string, IFileInfo> _hashFiles;
-        private const string _hashDirName = ".hash";
-        internal ChangeDetector(IFileSystem fileSystem, string sourcePath)
+        //private readonly Dictionary<string, IFileInfo> _mdFiles;
+        //private readonly Dictionary<string, IFileInfo> _hashFiles;
+        private readonly Dictionary<string, IFileInfo> _attachFiles;
+        internal ChangeDetector(IFileSystem fileSystem, DirSettings setting)
         {
+            _setting = setting;
             _fileSystem = fileSystem;
-            _mdFiles = InitDirectory(fileSystem, sourcePath)
-                .GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly).ToDictionary(info => System.IO.Path.GetFileName(info.Name), info => info);
-            _hashFiles = InitDirectory(fileSystem, _hashDirName)
-                .GetFiles("*.md.hashfile", System.IO.SearchOption.TopDirectoryOnly)
-                .ToDictionary(info => System.IO.Path.GetFileNameWithoutExtension(info.Name), info => info);
         }
         private IDirectoryInfo InitDirectory(IFileSystem fileSystem, string path)
         {
@@ -34,35 +33,43 @@ namespace Pagene.Converter
                 return info;
             }
         }
-        internal ChangeDetector(string sourcePath) : this(fileSystem: new FileSystem(), sourcePath)
+        internal ChangeDetector(IConfiguration configuration) : this(new FileSystem(), new DirSettings(configuration))
         {
         }
-        internal async IAsyncEnumerable<IFileInfo> DetectAsync()
+        internal IAsyncEnumerable<IFileInfo> DetectBlogPostAsync() => DetectAsync("*.md", _setting.ContentDir);
+        internal IAsyncEnumerable<IFileInfo> DetectAttachmentsAsync() => DetectAsync("*", $"{_setting.ContentDir}\\{_setting.AttachmentDir}");
+        private async IAsyncEnumerable<IFileInfo> DetectAsync(string fileType, string dir)
         {
-            using var sha1 = SHA1.Create();
-            CleanHashAsync();
+            var files = InitDirectory(_fileSystem, dir)
+                .GetFiles(fileType, System.IO.SearchOption.TopDirectoryOnly).ToDictionary(info => System.IO.Path.GetFileName(info.Name), info => info);
+            var hashFiles = InitDirectory(_fileSystem, $"{_setting.HashDir}\\{dir}")
+                .GetFiles($"{fileType}.hashfile", System.IO.SearchOption.TopDirectoryOnly).ToDictionary(info => System.IO.Path.GetFileNameWithoutExtension(info.Name), info => info);
 
-            foreach (var file in _mdFiles)
+            using var sha1 = SHA1.Create();
+            CleanHashAsync(files, hashFiles);
+
+            foreach (var file in files)
             {
-                if (!await DetectFileAsync(sha1, file.Key))
+                if (!await DetectFileAsync(files, hashFiles, dir, file.Key, sha1))
                 {
                     yield return file.Value;
                 }
             }
         }
-        private async Task<bool> DetectFileAsync(HashAlgorithm crypto, string filename)
+        //FIXME: if the program ends after this and before result some files may not converted at all
+        private async Task<bool> DetectFileAsync(Dictionary<string, IFileInfo> files, Dictionary<string, IFileInfo> hashes, string dir, string filename, HashAlgorithm crypto)
         {
-            using var targetContent = _mdFiles[filename].OpenRead();
+            string hashDir = $"{_setting.HashDir}\\{dir}";
+            using var targetContent = files[filename].OpenRead();
             var hash = crypto.ComputeHash(targetContent);
 
-            bool ifHashExists = _hashFiles.ContainsKey(filename);
-            using var hashStream = (ifHashExists?_hashFiles[filename].Open(System.IO.FileMode.Open):_fileSystem.File.Create($"{_hashDirName}\\{filename}.hashfile"));
-            //hashStream.Seek(0, System.IO.SeekOrigin.Begin);
+            bool ifHashExists = hashes.ContainsKey(filename);
+            using var hashStream = (ifHashExists?hashes[filename].Open(System.IO.FileMode.Open):_fileSystem.File.Create($"{hashDir}\\{filename}.hashfile"));
             if (ifHashExists)
             {
                 byte[] buffer = new byte[hash.Length];
                 await hashStream.ReadAsync(buffer, 0, buffer.Length);
-                if (hash.SequenceEqual(buffer))
+                if (buffer.Length == hash.Length && hash.SequenceEqual(buffer))
                 {
                     return true; // same
                 }
@@ -71,12 +78,12 @@ namespace Pagene.Converter
             await hashStream.WriteAsync(hash, 0, hash.Length);
             return false; // not same
         }
-        private void CleanHashAsync()
+        private void CleanHashAsync(Dictionary<string, IFileInfo> files, Dictionary<string, IFileInfo> hashes)
         {
-            var cleanTargets = _hashFiles.Keys.Except(_mdFiles.Keys);
+            var cleanTargets = hashes.Keys.Except(files.Keys);
             foreach (string target in cleanTargets)
             {
-                _hashFiles[target].Delete();
+                hashes[target].Delete();
             }
         }
     }

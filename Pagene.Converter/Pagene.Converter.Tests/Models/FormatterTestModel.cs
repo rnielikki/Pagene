@@ -18,17 +18,17 @@ I have nothing.
 
         private const string errorContent1 = @"this one has no title.
 
-[bread, cheese, milk]";
+[bread,cheese,milk]";
 
         private const string errorContent2 = @"# I have no tag
 
 This should thorw an error.";
 
 
-        private const string filePath1 = @"C:\home\test.txt";
-        private const string filePath2 = @"C:\home\test2.txt";
-        private const string errorPath1 = @"C:\home\err1.txt";
-        private const string errorPath2 = @"C:\home\err2.txt";
+        private const string filePath1 = @"home\test.txt";
+        private const string filePath2 = @"home\test2.txt";
+        private const string errorPath1 = @"home\err1.txt";
+        private const string errorPath2 = @"home\err2.txt";
         private static readonly MockFileSystem fileSystem = new MockFileSystem(
              new Dictionary<string, MockFileData>(){
                     { filePath1, new MockFileData(content1) },
