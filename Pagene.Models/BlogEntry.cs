@@ -7,7 +7,7 @@ namespace Pagene.Models
     public class BlogEntry
     {
         public string Title { get; set; }
-        public DateTime date { get; set; } //creation Date
+        public DateTime Date { get; set; } //creation Date
         public string URL { get; set; }
     }
 }

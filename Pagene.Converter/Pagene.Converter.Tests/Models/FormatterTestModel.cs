@@ -8,22 +8,19 @@ namespace Pagene.Converter.Tests.Models
     {
         public const string title1 = "title";
         public const string title2 = "random to say";
-        private static readonly string content1 = @$"# {title1}
-content
+        private static readonly string content1 = @$"[{string.Join(", ", TagsTestModel.tags1Duplicated)}]
+# {title1}
+content";
+        private static readonly string content2 = @$"[{string.Join(", ", TagsTestModel.tags2)}]
+# {title2}
+I have nothing.";
 
-[{string.Join(", ", TagsTestModel.tags1Duplicated)}]";
-        private static readonly string content2 = @$"# {title2}
-I have nothing.
-[{string.Join(", ", TagsTestModel.tags2)}]";
-
-        private const string errorContent1 = @"this one has no title.
-
-[bread,cheese,milk]";
+        private const string errorContent1 = @"[bread,cheese,milk]
+this one has no title.";
 
         private const string errorContent2 = @"# I have no tag
 
 This should thorw an error.";
-
 
         private const string filePath1 = @"home\test.txt";
         private const string filePath2 = @"home\test2.txt";
