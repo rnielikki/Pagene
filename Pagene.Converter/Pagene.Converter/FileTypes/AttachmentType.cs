@@ -13,9 +13,9 @@ namespace Pagene.Converter.FileTypes
         {
         }
 
-        internal override async System.Threading.Tasks.Task Save(IFileInfo info, Stream fileStream)
+        internal override async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
         {
-            await base.Save(info, fileStream);
+            await base.SaveAsync(info, fileStream);
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
+using System.Threading.Tasks;
 using Pagene.Models;
 
 namespace Pagene.Converter
 {
-    internal class Formatter
+    internal class Formatter : IFormatter
     {
         //reader part
         /*
@@ -24,26 +26,33 @@ namespace Pagene.Converter
                 );
         }
         */
-        internal async System.Threading.Tasks.Task<(IEnumerable<string>, BlogEntry)> GetBlogHead(System.IO.Abstractions.IFileInfo info, Stream stream)
+        private readonly string _path;
+        internal Formatter(string path)
+        {
+            _path = path;
+        }
+        async System.Threading.Tasks.Task<(IEnumerable<string>, BlogEntry)> IFormatter.GetBlogHead(IFileInfo info, Stream stream)
         {
             StreamReader reader = new StreamReader(stream);
             string rawTag = await reader.ReadLineAsync();
-            if (rawTag[0] != '[' || rawTag[^1] != ']')
+            if (string.IsNullOrEmpty(rawTag) || rawTag[0] != '[' || rawTag[^1] != ']')
             {
-                throw new FormatException();
+                throw new FormatException($"Couldn't find tags: The format of post {info.Name} does not match");
             }
-            var tags = rawTag[1..^1].Split(',', StringSplitOptions.RemoveEmptyEntries).Select(tag=>tag.Trim());
+            var tags = rawTag[1..^1].Split(',', StringSplitOptions.RemoveEmptyEntries).Select(tag=>tag.Trim()).Distinct();
             string title = await reader.ReadLineAsync();
-            if (!string.Equals(title.Substring(0, 2),"# "))
+            if (string.IsNullOrEmpty(title) || !string.Equals(title.Substring(0, 2),"# "))
             {
-                throw new FormatException();
+                throw new FormatException($"Couldn't find title: The format of post {info.Name} does not match");
             }
             return (tags, new BlogEntry
             {
-                Title = title,
+                Title = title.Substring(2),
                 Date = info.CreationTimeUtc,
-                URL = info.Name 
+                URL = Path.Combine(_path, info.Name)
             });
         }
+
+        //private string GetPath(IFileInfo info) =>
     }
 }

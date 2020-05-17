@@ -22,7 +22,16 @@ namespace Pagene.Converter
 
         public async Task Convert()
         {
-            await Task.WhenAll(ConvertPart(new MdFileType(_fileSystem)), ConvertPart(new AttachmentType(_fileSystem)));
+            var tagManager = new TagManager(_fileSystem);
+            try
+            {
+                await Task.WhenAll(ConvertPart(new MdFileType(_fileSystem, tagManager)), ConvertPart(new AttachmentType(_fileSystem)));
+                await tagManager.Serialize();
+            }
+            finally
+            {
+                tagManager.Dispose();
+            }
         }
         private async Task ConvertPart(FileType fileType)
         {
@@ -35,6 +44,7 @@ namespace Pagene.Converter
                 .ToDictionary(info => Path.GetFileNameWithoutExtension(info.Name), info => info);
             using var crypto = SHA1.Create();
             _changeDetector = new ChangeDetector(crypto);
+
             try
             {
                 foreach (var file in files)
@@ -65,12 +75,12 @@ namespace Pagene.Converter
                 }
                 else
                 {
-                    hashStream = File.Create($"{hashDir}\\{file.Name}.hashfile");
+                    hashStream = _fileSystem.File.Create($"{hashDir}\\{file.Name}.hashfile");
                     hash = crypto.ComputeHash(fileStream);
                 }
                 if (hash != null)
                 {
-                    await fileType.Save(file, fileStream);
+                    await fileType.SaveAsync(file, fileStream);
                     await _changeDetector.WriteHash(hash, hashStream);
                 }
             }

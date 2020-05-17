@@ -1,15 +1,33 @@
-﻿using System;
+﻿using Pagene.Converter.Tests.Models;
 using System.IO.Abstractions;
-using System.Linq;
-using Pagene.Converter.Tests.Models;
-using Pagene.Models;
 using Xunit;
+using FluentAssertions;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Pagene.Converter.Tests
 {
     public class FormatterTest
     {
-        private readonly Formatter formatter = new Formatter();
+        private readonly IFormatter _formatter = new Formatter("contents");
+        [Theory]
+        [MemberData(nameof(GetValidationSet))]
+        public async System.Threading.Tasks.Task GetBlogHeadTest(IFileInfo sample, IEnumerable<string> tags, string title, bool valid)
+        {
+            using var fileStream = sample.Open(System.IO.FileMode.Open);
+            if (!valid)
+            {
+                await Assert.ThrowsAsync<System.FormatException>(() => _formatter.GetBlogHead(sample, fileStream));
+            }
+            else
+            {
+                (var entryTags, var entry) = await _formatter.GetBlogHead(sample, fileStream);
+                entry.Title.Should().Be(title);
+                entry.URL.Should().Be("contents\\"+sample.Name);
+                entryTags.Should().BeEquivalentTo(tags);
+            }
+            //formatter.GetBlogHead();
+        }
 
         //will move to reader part
         /*
@@ -44,12 +62,12 @@ namespace Pagene.Converter.Tests
        { new DateTime(2015, 10, 11), new DateTime(2015, 11, 11) },
        { new DateTime(2016, 3, 12), new DateTime(2016, 3, 12) }
    };
-        public static TheoryData<IFileInfo, string, bool> GetValidationSet() => new TheoryData<IFileInfo, string, bool>() {
-            { FormatterTestModel.file1, FormatterTestModel.title1, true },
-            { FormatterTestModel.file2, FormatterTestModel.title2, true },
-            { FormatterTestModel.error1, string.Empty, false },
-            { FormatterTestModel.error2, string.Empty, false }
-        };
         */
+        public static TheoryData<IFileInfo, IEnumerable<string>, string, bool> GetValidationSet() => new TheoryData<IFileInfo, IEnumerable<string>, string, bool>() {
+            { FormatterTestModel.file1, TagsTestModel.tags1, FormatterTestModel.title1, true },
+            { FormatterTestModel.file2, TagsTestModel.tags2, FormatterTestModel.title2, true },
+            { FormatterTestModel.error1, null, string.Empty, false },
+            { FormatterTestModel.error2, null, string.Empty, false }
+        };
     }
 }

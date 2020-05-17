@@ -1,6 +1,7 @@
 ﻿using System.IO.Abstractions;
 using System.IO;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace Pagene.Converter.FileTypes
 {
     internal abstract class FileType
@@ -24,10 +25,11 @@ namespace Pagene.Converter.FileTypes
             }
         }
 
-        internal virtual async System.Threading.Tasks.Task Save(IFileInfo info, Stream fileStream)
+        internal virtual async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
         {
             fileStream.Position = 0;
-            Stream writeTarget = _fileSystem.File.Open(System.IO.Path.Combine(Path, info.Name), FileMode.OpenOrCreate);
+            string targetPath = System.IO.Path.Combine(Path, info.Name);
+            Stream writeTarget = _fileSystem.File.Open(targetPath, FileMode.OpenOrCreate);
             try
             {
                 await fileStream.CopyToAsync(writeTarget);
