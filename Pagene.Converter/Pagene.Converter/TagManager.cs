@@ -37,17 +37,6 @@ namespace Pagene.Converter
             {
                 var existEntries = _tagMap.GetOrAdd(tag, new ConcurrentDictionary<string, BlogEntry>());
                 existEntries.AddOrUpdate(entry.URL, entry,(k, v) => v = entry);
-                
-                /*
-                if (_tagMap.TryGetValue(tag, out ConcurrentBag<BlogEntry> entries))
-                {
-                    entries.Add(entry);
-                }
-                else
-                {
-                    _tagMap.(tag, new List<BlogEntry>() { entry });
-                }
-                */
             }
         }
         internal async System.Threading.Tasks.Task Serialize()
@@ -63,6 +52,27 @@ namespace Pagene.Converter
         public void Dispose()
         {
             fileStream.Close();
+        }
+
+        internal void CleanTags(IEnumerable<string> removedTarget)
+        {
+            var targetPaths = removedTarget.Select(item => $"contents/{item}");
+            foreach (var tagEntries in _tagMap)
+            {
+                var currentEntries = tagEntries.Value;
+                var clearPaths = currentEntries.Keys.Intersect(targetPaths);
+                if (clearPaths.Any())
+                {
+                    foreach (var path in clearPaths)
+                    {
+                        currentEntries.Remove(path, out _);
+                    }
+                    if (!currentEntries.Any())
+                    {
+                        _tagMap.Remove(tagEntries.Key, out _);
+                    }
+                }
+            }
         }
     }
 }

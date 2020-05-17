@@ -38,7 +38,7 @@ namespace Pagene.Converter
             await hashStream.WriteAsync(computedHash);
         }
 
-        internal void CleanHashAsync(IEnumerable<IFileInfo> hashes)
+        internal void CleanHash(IEnumerable<IFileInfo> hashes)
         {
             foreach (IFileInfo target in hashes)
             {

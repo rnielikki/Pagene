@@ -18,26 +18,20 @@ namespace Pagene.Converter
         {
             _fileSystem = fileSystem;
         }
-        public Converter():this(new FileSystem()){}
+        public Converter() : this(new FileSystem()) { }
 
         public async Task Convert()
         {
-            var tagManager = new TagManager(_fileSystem);
-            try
-            {
-                await Task.WhenAll(ConvertPart(new MdFileType(_fileSystem, tagManager)), ConvertPart(new AttachmentType(_fileSystem)));
-                await tagManager.Serialize();
-            }
-            finally
-            {
-                tagManager.Dispose();
-            }
+            using var tagManager = new TagManager(_fileSystem);
+            await Task.WhenAll(ConvertPart(new MdFileType(_fileSystem, tagManager)), ConvertPart(new AttachmentType(_fileSystem)));
+            tagManager.CleanTags(_hashFileMap.Keys);
+            await tagManager.Serialize();
         }
         private async Task ConvertPart(FileType fileType)
         {
             string dir = fileType.Path;
             string hashDir = $".hash/{dir}";
-            var files = InitDirectory("inputs/"+dir)
+            var files = InitDirectory("inputs/" + dir)
                 .GetFiles(fileType.Type, SearchOption.TopDirectoryOnly);
             _hashFileMap = InitDirectory(hashDir)
                 .GetFiles($"{fileType.Type}.hashfile", SearchOption.TopDirectoryOnly)
@@ -48,13 +42,7 @@ namespace Pagene.Converter
             try
             {
                 await Task.WhenAll(files.Select(file => ConvertFile(fileType, hashDir, crypto, file)));
-                /*
-                foreach (var file in files)
-                {
-                    await ConvertFile(fileType, hashDir, crypto, file);
-                }
-                */
-                _changeDetector.CleanHashAsync(_hashFileMap.Values);
+                _changeDetector.CleanHash(_hashFileMap.Values);
             }
             finally
             {
