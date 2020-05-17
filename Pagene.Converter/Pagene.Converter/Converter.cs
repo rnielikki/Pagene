@@ -36,8 +36,8 @@ namespace Pagene.Converter
         private async Task ConvertPart(FileType fileType)
         {
             string dir = fileType.Path;
-            string hashDir = $".hash\\{dir}";
-            var files = InitDirectory("inputs\\"+dir)
+            string hashDir = $".hash/{dir}";
+            var files = InitDirectory("inputs/"+dir)
                 .GetFiles(fileType.Type, SearchOption.TopDirectoryOnly);
             _hashFileMap = InitDirectory(hashDir)
                 .GetFiles($"{fileType.Type}.hashfile", SearchOption.TopDirectoryOnly)
@@ -47,10 +47,13 @@ namespace Pagene.Converter
 
             try
             {
+                await Task.WhenAll(files.Select(file => ConvertFile(fileType, hashDir, crypto, file)));
+                /*
                 foreach (var file in files)
                 {
                     await ConvertFile(fileType, hashDir, crypto, file);
                 }
+                */
                 _changeDetector.CleanHashAsync(_hashFileMap.Values);
             }
             finally
@@ -75,7 +78,7 @@ namespace Pagene.Converter
                 }
                 else
                 {
-                    hashStream = _fileSystem.File.Create($"{hashDir}\\{file.Name}.hashfile");
+                    hashStream = _fileSystem.File.Create($"{hashDir}/{file.Name}.hashfile");
                     hash = crypto.ComputeHash(fileStream);
                 }
                 if (hash != null)

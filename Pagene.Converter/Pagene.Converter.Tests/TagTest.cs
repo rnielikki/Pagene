@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xunit;
 using FluentAssertions;
 using System.Linq;
+using System.Collections.Concurrent;
 
 namespace Pagene.Converter.Tests
 {
@@ -11,22 +12,23 @@ namespace Pagene.Converter.Tests
         [Fact]
         public void TagAddingTest()
         {
-            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry());
-            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese" }, new BlogEntry());
+            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { URL="this-is-one.md"});
+            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese" }, new BlogEntry { URL="this-is-two.md" });
             using var tagManager = new TagManager(new System.IO.Abstractions.TestingHelpers.MockFileSystem());
             tagManager.AddTag(tags1, entry1);
             tagManager.AddTag(tags2, entry2);
 
             var resultDictionary = typeof(TagManager)
                 .GetField("_tagMap", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                .GetValue(tagManager) as Dictionary<string, List<BlogEntry>>;
+                .GetValue(tagManager) as ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>>;
 
             resultDictionary.Keys.OrderBy(str=>str).Should().Equal(new string[] { "apple", "cheese", "ice cream", "juice", "orange" });
-            resultDictionary["cheese"].Should().Contain(entry1)
-                .And.Contain(entry2);
+            var val = resultDictionary["cheese"];
+            resultDictionary["cheese"].Keys.Should().Contain(entry1.URL)
+                .And.Contain(entry2.URL);
 
-            resultDictionary["orange"].Should().NotContain(entry1)
-                .And.Contain(entry2);
+            resultDictionary["orange"].Keys.Should().NotContain(entry1.URL)
+                .And.Contain(entry2.URL);
         }
     }
 }

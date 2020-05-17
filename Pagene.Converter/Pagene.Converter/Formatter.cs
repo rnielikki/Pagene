@@ -49,7 +49,7 @@ namespace Pagene.Converter
             {
                 Title = title.Substring(2),
                 Date = info.CreationTimeUtc,
-                URL = Path.Combine(_path, info.Name)
+                URL = $"{_path}/{info.Name}"
             });
         }
 

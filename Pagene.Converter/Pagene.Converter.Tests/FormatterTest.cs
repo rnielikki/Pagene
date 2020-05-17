@@ -23,7 +23,7 @@ namespace Pagene.Converter.Tests
             {
                 (var entryTags, var entry) = await _formatter.GetBlogHead(sample, fileStream);
                 entry.Title.Should().Be(title);
-                entry.URL.Should().Be("contents\\"+sample.Name);
+                entry.URL.Should().Be("contents/"+sample.Name);
                 entryTags.Should().BeEquivalentTo(tags);
             }
             //formatter.GetBlogHead();

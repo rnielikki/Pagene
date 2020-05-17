@@ -14,8 +14,8 @@ namespace Pagene.Converter.Tests
         public async Task SaveDefaultTest()
         {
             string path = "tests";
-            string contentPath = $"{path}\\something.md";
-            string inputContentPath = $"inputs\\{contentPath}";
+            string contentPath = $"{path}/something.md";
+            string inputContentPath = $"inputs/{contentPath}";
             string content = "123123";
             MockFileSystem fileSystem = new MockFileSystem(
                       new Dictionary<string, MockFileData>(){
@@ -38,8 +38,8 @@ namespace Pagene.Converter.Tests
         public async Task SaveFormatTest()
         {
             string content = "asdfasdf";
-            string contentPath = $"contents\\something.md";
-            string inputContentPath = $"inputs\\{contentPath}";
+            string contentPath = $"contents/something.md";
+            string inputContentPath = $"inputs/{contentPath}";
 
             MockFileSystem fileSystem = new MockFileSystem(
                       new Dictionary<string, MockFileData>(){
@@ -56,7 +56,7 @@ namespace Pagene.Converter.Tests
             var formatterMock = new Mock<IFormatter>();
 
             formatterMock.Setup(obj => obj.GetBlogHead(It.IsAny<System.IO.Abstractions.IFileInfo>(), It.IsAny<System.IO.Stream>()))
-                .ReturnsAsync((new string[] { "book", "game", "music" }, new BlogEntry { Title = "title", Date = dateTime, URL = "contents\\something.md"}));
+                .ReturnsAsync((new string[] { "book", "game", "music" }, new BlogEntry { Title = "title", Date = dateTime, URL = "contents/something.md"}));
             using var tagManager = new TagManager(fileSystem);
             var fileType = new MdFileType(fileSystem, formatterMock.Object, tagManager);
 

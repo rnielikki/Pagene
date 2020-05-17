@@ -22,10 +22,10 @@ this one has no title.";
 
 This should thorw an error.";
 
-        private const string filePath1 = @"inputs\contents\test.md";
-        private const string filePath2 = @"inputs\contents\test2.md";
-        private const string errorPath1 = @"inputs\contents\err1.md";
-        private const string errorPath2 = @"inputs\contents\err2.md";
+        private const string filePath1 = "inputs/contents/test.md";
+        private const string filePath2 = "inputs/contents/test2.md";
+        private const string errorPath1 = "inputs/contents/err1.md";
+        private const string errorPath2 = "inputs/contents/err2.md";
         internal static readonly MockFileSystem fileSystem = new MockFileSystem(
              new Dictionary<string, MockFileData>(){
                     { filePath1, new MockFileData(content1) },
@@ -41,8 +41,8 @@ This should thorw an error.";
         internal static readonly IFileInfo error2 = fileSystem.FileInfo.FromFileName(errorPath2);
 
         //end test
-        private const string attachPath1 = @"inputs\contents\files\input.png";
-        private const string attachPath2 = @"inputs\contents\files\hello.svg";
+        private const string attachPath1 = "inputs/contents/files/input.png";
+        private const string attachPath2 = "inputs/contents/files/hello.svg";
         internal static readonly MockFileSystem ValidFileSystem = new MockFileSystem(
              new Dictionary<string, MockFileData>(){
                     { filePath1, new MockFileData(content1) },
