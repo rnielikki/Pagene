@@ -6,29 +6,30 @@ namespace Pagene.Converter.FileTypes
 {
     internal abstract class FileType
     {
-        internal virtual string Path { get; }
+        internal string FilePath { get; private set; }
 
         internal virtual string Type { get; }
 
         protected readonly IDirectoryInfo Directory;
         protected readonly IFileSystem _fileSystem;
-        internal FileType(IFileSystem fileSystem)
+        internal FileType(IFileSystem fileSystem, string path)
         {
+            FilePath = Path.Combine(Converter.absolutePath, path);
             _fileSystem = fileSystem;
-            if (!fileSystem.Directory.Exists(Path))
+            if (!fileSystem.Directory.Exists(FilePath))
             {
-                Directory = fileSystem.Directory.CreateDirectory(Path);
+                Directory = fileSystem.Directory.CreateDirectory(FilePath);
             }
             else
             {
-                Directory = fileSystem.DirectoryInfo.FromDirectoryName(Path);
+                Directory = fileSystem.DirectoryInfo.FromDirectoryName(FilePath);
             }
         }
 
         internal virtual async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
         {
             fileStream.Position = 0;
-            string targetPath = System.IO.Path.Combine(Path, info.Name);
+            string targetPath = System.IO.Path.Combine(FilePath, info.Name);
             Stream writeTarget = _fileSystem.File.Open(targetPath, FileMode.OpenOrCreate);
             try
             {

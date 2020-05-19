@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Converter", "Pagene.Converter\Pagene.Converter.csproj", "{A0024121-B962-4602-BC9C-1F835E24A55D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Converter", "Pagene.Converter\Pagene.Converter.csproj", "{A0024121-B962-4602-BC9C-1F835E24A55D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Converter.Tests", "Pagene.Converter.Tests\Pagene.Converter.Tests.csproj", "{CABB5B7E-66F4-4CE1-A2C1-9DAB21F950A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Converter.Tests", "Pagene.Converter.Tests\Pagene.Converter.Tests.csproj", "{CABB5B7E-66F4-4CE1-A2C1-9DAB21F950A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Models", "..\Pagene.Models\Pagene.Models.csproj", "{4DFCA826-B189-4313-BF3D-B246F192030E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Models", "..\Pagene.Models\Pagene.Models.csproj", "{4DFCA826-B189-4313-BF3D-B246F192030E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Converter.Entry", "Pagene.Converter.Entry\Pagene.Converter.Entry.csproj", "{394FFA18-5917-484A-ADCE-BD1FC44C300A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{4DFCA826-B189-4313-BF3D-B246F192030E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DFCA826-B189-4313-BF3D-B246F192030E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DFCA826-B189-4313-BF3D-B246F192030E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{394FFA18-5917-484A-ADCE-BD1FC44C300A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{394FFA18-5917-484A-ADCE-BD1FC44C300A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{394FFA18-5917-484A-ADCE-BD1FC44C300A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{394FFA18-5917-484A-ADCE-BD1FC44C300A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

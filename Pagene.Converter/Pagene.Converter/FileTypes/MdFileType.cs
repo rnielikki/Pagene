@@ -7,20 +7,18 @@ namespace Pagene.Converter.FileTypes
 {
     class MdFileType : FileType
     {
-        internal override string Path => "contents";
-
         internal override string Type => "*.md";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
-        internal MdFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem)
+        internal MdFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, "contents")
         {
             _formatter = formatter;
             _tagManager = tagManager;
         }
 
-        internal MdFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem)
+        internal MdFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, "contents")
         {
-            _formatter = new Formatter(Path);
+            _formatter = new Formatter("contents");
             _tagManager = tagManager;
         }
 

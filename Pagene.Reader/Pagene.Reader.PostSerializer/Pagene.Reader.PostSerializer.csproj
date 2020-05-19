@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pagene.Reader.PostSerializer.Tests\**" />
+    <EmbeddedResource Remove="Pagene.Reader.PostSerializer.Tests\**" />
+    <None Remove="Pagene.Reader.PostSerializer.Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pagene.Models\Pagene.Models.csproj" />
+  </ItemGroup>
+
+</Project>

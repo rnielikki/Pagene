@@ -9,17 +9,29 @@ using System.Threading.Tasks;
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Pagene.Converter.Tests")]
 namespace Pagene.Converter
 {
+    /// <summary>
+    /// Read and generate post and tag list from certain format and certain path.
+    /// </summary>
     public class Converter
     {
         private readonly IFileSystem _fileSystem;
         private ChangeDetector _changeDetector;
         private Dictionary<string, IFileInfo> _hashFileMap;
-        internal Converter(IFileSystem fileSystem)
+        internal static string absolutePath { get; private set; } = "";
+        internal Converter(IFileSystem fileSystem, string path="")
         {
             _fileSystem = fileSystem;
+            absolutePath = path;
         }
-        public Converter() : this(new FileSystem()) { }
+        /// <summary>
+        /// Creates instance for converting.
+        /// </summary>
+        public Converter(string path="") : this(new FileSystem(), path) { }
 
+        /// <summary>
+        /// Start converting data.
+        /// </summary>
+        /// <remarks>See other documentation page about converting format and file path.</remarks>
         public async Task Convert()
         {
             using var tagManager = new TagManager(_fileSystem);
@@ -29,9 +41,9 @@ namespace Pagene.Converter
         }
         private async Task ConvertPart(FileType fileType)
         {
-            string dir = fileType.Path;
-            string hashDir = $".hash/{dir}";
-            var files = InitDirectory("inputs/" + dir)
+            string dir = fileType.FilePath;
+            string hashDir = $"{absolutePath}/.hash/{dir}";
+            var files = InitDirectory($"{absolutePath}/inputs/{dir}")
                 .GetFiles(fileType.Type, SearchOption.TopDirectoryOnly);
             _hashFileMap = InitDirectory(hashDir)
                 .GetFiles($"{fileType.Type}.hashfile", SearchOption.TopDirectoryOnly)

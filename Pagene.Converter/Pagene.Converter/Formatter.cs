@@ -3,29 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using System.Threading.Tasks;
 using Pagene.Models;
 
 namespace Pagene.Converter
 {
     internal class Formatter : IFormatter
     {
-        //reader part
-        /*
-        internal async System.Threading.Tasks.Task<BlogItem> ParseAsync(System.IO.Abstractions.IFileInfo fileInfo, Stream fileStream)
-        {
-            using var reader = new StreamReader(fileStream);
-            var blogHeads = await GetBlogHead(reader);
-            var content = await reader.ReadToEndAsync();
-            return new BlogItem(
-                title: blogHeads.Item1,
-                content: content,
-                creationDate: fileInfo.CreationTimeUtc,
-                modificationDate: fileInfo.LastWriteTimeUtc,
-                tags: blogHeads.Item2
-                );
-        }
-        */
         private readonly string _path;
         internal Formatter(string path)
         {
@@ -52,7 +35,5 @@ namespace Pagene.Converter
                 URL = $"{_path}/{info.Name}"
             });
         }
-
-        //private string GetPath(IFileInfo info) =>
     }
 }

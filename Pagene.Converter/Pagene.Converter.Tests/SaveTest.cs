@@ -25,8 +25,7 @@ namespace Pagene.Converter.Tests
             var fileInfo = fileSystem.FileInfo.FromFileName(inputContentPath);
             using var fileStream = fileInfo.Open(System.IO.FileMode.Open);
 
-            var fileMock = new Mock<FileType>(fileSystem) { CallBase = true };
-            fileMock.SetupGet(obj => obj.Path).Returns(path);
+            var fileMock = new Mock<FileType>(fileSystem, path) { CallBase = true };
             fileMock.SetupGet(obj => obj.Type).Returns("*");
             await fileMock.Object.SaveAsync(fileInfo, fileStream);
             Assert.True(fileSystem.FileExists(contentPath));

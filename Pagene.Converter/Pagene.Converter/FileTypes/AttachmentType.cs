@@ -6,10 +6,8 @@ namespace Pagene.Converter.FileTypes
 {
     class AttachmentType : FileType
     {
-        internal override string Path => "contents/files";
-
         internal override string Type => "*";
-        internal AttachmentType(IFileSystem fileSystem):base(fileSystem)
+        internal AttachmentType(IFileSystem fileSystem):base(fileSystem, "contents/files")
         {
         }
 
