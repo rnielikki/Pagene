@@ -17,11 +17,11 @@ namespace Pagene.Converter
         private readonly IFileSystem _fileSystem;
         private ChangeDetector _changeDetector;
         private Dictionary<string, IFileInfo> _hashFileMap;
-        internal static string absolutePath { get; private set; } = "";
+        internal static string AbsolutePath { get; private set; } = "";
         internal Converter(IFileSystem fileSystem, string path="")
         {
             _fileSystem = fileSystem;
-            absolutePath = path;
+            AbsolutePath = path;
         }
         /// <summary>
         /// Creates instance for converting.
@@ -34,7 +34,7 @@ namespace Pagene.Converter
         /// <remarks>See other documentation page about converting format and file path.</remarks>
         public async Task Convert()
         {
-            using var tagManager = new TagManager(_fileSystem);
+            var tagManager = new TagManager(_fileSystem);
             await Task.WhenAll(ConvertPart(new MdFileType(_fileSystem, tagManager)), ConvertPart(new AttachmentType(_fileSystem)));
             tagManager.CleanTags(_hashFileMap.Keys);
             await tagManager.Serialize();
@@ -42,8 +42,8 @@ namespace Pagene.Converter
         private async Task ConvertPart(FileType fileType)
         {
             string dir = fileType.FilePath;
-            string hashDir = $"{absolutePath}/.hash/{dir}";
-            var files = InitDirectory($"{absolutePath}/inputs/{dir}")
+            string hashDir = $"{AbsolutePath}/.hash/{dir}";
+            var files = InitDirectory($"{AbsolutePath}/inputs/{dir}")
                 .GetFiles(fileType.Type, SearchOption.TopDirectoryOnly);
             _hashFileMap = InitDirectory(hashDir)
                 .GetFiles($"{fileType.Type}.hashfile", SearchOption.TopDirectoryOnly)

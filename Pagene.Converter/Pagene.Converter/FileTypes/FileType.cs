@@ -14,7 +14,7 @@ namespace Pagene.Converter.FileTypes
         protected readonly IFileSystem _fileSystem;
         internal FileType(IFileSystem fileSystem, string path)
         {
-            FilePath = Path.Combine(Converter.absolutePath, path);
+            FilePath = Path.Combine(Converter.AbsolutePath, path);
             _fileSystem = fileSystem;
             if (!fileSystem.Directory.Exists(FilePath))
             {
