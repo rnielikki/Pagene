@@ -41,14 +41,10 @@ This should thorw an error.";
         internal static readonly IFileInfo error2 = fileSystem.FileInfo.FromFileName(errorPath2);
 
         //end test
-        private const string attachPath1 = "inputs/contents/files/input.png";
-        private const string attachPath2 = "inputs/contents/files/hello.svg";
         internal static readonly MockFileSystem ValidFileSystem = new MockFileSystem(
              new Dictionary<string, MockFileData>(){
                     { filePath1, new MockFileData(content1) },
-                    { filePath2, new MockFileData(content2) },
-                    { attachPath1, new MockFileData("---") },
-                    { attachPath2, new MockFileData("!!") }
+                    { filePath2, new MockFileData(content2) }
              }
          );
     }

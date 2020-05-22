@@ -17,16 +17,16 @@ namespace Pagene.Converter
         private readonly IFileSystem _fileSystem;
         private ChangeDetector _changeDetector;
         private Dictionary<string, IFileInfo> _hashFileMap;
-        internal static string RealPath { get; private set; } = "";
-        internal Converter(IFileSystem fileSystem, string path="")
+        internal static string RealPath { get; private set; } = ".";
+        internal Converter(IFileSystem fileSystem, string path=".")
         {
             _fileSystem = fileSystem;
-            RealPath = path;
+            RealPath = string.IsNullOrEmpty(path)?".":path;
         }
         /// <summary>
         /// Creates instance for converting.
         /// </summary>
-        public Converter(string path="") : this(new FileSystem(), path) { }
+        public Converter(string path=".") : this(new FileSystem(), path) { }
 
         /// <summary>
         /// Creates input directory if doesn't exist.
