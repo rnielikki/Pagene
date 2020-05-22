@@ -17,16 +17,27 @@ namespace Pagene.Converter
         private readonly IFileSystem _fileSystem;
         private ChangeDetector _changeDetector;
         private Dictionary<string, IFileInfo> _hashFileMap;
-        internal static string AbsolutePath { get; private set; } = "";
+        internal static string RealPath { get; private set; } = "";
         internal Converter(IFileSystem fileSystem, string path="")
         {
             _fileSystem = fileSystem;
-            AbsolutePath = path;
+            RealPath = path;
         }
         /// <summary>
         /// Creates instance for converting.
         /// </summary>
         public Converter(string path="") : this(new FileSystem(), path) { }
+
+        /// <summary>
+        /// Creates input directory if doesn't exist.
+        /// </summary>
+        public void Initialize()
+        {
+            InitDirectory($"{RealPath}/inputs/contents");
+            InitDirectory($"{RealPath}/contents/files");
+            InitDirectory($"{RealPath}/.hash");
+            new ShortCutPal(RealPath).CreateShortcut("contents/files", "inputs/contents/files");
+        }
 
         /// <summary>
         /// Start converting data.
@@ -35,15 +46,15 @@ namespace Pagene.Converter
         public async Task Convert()
         {
             var tagManager = new TagManager(_fileSystem);
-            await Task.WhenAll(ConvertPart(new MdFileType(_fileSystem, tagManager)), ConvertPart(new AttachmentType(_fileSystem)));
+            await ConvertPart(new MdFileType(_fileSystem, tagManager));
             tagManager.CleanTags(_hashFileMap.Keys);
             await tagManager.Serialize();
         }
         private async Task ConvertPart(FileType fileType)
         {
             string dir = fileType.FilePath;
-            string hashDir = $"{AbsolutePath}/.hash/{dir}";
-            var files = InitDirectory($"{AbsolutePath}/inputs/{dir}")
+            string hashDir = $"{RealPath}/.hash/{dir}";
+            var files = InitDirectory($"{RealPath}/inputs/{dir}")
                 .GetFiles(fileType.Type, SearchOption.TopDirectoryOnly);
             _hashFileMap = InitDirectory(hashDir)
                 .GetFiles($"{fileType.Type}.hashfile", SearchOption.TopDirectoryOnly)
