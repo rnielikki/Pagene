@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Pagene.Models\Pagene.Models.csproj" />
+    <ProjectReference Include="..\..\Pagene.Reader\Pagene.Reader.PostSerializer\Pagene.Reader.PostSerializer.csproj" />
   </ItemGroup>
 
 </Project>

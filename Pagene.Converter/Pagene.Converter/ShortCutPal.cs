@@ -4,7 +4,7 @@ namespace Pagene.Converter
 {
     internal class ShortCutPal
     {
-        private string _path;
+        private readonly string _path;
 
         internal ShortCutPal(string targetPath)
         {

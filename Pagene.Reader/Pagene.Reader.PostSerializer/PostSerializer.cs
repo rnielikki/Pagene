@@ -9,6 +9,7 @@ namespace Pagene.Reader.PostSerializer
     /// </summary>
     public class PostSerializer:IPostSerializer
     {
+        private readonly FormatParser _formatParser = new FormatParser();
         /// <summary>
         /// Serialize <see cref="BlogItem" /> to Stream.
         /// </summary>
@@ -37,19 +38,8 @@ namespace Pagene.Reader.PostSerializer
         {
             //using reader -> dispose after this method
             using StreamReader reader = new StreamReader(inputData);
-            string firstLine = await reader.ReadLineAsync();
-            if (firstLine.Length < 2 || firstLine[0] != '[' || firstLine[^1] != ']')
-            {
-                throw new FormatException();
-            }
-            var tags = firstLine[1..^1].Split(',');
-            char[] buffer = new char[2];
-            await reader.ReadAsync(buffer);
-            if (buffer[0]!='#' || buffer[1]!=' ')
-            {
-                throw new FormatException();
-            }
-            string title = await reader.ReadLineAsync();
+            var tags = _formatParser.ParseTag(await reader.ReadLineAsync());
+            var title = _formatParser.ParseTitle(await reader.ReadLineAsync());
             return new BlogItem(
                 tags:tags,
                 title:title,

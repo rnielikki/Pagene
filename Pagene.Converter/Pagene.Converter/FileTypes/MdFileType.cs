@@ -10,6 +10,7 @@ namespace Pagene.Converter.FileTypes
         internal override string Type => "*.md";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
+        internal static bool Modified { get; private set; } = false;
         internal MdFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, "contents")
         {
             _formatter = formatter;

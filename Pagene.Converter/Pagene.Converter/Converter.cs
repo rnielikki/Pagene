@@ -18,15 +18,15 @@ namespace Pagene.Converter
         private ChangeDetector _changeDetector;
         private Dictionary<string, IFileInfo> _hashFileMap;
         internal static string RealPath { get; private set; } = ".";
-        internal Converter(IFileSystem fileSystem, string path=".")
+        public Converter(IFileSystem fileSystem, string path = ".")
         {
             _fileSystem = fileSystem;
-            RealPath = string.IsNullOrEmpty(path)?".":path;
+            RealPath = string.IsNullOrEmpty(path) ? "." : path;
         }
         /// <summary>
         /// Creates instance for converting.
         /// </summary>
-        public Converter(string path=".") : this(new FileSystem(), path) { }
+        public Converter(string path = ".") : this(new FileSystem(), path) { }
 
         /// <summary>
         /// Creates input directory if doesn't exist.
@@ -47,8 +47,11 @@ namespace Pagene.Converter
         {
             var tagManager = new TagManager(_fileSystem);
             await ConvertPart(new MdFileType(_fileSystem, tagManager));
-            tagManager.CleanTags(_hashFileMap.Keys);
-            await tagManager.Serialize();
+            if (MdFileType.Modified)
+            {
+                tagManager.CleanTags(_hashFileMap.Keys);
+                await tagManager.Serialize();
+            }
         }
         private async Task ConvertPart(FileType fileType)
         {

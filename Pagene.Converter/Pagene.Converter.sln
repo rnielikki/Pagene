@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Converter.Tests", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Models", "..\Pagene.Models\Pagene.Models.csproj", "{4DFCA826-B189-4313-BF3D-B246F192030E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagene.Converter.Entry", "Pagene.Converter.Entry\Pagene.Converter.Entry.csproj", "{394FFA18-5917-484A-ADCE-BD1FC44C300A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Converter.Entry", "Pagene.Converter.Entry\Pagene.Converter.Entry.csproj", "{394FFA18-5917-484A-ADCE-BD1FC44C300A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Reader.PostSerializer", "..\Pagene.Reader\Pagene.Reader.PostSerializer\Pagene.Reader.PostSerializer.csproj", "{EFA08376-025D-4AB1-8B4F-04FE62A9370B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{394FFA18-5917-484A-ADCE-BD1FC44C300A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{394FFA18-5917-484A-ADCE-BD1FC44C300A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{394FFA18-5917-484A-ADCE-BD1FC44C300A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA08376-025D-4AB1-8B4F-04FE62A9370B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA08376-025D-4AB1-8B4F-04FE62A9370B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA08376-025D-4AB1-8B4F-04FE62A9370B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA08376-025D-4AB1-8B4F-04FE62A9370B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

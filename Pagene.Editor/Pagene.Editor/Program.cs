@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Pagene.Converter.Editor
+namespace Pagene.Editor
 {
     static class Program
     {
@@ -11,18 +11,16 @@ namespace Pagene.Converter.Editor
         [STAThread]
         static void Main()
         {
-            //TODO: lock directory and files
-
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (System.IO.File.Exists("inputs/contents/files.lnk"))
             {
-                Application.Run(new BlogPostList(new Converter()));
+                Application.Run(new BlogListManager(new Converter.Converter()));
             }
             else
             {
-                Application.Run(new Starter(new Converter()));
+                Application.Run(new Starter(new Converter.Converter()));
             }
         }
     }

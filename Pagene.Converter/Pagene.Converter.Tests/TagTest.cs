@@ -52,8 +52,8 @@ namespace Pagene.Converter.Tests
             Assert.Equal(serializedTag, reserializedTag);
             Assert.True(mockFileSystem.FileExists("tags/sometag.json"));
             var tagContent = mockFileSystem.FileInfo.FromFileName("tags/sometag.json").Open(System.IO.FileMode.Open);
-            var entries = Utf8Json.JsonSerializer.Deserialize<(string, IEnumerable<BlogEntry>)>(tagContent);
-            Assert.Equal("Custom Data", entries.Item2.Single().Title);
+            var entries = Utf8Json.JsonSerializer.Deserialize<TagInfo>(tagContent);
+            Assert.Equal("Custom Data", entries.Posts.Single().Title);
         }
         [Fact]
         public void TagRemovalTest()

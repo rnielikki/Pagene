@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
-using System.Linq;
 using Pagene.Models;
+using Pagene.Reader.PostSerializer;
 
 namespace Pagene.Converter
 {
     internal class Formatter : IFormatter
     {
         private readonly string _path;
+        private readonly FormatParser _parser = new FormatParser();
         internal Formatter(string path)
         {
             _path = path;
@@ -17,20 +17,11 @@ namespace Pagene.Converter
         async System.Threading.Tasks.Task<(IEnumerable<string>, BlogEntry)> IFormatter.GetBlogHead(IFileInfo info, Stream stream)
         {
             StreamReader reader = new StreamReader(stream);
-            string rawTag = await reader.ReadLineAsync();
-            if (string.IsNullOrEmpty(rawTag) || rawTag[0] != '[' || rawTag[^1] != ']')
-            {
-                throw new FormatException($"Couldn't find tags: The format of post {info.Name} does not match");
-            }
-            var tags = rawTag[1..^1].Split(',', StringSplitOptions.RemoveEmptyEntries).Select(tag=>tag.Trim()).Distinct();
-            string title = await reader.ReadLineAsync();
-            if (string.IsNullOrEmpty(title) || !string.Equals(title.Substring(0, 2),"# "))
-            {
-                throw new FormatException($"Couldn't find title: The format of post {info.Name} does not match");
-            }
+            var tags = _parser.ParseTag(await reader.ReadLineAsync());
+            var title = _parser.ParseTitle(await reader.ReadLineAsync());
             return (tags, new BlogEntry
             {
-                Title = title.Substring(2),
+                Title = title,
                 Date = info.CreationTimeUtc,
                 URL = $"{_path}/{info.Name}"
             });

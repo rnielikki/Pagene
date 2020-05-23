@@ -30,6 +30,6 @@ namespace Pagene.Converter.Entry
                     return;
             }
         }
-        private static void ShowCommandError() => Console.WriteLine("usage: (File Name) (init|convert) (path:Optional)");
+        private static void ShowCommandError() => Console.WriteLine("Parameters usage: (init|convert) (path:Optional)");
     }
 }
