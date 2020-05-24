@@ -38,8 +38,14 @@ namespace Pagene.Editor
         }
         internal async System.Threading.Tasks.Task<BlogItem> GetBlogItem(string fileName)
         {
-            using var fileStream = _fileSystem.File.Open(System.IO.Path.Combine("inputs/contents", fileName), System.IO.FileMode.Open);
+            using var fileStream = GetFileStream(fileName, System.IO.FileMode.Open);
             return await _serializer.DeserializeAsync(fileStream).ConfigureAwait(true);
         }
+        internal async System.Threading.Tasks.Task SaveBlogItem(BlogItem item, string fileName)
+        {
+           using var fileStream = GetFileStream(fileName, System.IO.FileMode.Create);
+           await _serializer.SerializeAsync(item, fileStream);
+        }
+        private System.IO.Stream GetFileStream(string fileName, System.IO.FileMode mode)=> _fileSystem.File.Open(System.IO.Path.Combine("inputs/contents", fileName), mode);
     }
 }

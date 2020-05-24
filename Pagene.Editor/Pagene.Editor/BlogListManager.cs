@@ -1,6 +1,5 @@
-﻿using Pagene.Models;
-using Pagene.Reader.PostSerializer;
-using System;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Pagene.Editor
@@ -22,10 +21,19 @@ namespace Pagene.Editor
         private async void EditButton_Click(object sender, EventArgs e)
         {
             string item = BlogListUI.SelectedValue.ToString();
-            using var editForm = new EditWindow(await _loader.GetBlogItem(item).ConfigureAwait(true));
+            using var editForm = new EditWindow(await _loader.GetBlogItem(item).ConfigureAwait(true), item);
+            editForm.FormClosed += Test;
             editForm.ShowDialog(this);
         }
 
+        private async void Test(object sender, EventArgs e)
+        {
+            var targetSource = (sender as EditWindow);
+            if (targetSource.Saved)
+            {
+                await _loader.SaveBlogItem(targetSource.Item, targetSource.FileName);
+            }
+        }
         private async void ConvertButton_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Do you want to convert?", "Converting posts", MessageBoxButtons.OKCancel);

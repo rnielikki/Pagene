@@ -8,8 +8,13 @@ namespace Pagene.Editor
 {
     public partial class EditWindow : Form
     {
-        public EditWindow(BlogItem item)
+        internal BlogItem Item { get; }
+        internal bool Saved { get; private set; }
+        internal string FileName { get; }
+        public EditWindow(BlogItem item, string fileName)
         {
+            Item = item;
+            FileName = fileName;
             InitializeComponent();
             TitleBox.Text = item.Title;
             ContentBox.Text = item.Content;
@@ -24,25 +29,35 @@ namespace Pagene.Editor
             Title = "",
             Content = "",
             Tags = Enumerable.Empty<string>()
-        }
+        }, "placeholder"
         )
         { } // create new
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            var item = new BlogItem { Title = TitleBox.Text, Content = ContentBox.Text, Tags = _tagPairs.Keys };
-            //send this back.
+            Item.Title = TitleBox.Text;
+            Item.Content = ContentBox.Text;
+            Item.Tags = _tagPairs.Keys;
+            Saved = true;
+            Close();
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            var confirm = MessageBox.Show("Do you want to cancel without saving?", "Cancel", MessageBoxButtons.YesNo);
-            if (confirm == DialogResult.Yes)
+            if (!Saved)
             {
-                base.OnFormClosing(e);
+                var confirm = MessageBox.Show("Do you want to cancel without saving?", "Cancel", MessageBoxButtons.YesNo);
+                if (confirm == DialogResult.Yes)
+                {
+                    base.OnFormClosing(e);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
             else
             {
-                e.Cancel = true;
+                base.OnFormClosing(e);
             }
         }
         private void CloseButton_Click(object sender, EventArgs e)
