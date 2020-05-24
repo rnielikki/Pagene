@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Pagene.Converter\Pagene.Converter\Pagene.Converter.csproj" />
+    <ProjectReference Include="..\..\Pagene.Models\Pagene.Models.csproj" />
     <ProjectReference Include="..\..\Pagene.Reader\Pagene.Reader.PostSerializer\Pagene.Reader.PostSerializer.csproj" />
   </ItemGroup>
 

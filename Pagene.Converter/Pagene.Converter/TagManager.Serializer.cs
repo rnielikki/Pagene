@@ -7,7 +7,7 @@ using Utf8Json;
 
 namespace Pagene.Converter
 {
-    partial class TagManager
+    internal partial class TagManager
     {
         private void Deserialize()
         {

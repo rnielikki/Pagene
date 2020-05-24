@@ -23,10 +23,10 @@ anyContent";
             Reader reader = new Reader(serializerMock.Object);
             using MemoryStream stream = new MemoryStream();
             using StreamWriter writer = new StreamWriter(stream);
-            await writer.WriteAsync(testInput);
-            await writer.FlushAsync();
+            await writer.WriteAsync(testInput).ConfigureAwait(false);
+            await writer.FlushAsync().ConfigureAwait(false);
             stream.Position = 0;
-            BlogItem item = await reader.ReadPostAsync(stream);
+            BlogItem item = await reader.ReadPostAsync(stream).ConfigureAwait(false);
             Assert.Equal(creationDate, item.CreationDate);
             Assert.Equal(editDate, item.ModificationDate);
         }

@@ -10,9 +10,9 @@ namespace Pagene.Converter.Tests
         {
             var fileSystem = ValidFileSystem;
             var converter = new Converter(fileSystem);
-            await converter.Convert();
+            await converter.Convert().ConfigureAwait(false);
             Assert.Equal(2, fileSystem.DirectoryInfo.FromDirectoryName("contents").GetFiles().Length);
-            await converter.Convert();
+            await converter.Convert().ConfigureAwait(false);
         }
     }
 }

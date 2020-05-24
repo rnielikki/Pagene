@@ -16,11 +16,11 @@ namespace Pagene.Converter.Tests
             using var fileStream = sample.Open(System.IO.FileMode.Open);
             if (!valid)
             {
-                await Assert.ThrowsAsync<System.FormatException>(() => _formatter.GetBlogHead(sample, fileStream));
+                await Assert.ThrowsAsync<System.FormatException>(() => _formatter.GetBlogHead(sample, fileStream)).ConfigureAwait(false);
             }
             else
             {
-                (var entryTags, var entry) = await _formatter.GetBlogHead(sample, fileStream);
+                (var entryTags, var entry) = await _formatter.GetBlogHead(sample, fileStream).ConfigureAwait(false);
                 entry.Title.Should().Be(title);
                 entry.URL.Should().Be("contents/"+sample.Name);
                 entryTags.Should().BeEquivalentTo(tags);

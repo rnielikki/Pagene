@@ -20,7 +20,7 @@ namespace Pagene.Reader.PostSerializer
             {
                 throw new FormatException();
             }
-            return raw[1..^1].Split(',', StringSplitOptions.RemoveEmptyEntries).Select(tag=>tag.Trim()).Distinct();;
+            return raw[1..^1].Split(',', StringSplitOptions.RemoveEmptyEntries).Select(tag=>tag.Trim()).Distinct();
         }
         /// <summary>
         /// Parse Title from certain format. The title format is same as markdown h1, "# title".

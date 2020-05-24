@@ -7,8 +7,8 @@ namespace Pagene.Models
     /// </summary>
     public class TagInfo
     {
-        public string Tag { get; private set; }
-        public IEnumerable<BlogEntry> Posts { get; private set; }
+        public string Tag { get; }
+        public IEnumerable<BlogEntry> Posts { get; }
         public TagInfo(string tag, IEnumerable<BlogEntry> posts)
         {
             Tag = tag;

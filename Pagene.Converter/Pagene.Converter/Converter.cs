@@ -46,11 +46,11 @@ namespace Pagene.Converter
         public async Task Convert()
         {
             var tagManager = new TagManager(_fileSystem);
-            await ConvertPart(new MdFileType(_fileSystem, tagManager));
+            await ConvertPart(new MdFileType(_fileSystem, tagManager)).ConfigureAwait(false);
             if (MdFileType.Modified)
             {
                 tagManager.CleanTags(_hashFileMap.Keys);
-                await tagManager.Serialize();
+                await tagManager.Serialize().ConfigureAwait(false);
             }
         }
         private async Task ConvertPart(FileType fileType)
@@ -67,7 +67,7 @@ namespace Pagene.Converter
 
             try
             {
-                await Task.WhenAll(files.Select(file => ConvertFile(fileType, hashDir, crypto, file)));
+                await Task.WhenAll(files.Select(file => ConvertFile(fileType, hashDir, crypto, file))).ConfigureAwait(false);
                 _changeDetector.CleanHash(_hashFileMap.Values);
             }
             finally
@@ -87,7 +87,7 @@ namespace Pagene.Converter
                 if (_hashFileMap.TryGetValue(file.Name, out IFileInfo hashFile))
                 {
                     hashStream = hashFile.Open(FileMode.OpenOrCreate);
-                    hash = await _changeDetector.DetectAsync(fileStream, hashStream);
+                    hash = await _changeDetector.DetectAsync(fileStream, hashStream).ConfigureAwait(false);
                     _hashFileMap.Remove(file.Name);
                 }
                 else
@@ -97,8 +97,8 @@ namespace Pagene.Converter
                 }
                 if (hash != null)
                 {
-                    await fileType.SaveAsync(file, fileStream);
-                    await _changeDetector.WriteHash(hash, hashStream);
+                    await fileType.SaveAsync(file, fileStream).ConfigureAwait(false);
+                    await _changeDetector.WriteHash(hash, hashStream).ConfigureAwait(false);
                 }
             }
             finally

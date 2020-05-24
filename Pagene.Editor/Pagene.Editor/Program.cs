@@ -3,24 +3,36 @@ using System.Windows.Forms;
 
 namespace Pagene.Editor
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (System.IO.File.Exists("inputs/contents/files.lnk"))
+
+            try
             {
-                Application.Run(new BlogListManager(new Converter.Converter()));
+                if (System.IO.File.Exists("inputs/contents/files.lnk"))
+                {
+                    Application.Run(new BlogListManager(new Converter.Converter()));
+                }
+                else
+                {
+                    Application.Run(new Starter(new Converter.Converter()));
+                }
             }
-            else
+            catch (FormatException ex)
             {
-                Application.Run(new Starter(new Converter.Converter()));
+                MessageBox.Show($"The operation is not completed." +
+                    $"{Environment.NewLine}Check if the blog format is corrupted." +
+                    $"{Environment.NewLine}You may need to edit file manually." +
+                    $"{Environment.NewLine}File : {ex.Message}");
+                Application.Exit();
             }
         }
     }

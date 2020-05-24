@@ -2,7 +2,7 @@
 
 namespace Pagene.Editor
 {
-    class LinkWatcher
+    internal class LinkWatcher
     {
         private readonly FileSystemWatcher _watcher;
         internal LinkWatcher(Converter.Converter converter, FileSystemEventHandler e, RenamedEventHandler r)

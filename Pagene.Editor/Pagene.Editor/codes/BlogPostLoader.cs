@@ -1,4 +1,5 @@
 ﻿using Pagene.Reader.PostSerializer;
+using Pagene.Models;
 using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Pagene.Editor
     {
         private readonly IFileSystem _fileSystem;
         private readonly FormatParser _formatParser = new FormatParser();
+        private readonly PostSerializer _serializer = new PostSerializer();
         internal BlogPostLoader(IFileSystem fileSystem)
         {
             _fileSystem = fileSystem;
@@ -20,7 +22,7 @@ namespace Pagene.Editor
         {
             List<FileTitlePair> posts = new List<FileTitlePair>();
             var files = _fileSystem.DirectoryInfo.FromDirectoryName("inputs/contents/").GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly)
-                .OrderByDescending(file => file.CreationTimeUtc);;
+                .OrderByDescending(file => file.CreationTimeUtc);
             foreach (var file in files)
             {
                 posts.Add(LoadTitle(file));
@@ -33,6 +35,11 @@ namespace Pagene.Editor
             reader.ReadLine();
             string title = _formatParser.ParseTitle(reader.ReadLine());
             return new FileTitlePair(file.Name, title);
+        }
+        internal async System.Threading.Tasks.Task<BlogItem> GetBlogItem(string fileName)
+        {
+            using var fileStream = _fileSystem.File.Open(System.IO.Path.Combine("inputs/contents", fileName), System.IO.FileMode.Open);
+            return await _serializer.DeserializeAsync(fileStream).ConfigureAwait(true);
         }
     }
 }

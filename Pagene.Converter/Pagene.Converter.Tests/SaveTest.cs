@@ -13,10 +13,10 @@ namespace Pagene.Converter.Tests
         [Fact]
         public async Task SaveDefaultTest()
         {
-            string path = "tests";
+            const string path = "tests";
             string contentPath = $"{path}/something.md";
             string inputContentPath = $"inputs/{contentPath}";
-            string content = "123123";
+            const string content = "123123";
             MockFileSystem fileSystem = new MockFileSystem(
                       new Dictionary<string, MockFileData>(){
                     { inputContentPath, new MockFileData(content) },
@@ -27,17 +27,17 @@ namespace Pagene.Converter.Tests
 
             var fileMock = new Mock<FileType>(fileSystem, path) { CallBase = true };
             fileMock.SetupGet(obj => obj.Type).Returns("*");
-            await fileMock.Object.SaveAsync(fileInfo, fileStream);
+            await fileMock.Object.SaveAsync(fileInfo, fileStream).ConfigureAwait(false);
             Assert.True(fileSystem.FileExists(contentPath));
 
-            string result = await fileSystem.File.ReadAllTextAsync(contentPath);
+            string result = await fileSystem.File.ReadAllTextAsync(contentPath).ConfigureAwait(false);
             Assert.Equal(content, result);
         }
         [Fact]
         public async Task SaveFormatTest()
         {
-            string content = "asdfasdf";
-            string contentPath = $"contents/something.md";
+            const string content = "asdfasdf";
+            const string contentPath = "contents/something.md";
             string inputContentPath = $"inputs/{contentPath}";
 
             MockFileSystem fileSystem = new MockFileSystem(
@@ -59,8 +59,8 @@ namespace Pagene.Converter.Tests
             var tagManager = new TagManager(fileSystem);
             var fileType = new MdFileType(fileSystem, formatterMock.Object, tagManager);
 
-            await fileType.SaveAsync(fileInfo, fileStream);
-            string result = await fileSystem.File.ReadAllTextAsync(contentPath);
+            await fileType.SaveAsync(fileInfo, fileStream).ConfigureAwait(false);
+            string result = await fileSystem.File.ReadAllTextAsync(contentPath).ConfigureAwait(false);
             Assert.Equal(@$"> {dateTime}
 > {editDateTime}
 {content}", result);

@@ -1,5 +1,4 @@
 ﻿using Pagene.Models;
-using System;
 using System.IO;
 
 namespace Pagene.Reader.PostSerializer
@@ -7,7 +6,7 @@ namespace Pagene.Reader.PostSerializer
     /// <summary>
     /// Basic BlogPost serializer and deserializer for blog post reader and blog poster writer.
     /// </summary>
-    public class PostSerializer:IPostSerializer
+    public class PostSerializer : IPostSerializer
     {
         private readonly FormatParser _formatParser = new FormatParser();
         /// <summary>
@@ -21,13 +20,13 @@ namespace Pagene.Reader.PostSerializer
         {
             //not using writer -> does not dispose after this method
             StreamWriter writer = new StreamWriter(stream);
-            await writer.WriteAsync("[");
-            await writer.WriteAsync(string.Join(',', item.Tags));
-            await writer.WriteLineAsync("]");
-            await writer.WriteAsync("# ");
-            await writer.WriteLineAsync(item.Title);
-            await writer.WriteAsync(item.Content);
-            await writer.FlushAsync();
+            await writer.WriteAsync("[").ConfigureAwait(false);
+            await writer.WriteAsync(string.Join(',', item.Tags)).ConfigureAwait(false);
+            await writer.WriteLineAsync("]").ConfigureAwait(false);
+            await writer.WriteAsync("# ").ConfigureAwait(false);
+            await writer.WriteLineAsync(item.Title).ConfigureAwait(false);
+            await writer.WriteAsync(item.Content).ConfigureAwait(false);
+            await writer.FlushAsync().ConfigureAwait(false);
         }
         /// <summary>
         /// Deseriazlie <see cref="BlogItem" /> to string for writer.
@@ -38,13 +37,14 @@ namespace Pagene.Reader.PostSerializer
         {
             //using reader -> dispose after this method
             using StreamReader reader = new StreamReader(inputData);
-            var tags = _formatParser.ParseTag(await reader.ReadLineAsync());
-            var title = _formatParser.ParseTitle(await reader.ReadLineAsync());
-            return new BlogItem(
-                tags:tags,
-                title:title,
-                content: await reader.ReadToEndAsync()
-                );
+            var tags = _formatParser.ParseTag(await reader.ReadLineAsync().ConfigureAwait(false));
+            var title = _formatParser.ParseTitle(await reader.ReadLineAsync().ConfigureAwait(false));
+            return new BlogItem
+            {
+                Title = title,
+                Content = await reader.ReadToEndAsync().ConfigureAwait(false),
+                Tags = tags
+            };
         }
     }
 }

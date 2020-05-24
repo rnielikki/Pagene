@@ -6,7 +6,7 @@ namespace Pagene.Converter.FileTypes
 {
     internal abstract class FileType
     {
-        internal string FilePath { get; private set; }
+        internal string FilePath { get; }
 
         internal virtual string Type { get; }
 
@@ -33,7 +33,7 @@ namespace Pagene.Converter.FileTypes
             Stream writeTarget = _fileSystem.File.Open(targetPath, FileMode.OpenOrCreate);
             try
             {
-                await fileStream.CopyToAsync(writeTarget);
+                await fileStream.CopyToAsync(writeTarget).ConfigureAwait(false);
             }
             finally
             {

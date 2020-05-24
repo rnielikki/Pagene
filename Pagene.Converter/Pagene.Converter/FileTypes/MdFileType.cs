@@ -5,12 +5,12 @@ using System.IO.Abstractions;
 
 namespace Pagene.Converter.FileTypes
 {
-    class MdFileType : FileType
+    internal class MdFileType : FileType
     {
         internal override string Type => "*.md";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
-        internal static bool Modified { get; private set; } = false;
+        internal static bool Modified { get; } = false;
         internal MdFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, "contents")
         {
             _formatter = formatter;
@@ -29,10 +29,10 @@ namespace Pagene.Converter.FileTypes
             using StreamReader reader = new StreamReader(fileStream);
             using StreamWriter writer = new StreamWriter(stream);
             fileStream.Position = 0;
-            (IEnumerable<string> tags, BlogEntry entry) = await _formatter.GetBlogHead(info, fileStream); // validation
+            (IEnumerable<string> tags, BlogEntry entry) = await _formatter.GetBlogHead(info, fileStream).ConfigureAwait(false); // validation
 
-            writer.WriteLine(@$"> {entry.Date}");
-            writer.WriteLine(@$"> {info.LastWriteTimeUtc}");
+            writer.WriteLine($"> {entry.Date}");
+            writer.WriteLine($"> {info.LastWriteTimeUtc}");
             writer.Flush();
             fileStream.Position = 0;
             fileStream.CopyTo(stream);
@@ -41,7 +41,7 @@ namespace Pagene.Converter.FileTypes
             _tagManager.AddTag(tags, entry);
 
             //save
-            await base.SaveAsync(info, stream);
+            await base.SaveAsync(info, stream).ConfigureAwait(false);
         }
     }
 }

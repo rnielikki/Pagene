@@ -3,7 +3,7 @@
     internal class FileTitlePair
     {
         //Works only in the list with public
-        public string FilePath { get; private set; }
+        public string FilePath { get; }
         public string Title { get; set; }
         internal FileTitlePair(string path, string title)
         {

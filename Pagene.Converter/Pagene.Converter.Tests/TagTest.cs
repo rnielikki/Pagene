@@ -40,14 +40,14 @@ namespace Pagene.Converter.Tests
             var mockValue = new ConcurrentDictionary<string, BlogEntry>();
             mockValue.TryAdd("test.md", new BlogEntry { Title = "Custom Data", URL = "contents/test.md", });
             GetTagMap(tagManager).TryAdd("someTag", mockValue);
-            await tagManager.Serialize();
+            await tagManager.Serialize().ConfigureAwait(false);
 
             string serializedTag = mockFileSystem.File.ReadAllText("tags/meta.tags.json");
 
             tagManager = new TagManager(mockFileSystem);
             Assert.NotEmpty(GetTagMap(tagManager).Keys);
             Assert.Contains("someTag", GetTagMap(tagManager).Keys);
-            await tagManager.Serialize();
+            await tagManager.Serialize().ConfigureAwait(false);
             string reserializedTag = mockFileSystem.File.ReadAllText("tags/meta.tags.json");
             Assert.Equal(serializedTag, reserializedTag);
             Assert.True(mockFileSystem.FileExists("tags/sometag.json"));
@@ -81,5 +81,4 @@ namespace Pagene.Converter.Tests
                 .GetField("_tagMap", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .GetValue(instance) as ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>>;
     }
-
 }

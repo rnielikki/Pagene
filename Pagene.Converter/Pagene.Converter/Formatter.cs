@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using Pagene.Models;
@@ -17,14 +18,21 @@ namespace Pagene.Converter
         async System.Threading.Tasks.Task<(IEnumerable<string>, BlogEntry)> IFormatter.GetBlogHead(IFileInfo info, Stream stream)
         {
             StreamReader reader = new StreamReader(stream);
-            var tags = _parser.ParseTag(await reader.ReadLineAsync());
-            var title = _parser.ParseTitle(await reader.ReadLineAsync());
-            return (tags, new BlogEntry
+            try
             {
-                Title = title,
-                Date = info.CreationTimeUtc,
-                URL = $"{_path}/{info.Name}"
-            });
+                var tags = _parser.ParseTag(await reader.ReadLineAsync().ConfigureAwait(false));
+                var title = _parser.ParseTitle(await reader.ReadLineAsync().ConfigureAwait(false));
+                return (tags, new BlogEntry
+                {
+                    Title = title,
+                    Date = info.CreationTimeUtc,
+                    URL = $"{_path}/{info.Name}"
+                });
+            }
+            catch (FormatException)
+            {
+                throw new FormatException(info.Name);
+            }
         }
     }
 }

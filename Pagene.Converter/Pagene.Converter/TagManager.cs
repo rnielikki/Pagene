@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Pagene.Converter
 {
-    partial class TagManager
+    internal partial class TagManager
     {
         //sometimes can be replaced to ConcurrentDictionary
         private readonly ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> _tagMap;
@@ -29,7 +29,7 @@ namespace Pagene.Converter
                     throw new InvalidDataException("Reserved name \"meta.tags\" cannot be used as tag.");
                 }
                 var existEntries = _tagMap.GetOrAdd(tag, new ConcurrentDictionary<string, BlogEntry>());
-                existEntries.AddOrUpdate(Path.GetFileName(entry.URL), entry,(k, v) => v = entry);
+                existEntries.AddOrUpdate(Path.GetFileName(entry.URL), entry,(_, v) => v = entry);
             }
         }
         internal void CleanTags(IEnumerable<string> targetPaths)
@@ -45,7 +45,7 @@ namespace Pagene.Converter
                     {
                         currentEntries.Remove(path, out _);
                     }
-                    if (!currentEntries.Any())
+                    if (currentEntries.Count == 0)
                     {
                         _tagMap.Remove(tagEntries.Key, out _);
                         _fileSystem.File.Delete($"{_dirName}/{tagEntries.Key}.json");

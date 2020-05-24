@@ -17,10 +17,10 @@ namespace Pagene.Reader.PostSerializer.Tests
                     tags: new string[] { "123", "asdf", "aaaaaaaa"}
                 );
             using Stream serializedStream = new MemoryStream();
-            await serializer.SerializeAsync(item, serializedStream);
+            await serializer.SerializeAsync(item, serializedStream).ConfigureAwait(false);
             StreamReader reader = new StreamReader(serializedStream);
             serializedStream.Position = 0;
-            string result = await reader.ReadToEndAsync();
+            string result = await reader.ReadToEndAsync().ConfigureAwait(false);
 
             Assert.Equal(@$"[{string.Join(',',item.Tags)}]
 # {item.Title}
@@ -29,8 +29,8 @@ namespace Pagene.Reader.PostSerializer.Tests
         [Fact]
         public async System.Threading.Tasks.Task DeserializeTest()
         {
-            string title = "________";
-            string content = "hjklhjklhjklhjklhjkl";
+            const string title = "________";
+            const string content = "hjklhjklhjklhjklhjkl";
             string[] tags = { ":P", "X)", "010101"};
             string inputData = @$"[{string.Join(',', tags)}]
 # {title}
@@ -38,7 +38,7 @@ namespace Pagene.Reader.PostSerializer.Tests
             using Stream inputStream = new MemoryStream();
             inputStream.Write(System.Text.Encoding.UTF8.GetBytes(inputData));
             inputStream.Position = 0;
-            BlogItem item = await serializer.DeserializeAsync(inputStream);
+            BlogItem item = await serializer.DeserializeAsync(inputStream).ConfigureAwait(false);
             Assert.Equal(title, item.Title);
             Assert.Equal(content, item.Content);
             Assert.Equal(tags.OrderBy(str => str), item.Tags.OrderBy(str => str));

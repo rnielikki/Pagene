@@ -13,10 +13,10 @@ namespace Pagene.Editor.Tests
         [Fact]
         public void GetPostListTest()
         {
-            string newerFile = "bbb.md";
-            string subject1 = "placeholder aaa";
-            string subject2 = "can I test you";
-            string subjectFromRejected = "hello world";
+            const string newerFile = "bbb.md";
+            const string subject1 = "placeholder aaa";
+            const string subject2 = "can I test you";
+            const string subjectFromRejected = "hello world";
             IFileSystem fileSystem = new MockFileSystem(
                 new Dictionary<string, MockFileData>() {
                     { "inputs/contents/adsf.md", new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# {subject1}{Environment.NewLine}x") },

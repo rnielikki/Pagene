@@ -2,9 +2,9 @@
 
 namespace Pagene.Converter.Entry
 {
-    class Program
+    internal static class Program
     {
-        static async System.Threading.Tasks.Task Main(string[] args)
+        private static async System.Threading.Tasks.Task Main(string[] args)
         {
             if (args.Length == 0)
             {
@@ -23,7 +23,7 @@ namespace Pagene.Converter.Entry
                         converter.Initialize();
                     return;
                 case "convert":
-                    await converter.Convert();
+                    await converter.Convert().ConfigureAwait(false);
                     return;
                 default:
                     ShowCommandError();

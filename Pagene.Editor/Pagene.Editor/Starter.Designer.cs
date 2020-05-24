@@ -32,6 +32,8 @@
             // 
             // CloseButton
             // 
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseButton.BackColor = System.Drawing.Color.Pink;
             this.CloseButton.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

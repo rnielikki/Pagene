@@ -33,9 +33,9 @@ namespace Pagene.Reader
         public async Task<BlogItem> ReadPostAsync(Stream stream)
         {
             using StreamReader reader = new StreamReader(stream);
-            DateTime creationDate = await ParseDate(reader);
-            DateTime modificationDate = await ParseDate(reader);
-            BlogItem item = await _serializer.DeserializeAsync(stream);
+            DateTime creationDate = await ParseDate(reader).ConfigureAwait(false);
+            DateTime modificationDate = await ParseDate(reader).ConfigureAwait(false);
+            BlogItem item = await _serializer.DeserializeAsync(stream).ConfigureAwait(false);
             item.CreationDate = creationDate;
             item.ModificationDate = modificationDate;
             return item;
@@ -44,12 +44,12 @@ namespace Pagene.Reader
         private static async Task<DateTime> ParseDate(StreamReader reader)
         {
             char[] buffer = new char[2];
-            await reader.ReadAsync(buffer);
+            await reader.ReadAsync(buffer).ConfigureAwait(false);
             if (buffer[0] != '>' || buffer[1] != ' ')
             {
                 new FormatException();
             }
-            string date = await reader.ReadLineAsync();
+            string date = await reader.ReadLineAsync().ConfigureAwait(false);
             return DateTime.Parse(date); //let it throw if the format is wrong.
         }
     }
