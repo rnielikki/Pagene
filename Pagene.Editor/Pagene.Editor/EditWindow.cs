@@ -28,7 +28,7 @@ namespace Pagene.Editor
             Title = "",
             Content = "",
             Tags = Enumerable.Empty<string>()
-        }, "placeholder", tags
+        }, null, tags
         )
         { } // create new
 

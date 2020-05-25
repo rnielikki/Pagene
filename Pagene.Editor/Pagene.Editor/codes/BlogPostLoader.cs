@@ -13,10 +13,12 @@ namespace Pagene.Editor
         private readonly IFileSystem _fileSystem;
         private readonly FormatParser _formatParser = new FormatParser();
         private readonly IPostSerializer _serializer;
+        private readonly NamingLogic _namingLogic;
         internal BlogPostLoader(IFileSystem fileSystem, IPostSerializer mockSerializer)
         {
             _fileSystem = fileSystem;
             _serializer = mockSerializer;
+            _namingLogic = new NamingLogic(fileSystem);
         }
         internal BlogPostLoader() : this(new FileSystem(), new PostSerializer()) { }
 
@@ -45,10 +47,16 @@ namespace Pagene.Editor
         }
         internal async System.Threading.Tasks.Task SaveBlogItem(BlogItem item, string fileName)
         {
+            if (fileName == null)
+            {
+                fileName = _namingLogic.GetName(item.Title);
+            } 
             using var fileStream = GetFileStream(fileName, System.IO.FileMode.Create);
             await _serializer.SerializeAsync(item, fileStream).ConfigureAwait(true);
         }
         private System.IO.Stream GetFileStream(string fileName, System.IO.FileMode mode) => _fileSystem.File.Open(System.IO.Path.Combine("inputs/contents", fileName), mode);
+
+        //wait until the methods get right place:
         internal IEnumerable<string> GetTags()
         {
             const string metaTagPath = "tags/meta.tags.json";
@@ -56,5 +64,6 @@ namespace Pagene.Editor
             using var stream = _fileSystem.File.Open(metaTagPath, System.IO.FileMode.Open);
             return JsonSerializer.Deserialize<Dictionary<string, int>>(stream).Keys;
         }
+        internal string GetNameFromTitle(string title) => _namingLogic.GetName(title);
     }
 }

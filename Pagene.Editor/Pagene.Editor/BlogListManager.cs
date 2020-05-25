@@ -24,11 +24,11 @@ namespace Pagene.Editor
         {
             string item = BlogListUI.SelectedValue.ToString();
             using var editForm = new EditWindow(await _loader.GetBlogItem(item).ConfigureAwait(true), item, _tags);
-            editForm.FormClosed += Test;
+            editForm.FormClosed += Save;
             editForm.ShowDialog(this);
         }
 
-        private async void Test(object sender, EventArgs e)
+        private async void Save(object sender, EventArgs e)
         {
             var targetSource = (sender as EditWindow);
             if (targetSource.Saved)
