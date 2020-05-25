@@ -51,6 +51,7 @@ namespace Pagene.Editor
         private void AddButton_Click(object sender, EventArgs e)
         {
             using var editForm = new EditWindow(_loader.GetTags());
+            editForm.FormClosed += Save;
             editForm.ShowDialog(this);
         }
     }

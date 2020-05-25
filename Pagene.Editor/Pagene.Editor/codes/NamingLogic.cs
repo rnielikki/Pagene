@@ -3,6 +3,7 @@ using System.Text;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System;
+using System.Linq;
 
 namespace Pagene.Editor
 {
@@ -19,21 +20,22 @@ namespace Pagene.Editor
         internal string GetName(string title)
         {
             string baseName = GetBaseName(title);
-            if (!ExistsFile(baseName))
+            string baseFileName = baseName + ".md";
+            if (!ExistsFile(baseFileName) && !_reserved.Contains(baseName))
             {
-                 return baseName;
+                 return baseFileName;
             }
             else
             {
                 int i = 0;
-                while (ExistsFile($"{baseName}-{i}"))
+                while (ExistsFile($"{baseName}-{i}.md"))
                 {
                     i++;
                 }
-                return $"{baseName}-{i}";
+                return $"{baseName}-{i}.md";
             }
         }
-        private bool ExistsFile(string name) => _fileSystem.File.Exists(System.IO.Path.Combine("inputs/contents", $"{name}.md"));
+        private bool ExistsFile(string name) => _fileSystem.File.Exists(System.IO.Path.Combine("inputs/contents", name));
         private string GetBaseName(string title)
         {
             try
