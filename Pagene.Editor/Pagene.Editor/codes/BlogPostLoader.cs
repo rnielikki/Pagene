@@ -3,20 +3,22 @@ using Pagene.Models;
 using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
+using Utf8Json;
 
-[assembly:System.Runtime.CompilerServices.InternalsVisibleTo("Pagene.Editor.Tests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Pagene.Editor.Tests")]
 namespace Pagene.Editor
 {
     internal class BlogPostLoader
     {
         private readonly IFileSystem _fileSystem;
         private readonly FormatParser _formatParser = new FormatParser();
-        private readonly PostSerializer _serializer = new PostSerializer();
-        internal BlogPostLoader(IFileSystem fileSystem)
+        private readonly IPostSerializer _serializer;
+        internal BlogPostLoader(IFileSystem fileSystem, IPostSerializer mockSerializer)
         {
             _fileSystem = fileSystem;
+            _serializer = mockSerializer;
         }
-        internal BlogPostLoader() : this(new FileSystem()) { }
+        internal BlogPostLoader() : this(new FileSystem(), new PostSerializer()) { }
 
         internal List<FileTitlePair> LoadPosts()
         {
@@ -43,9 +45,16 @@ namespace Pagene.Editor
         }
         internal async System.Threading.Tasks.Task SaveBlogItem(BlogItem item, string fileName)
         {
-           using var fileStream = GetFileStream(fileName, System.IO.FileMode.Create);
-           await _serializer.SerializeAsync(item, fileStream);
+            using var fileStream = GetFileStream(fileName, System.IO.FileMode.Create);
+            await _serializer.SerializeAsync(item, fileStream).ConfigureAwait(true);
         }
-        private System.IO.Stream GetFileStream(string fileName, System.IO.FileMode mode)=> _fileSystem.File.Open(System.IO.Path.Combine("inputs/contents", fileName), mode);
+        private System.IO.Stream GetFileStream(string fileName, System.IO.FileMode mode) => _fileSystem.File.Open(System.IO.Path.Combine("inputs/contents", fileName), mode);
+        internal IEnumerable<string> GetTags()
+        {
+            const string metaTagPath = "tags/meta.tags.json";
+            if (!_fileSystem.File.Exists(metaTagPath)) return Enumerable.Empty<string>();
+            using var stream = _fileSystem.File.Open(metaTagPath, System.IO.FileMode.Open);
+            return JsonSerializer.Deserialize<Dictionary<string, int>>(stream).Keys;
+        }
     }
 }

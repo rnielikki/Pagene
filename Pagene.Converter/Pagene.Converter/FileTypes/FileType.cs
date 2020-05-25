@@ -1,5 +1,6 @@
 ﻿using System.IO.Abstractions;
 using System.IO;
+using System.Collections.Generic;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace Pagene.Converter.FileTypes
@@ -12,10 +13,12 @@ namespace Pagene.Converter.FileTypes
 
         protected readonly IDirectoryInfo Directory;
         protected readonly IFileSystem _fileSystem;
+        protected readonly Cleaner _cleaner;
         internal FileType(IFileSystem fileSystem, string path)
         {
             FilePath = Path.Combine(Converter.RealPath, path);
             _fileSystem = fileSystem;
+            _cleaner = new Cleaner(fileSystem);
             if (!fileSystem.Directory.Exists(FilePath))
             {
                 Directory = fileSystem.Directory.CreateDirectory(FilePath);
@@ -39,6 +42,12 @@ namespace Pagene.Converter.FileTypes
             {
                 writeTarget.Close();
             }
+        }
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        internal virtual async System.Threading.Tasks.Task Clean(IEnumerable<string> files)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+        {
+            _cleaner.Clean(FilePath, files);
         }
     }
 }

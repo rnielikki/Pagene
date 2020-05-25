@@ -11,7 +11,7 @@ namespace Pagene.Editor
         internal BlogItem Item { get; }
         internal bool Saved { get; private set; }
         internal string FileName { get; }
-        public EditWindow(BlogItem item, string fileName)
+        public EditWindow(BlogItem item, string fileName, IEnumerable<string> tags)
         {
             Item = item;
             FileName = fileName;
@@ -20,16 +20,15 @@ namespace Pagene.Editor
             ContentBox.Text = item.Content;
             AddTagRange(item.Tags);
 
-            IEnumerable<string> test = new string[] { "test1", "aaa", "choco", "milk" };
             TagBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            TagBox.AutoCompleteCustomSource.AddRange(test.ToArray());
+            TagBox.AutoCompleteCustomSource.AddRange(tags.ToArray());
         }
-        public EditWindow() : this(new BlogItem
+        public EditWindow(IEnumerable<string> tags) : this(new BlogItem
         {
             Title = "",
             Content = "",
             Tags = Enumerable.Empty<string>()
-        }, "placeholder"
+        }, "placeholder", tags
         )
         { } // create new
 

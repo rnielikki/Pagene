@@ -70,12 +70,13 @@ namespace Pagene.Converter.Tests
             tagManager.AddTag(tags2, entry2);
             tagManager.AddTag(tags3, entry3);
             IEnumerable<string> removedTarget = new string[] { "dos.md", "tres.md" };
-            tagManager.CleanTags(removedTarget);
+            tagManager.CleanFromDeletedFile(removedTarget);
+
             var resultDictionary = GetTagMap(tagManager);
             resultDictionary.Should().NotContainKey("milk");
-            resultDictionary["cheese"].Should().ContainKey("uno.md")
-                .And.NotContainKey("dos.md");
-            fileSystem.FileExists("tags/milk.json").Should().BeFalse();
+            resultDictionary["cheese"].Should().ContainKey("contents/uno.md")
+                .And.NotContainKey("contents/dos.md");
+            tagManager.GetRemovedTags().Should().Contain("milk");
         }
         private ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> GetTagMap(TagManager instance) => typeof(TagManager)
                 .GetField("_tagMap", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)

@@ -42,7 +42,7 @@ namespace Pagene.Editor
         private void RemoveTag(object sender, EventArgs e)
         {
             Label label = (sender as Label);
-            string labelText = (sender as Label).Text;
+            string labelText = (sender as Label)?.Text;
             UnregisterTag(labelText, label);
         }
         private void RegisterTag(string tag, Label label)

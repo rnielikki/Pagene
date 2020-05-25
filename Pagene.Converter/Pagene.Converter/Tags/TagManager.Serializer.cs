@@ -12,23 +12,22 @@ namespace Pagene.Converter
         private void Deserialize()
         {
             var directory = _fileSystem.Directory.Exists(_dirName) ? _fileSystem.DirectoryInfo.FromDirectoryName(_dirName) : _fileSystem.Directory.CreateDirectory(_dirName);
-            var files = directory.GetFiles("*.json", SearchOption.TopDirectoryOnly);
 
-            foreach (var file in files)
+            foreach (var file in directory.GetFiles("*.json", SearchOption.TopDirectoryOnly))
             {
                 if (file.Name == "meta.tags.json") continue;
                 using var stream = file.OpenRead();
                 var tagInfo = JsonSerializer.Deserialize<TagInfo>(stream);
                 string tag = tagInfo.Tag;
                 var posts = tagInfo.Posts;
-
                 if (tag == null || posts == null) continue;
-                var mappedPosts = new ConcurrentDictionary<string, BlogEntry>(posts.ToDictionary(post => Path.GetFileName(post.URL), post => post));
 
+                var mappedPosts = new ConcurrentDictionary<string, BlogEntry>(tagInfo.Posts.ToDictionary(info => info.URL, info => info));
                 if (!_tagMap.TryAdd(tag, mappedPosts))
                 {
                     new FileLoadException("Failed to load tag list", file.Name);
                 }
+                //existEntries.AddOrUpdate(Path.GetFileName(entry.URL), entry,(_, v) => v = entry);
             }
         }
         internal async System.Threading.Tasks.Task Serialize()

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Pagene.Editor
@@ -8,6 +8,7 @@ namespace Pagene.Editor
     {
         private readonly Converter.Converter _converter;
         private readonly BlogPostLoader _loader = new BlogPostLoader();
+        private IEnumerable<string> _tags;
         public BlogListManager(Converter.Converter converter)
         {
             _converter = converter;
@@ -16,12 +17,13 @@ namespace Pagene.Editor
             BlogListUI.DisplayMember = nameof(FileTitlePair.Title);
             BlogListUI.ValueMember = nameof(FileTitlePair.FilePath);
             BlogListUI.DataSource = _loader.LoadPosts();
+            _tags = _loader.GetTags();
         }
 
         private async void EditButton_Click(object sender, EventArgs e)
         {
             string item = BlogListUI.SelectedValue.ToString();
-            using var editForm = new EditWindow(await _loader.GetBlogItem(item).ConfigureAwait(true), item);
+            using var editForm = new EditWindow(await _loader.GetBlogItem(item).ConfigureAwait(true), item, _tags);
             editForm.FormClosed += Test;
             editForm.ShowDialog(this);
         }
@@ -31,7 +33,7 @@ namespace Pagene.Editor
             var targetSource = (sender as EditWindow);
             if (targetSource.Saved)
             {
-                await _loader.SaveBlogItem(targetSource.Item, targetSource.FileName);
+                await _loader.SaveBlogItem(targetSource.Item, targetSource.FileName).ConfigureAwait(true);
             }
         }
         private async void ConvertButton_Click(object sender, EventArgs e)
@@ -42,12 +44,13 @@ namespace Pagene.Editor
                 ConvertButton.Enabled = false;
                 await _converter.Convert().ConfigureAwait(true);
                 ConvertButton.Enabled = true;
+                _tags = _loader.GetTags();
                 MessageBox.Show("Done.");
             }
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
-            using var editForm = new EditWindow();
+            using var editForm = new EditWindow(_loader.GetTags());
             editForm.ShowDialog(this);
         }
     }

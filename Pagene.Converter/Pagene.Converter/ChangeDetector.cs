@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.IO.Abstractions;
+﻿using System.IO;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Linq;
@@ -37,13 +35,5 @@ namespace Pagene.Converter
             await hashStream.FlushAsync().ConfigureAwait(false);
             await hashStream.WriteAsync(computedHash);
         }
-
-        internal void CleanHash(IEnumerable<IFileInfo> hashes)
-        {
-            foreach (IFileInfo target in hashes)
-            {
-                target.Delete();
-            }
-        }
-    }
+     }
 }

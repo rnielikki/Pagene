@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
+using System.Linq;
 
 namespace Pagene.Converter.FileTypes
 {
@@ -10,7 +11,7 @@ namespace Pagene.Converter.FileTypes
         internal override string Type => "*.md";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
-        internal static bool Modified { get; } = false;
+        private bool modified;
         internal MdFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, "contents")
         {
             _formatter = formatter;
@@ -25,11 +26,12 @@ namespace Pagene.Converter.FileTypes
 
         internal override async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
         {
+            modified = true;
             using Stream stream = new MemoryStream();
             using StreamReader reader = new StreamReader(fileStream);
             using StreamWriter writer = new StreamWriter(stream);
             fileStream.Position = 0;
-            (IEnumerable<string> tags, BlogEntry entry) = await _formatter.GetBlogHead(info, fileStream).ConfigureAwait(false); // validation
+            (IEnumerable<string> tags, BlogEntry entry) = await _formatter.GetBlogHead(info, fileStream).ConfigureAwait(false);
 
             writer.WriteLine($"> {entry.Date}");
             writer.WriteLine($"> {info.LastWriteTimeUtc}");
@@ -42,6 +44,14 @@ namespace Pagene.Converter.FileTypes
 
             //save
             await base.SaveAsync(info, stream).ConfigureAwait(false);
+        }
+        internal override async System.Threading.Tasks.Task Clean(IEnumerable<string> files)
+        {
+            if (!modified) return;
+            await base.Clean(files).ConfigureAwait(false);
+            _tagManager.CleanFromDeletedFile(files);
+            _cleaner.CleanTags(_tagManager);
+            await _tagManager.Serialize().ConfigureAwait(false);
         }
     }
 }

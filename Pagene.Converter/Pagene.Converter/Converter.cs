@@ -46,12 +46,8 @@ namespace Pagene.Converter
         public async Task Convert()
         {
             var tagManager = new TagManager(_fileSystem);
-            await ConvertPart(new MdFileType(_fileSystem, tagManager)).ConfigureAwait(false);
-            if (MdFileType.Modified)
-            {
-                tagManager.CleanTags(_hashFileMap.Keys);
-                await tagManager.Serialize().ConfigureAwait(false);
-            }
+            var mdFileType = new MdFileType(_fileSystem, tagManager);
+            await ConvertPart(mdFileType).ConfigureAwait(false);
         }
         private async Task ConvertPart(FileType fileType)
         {
@@ -68,7 +64,7 @@ namespace Pagene.Converter
             try
             {
                 await Task.WhenAll(files.Select(file => ConvertFile(fileType, hashDir, crypto, file))).ConfigureAwait(false);
-                _changeDetector.CleanHash(_hashFileMap.Values);
+                await fileType.Clean(_hashFileMap.Keys).ConfigureAwait(false);
             }
             finally
             {
