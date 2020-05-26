@@ -6,14 +6,27 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.20.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Pagene.Converter\Pagene.Converter\Pagene.Converter.csproj" />
     <ProjectReference Include="..\..\Pagene.Models\Pagene.Models.csproj" />
     <ProjectReference Include="..\..\Pagene.Reader\Pagene.Reader.PostSerializer\Pagene.Reader.PostSerializer.csproj" />
+    <ProjectReference Include="..\Pagene.Editor.Markdowns\Pagene.Editor.Markdowns.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="EditWindow\EditWindow.Markdown.cs" />
+  </ItemGroup>
 </Project>

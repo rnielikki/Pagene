@@ -47,14 +47,11 @@ namespace Pagene.Editor
         }
         internal async System.Threading.Tasks.Task SaveBlogItem(BlogItem item, string fileName)
         {
-            if (fileName == null)
-            {
-                fileName = _namingLogic.GetName(item.Title);
-            } 
             using var fileStream = GetFileStream(fileName, System.IO.FileMode.Create);
             await _serializer.SerializeAsync(item, fileStream).ConfigureAwait(true);
         }
         private System.IO.Stream GetFileStream(string fileName, System.IO.FileMode mode) => _fileSystem.File.Open(System.IO.Path.Combine("inputs/contents", fileName), mode);
+        internal void RemovePost(string fileName) => _fileSystem.File.Delete($"inputs/contents/{fileName}");
 
         //wait until the methods get right place:
         internal IEnumerable<string> GetTags()

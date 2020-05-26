@@ -43,7 +43,7 @@ namespace Pagene.Editor.Tests
             var serializerMock = new Mock<IPostSerializer>();
             serializerMock.Setup(obj => obj.DeserializeAsync(It.IsAny<Stream>())).ReturnsAsync(new BlogItem());
             var postLoader = new BlogPostLoader(fileSystem, serializerMock.Object);
-            var files = postLoader.LoadPosts().Select(post => post.FilePath);
+            var files = postLoader.LoadPosts().Select(post => post.FileName);
             Assert.Contains(fileName, files);
             Assert.Equal(newerFile, files.FirstOrDefault());
         }

@@ -1,4 +1,5 @@
-﻿using Pagene.Models;
+﻿using Pagene.Editor.Markdowns;
+using Pagene.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +7,22 @@ using System.Windows.Forms;
 
 namespace Pagene.Editor
 {
+    public enum PostType { NewPost, EditPost };
     public partial class EditWindow : Form
     {
         internal BlogItem Item { get; }
         internal bool Saved { get; private set; }
         internal string FileName { get; }
+        internal PostType EditType { get; }
+        private readonly MarkdownAdder _markdown;
         public EditWindow(BlogItem item, string fileName, IEnumerable<string> tags)
         {
             Item = item;
             FileName = fileName;
+            EditType = (fileName==null)?PostType.NewPost:PostType.EditPost;
             InitializeComponent();
+            Text = (string.IsNullOrEmpty(fileName))?"New Post":$"Editing {fileName}";
+            _markdown = new MarkdownAdder(ContentBox);
             TitleBox.Text = item.Title;
             ContentBox.Text = item.Content;
             AddTagRange(item.Tags);
@@ -34,11 +41,15 @@ namespace Pagene.Editor
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            SaveBlogItem();
+            Saved = true;
+            Close();
+        }
+        private void SaveBlogItem()
+        {
             Item.Title = TitleBox.Text;
             Item.Content = ContentBox.Text;
             Item.Tags = _tagPairs.Keys;
-            Saved = true;
-            Close();
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -71,6 +82,13 @@ namespace Pagene.Editor
                 AddTag(tag);
                 TagBox.Text = "";
             }
+        }
+
+        private void PreviewButton_Click(object sender, EventArgs e)
+        {
+            SaveBlogItem();
+            using var linkForm = new PreviewWindow(Item);
+            linkForm.ShowDialog(this);
         }
     }
 }

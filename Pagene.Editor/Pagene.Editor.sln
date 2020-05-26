@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Models", "..\Pagene.Models\Pagene.Models.csproj", "{E8B015FA-A85B-4D69-A5A6-B5334276991D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Editor.Markdowns", "Pagene.Editor.Markdowns\Pagene.Editor.Markdowns.csproj", "{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{E8B015FA-A85B-4D69-A5A6-B5334276991D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8B015FA-A85B-4D69-A5A6-B5334276991D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8B015FA-A85B-4D69-A5A6-B5334276991D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
