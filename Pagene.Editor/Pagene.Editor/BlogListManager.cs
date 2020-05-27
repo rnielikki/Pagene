@@ -14,6 +14,7 @@ namespace Pagene.Editor
         public BlogListManager(Converter.Converter converter)
         {
             _converter = converter;
+            _converter.Initialize();
             data = new BindingList<FileTitlePair>(_loader.LoadPosts());
             //TODO: lock directory and files
             InitializeComponent();

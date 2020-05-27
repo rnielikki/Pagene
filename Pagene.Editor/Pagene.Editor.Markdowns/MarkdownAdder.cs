@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Text.Encodings.Web;
 using System.Windows.Forms;
 
 namespace Pagene.Editor.Markdowns
@@ -34,7 +32,7 @@ namespace Pagene.Editor.Markdowns
             {
                 title = $" \"{title.Replace("\"", "")}\"";
             }
-            _textBox.SelectedText = $"[{GetSelectedOrDefault("Link")}](\"{link}\"{title})";
+            _textBox.SelectedText = $"[{GetSelectedOrDefault("Link")}]({link}{title})";
         }
         public void Horizon()
         {
@@ -47,6 +45,10 @@ namespace Pagene.Editor.Markdowns
         public void Code()
         {
             _textBox.SelectedText = $"`{GetSelectedOrDefault("code")}`";
+        }
+        public void Image(string fileName)
+        {
+            _textBox.SelectedText = $"![{GetSelectedOrDefault("Image Alt")}]({fileName})";
         }
         public void CodeLines(string language)
         {

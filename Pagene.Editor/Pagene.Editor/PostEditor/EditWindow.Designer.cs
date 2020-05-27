@@ -242,6 +242,7 @@
             this.SyntaxImage.TabIndex = 14;
             this.SyntaxImage.Text = "Image";
             this.SyntaxImage.UseVisualStyleBackColor = true;
+            this.SyntaxImage.Click += new System.EventHandler(SyntaxImage_Click);
             // 
             // SyntaxHorizon
             // 

@@ -14,17 +14,9 @@ namespace Pagene.Editor
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             try
             {
-                if (System.IO.File.Exists("inputs/contents/files.lnk"))
-                {
-                    Application.Run(new BlogListManager(new Converter.Converter()));
-                }
-                else
-                {
-                    Application.Run(new Starter(new Converter.Converter()));
-                }
+                Application.Run(new BlogListManager(new Converter.Converter()));
             }
             catch (FormatException ex)
             {

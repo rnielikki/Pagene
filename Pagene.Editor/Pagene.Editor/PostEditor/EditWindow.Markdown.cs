@@ -11,6 +11,12 @@ namespace Pagene.Editor
         private void SyntaxHorizon_Click(object sender, EventArgs e) => _markdown.Horizon();
         private void SyntaxQuote_Click(object sender, EventArgs e) => _markdown.Quote();
         private void SyntaxCodeInline_Click(object sender, EventArgs e) => _markdown.Code();
+        private void SyntaxImage_Click(object sender, EventArgs e)
+        {
+            using FileWindow fileWindow = new FileWindow();
+            fileWindow.FormClosed += AddImage;
+            fileWindow.ShowDialog(this);
+        }
         private void SyntaxCode_Click(object sender, EventArgs e)
         {
             using CodeWindow codeWindow = new CodeWindow();
@@ -24,6 +30,8 @@ namespace Pagene.Editor
             linkForm.ShowDialog(this);
         }
         //---
+        //should remove reputation for checking.......
+        //make some abstraction, but >> **don't ruin the form edit window** <<
         private void AddLink(object sender, EventArgs e)
         {
             LinkWindow senderWindow = (sender as LinkWindow);
@@ -37,6 +45,15 @@ namespace Pagene.Editor
                 link = "http://example.com";
             }
             _markdown.Link(link, senderWindow.Title);
+        }
+        private void AddImage(object sender, EventArgs e)
+        {
+            FileWindow senderWindow = (sender as FileWindow);
+            if (!senderWindow.OK)
+            {
+                return;
+            }
+            _markdown.Image($"files/{senderWindow.FileName}");
         }
         private void AddCodeLanguage(object sender, EventArgs e)
         {
