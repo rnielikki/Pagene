@@ -55,7 +55,7 @@ namespace Pagene.Converter.Tests
             var formatterMock = new Mock<IFormatter>();
 
             formatterMock.Setup(obj => obj.GetBlogHead(It.IsAny<System.IO.Abstractions.IFileInfo>(), It.IsAny<System.IO.Stream>()))
-                .ReturnsAsync((new string[] { "book", "game", "music" }, new BlogEntry { Title = "title", Date = dateTime, URL = "contents/something.md"}));
+                .ReturnsAsync(new BlogEntry { Title = "title", Date = dateTime, URL = "contents/something.md", Tags = new string[] { "book", "game", "music" }});
             var tagManager = new TagManager(fileSystem);
             var fileType = new MdFileType(fileSystem, formatterMock.Object, tagManager);
 

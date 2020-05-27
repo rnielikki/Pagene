@@ -36,7 +36,6 @@ namespace Pagene.Converter
             InitDirectory($"{RealPath}/inputs/contents");
             InitDirectory($"{RealPath}/contents/files");
             InitDirectory($"{RealPath}/.hash");
-            new ShortCutPal(RealPath).CreateShortcut("contents/files", "inputs/contents/files");
         }
 
         /// <summary>

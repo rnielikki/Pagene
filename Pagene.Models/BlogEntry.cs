@@ -21,5 +21,9 @@ namespace Pagene.Models
         /// Relative path of the page.
         /// </summary>
         public string URL { get; set; }
+        /// <summary>
+        /// Tags that used by the post
+        /// </summary>
+        public IEnumerable<string> Tags { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace Pagene.Converter.FileTypes
             using StreamReader reader = new StreamReader(fileStream);
             using StreamWriter writer = new StreamWriter(stream);
             fileStream.Position = 0;
-            (IEnumerable<string> tags, BlogEntry entry) = await _formatter.GetBlogHead(info, fileStream).ConfigureAwait(false);
+            BlogEntry entry = await _formatter.GetBlogHead(info, fileStream).ConfigureAwait(false);
 
             writer.WriteLine($"> {entry.Date}");
             writer.WriteLine($"> {info.LastWriteTimeUtc}");
@@ -40,7 +40,7 @@ namespace Pagene.Converter.FileTypes
             fileStream.CopyTo(stream);
 
             //generate categories
-            _tagManager.AddTag(tags, entry);
+            _tagManager.AddTag(entry.Tags, entry);
 
             //save
             await base.SaveAsync(info, stream).ConfigureAwait(false);

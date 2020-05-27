@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
+using System.Threading.Tasks;
 using Pagene.Models;
 using Pagene.Reader.PostSerializer;
 
@@ -15,19 +16,26 @@ namespace Pagene.Converter
         {
             _path = path;
         }
-        async System.Threading.Tasks.Task<(IEnumerable<string>, BlogEntry)> IFormatter.GetBlogHead(IFileInfo info, Stream stream)
+        async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info)
+        {
+            using Stream stream = info.OpenRead();
+            return await (this as IFormatter).GetBlogHead(info, stream);
+        }
+
+        async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info, Stream stream)
         {
             StreamReader reader = new StreamReader(stream);
             try
             {
                 var tags = _parser.ParseTag(await reader.ReadLineAsync().ConfigureAwait(false));
                 var title = _parser.ParseTitle(await reader.ReadLineAsync().ConfigureAwait(false));
-                return (tags, new BlogEntry
+                return new BlogEntry
                 {
                     Title = title,
                     Date = info.CreationTimeUtc,
-                    URL = $"{_path}/{info.Name}"
-                });
+                    URL = $"{_path}/{info.Name}",
+                    Tags = tags
+                };
             }
             catch (FormatException)
             {

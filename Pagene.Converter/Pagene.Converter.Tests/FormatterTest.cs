@@ -20,7 +20,8 @@ namespace Pagene.Converter.Tests
             }
             else
             {
-                (var entryTags, var entry) = await _formatter.GetBlogHead(sample, fileStream).ConfigureAwait(false);
+                var entry = await _formatter.GetBlogHead(sample, fileStream).ConfigureAwait(false);
+                var entryTags = entry.Tags;
                 entry.Title.Should().Be(title);
                 entry.URL.Should().Be("contents/"+sample.Name);
                 entryTags.Should().BeEquivalentTo(tags);
