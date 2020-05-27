@@ -11,13 +11,19 @@ namespace Pagene.Editor
         private void SyntaxHorizon_Click(object sender, EventArgs e) => _markdown.Horizon();
         private void SyntaxQuote_Click(object sender, EventArgs e) => _markdown.Quote();
         private void SyntaxCodeInline_Click(object sender, EventArgs e) => _markdown.Code();
-        private void SyntaxCode_Click(object sender, EventArgs e) => _markdown.CodeLines("csharp");
+        private void SyntaxCode_Click(object sender, EventArgs e)
+        {
+            using CodeWindow codeWindow = new CodeWindow();
+            codeWindow.FormClosed += AddCodeLanguage;
+            codeWindow.ShowDialog(this);
+        }
         private void SyntaxLink_Click(object sender, EventArgs e)
         {
             using var linkForm = new LinkWindow();
             linkForm.FormClosed += AddLink;
             linkForm.ShowDialog(this);
         }
+        //---
         private void AddLink(object sender, EventArgs e)
         {
             LinkWindow senderWindow = (sender as LinkWindow);
@@ -31,6 +37,15 @@ namespace Pagene.Editor
                 link = "http://example.com";
             }
             _markdown.Link(link, senderWindow.Title);
+        }
+        private void AddCodeLanguage(object sender, EventArgs e)
+        {
+            CodeWindow senderWindow = (sender as CodeWindow);
+            if (!senderWindow.OK)
+            {
+                return;
+            }
+            _markdown.CodeLines(senderWindow?.Language);
         }
     }
 }

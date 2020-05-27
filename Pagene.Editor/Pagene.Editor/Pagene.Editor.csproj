@@ -25,8 +25,4 @@
     <ProjectReference Include="..\..\Pagene.Reader\Pagene.Reader.PostSerializer\Pagene.Reader.PostSerializer.csproj" />
     <ProjectReference Include="..\Pagene.Editor.Markdowns\Pagene.Editor.Markdowns.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="EditWindow\EditWindow.Markdown.cs" />
-  </ItemGroup>
 </Project>
