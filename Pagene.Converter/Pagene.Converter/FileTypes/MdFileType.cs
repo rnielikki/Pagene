@@ -48,10 +48,14 @@ namespace Pagene.Converter.FileTypes
         internal override async System.Threading.Tasks.Task Clean(IEnumerable<string> files)
         {
             if (!modified) return;
+
             await base.Clean(files).ConfigureAwait(false);
             _tagManager.CleanFromDeletedFile(files);
             _cleaner.CleanTags(_tagManager);
+
             await _tagManager.Serialize().ConfigureAwait(false);
+            var postManager = new RecentPostManager(_fileSystem, _formatter);
+            await postManager.Serialize(await postManager.GetRecentPosts(20).ConfigureAwait(false)).ConfigureAwait(false);
         }
     }
 }

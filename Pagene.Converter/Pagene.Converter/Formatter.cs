@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Threading.Tasks;
@@ -19,7 +18,7 @@ namespace Pagene.Converter
         async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info)
         {
             using Stream stream = info.OpenRead();
-            return await (this as IFormatter).GetBlogHead(info, stream);
+            return await (this as IFormatter).GetBlogHead(info, stream).ConfigureAwait(false);
         }
 
         async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info, Stream stream)

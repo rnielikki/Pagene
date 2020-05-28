@@ -1,15 +1,16 @@
 ﻿using Pagene.BlogSettings;
 using Pagene.Models;
-using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
+using Utf8Json;
 
 namespace Pagene.Converter
 {
     internal class RecentPostManager
     {
-        private IFileSystem _fileSystem;
-        private IFormatter _formatter;
+        private readonly IFileSystem _fileSystem;
+        private readonly IFormatter _formatter;
+        private readonly string fileName = AppPathInfo.EntryPath + "recent.json";
 
         internal RecentPostManager(IFileSystem fileSystem, IFormatter formatter)
         {
@@ -21,10 +22,14 @@ namespace Pagene.Converter
             var files = _fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogInputPath)
                 .GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly);
             var orderedFiles = files.OrderByDescending(file => file.CreationTimeUtc).Take(count);
-            var tasks = System.Threading.Tasks.Task.WhenAll(
+            return await System.Threading.Tasks.Task.WhenAll(
                     orderedFiles.Select(file =>_formatter.GetBlogHead(file))
-                );
-            return await tasks.ConfigureAwait(false);
+                ).ConfigureAwait(false);
+        }
+        internal async System.Threading.Tasks.Task Serialize(BlogEntry[] entries)
+        {
+            using var fileStream = _fileSystem.File.Open(fileName, System.IO.FileMode.Create);
+            await JsonSerializer.SerializeAsync(fileStream, entries).ConfigureAwait(false);
         }
     }
 }
