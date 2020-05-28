@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Pagene.BlogSettings;
+using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.IO.Abstractions.TestingHelpers;
 
@@ -22,10 +23,10 @@ this one has no title.";
 
 This should thorw an error.";
 
-        private const string filePath1 = "inputs/contents/test.md";
-        private const string filePath2 = "inputs/contents/test2.md";
-        private const string errorPath1 = "inputs/contents/err1.md";
-        private const string errorPath2 = "inputs/contents/err2.md";
+        private static string filePath1 = AppPathInfo.BlogInputPath+"test.md";
+        private static string filePath2 = AppPathInfo.BlogInputPath+"test2.md";
+        private static string errorPath1 = AppPathInfo.BlogInputPath+"err1.md";
+        private static string errorPath2 = AppPathInfo.BlogInputPath+"err2.md";
         internal static readonly MockFileSystem fileSystem = new MockFileSystem(
              new Dictionary<string, MockFileData>(){
                     { filePath1, new MockFileData(content1) },

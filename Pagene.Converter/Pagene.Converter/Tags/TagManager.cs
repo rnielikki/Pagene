@@ -1,4 +1,5 @@
-﻿using Pagene.Models;
+﻿using Pagene.BlogSettings;
+using Pagene.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Pagene.Converter
         private readonly ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> _tagMap;
         internal IEnumerable<string> GetTags() => _tagMap.Keys;
         private readonly IFileSystem _fileSystem;
-        private const string _dirName = "tags";
+        private readonly string _dirName = AppPathInfo.BlogTagPath;
         private readonly ConcurrentBag<string> _removedTags = new ConcurrentBag<string>();
         internal IEnumerable<string> GetRemovedTags() => _removedTags.AsEnumerable();
         internal TagManager(IFileSystem fileSystem)
@@ -57,7 +58,7 @@ namespace Pagene.Converter
         {
             foreach (string file in fileList)
             {
-                var entry = new BlogEntry { URL = $"contents/{file}" };
+                var entry = new BlogEntry { URL = AppPathInfo.ContentPath+file };
                 var tags = SearchTagsByEntry(entry);
                 RemoveTag(tags, entry);
             }

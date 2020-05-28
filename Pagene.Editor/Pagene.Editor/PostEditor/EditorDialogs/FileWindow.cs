@@ -4,12 +4,12 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
+using Pagene.BlogSettings;
 
 namespace Pagene.Editor
 {
     public partial class FileWindow : Form
     {
-        private const string _path = "contents/files";
         private readonly string fullPath;
         private readonly int _thumbWidth;
         private readonly int _thumbHeight;
@@ -21,14 +21,14 @@ namespace Pagene.Editor
             InitializeComponent();
             ErrorMessage.Hide();
             InitializeList();
-            fullPath = Path.GetFullPath("contents/files");
+            fullPath = Path.GetFullPath(AppPathInfo.BlogFilePath);
             _thumbWidth = PreviewPicture.Width;
             _thumbHeight = PreviewPicture.Height;
             _thumbRatio = (float)_thumbWidth / _thumbHeight;
         }
         private void InitializeList()
         {
-            var files = new DirectoryInfo(_path)
+            var files = new DirectoryInfo(AppPathInfo.BlogFilePath)
                 .GetFiles("*", SearchOption.TopDirectoryOnly)
                 .Where(IsImageFile)
                 .OrderByDescending(file => file.CreationTimeUtc);

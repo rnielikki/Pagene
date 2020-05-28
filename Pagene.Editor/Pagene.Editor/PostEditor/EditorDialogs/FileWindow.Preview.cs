@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using Pagene.BlogSettings;
 using Svg;
 
 namespace Pagene.Editor
@@ -34,12 +35,12 @@ namespace Pagene.Editor
         }
         private void PreviewImage(string fileName)
         {
-            using var image = Image.FromFile($"{_path}/{fileName}");
+            using var image = Image.FromFile(AppPathInfo.BlogFilePath + fileName);
             PreviewImage(image);
         }
         private void PreviewSvg(string name)
         {
-            using Image image = SvgDocument.Open($"contents/files/{name}").Draw();
+            using Image image = SvgDocument.Open(AppPathInfo.BlogFilePath + name).Draw();
             PreviewImage(image);
         }
         private void PreviewImage(Image image)

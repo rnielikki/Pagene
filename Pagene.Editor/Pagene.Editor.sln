@@ -20,6 +20,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Models", "..\Pagene.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Editor.Markdowns", "Pagene.Editor.Markdowns\Pagene.Editor.Markdowns.csproj", "{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{74CC258B-656A-4BC1-BC7C-E8791EC96722}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.BlogSettings", "..\Pagene.BlogSettings\Pagene.BlogSettings\Pagene.BlogSettings.csproj", "{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,9 +54,19 @@ Global
 		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1B650C14-FCAE-4C20-9139-FCF87D995DE8} = {74CC258B-656A-4BC1-BC7C-E8791EC96722}
+		{FD7014BB-5141-41E4-87EE-98859D6AB2FC} = {74CC258B-656A-4BC1-BC7C-E8791EC96722}
+		{E8B015FA-A85B-4D69-A5A6-B5334276991D} = {74CC258B-656A-4BC1-BC7C-E8791EC96722}
+		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5} = {74CC258B-656A-4BC1-BC7C-E8791EC96722}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1F75908-F062-4857-987D-F118666E5597}

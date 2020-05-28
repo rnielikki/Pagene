@@ -5,6 +5,7 @@ using Pagene.Converter.FileTypes;
 using System.IO.Abstractions.TestingHelpers;
 using System.Collections.Generic;
 using Pagene.Models;
+using Pagene.BlogSettings;
 
 namespace Pagene.Converter.Tests
 {
@@ -15,14 +16,13 @@ namespace Pagene.Converter.Tests
         {
             const string path = "tests";
             string contentPath = $"{path}/something.md";
-            string inputContentPath = $"inputs/{contentPath}";
             const string content = "123123";
             MockFileSystem fileSystem = new MockFileSystem(
                       new Dictionary<string, MockFileData>(){
-                    { inputContentPath, new MockFileData(content) },
+                    { contentPath, new MockFileData(content) },
                       }
                   );
-            var fileInfo = fileSystem.FileInfo.FromFileName(inputContentPath);
+            var fileInfo = fileSystem.FileInfo.FromFileName(contentPath);
             using var fileStream = fileInfo.Open(System.IO.FileMode.Open);
 
             var fileMock = new Mock<FileType>(fileSystem, path) { CallBase = true };
@@ -37,8 +37,8 @@ namespace Pagene.Converter.Tests
         public async Task SaveFormatTest()
         {
             const string content = "asdfasdf";
-            const string contentPath = "contents/something.md";
-            string inputContentPath = $"inputs/{contentPath}";
+            string contentPath = $"{AppPathInfo.ContentPath}something.md";
+            string inputContentPath = AppPathInfo.InputPath+contentPath;
 
             MockFileSystem fileSystem = new MockFileSystem(
                       new Dictionary<string, MockFileData>(){
@@ -55,7 +55,7 @@ namespace Pagene.Converter.Tests
             var formatterMock = new Mock<IFormatter>();
 
             formatterMock.Setup(obj => obj.GetBlogHead(It.IsAny<System.IO.Abstractions.IFileInfo>(), It.IsAny<System.IO.Stream>()))
-                .ReturnsAsync(new BlogEntry { Title = "title", Date = dateTime, URL = "contents/something.md", Tags = new string[] { "book", "game", "music" }});
+                .ReturnsAsync(new BlogEntry { Title = "title", Date = dateTime, URL = contentPath, Tags = new string[] { "book", "game", "music" }});
             var tagManager = new TagManager(fileSystem);
             var fileType = new MdFileType(fileSystem, formatterMock.Object, tagManager);
 

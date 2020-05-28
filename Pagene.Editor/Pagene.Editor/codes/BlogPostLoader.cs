@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
 using Utf8Json;
+using Pagene.BlogSettings;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Pagene.Editor.Tests")]
 namespace Pagene.Editor
@@ -25,7 +26,7 @@ namespace Pagene.Editor
         internal List<FileTitlePair> LoadPosts()
         {
             List<FileTitlePair> posts = new List<FileTitlePair>();
-            var files = _fileSystem.DirectoryInfo.FromDirectoryName("inputs/contents/").GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly)
+            var files = _fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogInputPath).GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly)
                 .OrderByDescending(file => file.CreationTimeUtc);
             foreach (var file in files)
             {
@@ -50,13 +51,13 @@ namespace Pagene.Editor
             using var fileStream = GetFileStream(fileName, System.IO.FileMode.Create);
             await _serializer.SerializeAsync(item, fileStream).ConfigureAwait(true);
         }
-        private System.IO.Stream GetFileStream(string fileName, System.IO.FileMode mode) => _fileSystem.File.Open(System.IO.Path.Combine("inputs/contents", fileName), mode);
-        internal void RemovePost(string fileName) => _fileSystem.File.Delete($"inputs/contents/{fileName}");
+        private System.IO.Stream GetFileStream(string fileName, System.IO.FileMode mode) => _fileSystem.File.Open(AppPathInfo.BlogInputPath+fileName, mode);
+        internal void RemovePost(string fileName) => _fileSystem.File.Delete(AppPathInfo.BlogInputPath + fileName);
 
         //wait until the methods get right place:
         internal IEnumerable<string> GetTags()
         {
-            const string metaTagPath = "tags/meta.tags.json";
+            string metaTagPath = AppPathInfo.BlogTagPath + "meta.tags.json";
             if (!_fileSystem.File.Exists(metaTagPath)) return Enumerable.Empty<string>();
             using var stream = _fileSystem.File.Open(metaTagPath, System.IO.FileMode.Open);
             return JsonSerializer.Deserialize<Dictionary<string, int>>(stream).Keys;

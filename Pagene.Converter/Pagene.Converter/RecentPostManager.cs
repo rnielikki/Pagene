@@ -1,4 +1,5 @@
-﻿using Pagene.Models;
+﻿using Pagene.BlogSettings;
+using Pagene.Models;
 using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Pagene.Converter
         }
         internal async System.Threading.Tasks.Task<BlogEntry[]> GetRecentPosts(int count)
         {
-            var files = _fileSystem.DirectoryInfo.FromDirectoryName("inputs/contents")
+            var files = _fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogInputPath)
                 .GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly);
             var orderedFiles = files.OrderByDescending(file => file.CreationTimeUtc).Take(count);
             var tasks = System.Threading.Tasks.Task.WhenAll(

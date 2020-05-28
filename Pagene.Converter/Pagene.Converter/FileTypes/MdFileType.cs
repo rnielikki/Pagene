@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
-using System.Linq;
+using Pagene.BlogSettings;
 
 namespace Pagene.Converter.FileTypes
 {
@@ -12,15 +12,15 @@ namespace Pagene.Converter.FileTypes
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
         private bool modified;
-        internal MdFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, "contents")
+        internal MdFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = formatter;
             _tagManager = tagManager;
         }
 
-        internal MdFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, "contents")
+        internal MdFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
         {
-            _formatter = new Formatter("contents");
+            _formatter = new Formatter(AppPathInfo.ContentPath);
             _tagManager = tagManager;
         }
 

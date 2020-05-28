@@ -6,6 +6,7 @@ using Moq;
 using System;
 using Pagene.Models;
 using System.Linq;
+using Pagene.BlogSettings;
 
 namespace Pagene.Converter.Tests
 {
@@ -26,15 +27,15 @@ namespace Pagene.Converter.Tests
             );
             IFileSystem fileSystem = new MockFileSystem(
                 new Dictionary<string, MockFileData>() {
-                    { "inputs/contents/five.md", new MockFileData("2005/11/12") },
-                    { "inputs/contents/six.md", new MockFileData("2005/10/11") },
-                    { "inputs/contents/three.md", new MockFileData("2015/03/11") },
-                    { "inputs/contents/one.md", new MockFileData("2020/01/01") },
-                    { "inputs/contents/four.md", new MockFileData("2011/12/12") },
-                    { "inputs/contents/two.md", new MockFileData("2017/12/17") }
+                    { AppPathInfo.BlogInputPath+"five.md", new MockFileData("2005/11/12") },
+                    { AppPathInfo.BlogInputPath+ "six.md", new MockFileData("2005/10/11") },
+                    { AppPathInfo.BlogInputPath+ "three.md", new MockFileData("2015/03/11") },
+                    { AppPathInfo.BlogInputPath+ "one.md", new MockFileData("2020/01/01") },
+                    { AppPathInfo.BlogInputPath+ "four.md", new MockFileData("2011/12/12") },
+                    { AppPathInfo.BlogInputPath+ "two.md", new MockFileData("2017/12/17") }
                 }
             );
-            foreach (IFileInfo file in fileSystem.DirectoryInfo.FromDirectoryName("inputs/contents").GetFiles())
+            foreach (IFileInfo file in fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogInputPath).GetFiles())
             {
                 using var txtReader = file.OpenText();
                 string rawDate = txtReader.ReadToEnd();

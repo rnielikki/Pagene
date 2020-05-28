@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System;
 using System.Linq;
+using Pagene.BlogSettings;
 
 namespace Pagene.Editor
 {
@@ -35,7 +36,7 @@ namespace Pagene.Editor
                 return $"{baseName}-{i}.md";
             }
         }
-        private bool ExistsFile(string name) => _fileSystem.File.Exists(System.IO.Path.Combine("inputs/contents", name));
+        private bool ExistsFile(string name) => _fileSystem.File.Exists(AppPathInfo.BlogInputPath+name);
         private string GetBaseName(string title)
         {
             try

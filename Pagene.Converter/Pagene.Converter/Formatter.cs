@@ -33,7 +33,7 @@ namespace Pagene.Converter
                 {
                     Title = title,
                     Date = info.CreationTimeUtc,
-                    URL = $"{_path}/{info.Name}",
+                    URL = _path + info.Name,
                     Tags = tags
                 };
             }

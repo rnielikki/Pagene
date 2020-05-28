@@ -53,7 +53,7 @@ namespace Pagene.Editor
             {
                 return;
             }
-            _markdown.Image($"files/{senderWindow.FileName}");
+            _markdown.Image(BlogSettings.AppPathInfo.FilePath+senderWindow.FileName);
         }
         private void AddCodeLanguage(object sender, EventArgs e)
         {

@@ -5,6 +5,7 @@ using FluentAssertions;
 using System.Linq;
 using System.Collections.Concurrent;
 using System.IO.Abstractions.TestingHelpers;
+using Pagene.BlogSettings;
 
 namespace Pagene.Converter.Tests
 {
@@ -33,37 +34,37 @@ namespace Pagene.Converter.Tests
         {
             var mockFileSystem = new MockFileSystem(
                 new Dictionary<string, MockFileData>() {
-                    { "input/contents/path.md", new MockFileData("-")}
+                    { AppPathInfo.BlogInputPath+"path.md", new MockFileData("-")}
                  }
             );
             var tagManager = new TagManager(mockFileSystem);
             var mockValue = new ConcurrentDictionary<string, BlogEntry>();
-            mockValue.TryAdd("test.md", new BlogEntry { Title = "Custom Data", URL = "contents/test.md", });
+            mockValue.TryAdd("test.md", new BlogEntry { Title = "Custom Data", URL = AppPathInfo.ContentPath+"test.md", });
             GetTagMap(tagManager).TryAdd("someTag", mockValue);
             await tagManager.Serialize().ConfigureAwait(false);
 
-            string serializedTag = mockFileSystem.File.ReadAllText("tags/meta.tags.json");
+            string serializedTag = mockFileSystem.File.ReadAllText(AppPathInfo.BlogTagPath+"meta.tags.json");
 
             tagManager = new TagManager(mockFileSystem);
             Assert.NotEmpty(GetTagMap(tagManager).Keys);
             Assert.Contains("someTag", GetTagMap(tagManager).Keys);
             await tagManager.Serialize().ConfigureAwait(false);
-            string reserializedTag = mockFileSystem.File.ReadAllText("tags/meta.tags.json");
+            string reserializedTag = mockFileSystem.File.ReadAllText(AppPathInfo.BlogTagPath+"meta.tags.json");
             Assert.Equal(serializedTag, reserializedTag);
-            Assert.True(mockFileSystem.FileExists("tags/sometag.json"));
-            var tagContent = mockFileSystem.FileInfo.FromFileName("tags/sometag.json").Open(System.IO.FileMode.Open);
+            Assert.True(mockFileSystem.FileExists(AppPathInfo.BlogTagPath+"sometag.json"));
+            var tagContent = mockFileSystem.FileInfo.FromFileName(AppPathInfo.BlogTagPath+"sometag.json").Open(System.IO.FileMode.Open);
             var entries = Utf8Json.JsonSerializer.Deserialize<TagInfo>(tagContent);
             Assert.Equal("Custom Data", entries.Posts.Single().Title);
         }
         [Fact]
         public void TagRemovalTest()
         {
-            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { URL = "contents/uno.md" });
-            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese", "milk" }, new BlogEntry { URL = "contents/dos.md" });
-            (var tags3, var entry3) = (new string[] { "apple", "juice", "milk", "cheese" }, new BlogEntry { URL = "contents/tres.md" });
+            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { URL = AppPathInfo.ContentPath+"uno.md" });
+            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese", "milk" }, new BlogEntry { URL = AppPathInfo.ContentPath+"dos.md" });
+            (var tags3, var entry3) = (new string[] { "apple", "juice", "milk", "cheese" }, new BlogEntry { URL = AppPathInfo.ContentPath+"tres.md" });
             var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData>()
             {
-                { "tags/milk.json", new MockFileData("{\"milk\":[]}") }
+                { AppPathInfo.BlogTagPath+"milk.json", new MockFileData("{\"milk\":[]}") }
             });
             var tagManager = new TagManager(fileSystem);
             tagManager.AddTag(tags1, entry1);
@@ -74,8 +75,8 @@ namespace Pagene.Converter.Tests
 
             var resultDictionary = GetTagMap(tagManager);
             resultDictionary.Should().NotContainKey("milk");
-            resultDictionary["cheese"].Should().ContainKey("contents/uno.md")
-                .And.NotContainKey("contents/dos.md");
+            resultDictionary["cheese"].Should().ContainKey(AppPathInfo.ContentPath+"uno.md")
+                .And.NotContainKey(AppPathInfo.ContentPath+"dos.md");
             tagManager.GetRemovedTags().Should().Contain("milk");
         }
         private ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> GetTagMap(TagManager instance) => typeof(TagManager)

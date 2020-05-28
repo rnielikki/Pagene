@@ -8,6 +8,7 @@ using Moq;
 using Pagene.Reader.PostSerializer;
 using System.IO;
 using Pagene.Models;
+using Pagene.BlogSettings;
 
 namespace Pagene.Editor.Tests
 {
@@ -20,13 +21,13 @@ namespace Pagene.Editor.Tests
             const string fileName = "placeholder.md";
             IFileSystem fileSystem = new MockFileSystem(
                 new Dictionary<string, MockFileData>() {
-                    { $"inputs/contents/{fileName}", new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# x{Environment.NewLine}x") },
-                    { $"inputs/contents/asdfadsf.md", new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# y{Environment.NewLine}y") },
-                    { $"inputs/contents/{newerFile}", new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# 123123{Environment.NewLine}y") },
-                    { $"inputs/contents/test.md", new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# 234234{Environment.NewLine}y") },
+                    { AppPathInfo.BlogInputPath + fileName, new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# x{Environment.NewLine}x") },
+                    { $"{AppPathInfo.BlogInputPath}asdfadsf.md", new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# y{Environment.NewLine}y") },
+                    { AppPathInfo.BlogInputPath + newerFile, new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# 123123{Environment.NewLine}y") },
+                    { $"{AppPathInfo.BlogInputPath}test.md", new MockFileData($"[tag1, tag2, tag3]{Environment.NewLine}# 234234{Environment.NewLine}y") },
                 }
             );
-            var filePaths = fileSystem.DirectoryInfo.FromDirectoryName("inputs/contents").GetFiles();
+            var filePaths = fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogInputPath).GetFiles();
             int day=1;
             foreach (var file in filePaths)
             {

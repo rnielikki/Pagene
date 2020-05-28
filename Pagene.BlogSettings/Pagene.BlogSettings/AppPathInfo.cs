@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Pagene.Environment
+﻿namespace Pagene.BlogSettings
 {
     /// <summary>
     /// File input/output paths. Only relative paths are used.
@@ -26,9 +24,13 @@ namespace Pagene.Environment
         /// </summary>
         public const string InputPath = "inputs/";
         /// <summary>
-        /// Tag File path. Contains meta.tags.json for the list of tags.
+        /// Tag file path. Contains meta.tags.json for the list of tags.
         /// </summary>
         public const string TagPath = "tags/";
+        /// <summary>
+        /// Hash file Path. Hash stores each file hash to check if the file has changed.
+        /// </summary>
+        public const string HashPath = ".hash/";
 
         /// <summary>
         /// Path, which cRelative to main program (or user-defined) path.ontains unconverted blog posts. (*.md format) Relative to main program (or user-defined) path.

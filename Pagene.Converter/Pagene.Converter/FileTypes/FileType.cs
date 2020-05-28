@@ -32,7 +32,7 @@ namespace Pagene.Converter.FileTypes
         internal virtual async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
         {
             fileStream.Position = 0;
-            string targetPath = System.IO.Path.Combine(FilePath, info.Name);
+            string targetPath = Path.Combine(FilePath, info.Name);
             Stream writeTarget = _fileSystem.File.Open(targetPath, FileMode.OpenOrCreate);
             try
             {

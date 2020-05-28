@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Pagene.BlogSettings;
+using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
 
@@ -16,7 +17,7 @@ namespace Pagene.Converter
             foreach (var fileName in fileNames)
             {
                 _fileSystem.File.Delete(System.IO.Path.Combine(path, fileName));
-                _fileSystem.File.Delete(System.IO.Path.Combine(".hash", path, fileName+".hash"));
+                _fileSystem.File.Delete(System.IO.Path.Combine(AppPathInfo.HashPath, path, fileName+".hashfile"));
             }
         }
         internal void CleanTags(TagManager tagManager)
@@ -25,7 +26,7 @@ namespace Pagene.Converter
             if (!cleanTargetTags.Any()) return;
             foreach (var targetTag in cleanTargetTags)
             {
-                _fileSystem.File.Delete($"tags/{targetTag.ToLower()}.json");
+                _fileSystem.File.Delete($"{AppPathInfo.BlogTagPath}{targetTag.ToLower()}.json");
             }
         }
     }

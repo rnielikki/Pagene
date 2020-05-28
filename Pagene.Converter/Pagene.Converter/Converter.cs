@@ -5,6 +5,7 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Pagene.BlogSettings;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Pagene.Converter.Tests")]
 namespace Pagene.Converter
@@ -17,25 +18,26 @@ namespace Pagene.Converter
         private readonly IFileSystem _fileSystem;
         private ChangeDetector _changeDetector;
         private Dictionary<string, IFileInfo> _hashFileMap;
-        internal static string RealPath { get; private set; } = ".";
-        public Converter(IFileSystem fileSystem, string path = ".")
+        internal static string RealPath { get; private set; } = "";
+        public Converter(IFileSystem fileSystem, string path = "")
         {
             _fileSystem = fileSystem;
-            RealPath = string.IsNullOrEmpty(path) ? "." : path;
+            RealPath = string.IsNullOrEmpty(path) ? "" : path;
         }
         /// <summary>
         /// Creates instance for converting.
         /// </summary>
-        public Converter(string path = ".") : this(new FileSystem(), path) { }
+        public Converter(string path = "") : this(new FileSystem(), path) { }
 
         /// <summary>
         /// Creates input directory if doesn't exist.
         /// </summary>
         public void Initialize()
         {
-            InitDirectory($"{RealPath}/inputs/contents");
-            InitDirectory($"{RealPath}/contents/files");
-            InitDirectory($"{RealPath}/.hash");
+            InitDirectory(RealPath + AppPathInfo.BlogInputPath);
+            InitDirectory(RealPath + AppPathInfo.BlogFilePath);
+            InitDirectory(RealPath + AppPathInfo.BlogTagPath);
+            InitDirectory(RealPath + AppPathInfo.HashPath);
         }
 
         /// <summary>
@@ -51,8 +53,8 @@ namespace Pagene.Converter
         private async Task ConvertPart(FileType fileType)
         {
             string dir = fileType.FilePath;
-            string hashDir = $"{RealPath}/.hash/{dir}";
-            var files = InitDirectory($"{RealPath}/inputs/{dir}")
+            string hashDir = RealPath + AppPathInfo.HashPath + dir;
+            var files = InitDirectory(RealPath + AppPathInfo.InputPath + dir)
                 .GetFiles(fileType.Type, SearchOption.TopDirectoryOnly);
             _hashFileMap = InitDirectory(hashDir)
                 .GetFiles($"{fileType.Type}.hashfile", SearchOption.TopDirectoryOnly)
@@ -87,7 +89,7 @@ namespace Pagene.Converter
                 }
                 else
                 {
-                    hashStream = _fileSystem.File.Create($"{hashDir}/{file.Name}.hashfile");
+                    hashStream = _fileSystem.File.Create($"{hashDir}{file.Name}.hashfile");
                     hash = crypto.ComputeHash(fileStream);
                 }
                 if (hash != null)

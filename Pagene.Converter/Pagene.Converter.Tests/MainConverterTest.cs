@@ -1,5 +1,6 @@
 ﻿using static Pagene.Converter.Tests.Models.FormatterTestModel;
 using Xunit;
+using Pagene.BlogSettings;
 
 namespace Pagene.Converter.Tests
 {
@@ -11,7 +12,7 @@ namespace Pagene.Converter.Tests
             var fileSystem = ValidFileSystem;
             var converter = new Converter(fileSystem);
             await converter.Convert().ConfigureAwait(false);
-            Assert.Equal(2, fileSystem.DirectoryInfo.FromDirectoryName("contents").GetFiles().Length);
+            Assert.Equal(2, fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.ContentPath).GetFiles().Length);
             await converter.Convert().ConfigureAwait(false);
         }
     }
