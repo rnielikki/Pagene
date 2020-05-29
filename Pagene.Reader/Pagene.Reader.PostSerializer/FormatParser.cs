@@ -5,9 +5,9 @@ using System.Linq;
 namespace Pagene.Reader.PostSerializer
 {
     /// <summary>
-    /// Parse part of the format.
+    /// Parser for part of the format. Defines what the parser syntax sholud be, and how it works.
     /// </summary>
-    public class FormatParser
+    public class FormatParser:IFormatParser
     {
         /// <summary>
         /// Parse Tag from certain format. The tag format is [tag1,tag2,tag3,...]
