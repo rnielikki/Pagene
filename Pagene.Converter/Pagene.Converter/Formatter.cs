@@ -42,7 +42,7 @@ namespace Pagene.Converter
                     char[] buffer = new char[length];
                     await reader.ReadAsync(buffer, 0, length).ConfigureAwait(false);
                     stream.Position = position;
-                    summary = new string(buffer).Trim('\0', '\r', '\n');
+                    summary = new string(buffer).Trim('\0').Replace('\r', ' ').Replace('\n', ' ');
                 }
                 return new BlogEntry
                 {
