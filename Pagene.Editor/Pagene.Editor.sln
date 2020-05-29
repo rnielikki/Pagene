@@ -5,24 +5,20 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Editor", "Pagene.Editor\Pagene.Editor.csproj", "{2C0BD4B4-26E7-4AEF-9DDA-0CBE5CFC6FC4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Converter", "..\Pagene.Converter\Pagene.Converter\Pagene.Converter.csproj", "{1B650C14-FCAE-4C20-9139-FCF87D995DE8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Editor.Tests", "Pagene.Editor.Tests\Pagene.Editor.Tests.csproj", "{2CC746A5-50A4-40DA-A4FE-674FE66D5AD5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Reader.PostSerializer", "..\Pagene.Reader\Pagene.Reader.PostSerializer\Pagene.Reader.PostSerializer.csproj", "{FD7014BB-5141-41E4-87EE-98859D6AB2FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B3261AB-41CE-4FBD-82A7-CCE991D53D6A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Models", "..\Pagene.Models\Pagene.Models.csproj", "{E8B015FA-A85B-4D69-A5A6-B5334276991D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Editor.Markdowns", "Pagene.Editor.Markdowns\Pagene.Editor.Markdowns.csproj", "{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{74CC258B-656A-4BC1-BC7C-E8791EC96722}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{C1D84C6D-B455-4679-B012-3EB0965A5F7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.BlogSettings", "..\Pagene.BlogSettings\Pagene.BlogSettings\Pagene.BlogSettings.csproj", "{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.BlogSettings", "..\Pagene.BlogSettings\Pagene.BlogSettings\Pagene.BlogSettings.csproj", "{253DA584-2FC7-4D1E-9973-CD7DF693B6DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagene.Converter", "..\Pagene.Converter\Pagene.Converter\Pagene.Converter.csproj", "{386F6323-CA78-493B-8EA2-154F67C70BAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,39 +30,29 @@ Global
 		{2C0BD4B4-26E7-4AEF-9DDA-0CBE5CFC6FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C0BD4B4-26E7-4AEF-9DDA-0CBE5CFC6FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C0BD4B4-26E7-4AEF-9DDA-0CBE5CFC6FC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B650C14-FCAE-4C20-9139-FCF87D995DE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B650C14-FCAE-4C20-9139-FCF87D995DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B650C14-FCAE-4C20-9139-FCF87D995DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B650C14-FCAE-4C20-9139-FCF87D995DE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CC746A5-50A4-40DA-A4FE-674FE66D5AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CC746A5-50A4-40DA-A4FE-674FE66D5AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CC746A5-50A4-40DA-A4FE-674FE66D5AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CC746A5-50A4-40DA-A4FE-674FE66D5AD5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD7014BB-5141-41E4-87EE-98859D6AB2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD7014BB-5141-41E4-87EE-98859D6AB2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD7014BB-5141-41E4-87EE-98859D6AB2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD7014BB-5141-41E4-87EE-98859D6AB2FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8B015FA-A85B-4D69-A5A6-B5334276991D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8B015FA-A85B-4D69-A5A6-B5334276991D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8B015FA-A85B-4D69-A5A6-B5334276991D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8B015FA-A85B-4D69-A5A6-B5334276991D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2B0C1C-8FDE-445D-97EA-4AF86CE84FC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{253DA584-2FC7-4D1E-9973-CD7DF693B6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{253DA584-2FC7-4D1E-9973-CD7DF693B6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{253DA584-2FC7-4D1E-9973-CD7DF693B6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{253DA584-2FC7-4D1E-9973-CD7DF693B6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386F6323-CA78-493B-8EA2-154F67C70BAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386F6323-CA78-493B-8EA2-154F67C70BAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386F6323-CA78-493B-8EA2-154F67C70BAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386F6323-CA78-493B-8EA2-154F67C70BAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1B650C14-FCAE-4C20-9139-FCF87D995DE8} = {74CC258B-656A-4BC1-BC7C-E8791EC96722}
-		{FD7014BB-5141-41E4-87EE-98859D6AB2FC} = {74CC258B-656A-4BC1-BC7C-E8791EC96722}
-		{E8B015FA-A85B-4D69-A5A6-B5334276991D} = {74CC258B-656A-4BC1-BC7C-E8791EC96722}
-		{8CC56C26-FC5B-4454-80FE-0BBFC04E40D5} = {74CC258B-656A-4BC1-BC7C-E8791EC96722}
+		{253DA584-2FC7-4D1E-9973-CD7DF693B6DD} = {C1D84C6D-B455-4679-B012-3EB0965A5F7E}
+		{386F6323-CA78-493B-8EA2-154F67C70BAB} = {C1D84C6D-B455-4679-B012-3EB0965A5F7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1F75908-F062-4857-987D-F118666E5597}

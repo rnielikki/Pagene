@@ -24,7 +24,7 @@
       },
       {
         "files": [
-          "helps/**.md"
+          "help/**.md"
         ]
       }
     ],
@@ -50,7 +50,8 @@
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
-      "default,material/material"
+      "default",
+      "templates/material"
     ],
     "postProcessors": [],
     "markdownEngineName": "markdig",

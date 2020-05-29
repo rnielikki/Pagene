@@ -11,11 +11,11 @@ namespace Pagene.Reader.PostSerializer.Tests
         [Fact]
         public async System.Threading.Tasks.Task SerializeTest()
         {
-            BlogItem item = new BlogItem(
-                    title: "123",
-                    content: "content",
-                    tags: new string[] { "123", "asdf", "aaaaaaaa"}
-                );
+            BlogItem item = new BlogItem {
+                    Title = "123",
+                    Content = "content",
+                    Tags = new string[] { "123", "asdf", "aaaaaaaa" }
+                };
             using Stream serializedStream = new MemoryStream();
             await serializer.SerializeAsync(item, serializedStream).ConfigureAwait(false);
             StreamReader reader = new StreamReader(serializedStream);

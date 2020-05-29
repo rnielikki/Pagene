@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Pagene.BlogSettings\Pagene.BlogSettings\Pagene.BlogSettings.csproj" />
-    <ProjectReference Include="..\..\Pagene.Models\Pagene.Models.csproj" />
     <ProjectReference Include="..\..\Pagene.Reader\Pagene.Reader.PostSerializer\Pagene.Reader.PostSerializer.csproj" />
   </ItemGroup>
 

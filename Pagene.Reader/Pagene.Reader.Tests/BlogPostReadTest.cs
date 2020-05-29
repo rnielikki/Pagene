@@ -19,7 +19,11 @@ namespace Pagene.Reader.Tests
 anyContent";
             var serializerMock = new Mock<IPostSerializer>();
             serializerMock.Setup(obj => obj.DeserializeAsync(It.IsAny<Stream>()))
-                .ReturnsAsync(new BlogItem(It.IsAny<string>(), It.IsAny<string>(), new string[] { }));
+                .ReturnsAsync(new BlogItem{
+                    Title = It.IsAny<string>(),
+                    Content = It.IsAny<string>(),
+                    Tags = new string[] { }
+                });
             Reader reader = new Reader(serializerMock.Object);
             using MemoryStream stream = new MemoryStream();
             using StreamWriter writer = new StreamWriter(stream);

@@ -28,11 +28,18 @@ namespace Pagene.Converter
             {
                 var tags = _parser.ParseTag(await reader.ReadLineAsync().ConfigureAwait(false));
                 var title = _parser.ParseTitle(await reader.ReadLineAsync().ConfigureAwait(false));
+                var summary = "";
+                /*
+                if (ConvertingInfo.UseSummary)
+                {
+                }
+                */
                 return new BlogEntry
                 {
                     Title = title,
                     Date = info.CreationTimeUtc,
                     URL = _path + info.Name,
+                    //Summary = summary,
                     Tags = tags
                 };
             }
