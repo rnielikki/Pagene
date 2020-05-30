@@ -11,6 +11,7 @@ namespace Pagene.Converter.FileTypes
         internal string FilePath { get; }
 
         internal virtual string Type { get; }
+        internal virtual string OutputType { get; }
 
         protected readonly IDirectoryInfo Directory;
         protected readonly IFileSystem _fileSystem;
@@ -31,8 +32,7 @@ namespace Pagene.Converter.FileTypes
         internal virtual async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
         {
             fileStream.Position = 0;
-            string targetPath = Path.Combine(FilePath, info.Name);
-            Stream writeTarget = _fileSystem.File.Open(targetPath, FileMode.OpenOrCreate);
+            Stream writeTarget = GetFileStream(info.Name);
             try
             {
                 await fileStream.CopyToAsync(writeTarget).ConfigureAwait(false);
@@ -42,13 +42,20 @@ namespace Pagene.Converter.FileTypes
                 writeTarget.Close();
             }
         }
+        protected Stream GetFileStream(string fileName)
+        {
+            string targetPath = Path.Combine(FilePath, ChangeExtension(fileName));
+            return _fileSystem.File.Open(targetPath, FileMode.OpenOrCreate);
+        }
+
+        private string ChangeExtension(string fileName) => Path.GetFileNameWithoutExtension(fileName)+OutputType;
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         internal virtual async System.Threading.Tasks.Task Clean(IEnumerable<string> files)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
            foreach (var fileName in files)
             {
-                _fileSystem.File.Delete(Path.Combine(FilePath, fileName));
+                _fileSystem.File.Delete(Path.Combine(FilePath, ChangeExtension(fileName)));
                 _fileSystem.File.Delete(Path.Combine(AppPathInfo.HashPath, FilePath, fileName+".hashfile"));
             }
         }

@@ -13,6 +13,7 @@ namespace Pagene.Converter
         private readonly string _path;
         private readonly IFormatParser _parser;
         public bool UseSummary { get; set; }
+        public int SummaryLength { get; set; } = ConvertingInfo.SummaryLength;
 
         internal Formatter(string path, IFormatParser parser)
         {
@@ -21,35 +22,25 @@ namespace Pagene.Converter
             _parser = parser;
         }
         internal Formatter(string path):this(path,new FormatParser()) { }
-        async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info)
+        /// <summary>
+        /// Remember to add summary using GetSummary() if you need.
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info, StreamReader reader)
         {
-            using Stream stream = info.OpenRead();
-            return await (this as IFormatter).GetBlogHead(info, stream, ConvertingInfo.SummaryLength).ConfigureAwait(false);
-        }
-
-        async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info, Stream stream) => await (this as IFormatter).GetBlogHead(info, stream, ConvertingInfo.SummaryLength).ConfigureAwait(false);
-        async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info, Stream stream, int length)
-        {
-            StreamReader reader = new StreamReader(stream);
             try
             {
                 var tags = _parser.ParseTag(await reader.ReadLineAsync().ConfigureAwait(false));
                 var title = _parser.ParseTitle(await reader.ReadLineAsync().ConfigureAwait(false));
-                var summary = "";
-                if (UseSummary)
-                {
-                    int position = checked((int)stream.Position);
-                    char[] buffer = new char[length];
-                    await reader.ReadAsync(buffer, 0, length).ConfigureAwait(false);
-                    stream.Position = position;
-                    summary = new string(buffer).Trim('\0').Replace('\r', ' ').Replace('\n', ' ');
-                }
+
                 return new BlogEntry
                 {
                     Title = title,
                     Date = info.CreationTimeUtc,
                     Url = _path + info.Name,
-                    Summary = summary,
+                    Summary = "",
                     Tags = tags
                 };
             }
@@ -58,5 +49,31 @@ namespace Pagene.Converter
                 throw new FormatException(info.Name);
             }
         }
+        /// <summary>
+        /// Use only if you don't reuse the stream/stream reader anymore.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        async Task<BlogEntry> IFormatter.GetBlogEntry(IFileInfo info)
+        {
+            using StreamReader reader = new StreamReader(info.OpenRead());
+            var entry = await (this as IFormatter).GetBlogHead(info, reader).ConfigureAwait(false);
+            entry.Summary = await GetSummary(reader).ConfigureAwait(false);
+            return entry;
+        }
+        private async Task<string> GetSummary(StreamReader reader)
+        {
+            if (UseSummary)
+            {
+                char[] buffer = new char[SummaryLength];
+                await reader.ReadAsync(buffer, 0, SummaryLength).ConfigureAwait(false);
+                return new string(buffer).Trim('\0').Replace('\r', ' ').Replace('\n', ' ');
+            }
+            else
+            {
+                return "";
+            }
+        }
+        string IFormatter.GetSummary(string original) => (original.Length <= SummaryLength)?original:original.Substring(0, SummaryLength);
     }
 }

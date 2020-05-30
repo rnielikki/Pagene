@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using Pagene.BlogSettings;
+using Utf8Json;
 
 namespace Pagene.Converter.FileTypes
 {
     internal class MdFileType : FileType
     {
         internal override string Type => "*.md";
+        internal override string OutputType => ".json";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
         private bool modified;
@@ -27,23 +29,17 @@ namespace Pagene.Converter.FileTypes
         internal override async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
         {
             modified = true;
-            using Stream stream = new MemoryStream();
+            using Stream stream = GetFileStream(info.Name);
+            fileStream.Position = 0;
             using StreamReader reader = new StreamReader(fileStream);
-            using StreamWriter writer = new StreamWriter(stream);
-            fileStream.Position = 0;
-            BlogEntry entry = await _formatter.GetBlogHead(info, fileStream).ConfigureAwait(false);
-
-            writer.WriteLine($"> {entry.Date}");
-            writer.WriteLine($"> {info.LastWriteTimeUtc}");
-            writer.Flush();
-            fileStream.Position = 0;
-            fileStream.CopyTo(stream);
+            BlogEntry entry = await _formatter.GetBlogHead(info, reader).ConfigureAwait(false);
+            BlogItem item = new BlogItem { Title = entry.Title, Content = await reader.ReadToEndAsync().ConfigureAwait(false), CreationDate = entry.Date, ModificationDate = info.LastWriteTimeUtc, Tags = entry.Tags };
+            entry.Summary = _formatter.GetSummary(item.Content);
+            await JsonSerializer.SerializeAsync(stream, item).ConfigureAwait(false);
+            //stream.Position = 0;
 
             //generate categories
             _tagManager.AddTag(entry.Tags, entry);
-
-            //save
-            await base.SaveAsync(info, stream).ConfigureAwait(false);
         }
         internal override async System.Threading.Tasks.Task Clean(IEnumerable<string> files)
         {

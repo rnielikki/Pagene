@@ -7,7 +7,6 @@ using Pagene.BlogSettings;
 using System.IO;
 using Moq;
 using Pagene.Reader.PostSerializer;
-using System.Text;
 using System.Linq;
 using System.IO.Abstractions.TestingHelpers;
 using System;
@@ -22,14 +21,14 @@ namespace Pagene.Converter.Tests
         {
             IFormatter formatter = new Formatter(AppPathInfo.ContentPath);
             formatter.DisableSummary();
-            using var fileStream = sample.Open(FileMode.Open);
+            using var fileReader = new StreamReader(sample.Open(FileMode.Open));
             if (!valid)
             {
-                await Assert.ThrowsAsync<FormatException>(() => formatter.GetBlogHead(sample, fileStream)).ConfigureAwait(false);
+                await Assert.ThrowsAsync<FormatException>(() => formatter.GetBlogHead(sample, fileReader)).ConfigureAwait(false);
             }
             else
             {
-                var entry = await formatter.GetBlogHead(sample, fileStream).ConfigureAwait(false);
+                var entry = await formatter.GetBlogHead(sample, fileReader).ConfigureAwait(false);
                 var entryTags = entry.Tags;
                 entry.Title.Should().Be(title);
                 entry.Url.Should().Be(AppPathInfo.ContentPath+sample.Name);
@@ -48,13 +47,23 @@ namespace Pagene.Converter.Tests
             IFormatter formatter = new Formatter(AppPathInfo.ContentPath, parserMock.Object);
             formatter.EnableSummary();
 
-            using Stream stream = new MemoryStream(Encoding.UTF8.GetBytes(data));
             var mockFileSystem = new MockFileSystem();
             const string anyFile = "asdf.md";
             var info = new MockFileInfo(mockFileSystem, anyFile);
-            mockFileSystem.AddFile(anyFile, new MockFileData(""));
-            var summary = (await formatter.GetBlogHead(info, stream, 7).ConfigureAwait(false)).Summary;
+            mockFileSystem.AddFile(anyFile, new MockFileData(Environment.NewLine+ Environment.NewLine + rawData));
+            formatter.SummaryLength = 7;
+            var summary = (await formatter.GetBlogEntry(info).ConfigureAwait(false)).Summary;
 
+            Assert.Equal(expected, summary);
+        }
+        [Theory]
+        [InlineData("short", "short")]
+        [InlineData("abcdefghijklmnop", "abcdefg")]
+        public void SummaryCutTest(string rawData, string expected)
+        {
+            IFormatter formatter = new Formatter("", new Mock<IFormatParser>().Object);
+            formatter.SummaryLength = 7;
+            var summary = formatter.GetSummary(rawData);
             Assert.Equal(expected, summary);
         }
 

@@ -6,6 +6,7 @@ using System.IO.Abstractions.TestingHelpers;
 using System.Collections.Generic;
 using Pagene.Models;
 using Pagene.BlogSettings;
+using Utf8Json;
 
 namespace Pagene.Converter.Tests
 {
@@ -37,7 +38,7 @@ namespace Pagene.Converter.Tests
         public async Task SaveFormatTest()
         {
             const string content = "asdfasdf";
-            string contentPath = $"{AppPathInfo.ContentPath}something.md";
+            string contentPath = $"{AppPathInfo.ContentPath}something.json";
             string inputContentPath = AppPathInfo.InputPath+contentPath;
 
             MockFileSystem fileSystem = new MockFileSystem(
@@ -52,18 +53,20 @@ namespace Pagene.Converter.Tests
             fileInfo.CreationTimeUtc = dateTime;
             fileInfo.LastWriteTimeUtc = editDateTime;
 
-            var formatterMock = new Mock<IFormatter>();
+            const string title = "Random";
 
-            formatterMock.Setup(obj => obj.GetBlogHead(It.IsAny<System.IO.Abstractions.IFileInfo>(), It.IsAny<System.IO.Stream>()))
-                .ReturnsAsync(new BlogEntry { Title = "title", Date = dateTime, Url = contentPath, Tags = new string[] { "book", "game", "music" }});
+            var formatterMock = new Mock<IFormatter>();
+            formatterMock.Setup(obj => obj.GetBlogHead(It.IsAny<System.IO.Abstractions.IFileInfo>(), It.IsAny<System.IO.StreamReader>()))
+                .ReturnsAsync(new BlogEntry { Title = title, Date = dateTime, Summary = "--", Url = contentPath, Tags = new string[] { "book", "game", "music" }});
             var tagManager = new TagManager(fileSystem);
             var fileType = new MdFileType(fileSystem, formatterMock.Object, tagManager);
 
             await fileType.SaveAsync(fileInfo, fileStream).ConfigureAwait(false);
-            string result = await fileSystem.File.ReadAllTextAsync(contentPath).ConfigureAwait(false);
-            Assert.Equal(@$"> {dateTime}
-> {editDateTime}
-{content}", result);
+            using System.IO.Stream resultStream = fileSystem.File.Open(contentPath, System.IO.FileMode.Open);
+            var result = await JsonSerializer.DeserializeAsync<BlogItem>(resultStream).ConfigureAwait(false);
+            Assert.Equal(dateTime, result.CreationDate);
+            Assert.Equal(editDateTime, result.ModificationDate);
+            Assert.Equal(content, result.Content);
         }
     }
 }

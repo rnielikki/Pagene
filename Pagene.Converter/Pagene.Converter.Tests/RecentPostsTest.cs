@@ -7,6 +7,7 @@ using System;
 using Pagene.Models;
 using System.Linq;
 using Pagene.BlogSettings;
+using System.IO;
 
 namespace Pagene.Converter.Tests
 {
@@ -16,7 +17,7 @@ namespace Pagene.Converter.Tests
         public async System.Threading.Tasks.Task RecentPostSerializingTest()
         {
             var mockFormatter = new Mock<IFormatter>();
-            mockFormatter.Setup(formatter => formatter.GetBlogHead(It.IsAny<IFileInfo>()))
+            mockFormatter.Setup(formatter => formatter.GetBlogEntry(It.IsAny<IFileInfo>()))
                 .ReturnsAsync((IFileInfo fileInfo) => new BlogEntry
                 {
                     Title = "",
@@ -43,6 +44,7 @@ namespace Pagene.Converter.Tests
             }
             var manager = new RecentPostManager(fileSystem, mockFormatter.Object);
             var recentPosts = await manager.GetRecentPosts(3).ConfigureAwait(false);
+            Assert.NotNull(recentPosts);
             Assert.Equal(recentPosts.Select(post => post.Url).ToArray(), new string[] { "one.md", "two.md", "three.md" });
             recentPosts = await manager.GetRecentPosts(10).ConfigureAwait(false);
             Assert.Equal(recentPosts.Select(post => post.Url).ToArray(), new string[] { "one.md", "two.md", "three.md", "four.md", "five.md", "six.md" });

@@ -5,7 +5,7 @@ using System.Linq;
 namespace Pagene.Reader.PostSerializer
 {
     /// <summary>
-    /// Parser for part of the format. Defines what the parser syntax sholud be, and how it works.
+    /// Parser for part of the format, line by line. Defines what the parser syntax sholud be, and how it works.
     /// </summary>
     public class FormatParser:IFormatParser
     {
