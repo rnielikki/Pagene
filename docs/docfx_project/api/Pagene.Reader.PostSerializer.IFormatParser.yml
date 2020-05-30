@@ -17,7 +17,7 @@ items:
   source:
     id: IFormatParser
     path: ''
-    startLine: 845
+    startLine: 810
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
@@ -46,7 +46,7 @@ items:
   source:
     id: ParseTag
     path: ''
-    startLine: 852
+    startLine: 817
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
@@ -77,7 +77,7 @@ items:
   source:
     id: ParseTitle
     path: ''
-    startLine: 858
+    startLine: 823
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer

@@ -17,17 +17,16 @@ items:
   source:
     id: FormatParser
     path: ''
-    startLine: 807
+    startLine: 772
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
-  summary: "\nParser for part of the format. Defines what the parser syntax sholud be, and how it works.\n"
+  summary: "\nParser for part of the format, line by line. Defines what the parser syntax sholud be, and how it works.\n"
   example: []
   syntax:
     content: 'public class FormatParser : IFormatParser'
     content.vb: >-
       Public Class FormatParser
-
           Implements IFormatParser
   inheritance:
   - System.Object
@@ -61,7 +60,7 @@ items:
   source:
     id: ParseTag
     path: ''
-    startLine: 814
+    startLine: 779
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
@@ -98,7 +97,7 @@ items:
   source:
     id: ParseTitle
     path: ''
-    startLine: 827
+    startLine: 792
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer

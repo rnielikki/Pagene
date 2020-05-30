@@ -47,7 +47,7 @@ namespace Pagene.Converter
         public async Task Convert()
         {
             var tagManager = new TagManager(_fileSystem);
-            var mdFileType = new MdFileType(_fileSystem, tagManager);
+            var mdFileType = new PostFileType(_fileSystem, tagManager);
             await ConvertPart(mdFileType).ConfigureAwait(false);
         }
         private async Task ConvertPart(FileType fileType)

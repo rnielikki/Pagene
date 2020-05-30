@@ -22,11 +22,6 @@
     name: TagInfo
   - uid: Pagene.Models.TagMeta
     name: TagMeta
-- uid: Pagene.Reader
-  name: Pagene.Reader
-  items:
-  - uid: Pagene.Reader.Reader
-    name: Reader
 - uid: Pagene.Reader.PostSerializer
   name: Pagene.Reader.PostSerializer
   items:

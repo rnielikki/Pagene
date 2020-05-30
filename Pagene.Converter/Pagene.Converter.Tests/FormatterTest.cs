@@ -61,8 +61,10 @@ namespace Pagene.Converter.Tests
         [InlineData("abcdefghijklmnop", "abcdefg")]
         public void SummaryCutTest(string rawData, string expected)
         {
-            IFormatter formatter = new Formatter("", new Mock<IFormatParser>().Object);
-            formatter.SummaryLength = 7;
+            IFormatter formatter = new Formatter("", new Mock<IFormatParser>().Object)
+            {
+                SummaryLength = 7
+            };
             var summary = formatter.GetSummary(rawData);
             Assert.Equal(expected, summary);
         }

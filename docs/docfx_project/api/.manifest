@@ -39,7 +39,6 @@
   "Pagene.Models.TagMeta": "Pagene.Models.TagMeta.yml",
   "Pagene.Models.TagMeta.Count": "Pagene.Models.TagMeta.yml",
   "Pagene.Models.TagMeta.Url": "Pagene.Models.TagMeta.yml",
-  "Pagene.Reader": "Pagene.Reader.yml",
   "Pagene.Reader.PostSerializer": "Pagene.Reader.PostSerializer.yml",
   "Pagene.Reader.PostSerializer.FormatParser": "Pagene.Reader.PostSerializer.FormatParser.yml",
   "Pagene.Reader.PostSerializer.FormatParser.ParseTag(System.String)": "Pagene.Reader.PostSerializer.FormatParser.yml",
@@ -52,9 +51,5 @@
   "Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync(Pagene.Models.BlogItem,System.IO.Stream)": "Pagene.Reader.PostSerializer.IPostSerializer.yml",
   "Pagene.Reader.PostSerializer.PostSerializer": "Pagene.Reader.PostSerializer.PostSerializer.yml",
   "Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync(Stream)": "Pagene.Reader.PostSerializer.PostSerializer.yml",
-  "Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync(BlogItem,Stream)": "Pagene.Reader.PostSerializer.PostSerializer.yml",
-  "Pagene.Reader.Reader": "Pagene.Reader.Reader.yml",
-  "Pagene.Reader.Reader.#ctor": "Pagene.Reader.Reader.yml",
-  "Pagene.Reader.Reader.#ctor(IPostSerializer)": "Pagene.Reader.Reader.yml",
-  "Pagene.Reader.Reader.ReadPostAsync(Stream)": "Pagene.Reader.Reader.yml"
+  "Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync(BlogItem,Stream)": "Pagene.Reader.PostSerializer.PostSerializer.yml"
 }

@@ -17,7 +17,7 @@ items:
   source:
     id: IPostSerializer
     path: ''
-    startLine: 868
+    startLine: 833
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
@@ -46,7 +46,7 @@ items:
   source:
     id: SerializeAsync
     path: ''
-    startLine: 875
+    startLine: 840
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
@@ -79,7 +79,7 @@ items:
   source:
     id: DeserializeAsync
     path: ''
-    startLine: 881
+    startLine: 846
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer

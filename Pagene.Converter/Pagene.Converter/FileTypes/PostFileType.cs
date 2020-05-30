@@ -7,20 +7,20 @@ using Utf8Json;
 
 namespace Pagene.Converter.FileTypes
 {
-    internal class MdFileType : FileType
+    internal class PostFileType : FileType
     {
         internal override string Type => "*.md";
         internal override string OutputType => ".json";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
         private bool modified;
-        internal MdFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
+        internal PostFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = formatter;
             _tagManager = tagManager;
         }
 
-        internal MdFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
+        internal PostFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = new Formatter(AppPathInfo.ContentPath);
             _tagManager = tagManager;

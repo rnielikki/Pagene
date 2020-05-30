@@ -1,17 +1,19 @@
 # Reading posts and tags
 ## Blog Post format
 
-It's same as converter format, but it contains creation date and modification date.
+A file inside `contents/` contains a post in this format:
+
+```json
+{
+    "Title": "Title of the post",
+    "Content": "Content of the post",
+    "CreationDate": "2020-05-30T08:04:55.6725298Z",
+    "ModificationDate": "2020-05-30T08:05:21.9718843Z",
+    "Tags": ["tag1","tag2"]
+}
+```
 
 If modificatoin date is same as creation date, it means that the app is not edited since creation.
-
-<pre>
-> (Creation Date)
-> (Modification Date)
-[tags,separated,by,comma]
-# title
-Content
-</pre>
 
 > Note : All dates are provided with **UTC format**, so if you want local time, you must convert it manually.
 
@@ -65,10 +67,13 @@ Each tag file is number and contains real tag name (Tag) and content.
 }
 ```
 
-## API
-You can use [Reader API](../api/Pagene.Reader.html) for C# implementation (Blazor).
+## Models
+The [Models](../api/Pagene.Models.html) define the reading format. If you use C# with JSON Serializer, you can use the models as dll.
 
-It returns:
+Or you can implement on your own, in any language with any JSON parser.
+
+These are model documentation:
+
 * [BlogItem](../api/Pagene.Models.BlogItem.html) for posts
 * [BlogEntry](../api/Pagene.Models.BlogItem.html) for post summary
 * [TagInfo](../api/Pagene.Models.TagInfo.html) for post summaries of each tag

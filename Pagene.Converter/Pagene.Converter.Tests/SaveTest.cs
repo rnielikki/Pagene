@@ -59,7 +59,7 @@ namespace Pagene.Converter.Tests
             formatterMock.Setup(obj => obj.GetBlogHead(It.IsAny<System.IO.Abstractions.IFileInfo>(), It.IsAny<System.IO.StreamReader>()))
                 .ReturnsAsync(new BlogEntry { Title = title, Date = dateTime, Summary = "--", Url = contentPath, Tags = new string[] { "book", "game", "music" }});
             var tagManager = new TagManager(fileSystem);
-            var fileType = new MdFileType(fileSystem, formatterMock.Object, tagManager);
+            var fileType = new PostFileType(fileSystem, formatterMock.Object, tagManager);
 
             await fileType.SaveAsync(fileInfo, fileStream).ConfigureAwait(false);
             using System.IO.Stream resultStream = fileSystem.File.Open(contentPath, System.IO.FileMode.Open);

@@ -17,7 +17,7 @@ items:
   source:
     id: PostSerializer
     path: ''
-    startLine: 893
+    startLine: 858
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
@@ -27,7 +27,6 @@ items:
     content: 'public class PostSerializer : IPostSerializer'
     content.vb: >-
       Public Class PostSerializer
-
           Implements IPostSerializer
   inheritance:
   - System.Object
@@ -61,7 +60,7 @@ items:
   source:
     id: SerializeAsync
     path: ''
-    startLine: 903
+    startLine: 868
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
@@ -102,7 +101,7 @@ items:
   source:
     id: DeserializeAsync
     path: ''
-    startLine: 920
+    startLine: 885
   assemblies:
   - cs.temp.dll
   namespace: Pagene.Reader.PostSerializer
