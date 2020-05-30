@@ -18,7 +18,7 @@ namespace Pagene.Reader.PostSerializer
         /// If it's needed, rewind or truncate the stream manually before using it.</remarks>
         public async System.Threading.Tasks.Task SerializeAsync(BlogItem item, Stream stream)
         {
-            //not using writer -> does not dispose after this method
+            //not "using writer" -> does not dispose after this method
             StreamWriter writer = new StreamWriter(stream);
             await writer.WriteAsync("[").ConfigureAwait(false);
             await writer.WriteAsync(string.Join(',', item.Tags)).ConfigureAwait(false);

@@ -60,7 +60,7 @@ namespace Pagene.Editor
             string metaTagPath = AppPathInfo.BlogTagPath + "meta.tags.json";
             if (!_fileSystem.File.Exists(metaTagPath)) return Enumerable.Empty<string>();
             using var stream = _fileSystem.File.Open(metaTagPath, System.IO.FileMode.Open);
-            return JsonSerializer.Deserialize<Dictionary<string, int>>(stream).Keys;
+            return JsonSerializer.Deserialize<Dictionary<string, TagMeta>>(stream).Keys;
         }
         internal string GetNameFromTitle(string title) => _namingLogic.GetName(title);
     }

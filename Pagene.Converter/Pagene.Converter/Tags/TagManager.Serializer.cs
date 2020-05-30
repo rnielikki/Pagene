@@ -1,4 +1,5 @@
-﻿using Pagene.Models;
+﻿using Pagene.BlogSettings;
+using Pagene.Models;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -22,27 +23,34 @@ namespace Pagene.Converter
                 var posts = tagInfo.Posts;
                 if (tag == null || posts == null) continue;
 
-                var mappedPosts = new ConcurrentDictionary<string, BlogEntry>(tagInfo.Posts.ToDictionary(info => info.URL, info => info));
+                var mappedPosts = new ConcurrentDictionary<string, BlogEntry>(tagInfo.Posts.ToDictionary(info => info.Url, info => info));
                 if (!_tagMap.TryAdd(tag, mappedPosts))
                 {
                     new FileLoadException("Failed to load tag list", file.Name);
                 }
-                //existEntries.AddOrUpdate(Path.GetFileName(entry.URL), entry,(_, v) => v = entry);
             }
         }
         internal async System.Threading.Tasks.Task Serialize()
         {
-            using (var tagMeta = _fileSystem.FileInfo.FromFileName($"{_dirName}/meta.tags.json").Open(FileMode.Create))
-            {
-                var metaMap = _tagMap.ToDictionary(map => map.Key, map => map.Value.Count);
-                await tagMeta.WriteAsync(JsonSerializer.Serialize(metaMap));
-            }
+            using var tagMeta = _fileSystem.FileInfo.FromFileName($"{_dirName}/meta.tags.json").Open(FileMode.Create);
+            var metaMap = new Dictionary<string, TagMeta>();
+            int fileName = 0;
             foreach (var tagPair in _tagMap)
             {
-                var item = new TagInfo(tagPair.Key, tagPair.Value.Values);
-                using var file = _fileSystem.File.Open($"{_dirName}/{item.Tag.ToLower()}.json", FileMode.Create);
+                string path = $"{_dirName}/{fileName++}.json";
+                var item = new TagInfo { Tag = tagPair.Key, Posts = tagPair.Value.Values };
+                using var file = _fileSystem.File.Open(path, FileMode.Create);
                 await file.WriteAsync(JsonSerializer.Serialize(item));
+                if (!metaMap.ContainsKey(tagPair.Key))
+                {
+                    metaMap.Add(tagPair.Key, new TagMeta { Url = path, Count = 1 });
+                }
+                else
+                {
+                    metaMap[tagPair.Key].Count++;
+                }
             }
+            await tagMeta.WriteAsync(JsonSerializer.Serialize(metaMap));
         }
     }
 }

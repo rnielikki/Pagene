@@ -20,7 +20,7 @@ namespace Pagene.Models
         /// <summary>
         /// Relative path of the page.
         /// </summary>
-        public string URL { get; set; }
+        public string Url { get; set; }
         /// <summary>
         /// Summary text of the content.
         /// </summary>

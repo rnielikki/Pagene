@@ -32,7 +32,7 @@ namespace Pagene.Converter.Tests
                 var entry = await formatter.GetBlogHead(sample, fileStream).ConfigureAwait(false);
                 var entryTags = entry.Tags;
                 entry.Title.Should().Be(title);
-                entry.URL.Should().Be(AppPathInfo.ContentPath+sample.Name);
+                entry.Url.Should().Be(AppPathInfo.ContentPath+sample.Name);
                 entryTags.Should().BeEquivalentTo(tags);
             }
         }

@@ -14,7 +14,7 @@ But hey, **this is for everyone**.
 ### Pull request
 1. **Do pull request** for applying issues/minor fix, **don't add pull request to master.**
 1. Bug fixes welcome, always, if the code is tested (Unless it's feature :P)
-1. Maintainability is more important than small performance optimization.
+1. Improving performance is good contribution, but maintainability is more important than small performance optimization.
 1. English syntax fix is always welcomed, please fix us!
 
 ### Issue

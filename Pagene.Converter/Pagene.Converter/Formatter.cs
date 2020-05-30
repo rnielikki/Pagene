@@ -48,7 +48,7 @@ namespace Pagene.Converter
                 {
                     Title = title,
                     Date = info.CreationTimeUtc,
-                    URL = _path + info.Name,
+                    Url = _path + info.Name,
                     Summary = summary,
                     Tags = tags
                 };

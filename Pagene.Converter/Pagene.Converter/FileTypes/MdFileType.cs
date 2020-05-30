@@ -50,8 +50,7 @@ namespace Pagene.Converter.FileTypes
             if (!modified) return;
 
             await base.Clean(files).ConfigureAwait(false);
-            _tagManager.CleanFromDeletedFile(files);
-            _cleaner.CleanTags(_tagManager);
+            _tagManager.Clean(files);
 
             await _tagManager.Serialize().ConfigureAwait(false);
             var postManager = new RecentPostManager(_fileSystem, _formatter);

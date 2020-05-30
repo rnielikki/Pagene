@@ -21,7 +21,7 @@ namespace Pagene.Converter.Tests
                 {
                     Title = "",
                     Date = fileInfo.CreationTimeUtc,
-                    URL = fileInfo.Name,
+                    Url = fileInfo.Name,
                     Tags = new string[] { }
                 }
             );
@@ -42,10 +42,10 @@ namespace Pagene.Converter.Tests
                 file.CreationTimeUtc = DateTime.ParseExact(rawDate, "yyyy/M/d", System.Globalization.CultureInfo.InvariantCulture);
             }
             var manager = new RecentPostManager(fileSystem, mockFormatter.Object);
-            var recentPosts = await manager.GetRecentPosts(3);
-            Assert.Equal(recentPosts.Select(post => post.URL).ToArray(), new string[] { "one.md", "two.md", "three.md" });
-            recentPosts = await manager.GetRecentPosts(10);
-            Assert.Equal(recentPosts.Select(post => post.URL).ToArray(), new string[] { "one.md", "two.md", "three.md", "four.md", "five.md", "six.md" });
+            var recentPosts = await manager.GetRecentPosts(3).ConfigureAwait(false);
+            Assert.Equal(recentPosts.Select(post => post.Url).ToArray(), new string[] { "one.md", "two.md", "three.md" });
+            recentPosts = await manager.GetRecentPosts(10).ConfigureAwait(false);
+            Assert.Equal(recentPosts.Select(post => post.Url).ToArray(), new string[] { "one.md", "two.md", "three.md", "four.md", "five.md", "six.md" });
         }
     }
 }
