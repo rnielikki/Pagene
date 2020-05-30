@@ -3,10 +3,12 @@
     {
       "src": [
         {
-          "files": "Pagene.*/**",
+          "files": "Pagene.**/**.cs",
           "exclude": [
             "**/obj/**",
-            "**/bin/**"
+            "**/bin/**",
+            "**/Pagene.Editor/**",
+            "**/**.Tests/**"
           ],
           "src": "../../"
         }
@@ -24,9 +26,12 @@
       },
       {
         "files": [
+          "help/toc.yml",
           "help/**.md"
         ]
-      }
+      },
+      "index.md",
+      "toc.yml"
     ],
     "resource": [
       {

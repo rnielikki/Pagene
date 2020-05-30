@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Converter
+  commentId: N:Pagene.Converter
+  id: Pagene.Converter
+  children:
+  - Pagene.Converter.Converter
+  langs:
+  - csharp
+  - vb
+  name: Pagene.Converter
+  nameWithType: Pagene.Converter
+  fullName: Pagene.Converter
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+references:
+- uid: Pagene.Converter.Converter
+  commentId: T:Pagene.Converter.Converter
+  name: Converter
+  nameWithType: Converter
+  fullName: Pagene.Converter.Converter

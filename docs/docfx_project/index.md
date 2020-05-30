@@ -1,4 +1,7 @@
-# This is the **HOMEPAGE**.
-Refer to [Markdown](http://daringfireball.net/projects/markdown/) for how to write markdown files.
-## Quick Start Notes:
-1. Add images to the *images* folder if the file is referencing an image.
+# Welcome to Pagene Documentation!
+
+ ╰(*°▽°*)╯
+
+ Which do you want, Getting Started or API Documentation?
+
+ For more information, see [the repo page](https://github.com/rnielikki/Pagene).

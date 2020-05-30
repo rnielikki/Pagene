@@ -1,0 +1,666 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.BlogSettings.AppPathInfo
+  commentId: T:Pagene.BlogSettings.AppPathInfo
+  id: AppPathInfo
+  parent: Pagene.BlogSettings
+  children:
+  - Pagene.BlogSettings.AppPathInfo.BlogFilePath
+  - Pagene.BlogSettings.AppPathInfo.BlogInputPath
+  - Pagene.BlogSettings.AppPathInfo.BlogTagPath
+  - Pagene.BlogSettings.AppPathInfo.ContentPath
+  - Pagene.BlogSettings.AppPathInfo.EntryPath
+  - Pagene.BlogSettings.AppPathInfo.FilePath
+  - Pagene.BlogSettings.AppPathInfo.HashPath
+  - Pagene.BlogSettings.AppPathInfo.InputPath
+  - Pagene.BlogSettings.AppPathInfo.TagPath
+  langs:
+  - csharp
+  - vb
+  name: AppPathInfo
+  nameWithType: AppPathInfo
+  fullName: Pagene.BlogSettings.AppPathInfo
+  type: Class
+  source:
+    id: AppPathInfo
+    path: ''
+    startLine: 5
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nFile input/output paths. Only relative paths are used.\n"
+  example: []
+  syntax:
+    content: public static class AppPathInfo
+    content.vb: Public Module AppPathInfo
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Pagene.BlogSettings.AppPathInfo.ContentPath
+  commentId: F:Pagene.BlogSettings.AppPathInfo.ContentPath
+  id: ContentPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: ContentPath
+  nameWithType: AppPathInfo.ContentPath
+  fullName: Pagene.BlogSettings.AppPathInfo.ContentPath
+  type: Field
+  source:
+    id: ContentPath
+    path: ''
+    startLine: 11
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nContent path for blog posts. This path contains blog posts.\nIt affaects to <xref href=\"Pagene.BlogSettings.AppPathInfo.InputPath\" data-throw-if-not-resolved=\"false\"></xref> too, where post files before converting are.\n"
+  example: []
+  syntax:
+    content: public const string ContentPath = "contents/"
+    return:
+      type: System.String
+    content.vb: Public Const ContentPath As String = "contents/"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Pagene.BlogSettings.AppPathInfo.EntryPath
+  commentId: F:Pagene.BlogSettings.AppPathInfo.EntryPath
+  id: EntryPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: EntryPath
+  nameWithType: AppPathInfo.EntryPath
+  fullName: Pagene.BlogSettings.AppPathInfo.EntryPath
+  type: Field
+  source:
+    id: EntryPath
+    path: ''
+    startLine: 15
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nBlog entries for showing lists on certaion conditions, such as list of tags or recent posts.\n"
+  example: []
+  syntax:
+    content: public const string EntryPath = "entries/"
+    return:
+      type: System.String
+    content.vb: Public Const EntryPath As String = "entries/"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Pagene.BlogSettings.AppPathInfo.FilePath
+  commentId: F:Pagene.BlogSettings.AppPathInfo.FilePath
+  id: FilePath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: FilePath
+  nameWithType: AppPathInfo.FilePath
+  fullName: Pagene.BlogSettings.AppPathInfo.FilePath
+  type: Field
+  source:
+    id: FilePath
+    path: ''
+    startLine: 20
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nPath of any blog attachments, relative to content path.\nBlog post can reference by linkining to the filePath.\n"
+  example: []
+  syntax:
+    content: public const string FilePath = "files/"
+    return:
+      type: System.String
+    content.vb: Public Const FilePath As String = "files/"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Pagene.BlogSettings.AppPathInfo.InputPath
+  commentId: F:Pagene.BlogSettings.AppPathInfo.InputPath
+  id: InputPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: InputPath
+  nameWithType: AppPathInfo.InputPath
+  fullName: Pagene.BlogSettings.AppPathInfo.InputPath
+  type: Field
+  source:
+    id: InputPath
+    path: ''
+    startLine: 24
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nInput folder path. Files from this path will be converted.\n"
+  example: []
+  syntax:
+    content: public const string InputPath = "inputs/"
+    return:
+      type: System.String
+    content.vb: Public Const InputPath As String = "inputs/"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Pagene.BlogSettings.AppPathInfo.TagPath
+  commentId: F:Pagene.BlogSettings.AppPathInfo.TagPath
+  id: TagPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: TagPath
+  nameWithType: AppPathInfo.TagPath
+  fullName: Pagene.BlogSettings.AppPathInfo.TagPath
+  type: Field
+  source:
+    id: TagPath
+    path: ''
+    startLine: 28
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nTag file path. Contains meta.tags.json for the list of tags.\n"
+  example: []
+  syntax:
+    content: public const string TagPath = "tags/"
+    return:
+      type: System.String
+    content.vb: Public Const TagPath As String = "tags/"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Pagene.BlogSettings.AppPathInfo.HashPath
+  commentId: F:Pagene.BlogSettings.AppPathInfo.HashPath
+  id: HashPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: HashPath
+  nameWithType: AppPathInfo.HashPath
+  fullName: Pagene.BlogSettings.AppPathInfo.HashPath
+  type: Field
+  source:
+    id: HashPath
+    path: ''
+    startLine: 32
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nHash file Path. Hash stores each file hash to check if the file has changed.\n"
+  example: []
+  syntax:
+    content: public const string HashPath = ".hash/"
+    return:
+      type: System.String
+    content.vb: Public Const HashPath As String = ".hash/"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Pagene.BlogSettings.AppPathInfo.BlogInputPath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.BlogInputPath
+  id: BlogInputPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: BlogInputPath
+  nameWithType: AppPathInfo.BlogInputPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogInputPath
+  type: Property
+  source:
+    id: BlogInputPath
+    path: ''
+    startLine: 38
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nPath, which cRelative to main program (or user-defined) path.ontains unconverted blog posts. (*.md format) Relative to main program (or user-defined) path.\n"
+  example: []
+  syntax:
+    content: public static string BlogInputPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property BlogInputPath As String
+  overload: Pagene.BlogSettings.AppPathInfo.BlogInputPath*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Pagene.BlogSettings.AppPathInfo.BlogFilePath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.BlogFilePath
+  id: BlogFilePath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: BlogFilePath
+  nameWithType: AppPathInfo.BlogFilePath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogFilePath
+  type: Property
+  source:
+    id: BlogFilePath
+    path: ''
+    startLine: 43
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nAttachment file path relative to the main program (or user-defined) path.\nCan contain not only pictures, but texts, documents, codes and anything etc.\n"
+  example: []
+  syntax:
+    content: public static string BlogFilePath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property BlogFilePath As String
+  overload: Pagene.BlogSettings.AppPathInfo.BlogFilePath*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Pagene.BlogSettings.AppPathInfo.BlogTagPath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.BlogTagPath
+  id: BlogTagPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: BlogTagPath
+  nameWithType: AppPathInfo.BlogTagPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogTagPath
+  type: Property
+  source:
+    id: BlogTagPath
+    path: ''
+    startLine: 47
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.BlogSettings
+  summary: "\nTag path. Rlative to main program (or user-defined) path.\n"
+  example: []
+  syntax:
+    content: public static string BlogTagPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property BlogTagPath As String
+  overload: Pagene.BlogSettings.AppPathInfo.BlogTagPath*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+references:
+- uid: Pagene.BlogSettings
+  commentId: N:Pagene.BlogSettings
+  name: Pagene.BlogSettings
+  nameWithType: Pagene.BlogSettings
+  fullName: Pagene.BlogSettings
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pagene.BlogSettings.AppPathInfo.InputPath
+  commentId: F:Pagene.BlogSettings.AppPathInfo.InputPath
+  isExternal: true
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Pagene.BlogSettings.AppPathInfo.BlogInputPath*
+  commentId: Overload:Pagene.BlogSettings.AppPathInfo.BlogInputPath
+  name: BlogInputPath
+  nameWithType: AppPathInfo.BlogInputPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogInputPath
+- uid: Pagene.BlogSettings.AppPathInfo.BlogFilePath*
+  commentId: Overload:Pagene.BlogSettings.AppPathInfo.BlogFilePath
+  name: BlogFilePath
+  nameWithType: AppPathInfo.BlogFilePath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogFilePath
+- uid: Pagene.BlogSettings.AppPathInfo.BlogTagPath*
+  commentId: Overload:Pagene.BlogSettings.AppPathInfo.BlogTagPath
+  name: BlogTagPath
+  nameWithType: AppPathInfo.BlogTagPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogTagPath

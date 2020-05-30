@@ -1,5 +1,4 @@
-# Reading the API
-
+# Reading posts and tags
 ## Blog Post format
 
 It's same as converter format, but it contains creation date and modification date.
@@ -14,7 +13,7 @@ If modificatoin date is same as creation date, it means that the app is not edit
 Content
 </pre>
 
-> Note : All dates are provided with UTC format, so if you want local time, you should convert it manually.
+> Note : All dates are provided with **UTC format**, so if you want local time, you must convert it manually.
 
 ## Blog Entries
 Blog entries (inside `entries/` directory) are all JSON files.
@@ -37,17 +36,40 @@ One "entry" model looks like this:
 
 Tags are inside `entries/tags`. `entries/tags` contains `meta.tags.json` and each tag files.
 
-`meta.tags.json` only contains key(string)-value(number) pair: key is tag name and value is number of posts that contains the tag.
+`meta.tags.json` contains key-value pair, and the value contains Url and Count informations.
 
-Each tag files contains real tag name (Tag) and content.
+* *Url*: All tag file names are just numbers, and the numbers mean nothing but unique key.
+* *Count*: How many posts are using this tag.
 
 ```json
 {
-    "Tag": "Blazor",
+    "Tag1": {
+        "Url": "entries/tags/0.json",
+        "Count": 1
+    },
+    "Tag2": {
+        "Url": "entries/tags/1.json",
+        "Count": 3
+    }
+}
+```
+
+Each tag file is number and contains real tag name (Tag) and content.
+
+```json
+{
+    "Tag": "Tag1",
     "Posts": [ 
         //arrays of "entry" that contains this tag
     ]
 }
 ```
 
-Next Step; Using Reading API
+## API
+You can use [Reader API](../api/Pagene.Reader.html) for C# implementation (Blazor).
+
+It returns:
+* [BlogItem](../api/Pagene.Models.BlogItem.html) for posts
+* [BlogEntry](../api/Pagene.Models.BlogItem.html) for post summary
+* [TagInfo](../api/Pagene.Models.TagInfo.html) for post summaries of each tag
+* [TagMeta](../api/Pagene.Models.TagMeta.html) for meta.tags.json information

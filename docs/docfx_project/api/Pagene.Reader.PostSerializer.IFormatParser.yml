@@ -1,0 +1,206 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Reader.PostSerializer.IFormatParser
+  commentId: T:Pagene.Reader.PostSerializer.IFormatParser
+  id: IFormatParser
+  parent: Pagene.Reader.PostSerializer
+  children:
+  - Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+  - Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IFormatParser
+  nameWithType: IFormatParser
+  fullName: Pagene.Reader.PostSerializer.IFormatParser
+  type: Interface
+  source:
+    id: IFormatParser
+    path: ''
+    startLine: 845
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nInterface for format parser.\n"
+  example: []
+  syntax:
+    content: public interface IFormatParser
+    content.vb: Public Interface IFormatParser
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+  commentId: M:Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+  id: ParseTag(System.String)
+  parent: Pagene.Reader.PostSerializer.IFormatParser
+  langs:
+  - csharp
+  - vb
+  name: ParseTag(String)
+  nameWithType: IFormatParser.ParseTag(String)
+  fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+  type: Method
+  source:
+    id: ParseTag
+    path: ''
+    startLine: 852
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nParse Tag from certain format.\n"
+  example: []
+  syntax:
+    content: IEnumerable<string> ParseTag(string raw)
+    parameters:
+    - id: raw
+      type: System.String
+      description: unparsed raw tag string.
+    return:
+      type: IEnumerable{System.String}
+      description: String of tags as IEnumerable.
+    content.vb: Function ParseTag(raw As String) As IEnumerable(Of String)
+  overload: Pagene.Reader.PostSerializer.IFormatParser.ParseTag*
+- uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+  commentId: M:Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+  id: ParseTitle(System.String)
+  parent: Pagene.Reader.PostSerializer.IFormatParser
+  langs:
+  - csharp
+  - vb
+  name: ParseTitle(String)
+  nameWithType: IFormatParser.ParseTitle(String)
+  fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+  type: Method
+  source:
+    id: ParseTitle
+    path: ''
+    startLine: 858
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nParse Title from certain format.\n"
+  example: []
+  syntax:
+    content: string ParseTitle(string raw)
+    parameters:
+    - id: raw
+      type: System.String
+      description: unparsed raw title string.
+    return:
+      type: System.String
+      description: Title name, string.
+    content.vb: Function ParseTitle(raw As String) As String
+  overload: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle*
+references:
+- uid: Pagene.Reader.PostSerializer
+  commentId: N:Pagene.Reader.PostSerializer
+  name: Pagene.Reader.PostSerializer
+  nameWithType: Pagene.Reader.PostSerializer
+  fullName: Pagene.Reader.PostSerializer
+- uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTag*
+  commentId: Overload:Pagene.Reader.PostSerializer.IFormatParser.ParseTag
+  name: ParseTag
+  nameWithType: IFormatParser.ParseTag
+  fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTag
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: IEnumerable{System.String}
+  commentId: '!:IEnumerable{System.String}'
+  definition: IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle*
+  commentId: Overload:Pagene.Reader.PostSerializer.IFormatParser.ParseTitle
+  name: ParseTitle
+  nameWithType: IFormatParser.ParseTitle
+  fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle

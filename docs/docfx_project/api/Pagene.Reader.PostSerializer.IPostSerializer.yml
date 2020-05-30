@@ -1,0 +1,237 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Reader.PostSerializer.IPostSerializer
+  commentId: T:Pagene.Reader.PostSerializer.IPostSerializer
+  id: IPostSerializer
+  parent: Pagene.Reader.PostSerializer
+  children:
+  - Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync(System.IO.Stream)
+  - Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync(Pagene.Models.BlogItem,System.IO.Stream)
+  langs:
+  - csharp
+  - vb
+  name: IPostSerializer
+  nameWithType: IPostSerializer
+  fullName: Pagene.Reader.PostSerializer.IPostSerializer
+  type: Interface
+  source:
+    id: IPostSerializer
+    path: ''
+    startLine: 868
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nBasic BlogPost serializer and deserializer interface for blog post reader and blog poster writer.\nfor implemented version, see <xref href=\"Pagene.Reader.PostSerializer.PostSerializer\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public interface IPostSerializer
+    content.vb: Public Interface IPostSerializer
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync(Pagene.Models.BlogItem,System.IO.Stream)
+  commentId: M:Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync(Pagene.Models.BlogItem,System.IO.Stream)
+  id: SerializeAsync(Pagene.Models.BlogItem,System.IO.Stream)
+  parent: Pagene.Reader.PostSerializer.IPostSerializer
+  langs:
+  - csharp
+  - vb
+  name: SerializeAsync(BlogItem, Stream)
+  nameWithType: IPostSerializer.SerializeAsync(BlogItem, Stream)
+  fullName: Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync(Pagene.Models.BlogItem, System.IO.Stream)
+  type: Method
+  source:
+    id: SerializeAsync
+    path: ''
+    startLine: 875
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nSerialize <xref href=\"Pagene.Models.BlogItem\" data-throw-if-not-resolved=\"false\"></xref> to Stream.\n"
+  example: []
+  syntax:
+    content: Task SerializeAsync(BlogItem item, Stream stream)
+    parameters:
+    - id: item
+      type: Pagene.Models.BlogItem
+      description: Target <xref href="Pagene.Models.BlogItem" data-throw-if-not-resolved="false"></xref> to serialize
+    - id: stream
+      type: System.IO.Stream
+      description: Target stream of string to read from.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function SerializeAsync(item As BlogItem, stream As Stream) As Task
+  overload: Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync*
+- uid: Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync(System.IO.Stream)
+  commentId: M:Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync(System.IO.Stream)
+  id: DeserializeAsync(System.IO.Stream)
+  parent: Pagene.Reader.PostSerializer.IPostSerializer
+  langs:
+  - csharp
+  - vb
+  name: DeserializeAsync(Stream)
+  nameWithType: IPostSerializer.DeserializeAsync(Stream)
+  fullName: Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync(System.IO.Stream)
+  type: Method
+  source:
+    id: DeserializeAsync
+    path: ''
+    startLine: 881
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nDeseriazlie <xref href=\"Pagene.Models.BlogItem\" data-throw-if-not-resolved=\"false\"></xref> to string for writer.\n"
+  example: []
+  syntax:
+    content: Task<BlogItem> DeserializeAsync(Stream inputData)
+    parameters:
+    - id: inputData
+      type: System.IO.Stream
+      description: Stream of string for deserialization.
+    return:
+      type: System.Threading.Tasks.Task{Pagene.Models.BlogItem}
+      description: Deserialized <xref href="Pagene.Models.BlogItem" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Function DeserializeAsync(inputData As Stream) As Task(Of BlogItem)
+  overload: Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync*
+references:
+- uid: Pagene.Reader.PostSerializer.PostSerializer
+  commentId: T:Pagene.Reader.PostSerializer.PostSerializer
+  name: PostSerializer
+  nameWithType: PostSerializer
+  fullName: Pagene.Reader.PostSerializer.PostSerializer
+- uid: Pagene.Reader.PostSerializer
+  commentId: N:Pagene.Reader.PostSerializer
+  name: Pagene.Reader.PostSerializer
+  nameWithType: Pagene.Reader.PostSerializer
+  fullName: Pagene.Reader.PostSerializer
+- uid: Pagene.Models.BlogItem
+  commentId: T:Pagene.Models.BlogItem
+  parent: Pagene.Models
+  name: BlogItem
+  nameWithType: BlogItem
+  fullName: Pagene.Models.BlogItem
+- uid: Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync*
+  commentId: Overload:Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync
+  name: SerializeAsync
+  nameWithType: IPostSerializer.SerializeAsync
+  fullName: Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Pagene.Models
+  commentId: N:Pagene.Models
+  name: Pagene.Models
+  nameWithType: Pagene.Models
+  fullName: Pagene.Models
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync*
+  commentId: Overload:Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync
+  name: DeserializeAsync
+  nameWithType: IPostSerializer.DeserializeAsync
+  fullName: Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync
+- uid: System.Threading.Tasks.Task{Pagene.Models.BlogItem}
+  commentId: T:System.Threading.Tasks.Task{Pagene.Models.BlogItem}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<BlogItem>
+  nameWithType: Task<BlogItem>
+  fullName: System.Threading.Tasks.Task<Pagene.Models.BlogItem>
+  nameWithType.vb: Task(Of BlogItem)
+  fullName.vb: System.Threading.Tasks.Task(Of Pagene.Models.BlogItem)
+  name.vb: Task(Of BlogItem)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Pagene.Models.BlogItem
+    name: BlogItem
+    nameWithType: BlogItem
+    fullName: Pagene.Models.BlogItem
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Pagene.Models.BlogItem
+    name: BlogItem
+    nameWithType: BlogItem
+    fullName: Pagene.Models.BlogItem
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )

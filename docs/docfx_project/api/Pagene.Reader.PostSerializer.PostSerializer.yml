@@ -1,0 +1,546 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Reader.PostSerializer.PostSerializer
+  commentId: T:Pagene.Reader.PostSerializer.PostSerializer
+  id: PostSerializer
+  parent: Pagene.Reader.PostSerializer
+  children:
+  - Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync(Stream)
+  - Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync(BlogItem,Stream)
+  langs:
+  - csharp
+  - vb
+  name: PostSerializer
+  nameWithType: PostSerializer
+  fullName: Pagene.Reader.PostSerializer.PostSerializer
+  type: Class
+  source:
+    id: PostSerializer
+    path: ''
+    startLine: 893
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nBasic BlogPost serializer and deserializer for blog post reader and blog poster writer.\n"
+  example: []
+  syntax:
+    content: 'public class PostSerializer : IPostSerializer'
+    content.vb: >-
+      Public Class PostSerializer
+
+          Implements IPostSerializer
+  inheritance:
+  - System.Object
+  implements:
+  - Pagene.Reader.PostSerializer.IPostSerializer
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync(BlogItem,Stream)
+  commentId: M:Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync(BlogItem,Stream)
+  id: SerializeAsync(BlogItem,Stream)
+  parent: Pagene.Reader.PostSerializer.PostSerializer
+  langs:
+  - csharp
+  - vb
+  name: SerializeAsync(BlogItem, Stream)
+  nameWithType: PostSerializer.SerializeAsync(BlogItem, Stream)
+  fullName: Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync(BlogItem, Stream)
+  type: Method
+  source:
+    id: SerializeAsync
+    path: ''
+    startLine: 903
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nSerialize <see cref=\"!:BlogItem\"></see> to Stream.\n"
+  remarks: >-
+    This *doesn&apos;t* rewind or truncate stream automatically.
+
+    If it&apos;s needed, rewind or truncate the stream manually before using it.
+  example: []
+  syntax:
+    content: public Task SerializeAsync(BlogItem item, Stream stream)
+    parameters:
+    - id: item
+      type: BlogItem
+      description: Target <see cref="!:BlogItem"></see> to serialize
+    - id: stream
+      type: Stream
+      description: Target stream of string to read from.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function SerializeAsync(item As BlogItem, stream As Stream) As Task
+  overload: Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync(Stream)
+  commentId: M:Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync(Stream)
+  id: DeserializeAsync(Stream)
+  parent: Pagene.Reader.PostSerializer.PostSerializer
+  langs:
+  - csharp
+  - vb
+  name: DeserializeAsync(Stream)
+  nameWithType: PostSerializer.DeserializeAsync(Stream)
+  fullName: Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync(Stream)
+  type: Method
+  source:
+    id: DeserializeAsync
+    path: ''
+    startLine: 920
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nDeseriazlie <see cref=\"!:BlogItem\"></see> to string for writer.\n"
+  example: []
+  syntax:
+    content: public Task<BlogItem> DeserializeAsync(Stream inputData)
+    parameters:
+    - id: inputData
+      type: Stream
+      description: Stream of string for deserialization.
+    return:
+      type: System.Threading.Tasks.Task{BlogItem}
+      description: Deserialized <see cref="!:BlogItem"></see>.
+    content.vb: Public Function DeserializeAsync(inputData As Stream) As Task(Of BlogItem)
+  overload: Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Pagene.Reader.PostSerializer
+  commentId: N:Pagene.Reader.PostSerializer
+  name: Pagene.Reader.PostSerializer
+  nameWithType: Pagene.Reader.PostSerializer
+  fullName: Pagene.Reader.PostSerializer
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Pagene.Reader.PostSerializer.IPostSerializer
+  commentId: T:Pagene.Reader.PostSerializer.IPostSerializer
+  parent: Pagene.Reader.PostSerializer
+  name: IPostSerializer
+  nameWithType: IPostSerializer
+  fullName: Pagene.Reader.PostSerializer.IPostSerializer
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync*
+  commentId: Overload:Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync
+  name: SerializeAsync
+  nameWithType: PostSerializer.SerializeAsync
+  fullName: Pagene.Reader.PostSerializer.PostSerializer.SerializeAsync
+- uid: BlogItem
+  commentId: '!:BlogItem'
+  isExternal: true
+  name: BlogItem
+  nameWithType: BlogItem
+  fullName: BlogItem
+- uid: Stream
+  isExternal: true
+  name: Stream
+  nameWithType: Stream
+  fullName: Stream
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync*
+  commentId: Overload:Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync
+  name: DeserializeAsync
+  nameWithType: PostSerializer.DeserializeAsync
+  fullName: Pagene.Reader.PostSerializer.PostSerializer.DeserializeAsync
+- uid: System.Threading.Tasks.Task{BlogItem}
+  commentId: T:System.Threading.Tasks.Task{BlogItem}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<BlogItem>
+  nameWithType: Task<BlogItem>
+  fullName: System.Threading.Tasks.Task<BlogItem>
+  nameWithType.vb: Task(Of BlogItem)
+  fullName.vb: System.Threading.Tasks.Task(Of BlogItem)
+  name.vb: Task(Of BlogItem)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: BlogItem
+    name: BlogItem
+    nameWithType: BlogItem
+    fullName: BlogItem
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: BlogItem
+    name: BlogItem
+    nameWithType: BlogItem
+    fullName: BlogItem
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )

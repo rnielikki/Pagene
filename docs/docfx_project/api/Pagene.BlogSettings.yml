@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.BlogSettings
+  commentId: N:Pagene.BlogSettings
+  id: Pagene.BlogSettings
+  children:
+  - Pagene.BlogSettings.AppPathInfo
+  - Pagene.BlogSettings.ConvertingInfo
+  langs:
+  - csharp
+  - vb
+  name: Pagene.BlogSettings
+  nameWithType: Pagene.BlogSettings
+  fullName: Pagene.BlogSettings
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+references:
+- uid: Pagene.BlogSettings.AppPathInfo
+  commentId: T:Pagene.BlogSettings.AppPathInfo
+  name: AppPathInfo
+  nameWithType: AppPathInfo
+  fullName: Pagene.BlogSettings.AppPathInfo
+- uid: Pagene.BlogSettings.ConvertingInfo
+  commentId: T:Pagene.BlogSettings.ConvertingInfo
+  name: ConvertingInfo
+  nameWithType: ConvertingInfo
+  fullName: Pagene.BlogSettings.ConvertingInfo

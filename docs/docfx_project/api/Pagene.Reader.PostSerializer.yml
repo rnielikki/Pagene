@@ -1,0 +1,47 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Reader.PostSerializer
+  commentId: N:Pagene.Reader.PostSerializer
+  id: Pagene.Reader.PostSerializer
+  children:
+  - Pagene.Reader.PostSerializer.FormatParser
+  - Pagene.Reader.PostSerializer.IFormatParser
+  - Pagene.Reader.PostSerializer.IPostSerializer
+  - Pagene.Reader.PostSerializer.PostSerializer
+  langs:
+  - csharp
+  - vb
+  name: Pagene.Reader.PostSerializer
+  nameWithType: Pagene.Reader.PostSerializer
+  fullName: Pagene.Reader.PostSerializer
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+references:
+- uid: Pagene.Reader.PostSerializer.FormatParser
+  commentId: T:Pagene.Reader.PostSerializer.FormatParser
+  name: FormatParser
+  nameWithType: FormatParser
+  fullName: Pagene.Reader.PostSerializer.FormatParser
+- uid: Pagene.Reader.PostSerializer.IFormatParser
+  commentId: T:Pagene.Reader.PostSerializer.IFormatParser
+  parent: Pagene.Reader.PostSerializer
+  name: IFormatParser
+  nameWithType: IFormatParser
+  fullName: Pagene.Reader.PostSerializer.IFormatParser
+- uid: Pagene.Reader.PostSerializer.IPostSerializer
+  commentId: T:Pagene.Reader.PostSerializer.IPostSerializer
+  parent: Pagene.Reader.PostSerializer
+  name: IPostSerializer
+  nameWithType: IPostSerializer
+  fullName: Pagene.Reader.PostSerializer.IPostSerializer
+- uid: Pagene.Reader.PostSerializer.PostSerializer
+  commentId: T:Pagene.Reader.PostSerializer.PostSerializer
+  name: PostSerializer
+  nameWithType: PostSerializer
+  fullName: Pagene.Reader.PostSerializer.PostSerializer
+- uid: Pagene.Reader.PostSerializer
+  commentId: N:Pagene.Reader.PostSerializer
+  name: Pagene.Reader.PostSerializer
+  nameWithType: Pagene.Reader.PostSerializer
+  fullName: Pagene.Reader.PostSerializer

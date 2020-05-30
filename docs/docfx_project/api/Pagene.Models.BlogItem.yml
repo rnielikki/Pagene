@@ -1,0 +1,640 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Models.BlogItem
+  commentId: T:Pagene.Models.BlogItem
+  id: BlogItem
+  parent: Pagene.Models
+  children:
+  - Pagene.Models.BlogItem.Content
+  - Pagene.Models.BlogItem.CreationDate
+  - Pagene.Models.BlogItem.ModificationDate
+  - Pagene.Models.BlogItem.Tags
+  - Pagene.Models.BlogItem.Title
+  langs:
+  - csharp
+  - vb
+  name: BlogItem
+  nameWithType: BlogItem
+  fullName: Pagene.Models.BlogItem
+  type: Class
+  source:
+    id: BlogItem
+    path: ''
+    startLine: 669
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Models
+  summary: "\nBlog Item Object from raw MarkDown format.\n"
+  example: []
+  syntax:
+    content: public class BlogItem
+    content.vb: Public Class BlogItem
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Pagene.Models.BlogItem.Title
+  commentId: P:Pagene.Models.BlogItem.Title
+  id: Title
+  parent: Pagene.Models.BlogItem
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: BlogItem.Title
+  fullName: Pagene.Models.BlogItem.Title
+  type: Property
+  source:
+    id: Title
+    path: ''
+    startLine: 674
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Models
+  summary: "\nTitle of the item. This is used for creating blog entry data.\n"
+  example: []
+  syntax:
+    content: public string Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: Pagene.Models.BlogItem.Title*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Pagene.Models.BlogItem.Content
+  commentId: P:Pagene.Models.BlogItem.Content
+  id: Content
+  parent: Pagene.Models.BlogItem
+  langs:
+  - csharp
+  - vb
+  name: Content
+  nameWithType: BlogItem.Content
+  fullName: Pagene.Models.BlogItem.Content
+  type: Property
+  source:
+    id: Content
+    path: ''
+    startLine: 678
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Models
+  summary: "\nContent of the blog item. It is part of static blog post content.\n"
+  example: []
+  syntax:
+    content: public string Content { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Content As String
+  overload: Pagene.Models.BlogItem.Content*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Pagene.Models.BlogItem.CreationDate
+  commentId: P:Pagene.Models.BlogItem.CreationDate
+  id: CreationDate
+  parent: Pagene.Models.BlogItem
+  langs:
+  - csharp
+  - vb
+  name: CreationDate
+  nameWithType: BlogItem.CreationDate
+  fullName: Pagene.Models.BlogItem.CreationDate
+  type: Property
+  source:
+    id: CreationDate
+    path: ''
+    startLine: 684
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Models
+  summary: "\nThe time, when the post was created.\n"
+  remarks: >-
+    <xref href="Pagene.Models.BlogItem.CreationDate" data-throw-if-not-resolved="false"></xref> and <xref href="Pagene.Models.BlogItem.ModificationDate" data-throw-if-not-resolved="false"></xref> are from file metadata and may contain invalid data if original file&apos;s metadata is invalid.
+        The program doesn&apos;t check if the metadata is valid.
+  example: []
+  syntax:
+    content: public DateTime CreationDate { get; set; }
+    parameters: []
+    return:
+      type: DateTime
+    content.vb: Public Property CreationDate As DateTime
+  overload: Pagene.Models.BlogItem.CreationDate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Pagene.Models.BlogItem.ModificationDate
+  commentId: P:Pagene.Models.BlogItem.ModificationDate
+  id: ModificationDate
+  parent: Pagene.Models.BlogItem
+  langs:
+  - csharp
+  - vb
+  name: ModificationDate
+  nameWithType: BlogItem.ModificationDate
+  fullName: Pagene.Models.BlogItem.ModificationDate
+  type: Property
+  source:
+    id: ModificationDate
+    path: ''
+    startLine: 690
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Models
+  summary: "\nThe time, when the post was modified.\n"
+  remarks: >-
+    <xref href="Pagene.Models.BlogItem.CreationDate" data-throw-if-not-resolved="false"></xref> and <xref href="Pagene.Models.BlogItem.ModificationDate" data-throw-if-not-resolved="false"></xref> are from file metadata and may contain invalid data if original file&apos;s metadata is invalid.
+        The program doesn&apos;t check if the metadata is valid.
+  example: []
+  syntax:
+    content: public DateTime ModificationDate { get; set; }
+    parameters: []
+    return:
+      type: DateTime
+    content.vb: Public Property ModificationDate As DateTime
+  overload: Pagene.Models.BlogItem.ModificationDate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Pagene.Models.BlogItem.Tags
+  commentId: P:Pagene.Models.BlogItem.Tags
+  id: Tags
+  parent: Pagene.Models.BlogItem
+  langs:
+  - csharp
+  - vb
+  name: Tags
+  nameWithType: BlogItem.Tags
+  fullName: Pagene.Models.BlogItem.Tags
+  type: Property
+  source:
+    id: Tags
+    path: ''
+    startLine: 695
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Models
+  summary: "\nTags of the post.\n"
+  example: []
+  syntax:
+    content: public IEnumerable<string> Tags { get; set; }
+    parameters: []
+    return:
+      type: IEnumerable{System.String}
+    content.vb: Public Property Tags As IEnumerable(Of String)
+  overload: Pagene.Models.BlogItem.Tags*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Pagene.Models
+  commentId: N:Pagene.Models
+  name: Pagene.Models
+  nameWithType: Pagene.Models
+  fullName: Pagene.Models
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pagene.Models.BlogItem.Title*
+  commentId: Overload:Pagene.Models.BlogItem.Title
+  name: Title
+  nameWithType: BlogItem.Title
+  fullName: Pagene.Models.BlogItem.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Pagene.Models.BlogItem.Content*
+  commentId: Overload:Pagene.Models.BlogItem.Content
+  name: Content
+  nameWithType: BlogItem.Content
+  fullName: Pagene.Models.BlogItem.Content
+- uid: Pagene.Models.BlogItem.CreationDate
+  commentId: P:Pagene.Models.BlogItem.CreationDate
+  isExternal: true
+- uid: Pagene.Models.BlogItem.ModificationDate
+  commentId: P:Pagene.Models.BlogItem.ModificationDate
+  isExternal: true
+- uid: Pagene.Models.BlogItem.CreationDate*
+  commentId: Overload:Pagene.Models.BlogItem.CreationDate
+  name: CreationDate
+  nameWithType: BlogItem.CreationDate
+  fullName: Pagene.Models.BlogItem.CreationDate
+- uid: DateTime
+  isExternal: true
+  name: DateTime
+  nameWithType: DateTime
+  fullName: DateTime
+- uid: Pagene.Models.BlogItem.ModificationDate*
+  commentId: Overload:Pagene.Models.BlogItem.ModificationDate
+  name: ModificationDate
+  nameWithType: BlogItem.ModificationDate
+  fullName: Pagene.Models.BlogItem.ModificationDate
+- uid: Pagene.Models.BlogItem.Tags*
+  commentId: Overload:Pagene.Models.BlogItem.Tags
+  name: Tags
+  nameWithType: BlogItem.Tags
+  fullName: Pagene.Models.BlogItem.Tags
+- uid: IEnumerable{System.String}
+  commentId: '!:IEnumerable{System.String}'
+  definition: IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

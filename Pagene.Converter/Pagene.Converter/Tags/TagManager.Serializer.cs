@@ -32,12 +32,12 @@ namespace Pagene.Converter
         }
         internal async System.Threading.Tasks.Task Serialize()
         {
-            using var tagMeta = _fileSystem.FileInfo.FromFileName($"{_dirName}/meta.tags.json").Open(FileMode.Create);
+            using var tagMeta = _fileSystem.FileInfo.FromFileName($"{_dirName}meta.tags.json").Open(FileMode.Create);
             var metaMap = new Dictionary<string, TagMeta>();
             int fileName = 0;
             foreach (var tagPair in _tagMap)
             {
-                string path = $"{_dirName}/{fileName++}.json";
+                string path = $"{_dirName}{fileName++}.json";
                 var item = new TagInfo { Tag = tagPair.Key, Posts = tagPair.Value.Values };
                 using var file = _fileSystem.File.Open(path, FileMode.Create);
                 await file.WriteAsync(JsonSerializer.Serialize(item));

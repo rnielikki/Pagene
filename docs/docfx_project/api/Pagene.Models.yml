@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Models
+  commentId: N:Pagene.Models
+  id: Pagene.Models
+  children:
+  - Pagene.Models.BlogEntry
+  - Pagene.Models.BlogItem
+  - Pagene.Models.TagInfo
+  - Pagene.Models.TagMeta
+  langs:
+  - csharp
+  - vb
+  name: Pagene.Models
+  nameWithType: Pagene.Models
+  fullName: Pagene.Models
+  type: Namespace
+  assemblies:
+  - cs.temp.dll
+references:
+- uid: Pagene.Models.BlogEntry
+  commentId: T:Pagene.Models.BlogEntry
+  name: BlogEntry
+  nameWithType: BlogEntry
+  fullName: Pagene.Models.BlogEntry
+- uid: Pagene.Models.BlogItem
+  commentId: T:Pagene.Models.BlogItem
+  parent: Pagene.Models
+  name: BlogItem
+  nameWithType: BlogItem
+  fullName: Pagene.Models.BlogItem
+- uid: Pagene.Models.TagInfo
+  commentId: T:Pagene.Models.TagInfo
+  name: TagInfo
+  nameWithType: TagInfo
+  fullName: Pagene.Models.TagInfo
+- uid: Pagene.Models.TagMeta
+  commentId: T:Pagene.Models.TagMeta
+  name: TagMeta
+  nameWithType: TagMeta
+  fullName: Pagene.Models.TagMeta
+- uid: Pagene.Models
+  commentId: N:Pagene.Models
+  name: Pagene.Models
+  nameWithType: Pagene.Models
+  fullName: Pagene.Models

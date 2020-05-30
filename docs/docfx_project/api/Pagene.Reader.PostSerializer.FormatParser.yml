@@ -1,0 +1,603 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Reader.PostSerializer.FormatParser
+  commentId: T:Pagene.Reader.PostSerializer.FormatParser
+  id: FormatParser
+  parent: Pagene.Reader.PostSerializer
+  children:
+  - Pagene.Reader.PostSerializer.FormatParser.ParseTag(System.String)
+  - Pagene.Reader.PostSerializer.FormatParser.ParseTitle(System.String)
+  langs:
+  - csharp
+  - vb
+  name: FormatParser
+  nameWithType: FormatParser
+  fullName: Pagene.Reader.PostSerializer.FormatParser
+  type: Class
+  source:
+    id: FormatParser
+    path: ''
+    startLine: 807
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nParser for part of the format. Defines what the parser syntax sholud be, and how it works.\n"
+  example: []
+  syntax:
+    content: 'public class FormatParser : IFormatParser'
+    content.vb: >-
+      Public Class FormatParser
+
+          Implements IFormatParser
+  inheritance:
+  - System.Object
+  implements:
+  - Pagene.Reader.PostSerializer.IFormatParser
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Pagene.Reader.PostSerializer.FormatParser.ParseTag(System.String)
+  commentId: M:Pagene.Reader.PostSerializer.FormatParser.ParseTag(System.String)
+  id: ParseTag(System.String)
+  parent: Pagene.Reader.PostSerializer.FormatParser
+  langs:
+  - csharp
+  - vb
+  name: ParseTag(String)
+  nameWithType: FormatParser.ParseTag(String)
+  fullName: Pagene.Reader.PostSerializer.FormatParser.ParseTag(System.String)
+  type: Method
+  source:
+    id: ParseTag
+    path: ''
+    startLine: 814
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nParse Tag from certain format. The tag format is [tag1,tag2,tag3,...]\n"
+  example: []
+  syntax:
+    content: public IEnumerable<string> ParseTag(string raw)
+    parameters:
+    - id: raw
+      type: System.String
+      description: unparsed raw tag string.
+    return:
+      type: IEnumerable{System.String}
+      description: String of tags as IEnumerable.
+    content.vb: Public Function ParseTag(raw As String) As IEnumerable(Of String)
+  overload: Pagene.Reader.PostSerializer.FormatParser.ParseTag*
+  implements:
+  - Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Pagene.Reader.PostSerializer.FormatParser.ParseTitle(System.String)
+  commentId: M:Pagene.Reader.PostSerializer.FormatParser.ParseTitle(System.String)
+  id: ParseTitle(System.String)
+  parent: Pagene.Reader.PostSerializer.FormatParser
+  langs:
+  - csharp
+  - vb
+  name: ParseTitle(String)
+  nameWithType: FormatParser.ParseTitle(String)
+  fullName: Pagene.Reader.PostSerializer.FormatParser.ParseTitle(System.String)
+  type: Method
+  source:
+    id: ParseTitle
+    path: ''
+    startLine: 827
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Reader.PostSerializer
+  summary: "\nParse Title from certain format. The title format is same as markdown h1, &quot;# title&quot;.\n"
+  example: []
+  syntax:
+    content: public string ParseTitle(string raw)
+    parameters:
+    - id: raw
+      type: System.String
+      description: unparsed raw title string.
+    return:
+      type: System.String
+      description: Title name, string.
+    content.vb: Public Function ParseTitle(raw As String) As String
+  overload: Pagene.Reader.PostSerializer.FormatParser.ParseTitle*
+  implements:
+  - Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Pagene.Reader.PostSerializer
+  commentId: N:Pagene.Reader.PostSerializer
+  name: Pagene.Reader.PostSerializer
+  nameWithType: Pagene.Reader.PostSerializer
+  fullName: Pagene.Reader.PostSerializer
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Pagene.Reader.PostSerializer.IFormatParser
+  commentId: T:Pagene.Reader.PostSerializer.IFormatParser
+  parent: Pagene.Reader.PostSerializer
+  name: IFormatParser
+  nameWithType: IFormatParser
+  fullName: Pagene.Reader.PostSerializer.IFormatParser
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pagene.Reader.PostSerializer.FormatParser.ParseTag*
+  commentId: Overload:Pagene.Reader.PostSerializer.FormatParser.ParseTag
+  name: ParseTag
+  nameWithType: FormatParser.ParseTag
+  fullName: Pagene.Reader.PostSerializer.FormatParser.ParseTag
+- uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+  commentId: M:Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+  parent: Pagene.Reader.PostSerializer.IFormatParser
+  isExternal: true
+  name: ParseTag(String)
+  nameWithType: IFormatParser.ParseTag(String)
+  fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+  spec.csharp:
+  - uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+    name: ParseTag
+    nameWithType: IFormatParser.ParseTag
+    fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTag
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTag(System.String)
+    name: ParseTag
+    nameWithType: IFormatParser.ParseTag
+    fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTag
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: IEnumerable{System.String}
+  commentId: '!:IEnumerable{System.String}'
+  definition: IEnumerable`1
+  name: IEnumerable<String>
+  nameWithType: IEnumerable<String>
+  fullName: IEnumerable<System.String>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: IEnumerable(Of System.String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Pagene.Reader.PostSerializer.FormatParser.ParseTitle*
+  commentId: Overload:Pagene.Reader.PostSerializer.FormatParser.ParseTitle
+  name: ParseTitle
+  nameWithType: FormatParser.ParseTitle
+  fullName: Pagene.Reader.PostSerializer.FormatParser.ParseTitle
+- uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+  commentId: M:Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+  parent: Pagene.Reader.PostSerializer.IFormatParser
+  isExternal: true
+  name: ParseTitle(String)
+  nameWithType: IFormatParser.ParseTitle(String)
+  fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+  spec.csharp:
+  - uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+    name: ParseTitle
+    nameWithType: IFormatParser.ParseTitle
+    fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle(System.String)
+    name: ParseTitle
+    nameWithType: IFormatParser.ParseTitle
+    fullName: Pagene.Reader.PostSerializer.IFormatParser.ParseTitle
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )

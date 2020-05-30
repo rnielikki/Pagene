@@ -1,0 +1,499 @@
+### YamlMime:ManagedReference
+items:
+- uid: Pagene.Converter.Converter
+  commentId: T:Pagene.Converter.Converter
+  id: Converter
+  parent: Pagene.Converter
+  children:
+  - Pagene.Converter.Converter.#ctor(IFileSystem,System.String)
+  - Pagene.Converter.Converter.#ctor(System.String)
+  - Pagene.Converter.Converter.Convert
+  - Pagene.Converter.Converter.Initialize
+  langs:
+  - csharp
+  - vb
+  name: Converter
+  nameWithType: Converter
+  fullName: Pagene.Converter.Converter
+  type: Class
+  source:
+    id: Converter
+    path: ''
+    startLine: 116
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Converter
+  summary: "\nRead and generate post and tag list from certain format and certain path.\n"
+  example: []
+  syntax:
+    content: public class Converter
+    content.vb: Public Class Converter
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Pagene.Converter.Converter.#ctor(IFileSystem,System.String)
+  commentId: M:Pagene.Converter.Converter.#ctor(IFileSystem,System.String)
+  id: '#ctor(IFileSystem,System.String)'
+  parent: Pagene.Converter.Converter
+  langs:
+  - csharp
+  - vb
+  name: Converter(IFileSystem, String)
+  nameWithType: Converter.Converter(IFileSystem, String)
+  fullName: Pagene.Converter.Converter.Converter(IFileSystem, System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 122
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Converter
+  syntax:
+    content: public Converter(IFileSystem fileSystem, string path = "")
+    parameters:
+    - id: fileSystem
+      type: IFileSystem
+    - id: path
+      type: System.String
+    content.vb: Public Sub New(fileSystem As IFileSystem, path As String = "")
+  overload: Pagene.Converter.Converter.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Pagene.Converter.Converter.#ctor(System.String)
+  commentId: M:Pagene.Converter.Converter.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Pagene.Converter.Converter
+  langs:
+  - csharp
+  - vb
+  name: Converter(String)
+  nameWithType: Converter.Converter(String)
+  fullName: Pagene.Converter.Converter.Converter(System.String)
+  type: Constructor
+  source:
+    id: .ctor
+    path: ''
+    startLine: 130
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Converter
+  summary: "\nCreates instance for converting.\n"
+  example: []
+  syntax:
+    content: public Converter(string path = "")
+    parameters:
+    - id: path
+      type: System.String
+    content.vb: Public Sub New(path As String = "")
+  overload: Pagene.Converter.Converter.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Pagene.Converter.Converter.Initialize
+  commentId: M:Pagene.Converter.Converter.Initialize
+  id: Initialize
+  parent: Pagene.Converter.Converter
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: Converter.Initialize()
+  fullName: Pagene.Converter.Converter.Initialize()
+  type: Method
+  source:
+    id: Initialize
+    path: ''
+    startLine: 135
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Converter
+  summary: "\nCreates input directory if doesn&apos;t exist.\n"
+  example: []
+  syntax:
+    content: public void Initialize()
+    content.vb: Public Sub Initialize
+  overload: Pagene.Converter.Converter.Initialize*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Pagene.Converter.Converter.Convert
+  commentId: M:Pagene.Converter.Converter.Convert
+  id: Convert
+  parent: Pagene.Converter.Converter
+  langs:
+  - csharp
+  - vb
+  name: Convert()
+  nameWithType: Converter.Convert()
+  fullName: Pagene.Converter.Converter.Convert()
+  type: Method
+  source:
+    id: Convert
+    path: ''
+    startLine: 147
+  assemblies:
+  - cs.temp.dll
+  namespace: Pagene.Converter
+  summary: "\nStart converting data.\n"
+  remarks: See other documentation page about converting format and file path.
+  example: []
+  syntax:
+    content: public Task Convert()
+    return:
+      type: Task
+    content.vb: Public Function Convert As Task
+  overload: Pagene.Converter.Converter.Convert*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Pagene.Converter
+  commentId: N:Pagene.Converter
+  name: Pagene.Converter
+  nameWithType: Pagene.Converter
+  fullName: Pagene.Converter
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Pagene.Converter.Converter.#ctor*
+  commentId: Overload:Pagene.Converter.Converter.#ctor
+  name: Converter
+  nameWithType: Converter.Converter
+  fullName: Pagene.Converter.Converter.Converter
+- uid: IFileSystem
+  commentId: '!:IFileSystem'
+  isExternal: true
+  name: IFileSystem
+  nameWithType: IFileSystem
+  fullName: IFileSystem
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Pagene.Converter.Converter.Initialize*
+  commentId: Overload:Pagene.Converter.Converter.Initialize
+  name: Initialize
+  nameWithType: Converter.Initialize
+  fullName: Pagene.Converter.Converter.Initialize
+- uid: Pagene.Converter.Converter.Convert*
+  commentId: Overload:Pagene.Converter.Converter.Convert
+  name: Convert
+  nameWithType: Converter.Convert
+  fullName: Pagene.Converter.Converter.Convert
+- uid: Task
+  commentId: '!:Task'
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: Task
