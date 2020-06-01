@@ -38,7 +38,7 @@ namespace Pagene.Converter
             foreach (var tagPair in _tagMap)
             {
                 string path = $"{_dirName}{fileName++}.json";
-                var item = new TagInfo { Tag = tagPair.Key, Posts = tagPair.Value.Values };
+                var item = new TagInfo { Tag = tagPair.Key, Posts = tagPair.Value.Values.OrderByDescending(post=>post.Date) };
                 using var file = _fileSystem.File.Open(path, FileMode.Create);
                 await file.WriteAsync(JsonSerializer.Serialize(item));
                 if (!metaMap.ContainsKey(tagPair.Key))
