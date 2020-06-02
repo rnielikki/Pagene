@@ -49,8 +49,8 @@ Image path is same: `content/files`, which contains any attachments. These are n
 ## Notes
 
 * This reads creation date and modification date from metadata. They can be modified so this way is inaccurate, but:
- * There are no other way to know about real immutable creation/edit date.
- * You can get creation and modification date from converted data (reverse).
+   * There are no other way to know about real immutable creation/edit date.
+   * You can get creation and modification date from converted data (reverse).
  ## Markdown format
 * We use [MarkDig](https://github.com/lunet-io/markdig) for markdown parse engine. MarkDig is [CommonMark](https://spec.commonmark.org/0.29/#setext-heading-underline) compliant.
- * Some extensible markdown syntax may not work, such as underline, sub, sup etc. You can use HTML tag here instead.
+   * Some extensible markdown syntax may not work, such as underline, sub, sup etc. You can use HTML tag here instead.
