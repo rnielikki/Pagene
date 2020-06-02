@@ -1,0 +1,25 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run:  foreach ($file in (get-content ".target")){ dotnet restore $file }
+    - name: Build
+      run:  foreach ($file in (get-content ".target")){ dotnet build --configuration Release --no-restore $file }
+    - name: Test
+      run: foreach ($file in (Get-ChildItem *.csproj -Recurse | % { Write-Output $_.FullName})){ dotnet test --no-restore --verbosity normal $file }

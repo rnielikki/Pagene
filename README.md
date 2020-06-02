@@ -23,10 +23,10 @@ But hey, **this is for everyone**.
 1. **Search for open/closed issue first** before submitting a new issue.
 1. Suggestions, including feature suggestions, are welcomed, but they can be either accepted or rejected.
 1. You can report bug too, but don't say it isn't working without context. Bug report [should contain](https://coenjacobs.me/blog/2013/12/effective-bug-reports-on-github/):
- 1. *Title explains issue*
- 1. *Behavior*: What causes the bug
- 1. *Result*: Error message, if they have
- 1. *Version* of the program
+   1. *Title explains issue*
+   1. *Behavior*: What causes the bug
+   1. *Result*: Error message, if they have
+   1. *Version* of the program
 1. Or you can just ask usage.
 
  ### Other Way to contribution
