@@ -56,7 +56,7 @@ namespace Pagene.Converter.Tests
             const string title = "Random";
 
             var formatterMock = new Mock<IFormatter>();
-            formatterMock.Setup(obj => obj.GetBlogHead(It.IsAny<System.IO.Abstractions.IFileInfo>(), It.IsAny<System.IO.StreamReader>()))
+            formatterMock.Setup(obj => obj.GetBlogHeadAsync(It.IsAny<System.IO.Abstractions.IFileInfo>(), It.IsAny<System.IO.StreamReader>()))
                 .ReturnsAsync(new BlogEntry { Title = title, Date = dateTime, Summary = "--", Url = contentPath, Tags = new string[] { "book", "game", "music" }});
             var tagManager = new TagManager(fileSystem);
             var fileType = new PostFileType(fileSystem, formatterMock.Object, tagManager);

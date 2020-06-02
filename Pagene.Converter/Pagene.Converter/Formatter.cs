@@ -21,14 +21,14 @@ namespace Pagene.Converter
             _path = path;
             _parser = parser;
         }
-        internal Formatter(string path):this(path,new FormatParser()) { }
+        internal Formatter():this(RoutePathInfo.ContentPath, new FormatParser()) { }
         /// <summary>
         /// Remember to add summary using GetSummary() if you need.
         /// </summary>
         /// <param name="info"></param>
         /// <param name="reader"></param>
         /// <returns></returns>
-        async Task<BlogEntry> IFormatter.GetBlogHead(IFileInfo info, StreamReader reader)
+        async Task<BlogEntry> IFormatter.GetBlogHeadAsync(IFileInfo info, StreamReader reader)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Pagene.Converter
                 {
                     Title = title,
                     Date = info.CreationTimeUtc,
-                    Url = _path + info.Name,
+                    Url = Path.Combine(_path, Path.GetFileNameWithoutExtension(info.Name)).Replace('\\', '/'),
                     Summary = "",
                     Tags = tags
                 };
@@ -54,14 +54,14 @@ namespace Pagene.Converter
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-        async Task<BlogEntry> IFormatter.GetBlogEntry(IFileInfo info)
+        async Task<BlogEntry> IFormatter.GetBlogEntryAsync(IFileInfo info)
         {
             using StreamReader reader = new StreamReader(info.OpenRead());
-            var entry = await (this as IFormatter).GetBlogHead(info, reader).ConfigureAwait(false);
-            entry.Summary = await GetSummary(reader).ConfigureAwait(false);
+            var entry = await (this as IFormatter).GetBlogHeadAsync(info, reader).ConfigureAwait(false);
+            entry.Summary = await GetSummaryAsync(reader).ConfigureAwait(false);
             return entry;
         }
-        private async Task<string> GetSummary(StreamReader reader)
+        private async Task<string> GetSummaryAsync(StreamReader reader)
         {
             if (UseSummary)
             {

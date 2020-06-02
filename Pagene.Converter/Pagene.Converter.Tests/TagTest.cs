@@ -61,9 +61,9 @@ namespace Pagene.Converter.Tests
         [Fact]
         public void TagRemovalTest()
         {
-            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { Url = AppPathInfo.ContentPath+"uno.md" });
-            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese", "milk" }, new BlogEntry { Url = AppPathInfo.ContentPath+"dos.md" });
-            (var tags3, var entry3) = (new string[] { "apple", "juice", "milk", "cheese" }, new BlogEntry { Url = AppPathInfo.ContentPath+"tres.md" });
+            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { Url = AppPathInfo.ContentPath+"uno" });
+            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese", "milk" }, new BlogEntry { Url = AppPathInfo.ContentPath+"dos" });
+            (var tags3, var entry3) = (new string[] { "apple", "juice", "milk", "cheese" }, new BlogEntry { Url = AppPathInfo.ContentPath+"tres" });
             var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData>()
             {
                 { AppPathInfo.BlogTagPath+"milk.json", new MockFileData("{\"milk\":[]}") }
@@ -77,8 +77,8 @@ namespace Pagene.Converter.Tests
 
             var resultDictionary = GetTagMap(tagManager);
             resultDictionary.Should().NotContainKey("milk");
-            resultDictionary["cheese"].Should().ContainKey(AppPathInfo.ContentPath+"uno.md")
-                .And.NotContainKey(AppPathInfo.ContentPath+"dos.md");
+            resultDictionary["cheese"].Should().ContainKey(Path.Combine(RoutePathInfo.ContentPath, "uno").Replace('\\', '/'))
+                .And.NotContainKey(Path.Combine(RoutePathInfo.ContentPath, "dos").Replace('\\', '/'));
             tagManager.GetRemovedTags().Should().Contain("milk");
         }
         private ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> GetTagMap(TagManager instance) => typeof(TagManager)

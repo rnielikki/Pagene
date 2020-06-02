@@ -17,7 +17,7 @@ namespace Pagene.Converter.Tests
         public async System.Threading.Tasks.Task RecentPostSerializingTest()
         {
             var mockFormatter = new Mock<IFormatter>();
-            mockFormatter.Setup(formatter => formatter.GetBlogEntry(It.IsAny<IFileInfo>()))
+            mockFormatter.Setup(formatter => formatter.GetBlogEntryAsync(It.IsAny<IFileInfo>()))
                 .ReturnsAsync((IFileInfo fileInfo) => new BlogEntry
                 {
                     Title = "",

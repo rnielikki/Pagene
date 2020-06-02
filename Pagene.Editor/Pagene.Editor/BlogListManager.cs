@@ -66,7 +66,7 @@ namespace Pagene.Editor
             if (result == DialogResult.OK)
             {
                 ConvertButton.Enabled = false;
-                await _converter.Convert().ConfigureAwait(true);
+                await _converter.ConvertAsync().ConfigureAwait(true);
                 ConvertButton.Enabled = true;
                 _tags = _loader.GetTags();
                 MessageBox.Show("Done.");

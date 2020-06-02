@@ -1,3 +1,5 @@
+![.NET Core](https://github.com/rnielikki/Pagene/workflows/.NET%20Core/badge.svg?branch=master)
+
 # Pagene
 The simple Static Blog files generator.
 

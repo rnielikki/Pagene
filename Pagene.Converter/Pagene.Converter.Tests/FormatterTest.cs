@@ -19,19 +19,19 @@ namespace Pagene.Converter.Tests
         [MemberData(nameof(GetValidationSet))]
         public async System.Threading.Tasks.Task GetBlogHeadTest(IFileInfo sample, IEnumerable<string> tags, string title, bool valid)
         {
-            IFormatter formatter = new Formatter(AppPathInfo.ContentPath);
+            IFormatter formatter = new Formatter();
             formatter.DisableSummary();
             using var fileReader = new StreamReader(sample.Open(FileMode.Open));
             if (!valid)
             {
-                await Assert.ThrowsAsync<FormatException>(() => formatter.GetBlogHead(sample, fileReader)).ConfigureAwait(false);
+                await Assert.ThrowsAsync<FormatException>(() => formatter.GetBlogHeadAsync(sample, fileReader)).ConfigureAwait(false);
             }
             else
             {
-                var entry = await formatter.GetBlogHead(sample, fileReader).ConfigureAwait(false);
+                var entry = await formatter.GetBlogHeadAsync(sample, fileReader).ConfigureAwait(false);
                 var entryTags = entry.Tags;
                 entry.Title.Should().Be(title);
-                entry.Url.Should().Be(AppPathInfo.ContentPath+sample.Name);
+                entry.Url.Should().Be(Path.Combine(RoutePathInfo.ContentPath, Path.GetFileNameWithoutExtension(sample.Name)).Replace('\\', '/'));
                 entryTags.Should().BeEquivalentTo(tags);
             }
         }
@@ -52,7 +52,7 @@ namespace Pagene.Converter.Tests
             var info = new MockFileInfo(mockFileSystem, anyFile);
             mockFileSystem.AddFile(anyFile, new MockFileData(Environment.NewLine+ Environment.NewLine + rawData));
             formatter.SummaryLength = 7;
-            var summary = (await formatter.GetBlogEntry(info).ConfigureAwait(false)).Summary;
+            var summary = (await formatter.GetBlogEntryAsync(info).ConfigureAwait(false)).Summary;
 
             Assert.Equal(expected, summary);
         }

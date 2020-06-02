@@ -44,13 +44,13 @@ namespace Pagene.Converter
         /// Start converting data.
         /// </summary>
         /// <remarks>See other documentation page about converting format and file path.</remarks>
-        public async Task Convert()
+        public async Task ConvertAsync()
         {
             var tagManager = new TagManager(_fileSystem);
             var mdFileType = new PostFileType(_fileSystem, tagManager);
-            await ConvertPart(mdFileType).ConfigureAwait(false);
+            await ConvertPartAsync(mdFileType).ConfigureAwait(false);
         }
-        private async Task ConvertPart(FileType fileType)
+        private async Task ConvertPartAsync(FileType fileType)
         {
             string dir = fileType.FilePath;
             string hashDir = RealPath + AppPathInfo.HashPath + dir;
@@ -64,7 +64,7 @@ namespace Pagene.Converter
 
             try
             {
-                await Task.WhenAll(files.Select(file => ConvertFile(fileType, hashDir, crypto, file))).ConfigureAwait(false);
+                await Task.WhenAll(files.Select(file => ConvertFileAsync(fileType, hashDir, crypto, file))).ConfigureAwait(false);
                 await fileType.Clean(_hashFileMap.Keys).ConfigureAwait(false);
             }
             finally
@@ -73,7 +73,7 @@ namespace Pagene.Converter
             }
         }
 
-        private async Task ConvertFile(FileType fileType, string hashDir, HashAlgorithm crypto, IFileInfo file)
+        private async Task ConvertFileAsync(FileType fileType, string hashDir, HashAlgorithm crypto, IFileInfo file)
         {
             Stream fileStream = file.Open(FileMode.Open);
             Stream hashStream = null;
@@ -95,7 +95,7 @@ namespace Pagene.Converter
                 if (hash != null)
                 {
                     await fileType.SaveAsync(file, fileStream).ConfigureAwait(false);
-                    await _changeDetector.WriteHash(hash, hashStream).ConfigureAwait(false);
+                    await _changeDetector.WriteHashAsync(hash, hashStream).ConfigureAwait(false);
                 }
             }
             finally

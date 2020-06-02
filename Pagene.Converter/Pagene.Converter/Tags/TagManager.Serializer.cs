@@ -37,18 +37,12 @@ namespace Pagene.Converter
             int fileName = 0;
             foreach (var tagPair in _tagMap)
             {
-                string path = $"{_dirName}{fileName++}.json";
-                var item = new TagInfo { Tag = tagPair.Key, Posts = tagPair.Value.Values };
+                string path = $"{_dirName}{fileName}.json";
+                var item = new TagInfo { Tag = tagPair.Key, Posts = tagPair.Value.Values.OrderByDescending(post => post.Date) };
                 using var file = _fileSystem.File.Open(path, FileMode.Create);
                 await file.WriteAsync(JsonSerializer.Serialize(item));
-                if (!metaMap.ContainsKey(tagPair.Key))
-                {
-                    metaMap.Add(tagPair.Key, new TagMeta { Url = path, Count = 1 });
-                }
-                else
-                {
-                    metaMap[tagPair.Key].Count++;
-                }
+                metaMap.Add(tagPair.Key, new TagMeta { Url = Path.Combine(RoutePathInfo.TagPath, fileName.ToString()).Replace('\\', '/'), Count = tagPair.Value.Count });
+                fileName++;
             }
             await tagMeta.WriteAsync(JsonSerializer.Serialize(metaMap));
         }

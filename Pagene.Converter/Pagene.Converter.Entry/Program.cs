@@ -23,7 +23,7 @@ namespace Pagene.Converter.Entry
                         converter.Initialize();
                     return;
                 case "convert":
-                    await converter.Convert().ConfigureAwait(false);
+                    await converter.ConvertAsync().ConfigureAwait(false);
                     return;
                 default:
                     ShowCommandError();

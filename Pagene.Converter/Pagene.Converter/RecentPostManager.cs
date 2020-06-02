@@ -23,7 +23,7 @@ namespace Pagene.Converter
                 .GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly);
             var orderedFiles = files.OrderByDescending(file => file.CreationTimeUtc).Take(count);
             return await System.Threading.Tasks.Task.WhenAll(
-                    orderedFiles.Select(file =>_formatter.GetBlogEntry(file))
+                    orderedFiles.Select(file =>_formatter.GetBlogEntryAsync(file))
                 ).ConfigureAwait(false);
         }
         internal async System.Threading.Tasks.Task Serialize(BlogEntry[] entries)

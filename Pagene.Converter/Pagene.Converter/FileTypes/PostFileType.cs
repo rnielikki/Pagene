@@ -22,7 +22,7 @@ namespace Pagene.Converter.FileTypes
 
         internal PostFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
         {
-            _formatter = new Formatter(AppPathInfo.ContentPath);
+            _formatter = new Formatter();
             _tagManager = tagManager;
         }
 
@@ -32,11 +32,10 @@ namespace Pagene.Converter.FileTypes
             using Stream stream = GetFileStream(info.Name);
             fileStream.Position = 0;
             using StreamReader reader = new StreamReader(fileStream);
-            BlogEntry entry = await _formatter.GetBlogHead(info, reader).ConfigureAwait(false);
+            BlogEntry entry = await _formatter.GetBlogHeadAsync(info, reader).ConfigureAwait(false);
             BlogItem item = new BlogItem { Title = entry.Title, Content = await reader.ReadToEndAsync().ConfigureAwait(false), CreationDate = entry.Date, ModificationDate = info.LastWriteTimeUtc, Tags = entry.Tags };
             entry.Summary = _formatter.GetSummary(item.Content);
             await JsonSerializer.SerializeAsync(stream, item).ConfigureAwait(false);
-            //stream.Position = 0;
 
             //generate categories
             _tagManager.AddTag(entry.Tags, entry);

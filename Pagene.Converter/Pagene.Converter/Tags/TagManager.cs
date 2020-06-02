@@ -25,7 +25,7 @@ namespace Pagene.Converter
         }
         internal void AddTag(IEnumerable<string> tags, BlogEntry entry)
         {
-            var oldTags = SearchTagsByEntry(entry);
+            var oldTags = SearchTagsByEntry(entry.Url);
             //should be added
             foreach (string tag in tags.Except(oldTags))
             {
@@ -33,15 +33,15 @@ namespace Pagene.Converter
                 existEntries.AddOrUpdate(entry.Url, entry, (_, v) => v = entry);
             }
             //should be removed
-            RemoveTag(oldTags.Except(tags), entry);
+            RemoveTag(oldTags.Except(tags), entry.Url);
         }
-        private IEnumerable<string> SearchTagsByEntry(BlogEntry entry) => _tagMap.Where(kv => kv.Value.ContainsKey(entry.Url)).Select(kv => kv.Key);
-        internal void RemoveTag(IEnumerable<string> tags, BlogEntry entry)
+        private IEnumerable<string> SearchTagsByEntry(string url) => _tagMap.Where(kv => kv.Value.ContainsKey(url)).Select(kv => kv.Key);
+        internal void RemoveTag(IEnumerable<string> tags, string Url)
         {
             foreach (string tag in tags)
             {
                 var targetTagItems = _tagMap[tag];
-                targetTagItems.Remove(entry.Url, out _);
+                targetTagItems.Remove(Url, out _);
                 if (targetTagItems.Count == 0)
                 {
                     _tagMap.Remove(tag, out _);
@@ -58,9 +58,9 @@ namespace Pagene.Converter
         {
             foreach (string file in fileList)
             {
-                var entry = new BlogEntry { Url = AppPathInfo.ContentPath+file };
-                var tags = SearchTagsByEntry(entry);
-                RemoveTag(tags, entry);
+                var url = System.IO.Path.Combine(RoutePathInfo.ContentPath, System.IO.Path.GetFileNameWithoutExtension(file)).Replace('\\', '/');
+                var tags = SearchTagsByEntry(url);
+                RemoveTag(tags, url);
             }
         }
         private void CleanTags()
