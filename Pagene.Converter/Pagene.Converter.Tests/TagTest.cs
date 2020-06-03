@@ -61,9 +61,9 @@ namespace Pagene.Converter.Tests
         [Fact]
         public void TagRemovalTest()
         {
-            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { Url = AppPathInfo.ContentPath+"uno" });
-            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese", "milk" }, new BlogEntry { Url = AppPathInfo.ContentPath+"dos" });
-            (var tags3, var entry3) = (new string[] { "apple", "juice", "milk", "cheese" }, new BlogEntry { Url = AppPathInfo.ContentPath+"tres" });
+            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { Url = RoutePathInfo.ContentPath+"uno" });
+            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese", "milk" }, new BlogEntry { Url = RoutePathInfo.ContentPath+"dos" });
+            (var tags3, var entry3) = (new string[] { "apple", "juice", "milk", "cheese" }, new BlogEntry { Url = RoutePathInfo.ContentPath+"tres" });
             var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData>()
             {
                 { AppPathInfo.BlogTagPath+"milk.json", new MockFileData("{\"milk\":[]}") }

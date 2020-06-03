@@ -9,7 +9,7 @@ namespace Pagene.Editor
         public PreviewWindow(Models.BlogItem item)
         {
             InitializeComponent();
-            MessageBox.Show($"Sorry, We now have technical isseus, so we can't render it right now.{Environment.NewLine}Instead, we show HTML codes here.");
+            MessageBox.Show($"Sorry, Now we have technical isseus, so we can't render it right now.{Environment.NewLine}Instead, we show HTML codes here.");
             TitleBox.Text = item.Title;
             HtmlTagBox.Text = Markdown.ToHtml(item.Content);
         }

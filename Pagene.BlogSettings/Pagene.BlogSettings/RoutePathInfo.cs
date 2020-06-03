@@ -13,7 +13,7 @@ namespace Pagene.BlogSettings
         /// Link to the blog post, on your framework.
         /// for example, the reader will read from: https://example.com/{ContentPath}/your-blog-post-name
         /// </summary>
-        public const string ContentPath = "contents/";
+        public const string ContentPath = "posts/";
         /// <summary>
         /// Link to the tag list, on your framework.
         /// for example, the reader will read from: https://example.com/{TagPath}/0

@@ -17,5 +17,5 @@ See [API Documentation](../api/Pagene.Converter.Converter.html).
 TL;DR: The file are converted by writing:
 
 ```csharp
-new Pagene.Converter.Converter(/* path, optional */).Convert();
+new Pagene.Converter.Converter(/* path, optional */).ConvertAsync();
 ```

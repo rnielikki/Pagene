@@ -26,7 +26,7 @@ One "entry" model looks like this:
     {
         "Title": "Title",
         "Date": "2020-05-29T13:40:26.8565100Z",
-        "URL": "contents/filename.md",
+        "Url": "posts/filename",
         "Summary": "Content, but max 50 words",
         "Tags": ["tag","separated","by","comma"]
     }
@@ -43,14 +43,16 @@ Tags are inside `entries/tags`. `entries/tags` contains `meta.tags.json` and eac
 * *Url*: All tag file names are just numbers, and the numbers mean nothing but unique key.
 * *Count*: How many posts are using this tag.
 
+Currently the blog url and tag url are constant from [RoutePathInfo](../api/Pagene.BlogSettings.RoutePathInfo.html), but someday it will read from appsettings.json in future.
+
 ```json
 {
     "Tag1": {
-        "Url": "entries/tags/0.json",
+        "Url": "entries/tags/0",
         "Count": 1
     },
     "Tag2": {
-        "Url": "entries/tags/1.json",
+        "Url": "entries/tags/1",
         "Count": 3
     }
 }
