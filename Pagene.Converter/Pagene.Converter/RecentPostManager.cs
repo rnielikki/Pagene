@@ -21,7 +21,7 @@ namespace Pagene.Converter
         {
             var files = _fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogInputPath)
                 .GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly);
-            var orderedFiles = files.OrderByDescending(file => file.CreationTimeUtc).Take(count);
+            var orderedFiles = files.OrderByDescending(file => file.CreationTime).Take(count);
             return await System.Threading.Tasks.Task.WhenAll(
                     orderedFiles.Select(file =>_formatter.GetBlogEntryAsync(file))
                 ).ConfigureAwait(false);

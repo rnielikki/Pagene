@@ -33,11 +33,11 @@ namespace Pagene.Editor.Tests
             {
                 if (file.Name == newerFile)
                 {
-                    file.CreationTimeUtc = new DateTime(2020,10,2);
+                    file.CreationTime = new DateTime(2020,10,2);
                 }
                 else
                 {
-                    file.CreationTimeUtc = new DateTime(2015,10,day);
+                    file.CreationTime = new DateTime(2015,10,day);
                 }
                 day += 4;
             }

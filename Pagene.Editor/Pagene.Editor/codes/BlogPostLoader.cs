@@ -27,7 +27,7 @@ namespace Pagene.Editor
         {
             List<FileTitlePair> posts = new List<FileTitlePair>();
             var files = _fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogInputPath).GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly)
-                .OrderByDescending(file => file.CreationTimeUtc);
+                .OrderByDescending(file => file.CreationTime);
             foreach (var file in files)
             {
                 posts.Add(LoadTitle(file));

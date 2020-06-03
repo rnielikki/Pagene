@@ -15,8 +15,8 @@ namespace Pagene.Converter.Tests
         [Fact]
         public void TagAddingTest()
         {
-            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { Url = "this-is-one.md" });
-            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese" }, new BlogEntry { Url = "this-is-two.md" });
+            (var tags1, var entry1) = (new string[] { "cheese", "apple", "ice cream" }, new BlogEntry { Url = "this-is-one" });
+            (var tags2, var entry2) = (new string[] { "orange", "juice", "apple", "cheese" }, new BlogEntry { Url = "this-is-two" });
             var tagManager = new TagManager(new MockFileSystem());
             tagManager.AddTag(tags1, entry1);
             tagManager.AddTag(tags2, entry2);

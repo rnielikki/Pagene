@@ -31,7 +31,7 @@ namespace Pagene.Editor
             var files = new DirectoryInfo(AppPathInfo.BlogFilePath)
                 .GetFiles("*", SearchOption.TopDirectoryOnly)
                 .Where(IsImageFile)
-                .OrderByDescending(file => file.CreationTimeUtc);
+                .OrderByDescending(file => file.CreationTime);
             var imageList = new ImageList();
             imageList.ImageSize = new Size(48, 48);
             FileList.LargeImageList = imageList;

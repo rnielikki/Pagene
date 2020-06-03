@@ -38,7 +38,7 @@ namespace Pagene.Converter
                 return new BlogEntry
                 {
                     Title = title,
-                    Date = info.CreationTimeUtc,
+                    Date = info.CreationTime,
                     Url = Path.Combine(_path, Path.GetFileNameWithoutExtension(info.Name)).Replace('\\', '/'),
                     Summary = "",
                     Tags = tags

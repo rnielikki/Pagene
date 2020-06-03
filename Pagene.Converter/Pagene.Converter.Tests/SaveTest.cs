@@ -50,8 +50,8 @@ namespace Pagene.Converter.Tests
             var editDateTime = new System.DateTime(2020, 3, 25);
             var fileInfo = fileSystem.FileInfo.FromFileName(inputContentPath);
             using var fileStream = fileInfo.Open(System.IO.FileMode.Open);
-            fileInfo.CreationTimeUtc = dateTime;
-            fileInfo.LastWriteTimeUtc = editDateTime;
+            fileInfo.CreationTime = dateTime;
+            fileInfo.LastWriteTime = editDateTime;
 
             const string title = "Random";
 

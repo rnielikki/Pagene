@@ -15,7 +15,7 @@ A file inside `contents/` contains a post in this format:
 
 If modificatoin date is same as creation date, it means that the app is not edited since creation.
 
-> Note : All dates are provided with **UTC format**, so if you want local time, you must convert it manually.
+> Note : All dates are provided with local time, so if you want other time zone, you must convert it manually.
 
 ## Blog Entries
 Blog entries (inside `entries/` directory) are all JSON files.

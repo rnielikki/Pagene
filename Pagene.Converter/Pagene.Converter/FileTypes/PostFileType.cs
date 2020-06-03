@@ -33,7 +33,7 @@ namespace Pagene.Converter.FileTypes
             fileStream.Position = 0;
             using StreamReader reader = new StreamReader(fileStream);
             BlogEntry entry = await _formatter.GetBlogHeadAsync(info, reader).ConfigureAwait(false);
-            BlogItem item = new BlogItem { Title = entry.Title, Content = await reader.ReadToEndAsync().ConfigureAwait(false), CreationDate = entry.Date, ModificationDate = info.LastWriteTimeUtc, Tags = entry.Tags };
+            BlogItem item = new BlogItem { Title = entry.Title, Content = await reader.ReadToEndAsync().ConfigureAwait(false), CreationDate = entry.Date, ModificationDate = info.LastWriteTime, Tags = entry.Tags };
             entry.Summary = _formatter.GetSummary(item.Content);
             await JsonSerializer.SerializeAsync(stream, item).ConfigureAwait(false);
 

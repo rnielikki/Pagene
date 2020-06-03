@@ -21,7 +21,7 @@ namespace Pagene.Converter.Tests
                 .ReturnsAsync((IFileInfo fileInfo) => new BlogEntry
                 {
                     Title = "",
-                    Date = fileInfo.CreationTimeUtc,
+                    Date = fileInfo.CreationTime,
                     Url = fileInfo.Name,
                     Tags = new string[] { }
                 }
@@ -40,7 +40,7 @@ namespace Pagene.Converter.Tests
             {
                 using var txtReader = file.OpenText();
                 string rawDate = txtReader.ReadToEnd();
-                file.CreationTimeUtc = DateTime.ParseExact(rawDate, "yyyy/M/d", System.Globalization.CultureInfo.InvariantCulture);
+                file.CreationTime = DateTime.ParseExact(rawDate, "yyyy/M/d", System.Globalization.CultureInfo.InvariantCulture);
             }
             var manager = new RecentPostManager(fileSystem, mockFormatter.Object);
             var recentPosts = await manager.GetRecentPosts(3).ConfigureAwait(false);
