@@ -1,4 +1,5 @@
 ﻿using System;
+using Pagene.BlogSettings;
 
 namespace Pagene.Editor
 {
@@ -53,7 +54,7 @@ namespace Pagene.Editor
             {
                 return;
             }
-            _markdown.Image(BlogSettings.AppPathInfo.FilePath+senderWindow.FileName);
+            _markdown.Image(AppPathInfo.BlogFilePath + senderWindow.FileName);
         }
         private void AddCodeLanguage(object sender, EventArgs e)
         {

@@ -44,11 +44,11 @@ namespace Pagene.Editor
                 var normalized = NormalizeDiacritics(title);
                 IdnMapping idn = new IdnMapping();
                 idn.AllowUnassigned = true;
-                var resultFileName = ReplaceSpaces(
-                    RemoveInvalidChars
-                    (idn.GetAscii(normalized)
+                var resultFileName = System.Web.HttpUtility.UrlEncode(
+                    ReplaceSpaces(
+                        RemoveInvalidChars(idn.GetAscii(normalized))
                     )
-                ).ToLower();
+                ).Replace('%', '_').ToLower();
                 if (string.IsNullOrEmpty(resultFileName))
                 {
                     return GenerateFromDate();
