@@ -17,7 +17,7 @@ namespace Pagene.Converter.FileTypes
         protected readonly IFileSystem _fileSystem;
         internal FileType(IFileSystem fileSystem, string path)
         {
-            FilePath = Path.Combine(Converter.RealPath, path);
+            FilePath = path;
             _fileSystem = fileSystem;
             if (!fileSystem.Directory.Exists(FilePath))
             {
@@ -56,7 +56,7 @@ namespace Pagene.Converter.FileTypes
            foreach (var fileName in files)
             {
                 _fileSystem.File.Delete(Path.Combine(FilePath, ChangeExtension(fileName)));
-                _fileSystem.File.Delete(Path.Combine(AppPathInfo.HashPath, FilePath, fileName+".hashfile"));
+                _fileSystem.File.Delete(Path.Combine(AppPathInfo.BlogHashPath, FilePath, fileName+".hashfile"));
             }
         }
     }

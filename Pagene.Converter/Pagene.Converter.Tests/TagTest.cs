@@ -40,7 +40,7 @@ namespace Pagene.Converter.Tests
             );
             var tagManager = new TagManager(mockFileSystem);
             var mockValue = new ConcurrentDictionary<string, BlogEntry>();
-            mockValue.TryAdd("test.md", new BlogEntry { Title = "Custom Data", Url = AppPathInfo.ContentPath+"test.md", });
+            mockValue.TryAdd("test.md", new BlogEntry { Title = "Custom Data", Url = AppPathInfo.BlogContentPath+"test.md", });
             GetTagMap(tagManager).TryAdd("someTag", mockValue);
             await tagManager.Serialize().ConfigureAwait(false);
 

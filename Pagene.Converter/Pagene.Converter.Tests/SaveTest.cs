@@ -38,7 +38,7 @@ namespace Pagene.Converter.Tests
         public async Task SaveFormatTest()
         {
             const string content = "asdfasdf";
-            string contentPath = $"{AppPathInfo.ContentPath}something.json";
+            string contentPath = $"{AppPathInfo.BlogContentPath}something.json";
             string inputContentPath = AppPathInfo.InputPath+contentPath;
 
             MockFileSystem fileSystem = new MockFileSystem(

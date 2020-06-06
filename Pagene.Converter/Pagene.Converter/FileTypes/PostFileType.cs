@@ -14,13 +14,13 @@ namespace Pagene.Converter.FileTypes
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
         private bool modified;
-        internal PostFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
+        internal PostFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, AppPathInfo.BlogContentPath)
         {
             _formatter = formatter;
             _tagManager = tagManager;
         }
 
-        internal PostFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
+        internal PostFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, AppPathInfo.BlogContentPath)
         {
             _formatter = new Formatter();
             _tagManager = tagManager;

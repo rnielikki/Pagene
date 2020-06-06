@@ -10,7 +10,7 @@ namespace Pagene.Converter
     {
         private readonly IFileSystem _fileSystem;
         private readonly IFormatter _formatter;
-        private readonly string fileName = AppPathInfo.EntryPath + "recent.json";
+        private readonly string fileName = AppPathInfo.BlogEntryPath + "recent.json";
 
         internal RecentPostManager(IFileSystem fileSystem, IFormatter formatter)
         {

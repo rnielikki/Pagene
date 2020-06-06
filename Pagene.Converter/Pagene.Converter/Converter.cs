@@ -18,26 +18,24 @@ namespace Pagene.Converter
         private readonly IFileSystem _fileSystem;
         private ChangeDetector _changeDetector;
         private Dictionary<string, IFileInfo> _hashFileMap;
-        internal static string RealPath { get; private set; } = "";
-        public Converter(IFileSystem fileSystem, string path = "")
+        public Converter(IFileSystem fileSystem)
         {
             _fileSystem = fileSystem;
-            RealPath = string.IsNullOrEmpty(path) ? "" : path;
         }
         /// <summary>
         /// Creates instance for converting.
         /// </summary>
-        public Converter(string path = "") : this(new FileSystem(), path) { }
+        public Converter() : this(new FileSystem()) { }
 
         /// <summary>
         /// Creates input directory if doesn't exist.
         /// </summary>
         public void Initialize()
         {
-            InitDirectory(RealPath + AppPathInfo.BlogInputPath);
-            InitDirectory(RealPath + AppPathInfo.BlogFilePath);
-            InitDirectory(RealPath + AppPathInfo.BlogTagPath);
-            InitDirectory(RealPath + AppPathInfo.HashPath);
+            InitDirectory(AppPathInfo.BlogInputPath);
+            InitDirectory(AppPathInfo.BlogFilePath);
+            InitDirectory(AppPathInfo.BlogTagPath);
+            InitDirectory(AppPathInfo.BlogHashPath);
         }
 
         /// <summary>
@@ -53,8 +51,8 @@ namespace Pagene.Converter
         private async Task ConvertPartAsync(FileType fileType)
         {
             string dir = fileType.FilePath;
-            string hashDir = RealPath + AppPathInfo.HashPath + dir;
-            var files = InitDirectory(RealPath + AppPathInfo.InputPath + dir)
+            string hashDir = AppPathInfo.BlogHashPath + dir;
+            var files = InitDirectory(AppPathInfo.InputPath + dir)
                 .GetFiles(fileType.Type, SearchOption.TopDirectoryOnly);
             _hashFileMap = InitDirectory(hashDir)
                 .GetFiles($"{fileType.Type}.hashfile", SearchOption.TopDirectoryOnly)

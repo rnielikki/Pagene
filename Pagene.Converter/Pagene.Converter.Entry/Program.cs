@@ -11,12 +11,7 @@ namespace Pagene.Converter.Entry
                 ShowCommandError();
                 return;
             }
-            string path = "";
-            if (args.Length > 1)
-            {
-                path = args[1];
-            }
-            var converter = new Converter(path);
+            var converter = new Converter();
             switch (args[0])
             {
                 case "init":
@@ -30,6 +25,6 @@ namespace Pagene.Converter.Entry
                     return;
             }
         }
-        private static void ShowCommandError() => Console.WriteLine("Parameters usage: (init|convert) (path:Optional)");
+        private static void ShowCommandError() => Console.WriteLine("Parameters usage: (init|convert)");
     }
 }
