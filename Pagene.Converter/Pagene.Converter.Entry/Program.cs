@@ -17,14 +17,21 @@ namespace Pagene.Converter.Entry
                 case "init":
                         converter.Initialize();
                     return;
-                case "convert":
-                    await converter.ConvertAsync().ConfigureAwait(false);
+                case "clean":
+                    converter.Clean();
+                    return;
+                case "build":
+                    await converter.BuildAsync().ConfigureAwait(false);
+                    return;
+                case "rebuild":
+                    converter.Clean();
+                    await converter.BuildAsync().ConfigureAwait(false);
                     return;
                 default:
                     ShowCommandError();
                     return;
             }
         }
-        private static void ShowCommandError() => Console.WriteLine("Parameters usage: (init|convert)");
+        private static void ShowCommandError() => Console.WriteLine("Parameters usage: (init|clean|build|rebuild)");
     }
 }

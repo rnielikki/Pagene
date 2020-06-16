@@ -13,12 +13,12 @@ namespace Pagene.Converter
     /// <summary>
     /// Read and generate post and tag list from certain format and certain path.
     /// </summary>
-    public class Converter
+    public partial class Converter
     {
         private readonly IFileSystem _fileSystem;
         private ChangeDetector _changeDetector;
         private Dictionary<string, IFileInfo> _hashFileMap;
-        public Converter(IFileSystem fileSystem)
+        internal Converter(IFileSystem fileSystem)
         {
             _fileSystem = fileSystem;
         }
@@ -28,21 +28,10 @@ namespace Pagene.Converter
         public Converter() : this(new FileSystem()) { }
 
         /// <summary>
-        /// Creates input directory if doesn't exist.
-        /// </summary>
-        public void Initialize()
-        {
-            InitDirectory(AppPathInfo.BlogInputPath);
-            InitDirectory(AppPathInfo.BlogFilePath);
-            InitDirectory(AppPathInfo.BlogTagPath);
-            InitDirectory(AppPathInfo.BlogHashPath);
-        }
-
-        /// <summary>
         /// Start converting data.
         /// </summary>
         /// <remarks>See other documentation page about converting format and file path.</remarks>
-        public async Task ConvertAsync()
+        public async Task BuildAsync()
         {
             var tagManager = new TagManager(_fileSystem);
             var mdFileType = new PostFileType(_fileSystem, tagManager);
@@ -100,19 +89,6 @@ namespace Pagene.Converter
             {
                 fileStream.Close();
                 hashStream?.Close();
-            }
-        }
-
-        private IDirectoryInfo InitDirectory(string path)
-        {
-            var info = _fileSystem.DirectoryInfo.FromDirectoryName(path);
-            if (!info.Exists)
-            {
-                return _fileSystem.Directory.CreateDirectory(path);
-            }
-            else
-            {
-                return info;
             }
         }
     }

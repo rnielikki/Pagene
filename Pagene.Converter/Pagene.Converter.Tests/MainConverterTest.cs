@@ -11,9 +11,9 @@ namespace Pagene.Converter.Tests
         {
             var fileSystem = ValidFileSystem;
             var converter = new Converter(fileSystem);
-            await converter.ConvertAsync().ConfigureAwait(false);
+            await converter.BuildAsync().ConfigureAwait(false);
             Assert.Equal(2, fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogContentPath).GetFiles().Length);
-            await converter.ConvertAsync().ConfigureAwait(false);
+            await converter.BuildAsync().ConfigureAwait(false);
         }
     }
 }
