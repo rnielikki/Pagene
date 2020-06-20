@@ -2,6 +2,10 @@
 
  ╰(*°▽°*)╯
 
- Which do you want, Getting Started or API Documentation?
+Oh hello there, Thank you for choosing our app!
 
- For more information, see [the repo page](https://github.com/rnielikki/Pagene).
+You may want to create or edit **[the setting file](help/appsettings.html)**, don't you?
+
+Which do you want, [Getting Started](help/index.html) or [API Documentation](api/index.html)?
+
+For more information, see [the repo page](https://github.com/rnielikki/Pagene).

@@ -21,6 +21,7 @@ namespace Pagene.Converter
         internal Converter(IFileSystem fileSystem)
         {
             _fileSystem = fileSystem;
+            AppConfigLoader.LoadConfig();
         }
         /// <summary>
         /// Creates instance for converting.
