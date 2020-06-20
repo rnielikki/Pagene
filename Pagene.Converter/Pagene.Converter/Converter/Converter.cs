@@ -35,9 +35,9 @@ namespace Pagene.Converter
         {
             var tagManager = new TagManager(_fileSystem);
             var mdFileType = new PostFileType(_fileSystem, tagManager);
-            await ConvertPartAsync(mdFileType).ConfigureAwait(false);
+            await BuildPartAsync(mdFileType).ConfigureAwait(false);
         }
-        private async Task ConvertPartAsync(FileType fileType)
+        private async Task BuildPartAsync(FileType fileType)
         {
             string dir = fileType.FilePath;
             string hashDir = AppPathInfo.BlogHashPath + dir;
@@ -51,7 +51,7 @@ namespace Pagene.Converter
 
             try
             {
-                await Task.WhenAll(files.Select(file => ConvertFileAsync(fileType, hashDir, crypto, file))).ConfigureAwait(false);
+                await Task.WhenAll(files.Select(file => BuildFileAsync(fileType, hashDir, crypto, file))).ConfigureAwait(false);
                 await fileType.Clean(_hashFileMap.Keys).ConfigureAwait(false);
             }
             finally
@@ -60,7 +60,7 @@ namespace Pagene.Converter
             }
         }
 
-        private async Task ConvertFileAsync(FileType fileType, string hashDir, HashAlgorithm crypto, IFileInfo file)
+        private async Task BuildFileAsync(FileType fileType, string hashDir, HashAlgorithm crypto, IFileInfo file)
         {
             Stream fileStream = file.Open(FileMode.Open);
             Stream hashStream = null;

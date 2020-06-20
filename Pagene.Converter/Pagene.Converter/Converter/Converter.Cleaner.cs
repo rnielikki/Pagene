@@ -6,10 +6,28 @@ namespace Pagene.Converter
     {
         /// <summary>
         /// Cleans all hash (cache).
-        /// <remarks>This removes the whole hash directory.</remarks>
         /// </summary>
-        public void Clean() {
-            _fileSystem.Directory.Delete(AppPathInfo.BlogHashPath, true);
+        /// <remarks>This removes the whole hash directory.</remarks>
+        public void Clean() => _fileSystem.Directory.Delete(AppPathInfo.BlogHashPath, true);
+        /// <summary>
+        /// Cleans all outputs and rebuilds from first.
+        /// </summary>
+        /// <remarks>This does not remove attachment files inside Blog Content.</remarks>
+        public async System.Threading.Tasks.Task RebuildAsync()
+        {
+            Clean();
+            CleanFiles(AppPathInfo.BlogContentPath);
+            CleanFiles(AppPathInfo.BlogEntryPath);
+            CleanFiles(AppPathInfo.BlogTagPath);
+            await BuildAsync().ConfigureAwait(false);
+        }
+        private void CleanFiles(string path)
+        {
+            var directory = _fileSystem.DirectoryInfo.FromDirectoryName(path);
+            foreach (var file in directory.GetFiles("*", System.IO.SearchOption.TopDirectoryOnly))
+            {
+                file.Delete();
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Pagene.Editor.Tests
             );
             NamingLogic namer = new NamingLogic(fileSystem);
             var result = namer.GetName("Tämä on testI\\");
-            var shouldBe = "tama-on-testi.md";
+            const string shouldBe = "tama-on-testi.md";
             Assert.Equal(shouldBe, result);
             fileSystem.File.WriteAllBytes(AppPathInfo.BlogInputPath+"tama-on-testi.md", new byte[] { });
             fileSystem.File.WriteAllBytes(AppPathInfo.BlogInputPath+"tama-on-testi-0.md", new byte[] { });

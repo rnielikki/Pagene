@@ -11,12 +11,12 @@ namespace Pagene.BlogSettings
         /// Input folder path name. Files from this path will be converted.
         /// </summary>
         /// <note>This will be used for separating input files from converted files in the future.</note>
-        public const string InputPath = "inputs/";
+        public static string InputPath { get; internal set; } = "inputs/";
         /// <summary>
         /// Output folder root, which contains all converted contens and tag files.
         /// </summary>
         /// <note>This will be used for separating input files from converted files in the future.</note>
-        public const string OutputPath = "";
+        public static string OutputPath { get; internal set; } = "";
         /// <summary>
         /// Content path name for blog posts. This path contains blog posts.
         /// It affaects to <see cref="InputPath"/> too, where post files before converting are.
@@ -44,27 +44,27 @@ namespace Pagene.BlogSettings
         /// Path, which cRelative to main program (or user-defined) path.ontains unconverted blog posts. (*.md format) Relative to main program (or user-defined) path.
         /// </summary>
         /// <note>Converting from subdirectory of this directory doesn't work.</note>
-        public static readonly string BlogInputPath = Path.Combine(InputPath, ContentPath);
+        public static string BlogInputPath { get => Path.Combine(InputPath, ContentPath); }
         /// <summary>
         /// Attachment file path relative to the output path.
         /// Can contain not only pictures, but texts, documents, codes and anything etc.
         /// </summary>
-        public static readonly string BlogFilePath = Path.Combine(OutputPath, ContentPath, FilePath);
+        public static string BlogFilePath { get => Path.Combine(OutputPath, ContentPath, FilePath); }
         /// <summary>
         /// Content file path relative to the output path.
         /// </summary>
-        public static readonly string BlogContentPath = Path.Combine(OutputPath, ContentPath);
+        public static string BlogContentPath { get => Path.Combine(OutputPath, ContentPath); }
         /// <summary>
         /// Entry file path relative to the output path.
         /// </summary>
-        public static readonly string BlogEntryPath = Path.Combine(OutputPath, EntryPath);
+        public static string BlogEntryPath { get => Path.Combine(OutputPath, EntryPath); }
         /// <summary>
         /// Tag path. Rlative to main program (or user-defined) path.
         /// </summary>
-        public static readonly string BlogTagPath = Path.Combine(BlogEntryPath, TagPath);
+        public static string BlogTagPath { get => Path.Combine(BlogEntryPath, TagPath); }
         /// <summary>
         /// Hash file Path. Hash stores each file hash to check if the file has changed.
         /// </summary>
-        public static readonly string BlogHashPath = Path.Combine(InputPath, HashPath);
+        public static string BlogHashPath { get => Path.Combine(InputPath, HashPath); }
     }
 }

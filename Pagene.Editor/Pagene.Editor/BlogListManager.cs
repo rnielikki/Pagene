@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pagene.BlogSettings;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -66,7 +67,7 @@ namespace Pagene.Editor
             if (result == DialogResult.OK)
             {
                 ConvertButton.Enabled = false;
-                await _converter.ConvertAsync().ConfigureAwait(true);
+                await _converter.BuildAsync().ConfigureAwait(true);
                 ConvertButton.Enabled = true;
                 _tags = _loader.GetTags();
                 MessageBox.Show("Done.");

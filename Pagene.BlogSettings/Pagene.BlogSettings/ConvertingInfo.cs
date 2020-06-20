@@ -8,14 +8,14 @@
         /// <summary>
         /// Defines how many files are appeared on recent.json.
         /// </summary>
-        public const int RecentPostsLength = 10;
+        public static int RecentPostsCount { get; internal set; } = 10;
         /// <summary>
         /// Defines if summary is generated to blog entry.
         /// </summary>
-        public const bool UseSummary = true;
+        public static bool UseSummary { get; internal set; } = true;
         /// <summary>
         /// Defines length of the summary. Useless if <see cref="UseSummary"/> is false.
         /// </summary>
-        public const int SummaryLength = 80;
+        public static int SummaryLength { get; internal set; } = 80;
     }
 }

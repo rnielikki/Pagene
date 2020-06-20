@@ -24,8 +24,7 @@ namespace Pagene.Converter.Entry
                     await converter.BuildAsync().ConfigureAwait(false);
                     return;
                 case "rebuild":
-                    converter.Clean();
-                    await converter.BuildAsync().ConfigureAwait(false);
+                    await converter.RebuildAsync();
                     return;
                 default:
                     ShowCommandError();

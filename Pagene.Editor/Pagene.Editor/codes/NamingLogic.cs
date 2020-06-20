@@ -10,10 +10,10 @@ namespace Pagene.Editor
 {
     internal class NamingLogic
     {
-        private Regex _spaceRegex = new Regex("[ ]+");
-        private Regex _invalidCharsRegex = new Regex($"[{Regex.Escape(new string(System.IO.Path.GetInvalidFileNameChars()))}]+");
+        private readonly Regex _spaceRegex = new Regex("[ ]+");
+        private readonly Regex _invalidCharsRegex = new Regex($"[{Regex.Escape(new string(System.IO.Path.GetInvalidFileNameChars()))}]+");
         private static readonly string[] _reserved = new string[] { "con", "prn", "aux", "nul", "com1", "com2", "com3", "com4", "com5", "com6", "com7", "com8", "com9", "lpt1", "lpt2", "lpt3", "lpt4", "lpt5", "lpt6", "lpt7", "lpt8", "lpt9" };
-        private IFileSystem _fileSystem;
+        private readonly IFileSystem _fileSystem;
         internal NamingLogic(IFileSystem fileSystem)
         {
             _fileSystem = fileSystem;
@@ -42,8 +42,10 @@ namespace Pagene.Editor
             try
             {
                 var normalized = NormalizeDiacritics(title);
-                IdnMapping idn = new IdnMapping();
-                idn.AllowUnassigned = true;
+                IdnMapping idn = new IdnMapping
+                {
+                    AllowUnassigned = true
+                };
                 var resultFileName = System.Web.HttpUtility.UrlEncode(
                     ReplaceSpaces(
                         RemoveInvalidChars(idn.GetAscii(normalized))
