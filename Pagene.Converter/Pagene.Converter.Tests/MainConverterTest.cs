@@ -1,6 +1,7 @@
 ﻿using static Pagene.Converter.Tests.Models.FormatterTestModel;
 using Xunit;
 using Pagene.BlogSettings;
+using FluentAssertions;
 
 namespace Pagene.Converter.Tests
 {
@@ -11,8 +12,11 @@ namespace Pagene.Converter.Tests
         {
             var fileSystem = ValidFileSystem;
             var converter = new Converter(fileSystem);
+            converter.Initialize();
             await converter.BuildAsync().ConfigureAwait(false);
-            Assert.Equal(2, fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogContentPath).GetFiles().Length);
+            fileSystem.DirectoryInfo.FromDirectoryName(System.IO.Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath)).GetFiles().Length.Should().Be(2);
+            fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogTagPath).GetFiles().Length.Should().BeGreaterThan(1);
+            fileSystem.File.Exists(System.IO.Path.Combine(AppPathInfo.BlogEntryPath, "recent.json")).Should().BeTrue();
             await converter.BuildAsync().ConfigureAwait(false);
         }
     }

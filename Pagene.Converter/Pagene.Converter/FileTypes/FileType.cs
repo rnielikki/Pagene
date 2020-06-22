@@ -9,24 +9,14 @@ namespace Pagene.Converter.FileTypes
     internal abstract class FileType
     {
         internal string FilePath { get; }
-
         internal virtual string Type { get; }
         internal virtual string OutputType { get; }
 
-        protected readonly IDirectoryInfo Directory;
         protected readonly IFileSystem _fileSystem;
         internal FileType(IFileSystem fileSystem, string path)
         {
             FilePath = path;
             _fileSystem = fileSystem;
-            if (!fileSystem.Directory.Exists(FilePath))
-            {
-                Directory = fileSystem.Directory.CreateDirectory(FilePath);
-            }
-            else
-            {
-                Directory = fileSystem.DirectoryInfo.FromDirectoryName(FilePath);
-            }
         }
 
         internal virtual async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
@@ -44,7 +34,7 @@ namespace Pagene.Converter.FileTypes
         }
         protected Stream GetFileStream(string fileName)
         {
-            string targetPath = Path.Combine(FilePath, ChangeExtension(fileName));
+            string targetPath = Path.Combine(AppPathInfo.OutputPath, FilePath, ChangeExtension(fileName));
             return _fileSystem.File.Open(targetPath, FileMode.OpenOrCreate);
         }
 
@@ -55,7 +45,7 @@ namespace Pagene.Converter.FileTypes
         {
            foreach (var fileName in files)
             {
-                _fileSystem.File.Delete(Path.Combine(FilePath, ChangeExtension(fileName)));
+                _fileSystem.File.Delete(Path.Combine(AppPathInfo.OutputPath, FilePath, ChangeExtension(fileName)));
                 _fileSystem.File.Delete(Path.Combine(AppPathInfo.BlogHashPath, FilePath, fileName+".hashfile"));
             }
         }

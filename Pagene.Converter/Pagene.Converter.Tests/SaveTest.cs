@@ -38,17 +38,16 @@ namespace Pagene.Converter.Tests
         public async Task SaveFormatTest()
         {
             const string content = "asdfasdf";
-            string contentPath = $"{AppPathInfo.BlogContentPath}something.json";
-            string inputContentPath = AppPathInfo.InputPath+contentPath;
+            string contentPath = $"{Models.FormatterTestModel.OutputContentPath}something.json";
 
             MockFileSystem fileSystem = new MockFileSystem(
                       new Dictionary<string, MockFileData>(){
-                    { inputContentPath, new MockFileData(content) },
+                    { contentPath, new MockFileData(content) },
                       }
                   );
             var dateTime = new System.DateTime(2020, 2, 2);
             var editDateTime = new System.DateTime(2020, 3, 25);
-            var fileInfo = fileSystem.FileInfo.FromFileName(inputContentPath);
+            var fileInfo = fileSystem.FileInfo.FromFileName(contentPath);
             using var fileStream = fileInfo.Open(System.IO.FileMode.Open);
             fileInfo.CreationTime = dateTime;
             fileInfo.LastWriteTime = editDateTime;

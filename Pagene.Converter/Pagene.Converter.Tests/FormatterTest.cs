@@ -44,7 +44,7 @@ namespace Pagene.Converter.Tests
             var parserMock = new Mock<IFormatParser>();
             parserMock.Setup(parser => parser.ParseTag(It.IsAny<string>())).Returns(Enumerable.Empty<string>);
             parserMock.Setup(parser => parser.ParseTitle(It.IsAny<string>())).Returns(string.Empty);
-            IFormatter formatter = new Formatter(AppPathInfo.BlogContentPath, parserMock.Object);
+            IFormatter formatter = new Formatter(Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath), parserMock.Object);
             formatter.EnableSummary();
 
             var mockFileSystem = new MockFileSystem();

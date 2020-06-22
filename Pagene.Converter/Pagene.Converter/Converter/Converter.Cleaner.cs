@@ -16,7 +16,7 @@ namespace Pagene.Converter
         public async System.Threading.Tasks.Task RebuildAsync()
         {
             Clean();
-            CleanFiles(AppPathInfo.BlogContentPath);
+            CleanFiles(System.IO.Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath));
             CleanFiles(AppPathInfo.BlogEntryPath);
             CleanFiles(AppPathInfo.BlogTagPath);
             await BuildAsync().ConfigureAwait(false);

@@ -23,10 +23,12 @@ this one has no title.";
 
 This should thorw an error.";
 
-        private static readonly string filePath1 = AppPathInfo.BlogInputPath+"test.md";
-        private static readonly string filePath2 = AppPathInfo.BlogInputPath+"test2.md";
-        private static readonly string errorPath1 = AppPathInfo.BlogInputPath+"err1.md";
-        private static readonly string errorPath2 = AppPathInfo.BlogInputPath+"err2.md";
+        internal static readonly string InputContentPath = System.IO.Path.Combine(AppPathInfo.InputPath, AppPathInfo.ContentPath);
+        internal static readonly string OutputContentPath = System.IO.Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath);
+        private static readonly string filePath1 = InputContentPath + "test.md";
+        private static readonly string filePath2 = InputContentPath + "test2.md";
+        private static readonly string errorPath1 = InputContentPath + "err1.md";
+        private static readonly string errorPath2 = InputContentPath + "err2.md";
         internal static readonly MockFileSystem fileSystem = new MockFileSystem(
              new Dictionary<string, MockFileData>(){
                     { filePath1, new MockFileData(content1) },

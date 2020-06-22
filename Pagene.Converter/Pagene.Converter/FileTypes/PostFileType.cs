@@ -14,13 +14,13 @@ namespace Pagene.Converter.FileTypes
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
         private bool modified;
-        internal PostFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, AppPathInfo.BlogContentPath)
+        internal PostFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = formatter;
             _tagManager = tagManager;
         }
 
-        internal PostFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, AppPathInfo.BlogContentPath)
+        internal PostFileType(IFileSystem fileSystem, TagManager tagManager):base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = new Formatter();
             _tagManager = tagManager;
@@ -49,7 +49,7 @@ namespace Pagene.Converter.FileTypes
 
             await _tagManager.Serialize().ConfigureAwait(false);
             var postManager = new RecentPostManager(_fileSystem, _formatter);
-            await postManager.Serialize(await postManager.GetRecentPosts(20).ConfigureAwait(false)).ConfigureAwait(false);
+            await postManager.Serialize(await postManager.GetRecentPosts(ConvertingInfo.RecentPostsCount).ConfigureAwait(false)).ConfigureAwait(false);
         }
     }
 }

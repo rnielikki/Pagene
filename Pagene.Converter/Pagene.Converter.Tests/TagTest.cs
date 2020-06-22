@@ -35,12 +35,12 @@ namespace Pagene.Converter.Tests
         {
             var mockFileSystem = new MockFileSystem(
                 new Dictionary<string, MockFileData>() {
-                    { AppPathInfo.BlogInputPath+"path.md", new MockFileData("-")}
+                    { Models.FormatterTestModel.InputContentPath+"path.md", new MockFileData("-")}
                  }
             );
             var tagManager = new TagManager(mockFileSystem);
             var mockValue = new ConcurrentDictionary<string, BlogEntry>();
-            mockValue.TryAdd("test.md", new BlogEntry { Title = "Custom Data", Url = AppPathInfo.BlogContentPath+"test.md", });
+            mockValue.TryAdd("test.md", new BlogEntry { Title = "Custom Data", Url = Models.FormatterTestModel.OutputContentPath+"test.md", });
             GetTagMap(tagManager).TryAdd("someTag", mockValue);
             await tagManager.Serialize().ConfigureAwait(false);
 

@@ -21,12 +21,14 @@ namespace Pagene.Converter
         internal Converter(IFileSystem fileSystem)
         {
             _fileSystem = fileSystem;
-            AppConfigLoader.LoadConfig();
         }
         /// <summary>
         /// Creates instance for converting.
         /// </summary>
-        public Converter() : this(new FileSystem()) { }
+        public Converter() : this(new FileSystem())
+        {
+            AppConfigLoader.LoadConfig();
+        }
 
         /// <summary>
         /// Start converting data.
@@ -40,9 +42,8 @@ namespace Pagene.Converter
         }
         private async Task BuildPartAsync(FileType fileType)
         {
-            string dir = fileType.FilePath;
-            string hashDir = AppPathInfo.BlogHashPath + dir;
-            var files = InitDirectory(AppPathInfo.InputPath + dir)
+            string hashDir = Path.Combine(AppPathInfo.BlogHashPath, fileType.FilePath);
+            var files = InitDirectory(Path.Combine(AppPathInfo.InputPath, fileType.FilePath))
                 .GetFiles(fileType.Type, SearchOption.TopDirectoryOnly);
             _hashFileMap = InitDirectory(hashDir)
                 .GetFiles($"{fileType.Type}.hashfile", SearchOption.TopDirectoryOnly)

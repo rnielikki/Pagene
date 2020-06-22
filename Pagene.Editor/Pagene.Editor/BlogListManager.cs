@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Pagene.Editor
@@ -12,9 +13,9 @@ namespace Pagene.Editor
         private readonly BlogPostLoader _loader = new BlogPostLoader();
         private IEnumerable<string> _tags;
         private readonly BindingList<FileTitlePair> data;
-        public BlogListManager(Converter.Converter converter)
+        public BlogListManager()
         {
-            _converter = converter;
+            _converter = new Converter.Converter();
             _converter.Initialize();
             data = new BindingList<FileTitlePair>(_loader.LoadPosts());
             //TODO: lock directory and files
@@ -66,11 +67,21 @@ namespace Pagene.Editor
             var result = MessageBox.Show("Do you want to convert?", "Converting posts", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                ConvertButton.Enabled = false;
-                await _converter.BuildAsync().ConfigureAwait(true);
-                ConvertButton.Enabled = true;
-                _tags = _loader.GetTags();
-                MessageBox.Show("Done.");
+                try
+                {
+                    ConvertButton.Enabled = false;
+                    await _converter.BuildAsync().ConfigureAwait(true);
+                    ConvertButton.Enabled = true;
+                    _tags = _loader.GetTags();
+                    MessageBox.Show("Done.");
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Looks like the path doesn't exist or cannot write something.\nCheck your appsettings.json, please.");
+                }
+                catch (Exception ex) {
+                    MessageBox.Show("An unknown error occured.\nIf this is bug, please report to the issue:\n"+ex.Message+"\nWrite the behavior what you did on https://github.com/rnielikki/Pagene");
+                }
             }
         }
         private void AddButton_Click(object sender, EventArgs e)

@@ -10,8 +10,8 @@ namespace Pagene.Converter
         /// </summary>
         public void Initialize()
         {
-            InitDirectory(AppPathInfo.BlogInputPath);
-            InitDirectory(AppPathInfo.BlogFilePath);
+            InitDirectory(System.IO.Path.Combine(AppPathInfo.InputPath, AppPathInfo.ContentPath));
+            InitDirectory(System.IO.Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath));
             InitDirectory(AppPathInfo.BlogTagPath);
             InitDirectory(AppPathInfo.BlogHashPath);
         }

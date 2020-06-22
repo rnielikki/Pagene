@@ -16,7 +16,7 @@ namespace Pagene.Editor
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                Application.Run(new BlogListManager(new Converter.Converter()));
+                Application.Run(new BlogListManager());
             }
             catch (FormatException ex)
             {

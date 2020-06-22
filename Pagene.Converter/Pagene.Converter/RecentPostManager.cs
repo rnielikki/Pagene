@@ -19,7 +19,7 @@ namespace Pagene.Converter
         }
         internal async System.Threading.Tasks.Task<BlogEntry[]> GetRecentPosts(int count)
         {
-            var files = _fileSystem.DirectoryInfo.FromDirectoryName(AppPathInfo.BlogInputPath)
+            var files = _fileSystem.DirectoryInfo.FromDirectoryName(System.IO.Path.Combine(AppPathInfo.InputPath, AppPathInfo.ContentPath))
                 .GetFiles("*.md", System.IO.SearchOption.TopDirectoryOnly);
             var orderedFiles = files.OrderByDescending(file => file.CreationTime).Take(count);
             return await System.Threading.Tasks.Task.WhenAll(
