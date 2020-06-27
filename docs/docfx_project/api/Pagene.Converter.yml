@@ -13,7 +13,7 @@ items:
   fullName: Pagene.Converter
   type: Namespace
   assemblies:
-  - cs.temp.dll
+  - Pagene.Converter
 references:
 - uid: Pagene.Converter.Converter
   commentId: T:Pagene.Converter.Converter

@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Editing the posts (before converting) </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Editing the posts (before converting) ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="editing-the-posts-before-converting">Editing the posts (before converting)</h1>
+
+<h2 id="gui-application-pageneeditor-windows">GUI Application (Pagene.Editor) (Windows)</h2>
+<p>The program shows by creation date order, newer first.</p>
+<p>You can edit post by clicking edit button, and can add post by add button.</p>
+<h3 id="editadd-interface">Edit/Add interface</h3>
+<h4 id="about-markdown-syntax">About markdown syntax</h4>
+<p>There are some markdown syntax adding buttons, but it's just for convinience and not 100% accurate including every exceptional case.</p>
+<p>If you know how to use markdown, we recommend to write it by yourself.</p>
+<h4 id="about-files-from-the-file-browser">About files from the file browser</h4>
+<p>Image files from the edit interface are from <code>contents/files</code>, not including subdirectory.</p>
+<h4 id="about-the-tags">About the tags</h4>
+<p>You can add tag by Clicking + button. You can also remove tag by clicking it.</p>
+<p>The tag suggestion is from the converted data, so tags from unconverted post may not be shown in the suggestions.</p>
+<blockquote>
+<p>Note: Showing long/too many tags can be buggy. It'll be fixed in future when WinForms layout works.</p>
+</blockquote>
+<h2 id="console-app">Console app</h2>
+<p>Input file format are markdown format, which ends with <code>.md</code>.</p>
+<p>The must contain this format:</p>
+<pre>
+[tags,separated,by,comma]
+# title
+Content
+</pre>
+<p>If the format doesn't match, the converter program will throw <code>FormatException</code>.</p>
+<p>You can open and use GUI (Windows), or use console app (All platforms) by adding files manually.</p>
+<p>The blog post (<code>*.md</code>) files are inside <code>inputs/contents/</code>, without subdirectories.</p>
+<p>Image path is same: <code>content/files</code>, which contains any attachments. These are not converted, so you should add them directly.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>This reads creation date and modification date from metadata. They can be modified so this way is inaccurate, but:
+<ul>
+<li>There are no other way to know about real immutable creation/edit date.</li>
+<li>You can get creation and modification date from converted data (reverse).</li>
+</ul>
+</li>
+</ul>
+<h2 id="markdown-format">Markdown format</h2>
+<ul>
+<li>We use <a href="https://github.com/lunet-io/markdig">MarkDig</a> for markdown parse engine. MarkDig is <a href="https://spec.commonmark.org/0.29/#setext-heading-underline">CommonMark</a> compliant.
+<ul>
+<li>Some extensible markdown syntax may not work, such as underline, sub, sup etc. You can use HTML tag here instead.</li>
+</ul>
+</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/rnielikki/Pagene/blob/experimental/docs/docfx_project/help/editing.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

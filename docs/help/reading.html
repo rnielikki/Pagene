@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Reading posts and tags </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Reading posts and tags ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="reading-posts-and-tags">Reading posts and tags</h1>
+
+<h2 id="blog-post-format">Blog Post format</h2>
+<p>A file inside <code>contents/</code> contains a post in this format:</p>
+<pre><code class="lang-json">{
+    &quot;Title&quot;: &quot;Title of the post&quot;,
+    &quot;Content&quot;: &quot;Content of the post&quot;,
+    &quot;CreationDate&quot;: &quot;2020-05-30T08:04:55.6725298Z&quot;,
+    &quot;ModificationDate&quot;: &quot;2020-05-30T08:05:21.9718843Z&quot;,
+    &quot;Tags&quot;: [&quot;tag1&quot;,&quot;tag2&quot;]
+}
+</code></pre>
+<p>If modificatoin date is same as creation date, it means that the app is not edited since creation.</p>
+<blockquote>
+<p>Note : All dates are provided with local time, so if you want other time zone, you must convert it manually.</p>
+</blockquote>
+<h2 id="blog-entries">Blog Entries</h2>
+<p>Blog entries (inside <code>entries/</code> directory) are all JSON files.</p>
+<p>One &quot;entry&quot; model looks like this:</p>
+<pre><code class="lang-json">    {
+        &quot;Title&quot;: &quot;Title&quot;,
+        &quot;Date&quot;: &quot;2020-05-29T13:40:26.8565100Z&quot;,
+        &quot;Url&quot;: &quot;posts/filename&quot;,
+        &quot;Summary&quot;: &quot;Content, but max 50 words&quot;,
+        &quot;Tags&quot;: [&quot;tag&quot;,&quot;separated&quot;,&quot;by&quot;,&quot;comma&quot;]
+    }
+</code></pre>
+<p><code>entries/recent.json</code> is just an array of recent entries.</p>
+<h3 id="tags">Tags</h3>
+<p>Tags are inside <code>entries/tags</code>. <code>entries/tags</code> contains <code>meta.tags.json</code> and each tag files.</p>
+<p><code>meta.tags.json</code> contains key-value pair, and the value contains Url and Count informations.</p>
+<ul>
+<li><em>Url</em>: All tag file names are just numbers, and the numbers mean nothing but unique key.</li>
+<li><em>Count</em>: How many posts are using this tag.</li>
+</ul>
+<p>Currently the blog url and tag url are constant from <a href="../api/Pagene.BlogSettings.RoutePathInfo.html">RoutePathInfo</a>, but someday it will read from appsettings.json in future.</p>
+<pre><code class="lang-json">{
+    &quot;Tag1&quot;: {
+        &quot;Url&quot;: &quot;entries/tags/0&quot;,
+        &quot;Count&quot;: 1
+    },
+    &quot;Tag2&quot;: {
+        &quot;Url&quot;: &quot;entries/tags/1&quot;,
+        &quot;Count&quot;: 3
+    }
+}
+</code></pre>
+<p>Each tag file is number and contains real tag name (Tag) and content.</p>
+<pre><code class="lang-json">{
+    &quot;Tag&quot;: &quot;Tag1&quot;,
+    &quot;Posts&quot;: [
+        &quot;arrays of entry that contains this tag&quot;
+    ]
+}
+</code></pre>
+<h2 id="models">Models</h2>
+<p>The <a href="../api/Pagene.Models.html">Models</a> define the reading format. If you use C# with JSON Serializer, you can use the models as dll.</p>
+<p>Or you can implement on your own, in any language with any JSON parser.</p>
+<p>These are model documentation:</p>
+<ul>
+<li><a href="../api/Pagene.Models.BlogItem.html">BlogItem</a> for posts</li>
+<li><a href="../api/Pagene.Models.BlogItem.html">BlogEntry</a> for post summary</li>
+<li><a href="../api/Pagene.Models.TagInfo.html">TagInfo</a> for post summaries of each tag</li>
+<li><a href="../api/Pagene.Models.TagMeta.html">TagMeta</a> for meta.tags.json information</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/rnielikki/Pagene/blob/experimental/docs/docfx_project/help/reading.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

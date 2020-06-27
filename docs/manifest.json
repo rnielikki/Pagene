@@ -1,0 +1,393 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/Lumi/source/repos/project/Pagene/docs/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.BlogSettings.AppConfigLoader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.BlogSettings.AppConfigLoader.html",
+          "hash": "q10ajnPsT1rRHYY2DZXf6g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.BlogSettings.AppPathInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.BlogSettings.AppPathInfo.html",
+          "hash": "DaIbT8Npq7tig7qWMgTptA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.BlogSettings.ConvertingInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.BlogSettings.ConvertingInfo.html",
+          "hash": "p2nbUMSfI4rwf3SCm2TA4w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.BlogSettings.RoutePathInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.BlogSettings.RoutePathInfo.html",
+          "hash": "39ymGTfRz87VbQS3gnhHoA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.BlogSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.BlogSettings.html",
+          "hash": "IZG2/dvUWNTEv2c+kmGYsw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Converter.Converter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Converter.Converter.html",
+          "hash": "xkLTrgmkCCRrOydHyWFASw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Converter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Converter.html",
+          "hash": "3htm3JLUJj5hL8fdE0+ETg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Models.BlogEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Models.BlogEntry.html",
+          "hash": "KwLF9k7s0gE7apmsHO8k4Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Models.BlogItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Models.BlogItem.html",
+          "hash": "xMdB2n02hx+coYSaqma2+w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Models.TagInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Models.TagInfo.html",
+          "hash": "uP1gEx01PoCjZI30J/fbYw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Models.TagMeta.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Models.TagMeta.html",
+          "hash": "GLsD8pQ3p9EBPX0sDZEHWw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Models.html",
+          "hash": "kvt4DsK/JmHAZC2hf4ltWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Reader.PostSerializer.FormatParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Reader.PostSerializer.FormatParser.html",
+          "hash": "5d5YN3H5oPFUpEUA99pxCA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Reader.PostSerializer.IFormatParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Reader.PostSerializer.IFormatParser.html",
+          "hash": "TibEHEJpOaqm7Uoq8BSbOA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Reader.PostSerializer.IPostSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Reader.PostSerializer.IPostSerializer.html",
+          "hash": "iKI+aRRi0y/fx8znkO6SmA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Reader.PostSerializer.PostSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Reader.PostSerializer.PostSerializer.html",
+          "hash": "Em7QQgK+uFVfnJ2kmT3oew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Pagene.Reader.PostSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Pagene.Reader.PostSerializer.html",
+          "hash": "ade/NdWUxW4iTPoXY6Ktfw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "9XI/WnNBMcCMQI0mJEnU1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "6DFk61cYdEfsSWGo/LfeLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "help/appsettings.md",
+      "output": {
+        ".html": {
+          "relative_path": "help/appsettings.html",
+          "hash": "W/IWv6YejeB+zVMk4Hse4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "help/converting.md",
+      "output": {
+        ".html": {
+          "relative_path": "help/converting.html",
+          "hash": "KnzPOWiQJxx2AA+ejeRjQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "help/editing.md",
+      "output": {
+        ".html": {
+          "relative_path": "help/editing.html",
+          "hash": "UHf8bnRogt8TGzb5o3RvXg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "help/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "help/index.html",
+          "hash": "7oxdGjb3EqPcyOwvpAzhPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "help/reading.md",
+      "output": {
+        ".html": {
+          "relative_path": "help/reading.html",
+          "hash": "b32/JUMHkELe77jY/xbifg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "help/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "help/toc.html",
+          "hash": "+nJD68EHlrEIW9NvKN1Upw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "8PtbIiUaGyOZTs8KyUE8Sg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "RpAri7TBRUPxfjF12MMXJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 7,
+          "skipped_file_count": 5
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 17,
+          "skipped_file_count": 17
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

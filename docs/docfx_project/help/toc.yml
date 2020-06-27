@@ -2,6 +2,8 @@
   href: index.md
 - name: Editing files
   href: editing.md
+- name: App Settings file
+  href: appsettings.md
 - name: Converting files
   href: converting.md
 - name: Reading files

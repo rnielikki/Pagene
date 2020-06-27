@@ -16,7 +16,7 @@ items:
   fullName: Pagene.Reader.PostSerializer
   type: Namespace
   assemblies:
-  - cs.temp.dll
+  - Pagene.Reader.PostSerializer
 references:
 - uid: Pagene.Reader.PostSerializer.FormatParser
   commentId: T:Pagene.Reader.PostSerializer.FormatParser

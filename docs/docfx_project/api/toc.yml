@@ -2,10 +2,14 @@
 - uid: Pagene.BlogSettings
   name: Pagene.BlogSettings
   items:
+  - uid: Pagene.BlogSettings.AppConfigLoader
+    name: AppConfigLoader
   - uid: Pagene.BlogSettings.AppPathInfo
     name: AppPathInfo
   - uid: Pagene.BlogSettings.ConvertingInfo
     name: ConvertingInfo
+  - uid: Pagene.BlogSettings.RoutePathInfo
+    name: RoutePathInfo
 - uid: Pagene.Converter
   name: Pagene.Converter
   items:

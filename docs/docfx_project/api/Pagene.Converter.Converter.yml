@@ -5,10 +5,11 @@ items:
   id: Converter
   parent: Pagene.Converter
   children:
-  - Pagene.Converter.Converter.#ctor(IFileSystem,System.String)
-  - Pagene.Converter.Converter.#ctor(System.String)
-  - Pagene.Converter.Converter.Convert
+  - Pagene.Converter.Converter.#ctor
+  - Pagene.Converter.Converter.BuildAsync
+  - Pagene.Converter.Converter.Clean
   - Pagene.Converter.Converter.Initialize
+  - Pagene.Converter.Converter.RebuildAsync
   langs:
   - csharp
   - vb
@@ -17,11 +18,15 @@ items:
   fullName: Pagene.Converter.Converter
   type: Class
   source:
+    remote:
+      path: Pagene.Converter/Pagene.Converter/Converter/Converter.Init.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: Converter
-    path: ''
-    startLine: 116
+    path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.Init.cs
+    startLine: 5
   assemblies:
-  - cs.temp.dll
+  - Pagene.Converter
   namespace: Pagene.Converter
   summary: "\nRead and generate post and tag list from certain format and certain path.\n"
   example: []
@@ -31,77 +36,150 @@ items:
   inheritance:
   - System.Object
   inheritedMembers:
-  - System.Object.ToString
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
-  - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.GetHashCode
   - System.Object.GetType
   - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
   modifiers.csharp:
   - public
   - class
   modifiers.vb:
   - Public
   - Class
-- uid: Pagene.Converter.Converter.#ctor(IFileSystem,System.String)
-  commentId: M:Pagene.Converter.Converter.#ctor(IFileSystem,System.String)
-  id: '#ctor(IFileSystem,System.String)'
+- uid: Pagene.Converter.Converter.Clean
+  commentId: M:Pagene.Converter.Converter.Clean
+  id: Clean
   parent: Pagene.Converter.Converter
   langs:
   - csharp
   - vb
-  name: Converter(IFileSystem, String)
-  nameWithType: Converter.Converter(IFileSystem, String)
-  fullName: Pagene.Converter.Converter.Converter(IFileSystem, System.String)
+  name: Clean()
+  nameWithType: Converter.Clean()
+  fullName: Pagene.Converter.Converter.Clean()
+  type: Method
+  source:
+    remote:
+      path: Pagene.Converter/Pagene.Converter/Converter/Converter.Cleaner.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: Clean
+    path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.Cleaner.cs
+    startLine: 10
+  assemblies:
+  - Pagene.Converter
+  namespace: Pagene.Converter
+  summary: "\nCleans all hash (cache).\n"
+  remarks: This removes the whole hash directory.
+  example: []
+  syntax:
+    content: public void Clean()
+    content.vb: Public Sub Clean
+  overload: Pagene.Converter.Converter.Clean*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Pagene.Converter.Converter.RebuildAsync
+  commentId: M:Pagene.Converter.Converter.RebuildAsync
+  id: RebuildAsync
+  parent: Pagene.Converter.Converter
+  langs:
+  - csharp
+  - vb
+  name: RebuildAsync()
+  nameWithType: Converter.RebuildAsync()
+  fullName: Pagene.Converter.Converter.RebuildAsync()
+  type: Method
+  source:
+    remote:
+      path: Pagene.Converter/Pagene.Converter/Converter/Converter.Cleaner.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: RebuildAsync
+    path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.Cleaner.cs
+    startLine: 15
+  assemblies:
+  - Pagene.Converter
+  namespace: Pagene.Converter
+  summary: "\nCleans all outputs and rebuilds from first.\n"
+  remarks: This does not remove attachment files inside Blog Content.
+  example: []
+  syntax:
+    content: public Task RebuildAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RebuildAsync As Task
+  overload: Pagene.Converter.Converter.RebuildAsync*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Pagene.Converter.Converter.#ctor
+  commentId: M:Pagene.Converter.Converter.#ctor
+  id: '#ctor'
+  parent: Pagene.Converter.Converter
+  langs:
+  - csharp
+  - vb
+  name: Converter()
+  nameWithType: Converter.Converter()
+  fullName: Pagene.Converter.Converter.Converter()
   type: Constructor
   source:
+    remote:
+      path: Pagene.Converter/Pagene.Converter/Converter/Converter.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: .ctor
-    path: ''
-    startLine: 122
+    path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.cs
+    startLine: 27
   assemblies:
-  - cs.temp.dll
+  - Pagene.Converter
   namespace: Pagene.Converter
+  summary: "\nCreates instance for converting.\n"
+  example: []
   syntax:
-    content: public Converter(IFileSystem fileSystem, string path = "")
-    parameters:
-    - id: fileSystem
-      type: IFileSystem
-    - id: path
-      type: System.String
-    content.vb: Public Sub New(fileSystem As IFileSystem, path As String = "")
+    content: public Converter()
+    content.vb: Public Sub New
   overload: Pagene.Converter.Converter.#ctor*
   modifiers.csharp:
   - public
   modifiers.vb:
   - Public
-- uid: Pagene.Converter.Converter.#ctor(System.String)
-  commentId: M:Pagene.Converter.Converter.#ctor(System.String)
-  id: '#ctor(System.String)'
+- uid: Pagene.Converter.Converter.BuildAsync
+  commentId: M:Pagene.Converter.Converter.BuildAsync
+  id: BuildAsync
   parent: Pagene.Converter.Converter
   langs:
   - csharp
   - vb
-  name: Converter(String)
-  nameWithType: Converter.Converter(String)
-  fullName: Pagene.Converter.Converter.Converter(System.String)
-  type: Constructor
+  name: BuildAsync()
+  nameWithType: Converter.BuildAsync()
+  fullName: Pagene.Converter.Converter.BuildAsync()
+  type: Method
   source:
-    id: .ctor
-    path: ''
-    startLine: 130
+    remote:
+      path: Pagene.Converter/Pagene.Converter/Converter/Converter.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: BuildAsync
+    path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.cs
+    startLine: 36
   assemblies:
-  - cs.temp.dll
+  - Pagene.Converter
   namespace: Pagene.Converter
-  summary: "\nCreates instance for converting.\n"
+  summary: "\nStart converting data.\n"
+  remarks: See other documentation page about converting format and file path.
   example: []
   syntax:
-    content: public Converter(string path = "")
-    parameters:
-    - id: path
-      type: System.String
-    content.vb: Public Sub New(path As String = "")
-  overload: Pagene.Converter.Converter.#ctor*
+    content: public Task BuildAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function BuildAsync As Task
+  overload: Pagene.Converter.Converter.BuildAsync*
   modifiers.csharp:
   - public
   modifiers.vb:
@@ -118,11 +196,15 @@ items:
   fullName: Pagene.Converter.Converter.Initialize()
   type: Method
   source:
+    remote:
+      path: Pagene.Converter/Pagene.Converter/Converter/Converter.Init.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: Initialize
-    path: ''
-    startLine: 135
+    path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.Init.cs
+    startLine: 10
   assemblies:
-  - cs.temp.dll
+  - Pagene.Converter
   namespace: Pagene.Converter
   summary: "\nCreates input directory if doesn&apos;t exist.\n"
   example: []
@@ -130,37 +212,6 @@ items:
     content: public void Initialize()
     content.vb: Public Sub Initialize
   overload: Pagene.Converter.Converter.Initialize*
-  modifiers.csharp:
-  - public
-  modifiers.vb:
-  - Public
-- uid: Pagene.Converter.Converter.Convert
-  commentId: M:Pagene.Converter.Converter.Convert
-  id: Convert
-  parent: Pagene.Converter.Converter
-  langs:
-  - csharp
-  - vb
-  name: Convert()
-  nameWithType: Converter.Convert()
-  fullName: Pagene.Converter.Converter.Convert()
-  type: Method
-  source:
-    id: Convert
-    path: ''
-    startLine: 147
-  assemblies:
-  - cs.temp.dll
-  namespace: Pagene.Converter
-  summary: "\nStart converting data.\n"
-  remarks: See other documentation page about converting format and file path.
-  example: []
-  syntax:
-    content: public Task Convert()
-    return:
-      type: Task
-    content.vb: Public Function Convert As Task
-  overload: Pagene.Converter.Converter.Convert*
   modifiers.csharp:
   - public
   modifiers.vb:
@@ -178,37 +229,6 @@ references:
   name: Object
   nameWithType: Object
   fullName: System.Object
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  name: ToString()
-  nameWithType: Object.ToString()
-  fullName: System.Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -287,63 +307,6 @@ references:
     name: Equals
     nameWithType: Object.Equals
     fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ReferenceEquals(System.Object,System.Object)
-  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: ReferenceEquals(Object, Object)
-  nameWithType: Object.ReferenceEquals(Object, Object)
-  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
     isExternal: true
   - name: (
     nameWithType: (
@@ -457,43 +420,135 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: System
   commentId: N:System
   isExternal: true
   name: System
   nameWithType: System
   fullName: System
+- uid: Pagene.Converter.Converter.Clean*
+  commentId: Overload:Pagene.Converter.Converter.Clean
+  name: Clean
+  nameWithType: Converter.Clean
+  fullName: Pagene.Converter.Converter.Clean
+- uid: Pagene.Converter.Converter.RebuildAsync*
+  commentId: Overload:Pagene.Converter.Converter.RebuildAsync
+  name: RebuildAsync
+  nameWithType: Converter.RebuildAsync
+  fullName: Pagene.Converter.Converter.RebuildAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
 - uid: Pagene.Converter.Converter.#ctor*
   commentId: Overload:Pagene.Converter.Converter.#ctor
   name: Converter
   nameWithType: Converter.Converter
   fullName: Pagene.Converter.Converter.Converter
-- uid: IFileSystem
-  commentId: '!:IFileSystem'
-  isExternal: true
-  name: IFileSystem
-  nameWithType: IFileSystem
-  fullName: IFileSystem
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  name: String
-  nameWithType: String
-  fullName: System.String
+- uid: Pagene.Converter.Converter.BuildAsync*
+  commentId: Overload:Pagene.Converter.Converter.BuildAsync
+  name: BuildAsync
+  nameWithType: Converter.BuildAsync
+  fullName: Pagene.Converter.Converter.BuildAsync
 - uid: Pagene.Converter.Converter.Initialize*
   commentId: Overload:Pagene.Converter.Converter.Initialize
   name: Initialize
   nameWithType: Converter.Initialize
   fullName: Pagene.Converter.Converter.Initialize
-- uid: Pagene.Converter.Converter.Convert*
-  commentId: Overload:Pagene.Converter.Converter.Convert
-  name: Convert
-  nameWithType: Converter.Convert
-  fullName: Pagene.Converter.Converter.Convert
-- uid: Task
-  commentId: '!:Task'
-  isExternal: true
-  name: Task
-  nameWithType: Task
-  fullName: Task

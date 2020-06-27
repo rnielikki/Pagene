@@ -3,14 +3,14 @@
     {
       "src": [
         {
-          "files": "Pagene.**/**.cs",
+          "src":"../..",
+          "files": "Pagene.**/**/**.csproj",
           "exclude": [
             "**/obj/**",
             "**/bin/**",
             "**/Pagene.Editor/**",
             "**/**.Tests/**"
-          ],
-          "src": "../../"
+          ]
         }
       ],
       "dest": "api"
@@ -21,17 +21,21 @@
       {
         "files": [
           "api/**.yml",
-          "api/index.md"
+          "api/**.md"
         ]
       },
       {
         "files": [
-          "help/toc.yml",
-          "help/**.md"
+          "help/**.md",
+          "help/**.yml"
         ]
       },
-      "index.md",
-      "toc.yml"
+      {
+        "files": [
+          "toc.yml",
+          "index.md"
+        ]
+      }
     ],
     "resource": [
       {
@@ -51,7 +55,7 @@
         ]
       }
     ],
-    "dest": "_site",
+    "dest": "../",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [

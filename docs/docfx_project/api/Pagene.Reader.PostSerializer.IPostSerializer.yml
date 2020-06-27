@@ -15,11 +15,15 @@ items:
   fullName: Pagene.Reader.PostSerializer.IPostSerializer
   type: Interface
   source:
+    remote:
+      path: Pagene.Reader/Pagene.Reader.PostSerializer/IPostSerializer.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: IPostSerializer
-    path: ''
-    startLine: 833
+    path: ../../Pagene.Reader/Pagene.Reader.PostSerializer/IPostSerializer.cs
+    startLine: 6
   assemblies:
-  - cs.temp.dll
+  - Pagene.Reader.PostSerializer
   namespace: Pagene.Reader.PostSerializer
   summary: "\nBasic BlogPost serializer and deserializer interface for blog post reader and blog poster writer.\nfor implemented version, see <xref href=\"Pagene.Reader.PostSerializer.PostSerializer\" data-throw-if-not-resolved=\"false\"></xref>.\n"
   example: []
@@ -44,11 +48,15 @@ items:
   fullName: Pagene.Reader.PostSerializer.IPostSerializer.SerializeAsync(Pagene.Models.BlogItem, System.IO.Stream)
   type: Method
   source:
+    remote:
+      path: Pagene.Reader/Pagene.Reader.PostSerializer/IPostSerializer.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: SerializeAsync
-    path: ''
-    startLine: 840
+    path: ../../Pagene.Reader/Pagene.Reader.PostSerializer/IPostSerializer.cs
+    startLine: 13
   assemblies:
-  - cs.temp.dll
+  - Pagene.Reader.PostSerializer
   namespace: Pagene.Reader.PostSerializer
   summary: "\nSerialize <xref href=\"Pagene.Models.BlogItem\" data-throw-if-not-resolved=\"false\"></xref> to Stream.\n"
   example: []
@@ -77,11 +85,15 @@ items:
   fullName: Pagene.Reader.PostSerializer.IPostSerializer.DeserializeAsync(System.IO.Stream)
   type: Method
   source:
+    remote:
+      path: Pagene.Reader/Pagene.Reader.PostSerializer/IPostSerializer.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: DeserializeAsync
-    path: ''
-    startLine: 846
+    path: ../../Pagene.Reader/Pagene.Reader.PostSerializer/IPostSerializer.cs
+    startLine: 19
   assemblies:
-  - cs.temp.dll
+  - Pagene.Reader.PostSerializer
   namespace: Pagene.Reader.PostSerializer
   summary: "\nDeseriazlie <xref href=\"Pagene.Models.BlogItem\" data-throw-if-not-resolved=\"false\"></xref> to string for writer.\n"
   example: []

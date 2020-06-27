@@ -1,5 +1,7 @@
 # Converting the posts
 
+Before convert your files, make sure your [setting](appsettings.html) is correct.
+
 ## GUI
 
 You can convert by "Convert" button on the post list, at the first page.

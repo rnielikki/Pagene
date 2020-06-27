@@ -1,4 +1,5 @@
 # Reading posts and tags
+
 ## Blog Post format
 
 A file inside `contents/` contains a post in this format:
@@ -18,6 +19,7 @@ If modificatoin date is same as creation date, it means that the app is not edit
 > Note : All dates are provided with local time, so if you want other time zone, you must convert it manually.
 
 ## Blog Entries
+
 Blog entries (inside `entries/` directory) are all JSON files.
 
 One "entry" model looks like this:
@@ -63,13 +65,14 @@ Each tag file is number and contains real tag name (Tag) and content.
 ```json
 {
     "Tag": "Tag1",
-    "Posts": [ 
-        //arrays of "entry" that contains this tag
+    "Posts": [
+        "arrays of entry that contains this tag"
     ]
 }
 ```
 
 ## Models
+
 The [Models](../api/Pagene.Models.html) define the reading format. If you use C# with JSON Serializer, you can use the models as dll.
 
 Or you can implement on your own, in any language with any JSON parser.

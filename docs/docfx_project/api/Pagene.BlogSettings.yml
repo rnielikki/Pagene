@@ -4,8 +4,10 @@ items:
   commentId: N:Pagene.BlogSettings
   id: Pagene.BlogSettings
   children:
+  - Pagene.BlogSettings.AppConfigLoader
   - Pagene.BlogSettings.AppPathInfo
   - Pagene.BlogSettings.ConvertingInfo
+  - Pagene.BlogSettings.RoutePathInfo
   langs:
   - csharp
   - vb
@@ -14,8 +16,13 @@ items:
   fullName: Pagene.BlogSettings
   type: Namespace
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
 references:
+- uid: Pagene.BlogSettings.AppConfigLoader
+  commentId: T:Pagene.BlogSettings.AppConfigLoader
+  name: AppConfigLoader
+  nameWithType: AppConfigLoader
+  fullName: Pagene.BlogSettings.AppConfigLoader
 - uid: Pagene.BlogSettings.AppPathInfo
   commentId: T:Pagene.BlogSettings.AppPathInfo
   name: AppPathInfo
@@ -26,3 +33,8 @@ references:
   name: ConvertingInfo
   nameWithType: ConvertingInfo
   fullName: Pagene.BlogSettings.ConvertingInfo
+- uid: Pagene.BlogSettings.RoutePathInfo
+  commentId: T:Pagene.BlogSettings.RoutePathInfo
+  name: RoutePathInfo
+  nameWithType: RoutePathInfo
+  fullName: Pagene.BlogSettings.RoutePathInfo

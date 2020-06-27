@@ -5,7 +5,7 @@ items:
   id: ConvertingInfo
   parent: Pagene.BlogSettings
   children:
-  - Pagene.BlogSettings.ConvertingInfo.RecentPostsLength
+  - Pagene.BlogSettings.ConvertingInfo.RecentPostsCount
   - Pagene.BlogSettings.ConvertingInfo.SummaryLength
   - Pagene.BlogSettings.ConvertingInfo.UseSummary
   langs:
@@ -16,25 +16,31 @@ items:
   fullName: Pagene.BlogSettings.ConvertingInfo
   type: Class
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/ConvertingInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: ConvertingInfo
-    path: ''
-    startLine: 53
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/ConvertingInfo.cs
+    startLine: 5
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
+  summary: "\nDefines settings about file converting.\n"
+  example: []
   syntax:
     content: public static class ConvertingInfo
     content.vb: Public Module ConvertingInfo
   inheritance:
   - System.Object
   inheritedMembers:
-  - System.Object.ToString
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
-  - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.GetHashCode
   - System.Object.GetType
   - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
   modifiers.csharp:
   - public
   - static
@@ -42,37 +48,47 @@ items:
   modifiers.vb:
   - Public
   - Module
-- uid: Pagene.BlogSettings.ConvertingInfo.RecentPostsLength
-  commentId: F:Pagene.BlogSettings.ConvertingInfo.RecentPostsLength
-  id: RecentPostsLength
+- uid: Pagene.BlogSettings.ConvertingInfo.RecentPostsCount
+  commentId: P:Pagene.BlogSettings.ConvertingInfo.RecentPostsCount
+  id: RecentPostsCount
   parent: Pagene.BlogSettings.ConvertingInfo
   langs:
   - csharp
   - vb
-  name: RecentPostsLength
-  nameWithType: ConvertingInfo.RecentPostsLength
-  fullName: Pagene.BlogSettings.ConvertingInfo.RecentPostsLength
-  type: Field
+  name: RecentPostsCount
+  nameWithType: ConvertingInfo.RecentPostsCount
+  fullName: Pagene.BlogSettings.ConvertingInfo.RecentPostsCount
+  type: Property
   source:
-    id: RecentPostsLength
-    path: ''
-    startLine: 55
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/ConvertingInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: RecentPostsCount
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/ConvertingInfo.cs
+    startLine: 10
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
+  summary: "\nDefines how many files are appeared on recent.json.\n"
+  example: []
   syntax:
-    content: public const int RecentPostsLength = 20
+    content: public static int RecentPostsCount { get; }
+    parameters: []
     return:
       type: System.Int32
-    content.vb: Public Const RecentPostsLength As Integer = 20
+    content.vb: Public Shared ReadOnly Property RecentPostsCount As Integer
+  overload: Pagene.BlogSettings.ConvertingInfo.RecentPostsCount*
   modifiers.csharp:
   - public
-  - const
+  - static
+  - get
   modifiers.vb:
   - Public
-  - Const
+  - Shared
+  - ReadOnly
 - uid: Pagene.BlogSettings.ConvertingInfo.UseSummary
-  commentId: F:Pagene.BlogSettings.ConvertingInfo.UseSummary
+  commentId: P:Pagene.BlogSettings.ConvertingInfo.UseSummary
   id: UseSummary
   parent: Pagene.BlogSettings.ConvertingInfo
   langs:
@@ -81,27 +97,37 @@ items:
   name: UseSummary
   nameWithType: ConvertingInfo.UseSummary
   fullName: Pagene.BlogSettings.ConvertingInfo.UseSummary
-  type: Field
+  type: Property
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/ConvertingInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: UseSummary
-    path: ''
-    startLine: 56
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/ConvertingInfo.cs
+    startLine: 14
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
+  summary: "\nDefines if summary is generated to blog entry.\n"
+  example: []
   syntax:
-    content: public const bool UseSummary = true
+    content: public static bool UseSummary { get; }
+    parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Const UseSummary As Boolean = True
+    content.vb: Public Shared ReadOnly Property UseSummary As Boolean
+  overload: Pagene.BlogSettings.ConvertingInfo.UseSummary*
   modifiers.csharp:
   - public
-  - const
+  - static
+  - get
   modifiers.vb:
   - Public
-  - Const
+  - Shared
+  - ReadOnly
 - uid: Pagene.BlogSettings.ConvertingInfo.SummaryLength
-  commentId: F:Pagene.BlogSettings.ConvertingInfo.SummaryLength
+  commentId: P:Pagene.BlogSettings.ConvertingInfo.SummaryLength
   id: SummaryLength
   parent: Pagene.BlogSettings.ConvertingInfo
   langs:
@@ -110,25 +136,35 @@ items:
   name: SummaryLength
   nameWithType: ConvertingInfo.SummaryLength
   fullName: Pagene.BlogSettings.ConvertingInfo.SummaryLength
-  type: Field
+  type: Property
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/ConvertingInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: SummaryLength
-    path: ''
-    startLine: 57
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/ConvertingInfo.cs
+    startLine: 18
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
+  summary: "\nDefines length of the summary. Useless if <xref href=\"Pagene.BlogSettings.ConvertingInfo.UseSummary\" data-throw-if-not-resolved=\"false\"></xref> is false.\n"
+  example: []
   syntax:
-    content: public const int SummaryLength = 50
+    content: public static int SummaryLength { get; }
+    parameters: []
     return:
       type: System.Int32
-    content.vb: Public Const SummaryLength As Integer = 50
+    content.vb: Public Shared ReadOnly Property SummaryLength As Integer
+  overload: Pagene.BlogSettings.ConvertingInfo.SummaryLength*
   modifiers.csharp:
   - public
-  - const
+  - static
+  - get
   modifiers.vb:
   - Public
-  - Const
+  - Shared
+  - ReadOnly
 references:
 - uid: Pagene.BlogSettings
   commentId: N:Pagene.BlogSettings
@@ -142,37 +178,6 @@ references:
   name: Object
   nameWithType: Object
   fullName: System.Object
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  name: ToString()
-  nameWithType: Object.ToString()
-  fullName: System.Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -251,63 +256,6 @@ references:
     name: Equals
     nameWithType: Object.Equals
     fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ReferenceEquals(System.Object,System.Object)
-  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: ReferenceEquals(Object, Object)
-  nameWithType: Object.ReferenceEquals(Object, Object)
-  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
     isExternal: true
   - name: (
     nameWithType: (
@@ -421,12 +369,105 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: System
   commentId: N:System
   isExternal: true
   name: System
   nameWithType: System
   fullName: System
+- uid: Pagene.BlogSettings.ConvertingInfo.RecentPostsCount*
+  commentId: Overload:Pagene.BlogSettings.ConvertingInfo.RecentPostsCount
+  name: RecentPostsCount
+  nameWithType: ConvertingInfo.RecentPostsCount
+  fullName: Pagene.BlogSettings.ConvertingInfo.RecentPostsCount
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System
@@ -434,6 +475,11 @@ references:
   name: Int32
   nameWithType: Int32
   fullName: System.Int32
+- uid: Pagene.BlogSettings.ConvertingInfo.UseSummary*
+  commentId: Overload:Pagene.BlogSettings.ConvertingInfo.UseSummary
+  name: UseSummary
+  nameWithType: ConvertingInfo.UseSummary
+  fullName: Pagene.BlogSettings.ConvertingInfo.UseSummary
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System
@@ -441,3 +487,11 @@ references:
   name: Boolean
   nameWithType: Boolean
   fullName: System.Boolean
+- uid: Pagene.BlogSettings.ConvertingInfo.UseSummary
+  commentId: P:Pagene.BlogSettings.ConvertingInfo.UseSummary
+  isExternal: true
+- uid: Pagene.BlogSettings.ConvertingInfo.SummaryLength*
+  commentId: Overload:Pagene.BlogSettings.ConvertingInfo.SummaryLength
+  name: SummaryLength
+  nameWithType: ConvertingInfo.SummaryLength
+  fullName: Pagene.BlogSettings.ConvertingInfo.SummaryLength

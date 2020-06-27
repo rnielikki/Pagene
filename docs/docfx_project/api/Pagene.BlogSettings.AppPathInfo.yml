@@ -5,7 +5,10 @@ items:
   id: AppPathInfo
   parent: Pagene.BlogSettings
   children:
+  - Pagene.BlogSettings.AppPathInfo.BlogContentPath
+  - Pagene.BlogSettings.AppPathInfo.BlogEntryPath
   - Pagene.BlogSettings.AppPathInfo.BlogFilePath
+  - Pagene.BlogSettings.AppPathInfo.BlogHashPath
   - Pagene.BlogSettings.AppPathInfo.BlogInputPath
   - Pagene.BlogSettings.AppPathInfo.BlogTagPath
   - Pagene.BlogSettings.AppPathInfo.ContentPath
@@ -13,6 +16,7 @@ items:
   - Pagene.BlogSettings.AppPathInfo.FilePath
   - Pagene.BlogSettings.AppPathInfo.HashPath
   - Pagene.BlogSettings.AppPathInfo.InputPath
+  - Pagene.BlogSettings.AppPathInfo.OutputPath
   - Pagene.BlogSettings.AppPathInfo.TagPath
   langs:
   - csharp
@@ -22,11 +26,15 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo
   type: Class
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: AppPathInfo
-    path: ''
-    startLine: 5
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 7
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
   summary: "\nFile input/output paths. Only relative paths are used.\n"
   example: []
@@ -36,13 +44,13 @@ items:
   inheritance:
   - System.Object
   inheritedMembers:
-  - System.Object.ToString
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
-  - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.GetHashCode
   - System.Object.GetType
   - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
   modifiers.csharp:
   - public
   - static
@@ -50,6 +58,84 @@ items:
   modifiers.vb:
   - Public
   - Module
+- uid: Pagene.BlogSettings.AppPathInfo.InputPath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.InputPath
+  id: InputPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: InputPath
+  nameWithType: AppPathInfo.InputPath
+  fullName: Pagene.BlogSettings.AppPathInfo.InputPath
+  type: Property
+  source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: InputPath
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 13
+  assemblies:
+  - Pagene.BlogSettings
+  namespace: Pagene.BlogSettings
+  summary: "\nInput folder path name. Files from this path will be converted.\n"
+  example: []
+  syntax:
+    content: public static string InputPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property InputPath As String
+  overload: Pagene.BlogSettings.AppPathInfo.InputPath*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Pagene.BlogSettings.AppPathInfo.OutputPath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.OutputPath
+  id: OutputPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: OutputPath
+  nameWithType: AppPathInfo.OutputPath
+  fullName: Pagene.BlogSettings.AppPathInfo.OutputPath
+  type: Property
+  source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: OutputPath
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 18
+  assemblies:
+  - Pagene.BlogSettings
+  namespace: Pagene.BlogSettings
+  summary: "\nOutput folder root, which contains all converted contens and tag files.\n"
+  example: []
+  syntax:
+    content: public static string OutputPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property OutputPath As String
+  overload: Pagene.BlogSettings.AppPathInfo.OutputPath*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
 - uid: Pagene.BlogSettings.AppPathInfo.ContentPath
   commentId: F:Pagene.BlogSettings.AppPathInfo.ContentPath
   id: ContentPath
@@ -62,13 +148,17 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo.ContentPath
   type: Field
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: ContentPath
-    path: ''
-    startLine: 11
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 23
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
-  summary: "\nContent path for blog posts. This path contains blog posts.\nIt affaects to <xref href=\"Pagene.BlogSettings.AppPathInfo.InputPath\" data-throw-if-not-resolved=\"false\"></xref> too, where post files before converting are.\n"
+  summary: "\nContent path name for blog posts. This path contains blog posts.\nIt affaects to <xref href=\"Pagene.BlogSettings.AppPathInfo.InputPath\" data-throw-if-not-resolved=\"false\"></xref> too, where post files before converting are.\n"
   example: []
   syntax:
     content: public const string ContentPath = "contents/"
@@ -93,11 +183,15 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo.EntryPath
   type: Field
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: EntryPath
-    path: ''
-    startLine: 15
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 27
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
   summary: "\nBlog entries for showing lists on certaion conditions, such as list of tags or recent posts.\n"
   example: []
@@ -124,50 +218,23 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo.FilePath
   type: Field
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: FilePath
-    path: ''
-    startLine: 20
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 32
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
-  summary: "\nPath of any blog attachments, relative to content path.\nBlog post can reference by linkining to the filePath.\n"
+  summary: "\nPath name of any blog attachments, relative to content path.\nBlog post can reference by linkining to the filePath.\n"
   example: []
   syntax:
     content: public const string FilePath = "files/"
     return:
       type: System.String
     content.vb: Public Const FilePath As String = "files/"
-  modifiers.csharp:
-  - public
-  - const
-  modifiers.vb:
-  - Public
-  - Const
-- uid: Pagene.BlogSettings.AppPathInfo.InputPath
-  commentId: F:Pagene.BlogSettings.AppPathInfo.InputPath
-  id: InputPath
-  parent: Pagene.BlogSettings.AppPathInfo
-  langs:
-  - csharp
-  - vb
-  name: InputPath
-  nameWithType: AppPathInfo.InputPath
-  fullName: Pagene.BlogSettings.AppPathInfo.InputPath
-  type: Field
-  source:
-    id: InputPath
-    path: ''
-    startLine: 24
-  assemblies:
-  - cs.temp.dll
-  namespace: Pagene.BlogSettings
-  summary: "\nInput folder path. Files from this path will be converted.\n"
-  example: []
-  syntax:
-    content: public const string InputPath = "inputs/"
-    return:
-      type: System.String
-    content.vb: Public Const InputPath As String = "inputs/"
   modifiers.csharp:
   - public
   - const
@@ -186,13 +253,17 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo.TagPath
   type: Field
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: TagPath
-    path: ''
-    startLine: 28
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 36
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
-  summary: "\nTag file path. Contains meta.tags.json for the list of tags.\n"
+  summary: "\nTag file path name, inside entry path. Contains tag files as number and meta.tags.json for the list of tags.\n"
   example: []
   syntax:
     content: public const string TagPath = "tags/"
@@ -217,13 +288,17 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo.HashPath
   type: Field
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: HashPath
-    path: ''
-    startLine: 32
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 40
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
-  summary: "\nHash file Path. Hash stores each file hash to check if the file has changed.\n"
+  summary: "\nHash file path name. Hash stores each file hash to check if the file has changed.\n"
   example: []
   syntax:
     content: public const string HashPath = ".hash/"
@@ -248,11 +323,15 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo.BlogInputPath
   type: Property
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: BlogInputPath
-    path: ''
-    startLine: 38
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 46
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
   summary: "\nPath, which cRelative to main program (or user-defined) path.ontains unconverted blog posts. (*.md format) Relative to main program (or user-defined) path.\n"
   example: []
@@ -283,13 +362,17 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo.BlogFilePath
   type: Property
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: BlogFilePath
-    path: ''
-    startLine: 43
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 51
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
-  summary: "\nAttachment file path relative to the main program (or user-defined) path.\nCan contain not only pictures, but texts, documents, codes and anything etc.\n"
+  summary: "\nAttachment file path relative to the output path.\nCan contain not only pictures, but texts, documents, codes and anything etc.\n"
   example: []
   syntax:
     content: public static string BlogFilePath { get; }
@@ -298,6 +381,84 @@ items:
       type: System.String
     content.vb: Public Shared ReadOnly Property BlogFilePath As String
   overload: Pagene.BlogSettings.AppPathInfo.BlogFilePath*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Pagene.BlogSettings.AppPathInfo.BlogContentPath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.BlogContentPath
+  id: BlogContentPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: BlogContentPath
+  nameWithType: AppPathInfo.BlogContentPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogContentPath
+  type: Property
+  source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: BlogContentPath
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 55
+  assemblies:
+  - Pagene.BlogSettings
+  namespace: Pagene.BlogSettings
+  summary: "\nContent file path relative to the output path.\n"
+  example: []
+  syntax:
+    content: public static string BlogContentPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property BlogContentPath As String
+  overload: Pagene.BlogSettings.AppPathInfo.BlogContentPath*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Pagene.BlogSettings.AppPathInfo.BlogEntryPath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.BlogEntryPath
+  id: BlogEntryPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: BlogEntryPath
+  nameWithType: AppPathInfo.BlogEntryPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogEntryPath
+  type: Property
+  source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: BlogEntryPath
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 59
+  assemblies:
+  - Pagene.BlogSettings
+  namespace: Pagene.BlogSettings
+  summary: "\nEntry file path relative to the output path.\n"
+  example: []
+  syntax:
+    content: public static string BlogEntryPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property BlogEntryPath As String
+  overload: Pagene.BlogSettings.AppPathInfo.BlogEntryPath*
   modifiers.csharp:
   - public
   - static
@@ -318,11 +479,15 @@ items:
   fullName: Pagene.BlogSettings.AppPathInfo.BlogTagPath
   type: Property
   source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
     id: BlogTagPath
-    path: ''
-    startLine: 47
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 63
   assemblies:
-  - cs.temp.dll
+  - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
   summary: "\nTag path. Rlative to main program (or user-defined) path.\n"
   example: []
@@ -333,6 +498,45 @@ items:
       type: System.String
     content.vb: Public Shared ReadOnly Property BlogTagPath As String
   overload: Pagene.BlogSettings.AppPathInfo.BlogTagPath*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Pagene.BlogSettings.AppPathInfo.BlogHashPath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.BlogHashPath
+  id: BlogHashPath
+  parent: Pagene.BlogSettings.AppPathInfo
+  langs:
+  - csharp
+  - vb
+  name: BlogHashPath
+  nameWithType: AppPathInfo.BlogHashPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogHashPath
+  type: Property
+  source:
+    remote:
+      path: Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+      branch: experimental
+      repo: https://github.com/rnielikki/Pagene.git
+    id: BlogHashPath
+    path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
+    startLine: 67
+  assemblies:
+  - Pagene.BlogSettings
+  namespace: Pagene.BlogSettings
+  summary: "\nHash file Path. Hash stores each file hash to check if the file has changed.\n"
+  example: []
+  syntax:
+    content: public static string BlogHashPath { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property BlogHashPath As String
+  overload: Pagene.BlogSettings.AppPathInfo.BlogHashPath*
   modifiers.csharp:
   - public
   - static
@@ -354,37 +558,6 @@ references:
   name: Object
   nameWithType: Object
   fullName: System.Object
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  name: ToString()
-  nameWithType: Object.ToString()
-  fullName: System.Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    nameWithType: Object.ToString
-    fullName: System.Object.ToString
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - name: )
-    nameWithType: )
-    fullName: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -463,63 +636,6 @@ references:
     name: Equals
     nameWithType: Object.Equals
     fullName: System.Object.Equals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-- uid: System.Object.ReferenceEquals(System.Object,System.Object)
-  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
-  parent: System.Object
-  isExternal: true
-  name: ReferenceEquals(Object, Object)
-  nameWithType: Object.ReferenceEquals(Object, Object)
-  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
-  spec.csharp:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
-    isExternal: true
-  - name: (
-    nameWithType: (
-    fullName: (
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: ', '
-    nameWithType: ', '
-    fullName: ', '
-  - uid: System.Object
-    name: Object
-    nameWithType: Object
-    fullName: System.Object
-    isExternal: true
-  - name: )
-    nameWithType: )
-    fullName: )
-  spec.vb:
-  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
-    name: ReferenceEquals
-    nameWithType: Object.ReferenceEquals
-    fullName: System.Object.ReferenceEquals
     isExternal: true
   - name: (
     nameWithType: (
@@ -633,15 +749,105 @@ references:
   - name: )
     nameWithType: )
     fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
 - uid: System
   commentId: N:System
   isExternal: true
   name: System
   nameWithType: System
   fullName: System
-- uid: Pagene.BlogSettings.AppPathInfo.InputPath
-  commentId: F:Pagene.BlogSettings.AppPathInfo.InputPath
-  isExternal: true
+- uid: Pagene.BlogSettings.AppPathInfo.InputPath*
+  commentId: Overload:Pagene.BlogSettings.AppPathInfo.InputPath
+  name: InputPath
+  nameWithType: AppPathInfo.InputPath
+  fullName: Pagene.BlogSettings.AppPathInfo.InputPath
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -649,6 +855,14 @@ references:
   name: String
   nameWithType: String
   fullName: System.String
+- uid: Pagene.BlogSettings.AppPathInfo.OutputPath*
+  commentId: Overload:Pagene.BlogSettings.AppPathInfo.OutputPath
+  name: OutputPath
+  nameWithType: AppPathInfo.OutputPath
+  fullName: Pagene.BlogSettings.AppPathInfo.OutputPath
+- uid: Pagene.BlogSettings.AppPathInfo.InputPath
+  commentId: P:Pagene.BlogSettings.AppPathInfo.InputPath
+  isExternal: true
 - uid: Pagene.BlogSettings.AppPathInfo.BlogInputPath*
   commentId: Overload:Pagene.BlogSettings.AppPathInfo.BlogInputPath
   name: BlogInputPath
@@ -659,8 +873,23 @@ references:
   name: BlogFilePath
   nameWithType: AppPathInfo.BlogFilePath
   fullName: Pagene.BlogSettings.AppPathInfo.BlogFilePath
+- uid: Pagene.BlogSettings.AppPathInfo.BlogContentPath*
+  commentId: Overload:Pagene.BlogSettings.AppPathInfo.BlogContentPath
+  name: BlogContentPath
+  nameWithType: AppPathInfo.BlogContentPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogContentPath
+- uid: Pagene.BlogSettings.AppPathInfo.BlogEntryPath*
+  commentId: Overload:Pagene.BlogSettings.AppPathInfo.BlogEntryPath
+  name: BlogEntryPath
+  nameWithType: AppPathInfo.BlogEntryPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogEntryPath
 - uid: Pagene.BlogSettings.AppPathInfo.BlogTagPath*
   commentId: Overload:Pagene.BlogSettings.AppPathInfo.BlogTagPath
   name: BlogTagPath
   nameWithType: AppPathInfo.BlogTagPath
   fullName: Pagene.BlogSettings.AppPathInfo.BlogTagPath
+- uid: Pagene.BlogSettings.AppPathInfo.BlogHashPath*
+  commentId: Overload:Pagene.BlogSettings.AppPathInfo.BlogHashPath
+  name: BlogHashPath
+  nameWithType: AppPathInfo.BlogHashPath
+  fullName: Pagene.BlogSettings.AppPathInfo.BlogHashPath

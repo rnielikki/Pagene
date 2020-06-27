@@ -16,7 +16,7 @@ items:
   fullName: Pagene.Models
   type: Namespace
   assemblies:
-  - cs.temp.dll
+  - Pagene.Models
 references:
 - uid: Pagene.Models.BlogEntry
   commentId: T:Pagene.Models.BlogEntry
