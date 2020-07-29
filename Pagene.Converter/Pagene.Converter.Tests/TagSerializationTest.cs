@@ -21,9 +21,9 @@ namespace Pagene.Converter.Tests
             tagManager.AddTag(new string[] { "csharp", "fsharp", "qsharp" }, new BlogEntry { Url = "a"});
             tagManager.AddTag(new string[] { "csharp", "fsharp", "jsharp" }, new BlogEntry { Url = "b"});
             tagManager.AddTag(new string[] { "csharp", "cplusplus", "cminusminus" }, new BlogEntry { Url = "c"});
-            await tagManager.Serialize();
+            await tagManager.Serialize().ConfigureAwait(false);
             using var stream = fileSystem.File.Open(AppPathInfo.BlogTagPath + "meta.tags.json", System.IO.FileMode.Open);
-            var result = await JsonSerializer.DeserializeAsync<Dictionary<string, TagMeta>>(stream);
+            var result = await JsonSerializer.DeserializeAsync<Dictionary<string, TagMeta>>(stream).ConfigureAwait(false);
             Assert.Equal(1, result["qsharp"].Count);
             Assert.Equal(2, result["fsharp"].Count);
             Assert.Equal(3, result["csharp"].Count);
