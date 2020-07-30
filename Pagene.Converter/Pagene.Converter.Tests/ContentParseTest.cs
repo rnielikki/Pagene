@@ -27,7 +27,7 @@ namespace Pagene.Converter.Tests
         {
             {$"t!!![asdfadsf]({AppPathInfo.FilePath}nnn/xxx.png)",  $"t!!![asdfadsf]({AppPathInfo.ContentPath}{AppPathInfo.FilePath}nnn/xxx.png)"},
             {"t!!![asdfadsf](meh/nnn/xxx.png)", "t!!![asdfadsf](meh/nnn/xxx.png)"},
-            {$"[linkSyntax]({AppPathInfo.FilePath}/nnn/xxx.png)", $"[linkSyntax]({AppPathInfo.FilePath}/nnn/xxx.png)"}
+            {$"[linkSyntax]({AppPathInfo.FilePath}/nnn/xxx.png)", $"[linkSyntax]({AppPathInfo.ContentPath}{AppPathInfo.FilePath}/nnn/xxx.png)"}
         };
     }
 }

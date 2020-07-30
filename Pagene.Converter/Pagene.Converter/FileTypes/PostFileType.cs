@@ -59,7 +59,7 @@ namespace Pagene.Converter.FileTypes
             int contentChar;
             do
             {
-                if (IfTargetChar('!') && IfTargetChar('['))
+                if (IfTargetChar('['))
                 {
                     while (contentChar != -1 && !IfTargetChar(']'))
                     {
