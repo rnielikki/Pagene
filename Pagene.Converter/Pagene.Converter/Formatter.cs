@@ -27,7 +27,6 @@ namespace Pagene.Converter
         /// </summary>
         /// <param name="info"></param>
         /// <param name="reader"></param>
-        /// <returns></returns>
         async Task<BlogEntry> IFormatter.GetBlogHeadAsync(IFileInfo info, StreamReader reader)
         {
             try
@@ -52,8 +51,6 @@ namespace Pagene.Converter
         /// <summary>
         /// Use only if you don't reuse the stream/stream reader anymore.
         /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
         async Task<BlogEntry> IFormatter.GetBlogEntryAsync(IFileInfo info)
         {
             using StreamReader reader = new StreamReader(info.OpenRead());

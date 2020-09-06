@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
+﻿using System.Windows.Forms;
+using Microsoft.Web.WebView2.WinForms;
 
 namespace Pagene.Editor
 {
@@ -34,8 +32,8 @@ namespace Pagene.Editor
         private void InitializeComponent()
         {
             this.CloseButton = new System.Windows.Forms.Button();
-            this.HtmlTagBox = new System.Windows.Forms.TextBox();
             this.TitleBox = new System.Windows.Forms.Label();
+            this.PreviewContent = new WebView2();
             // 
             // CloseButton
             // 
@@ -49,17 +47,6 @@ namespace Pagene.Editor
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // HtmlTagBox
-            // 
-            this.HtmlTagBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.HtmlTagBox.Location = new System.Drawing.Point(22, 62);
-            this.HtmlTagBox.Multiline = true;
-            this.HtmlTagBox.Name = "HtmlTagBox";
-            this.HtmlTagBox.Size = new System.Drawing.Size(764, 333);
-            this.HtmlTagBox.TabIndex = 2;
-            // 
             // TitleBox
             // 
             this.TitleBox.AutoSize = true;
@@ -67,7 +54,15 @@ namespace Pagene.Editor
             this.TitleBox.Location = new System.Drawing.Point(30, 15);
             this.TitleBox.Name = "TitleBox";
             this.TitleBox.Size = new System.Drawing.Size(0, 30);
-            this.TitleBox.TabIndex = 3;
+            this.TitleBox.TabIndex = 1;
+            // 
+            // PreviewContent
+            // 
+            this.PreviewContent.Location = new System.Drawing.Point(30, 61);
+            this.PreviewContent.Name = "PreviewContent";
+            this.PreviewContent.Size = new System.Drawing.Size(720, 320);
+            this.PreviewContent.TabIndex = 2;
+            this.PreviewContent.Text = "PreviewContent";
             // 
             // PreviewWindow
             // 
@@ -75,8 +70,8 @@ namespace Pagene.Editor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.TitleBox);
-            this.Controls.Add(this.HtmlTagBox);
             this.Controls.Add(this.CloseButton);
+            this.Controls.Add(this.PreviewContent);
             this.Name = "PreviewWindow";
             this.Text = "PreviewWindow";
 
@@ -85,7 +80,7 @@ namespace Pagene.Editor
         #endregion
 
         private System.Windows.Forms.Button CloseButton;
-        private TextBox HtmlTagBox;
         private Label TitleBox;
+        private WebView2 PreviewContent;
     }
 }

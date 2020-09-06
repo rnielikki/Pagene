@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using Pagene.BlogSettings;
+using System.Threading.Tasks;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace Pagene.Converter.FileTypes
@@ -19,7 +20,7 @@ namespace Pagene.Converter.FileTypes
             _fileSystem = fileSystem;
         }
 
-        internal virtual async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
+        internal virtual async Task SaveAsync(IFileInfo info, Stream fileStream)
         {
             fileStream.Position = 0;
             Stream writeTarget = GetFileStream(info.Name);
@@ -34,20 +35,22 @@ namespace Pagene.Converter.FileTypes
         }
         protected Stream GetFileStream(string fileName)
         {
-            string targetPath = Path.Combine(AppPathInfo.OutputPath, FilePath, ChangeExtension(fileName));
-            return _fileSystem.File.Open(targetPath, FileMode.OpenOrCreate);
+            return _fileSystem.File.Open(GetOutputPath(fileName), FileMode.OpenOrCreate);
         }
 
-        private string ChangeExtension(string fileName) => Path.GetFileNameWithoutExtension(fileName)+OutputType;
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-        internal virtual async System.Threading.Tasks.Task Clean(IEnumerable<string> files)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+        protected string GetOutputPath(string fileName)
+        {
+            return Path.Combine(AppPathInfo.OutputPath, FilePath, Path.GetFileNameWithoutExtension(fileName)+OutputType);
+        }
+
+        internal virtual Task CleanAsync(IEnumerable<string> files)
         {
            foreach (var fileName in files)
             {
-                _fileSystem.File.Delete(Path.Combine(AppPathInfo.OutputPath, FilePath, ChangeExtension(fileName)));
+                _fileSystem.File.Delete(GetOutputPath(fileName));
                 _fileSystem.File.Delete(Path.Combine(AppPathInfo.BlogHashPath, FilePath, fileName+".hashfile"));
             }
+            return Task.CompletedTask;
         }
     }
 }

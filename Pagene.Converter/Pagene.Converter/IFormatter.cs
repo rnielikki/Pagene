@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Pagene.Converter
 {
-    interface IFormatter
+    internal interface IFormatter
     {
         internal Task<BlogEntry> GetBlogHeadAsync(IFileInfo info, StreamReader reader);
         bool UseSummary { get; set; }
