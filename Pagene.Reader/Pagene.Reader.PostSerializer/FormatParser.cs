@@ -18,7 +18,7 @@ namespace Pagene.Reader.PostSerializer
         {
             if (raw.Length < 2 || raw[0] != '[' || raw[^1] != ']')
             {
-                throw new FormatException();
+                return new string[] { };
             }
             return raw[1..^1].Split(',', StringSplitOptions.RemoveEmptyEntries).Select(tag=>tag.Trim()).Distinct();
         }

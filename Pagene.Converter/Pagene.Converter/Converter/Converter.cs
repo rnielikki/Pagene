@@ -54,7 +54,7 @@ namespace Pagene.Converter
             try
             {
                 await Task.WhenAll(files.Select(file => BuildFileAsync(fileType, hashDir, crypto, file))).ConfigureAwait(false);
-                await fileType.Clean(_hashFileMap.Keys).ConfigureAwait(false);
+                await fileType.CleanAsync(_hashFileMap.Keys).ConfigureAwait(false);
             }
             finally
             {

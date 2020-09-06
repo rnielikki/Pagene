@@ -5,6 +5,7 @@ using System.IO.Abstractions;
 using Pagene.BlogSettings;
 using Utf8Json;
 using System.Text;
+using System;
 
 namespace Pagene.Converter.FileTypes
 {
@@ -34,18 +35,21 @@ namespace Pagene.Converter.FileTypes
             fileStream.Position = 0;
             using StreamReader reader = new StreamReader(fileStream);
             BlogEntry entry = await _formatter.GetBlogHeadAsync(info, reader).ConfigureAwait(false);
-            BlogItem item = new BlogItem { Title = entry.Title, Content = await ReadContent(reader).ConfigureAwait(false), CreationDate = entry.Date, ModificationDate = info.LastWriteTime, Tags = entry.Tags };
+            BlogItem item = new BlogItem { Title = entry.Title,
+                Content = await ReadContent(reader).ConfigureAwait(false),
+                CreationDate = entry.Date, ModificationDate = GetModificationDate(info, entry.Date),
+                Tags = entry.Tags };
             entry.Summary = _formatter.GetSummary(item.Content);
             await JsonSerializer.SerializeAsync(stream, item).ConfigureAwait(false);
 
             //generate categories
             _tagManager.AddTag(entry.Tags, entry);
         }
-        internal override async System.Threading.Tasks.Task Clean(IEnumerable<string> files)
+        internal override async System.Threading.Tasks.Task CleanAsync(IEnumerable<string> files)
         {
             if (!modified) return;
 
-            await base.Clean(files).ConfigureAwait(false);
+            await base.CleanAsync(files).ConfigureAwait(false);
             _tagManager.Clean(files);
 
             await _tagManager.Serialize().ConfigureAwait(false);
@@ -86,6 +90,9 @@ namespace Pagene.Converter.FileTypes
                 }
                 return (char)contentChar == c;
             }
+        }
+        private DateTime GetModificationDate(IFileInfo info, DateTime defaultDate) {
+            return _fileSystem.File.Exists(GetOutputPath(info.Name))?info.LastWriteTime:defaultDate;
         }
     }
 }
