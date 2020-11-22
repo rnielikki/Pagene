@@ -28,19 +28,22 @@ namespace Pagene.Converter.FileTypes
             _tagManager = tagManager;
         }
 
-        internal override async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
+        internal override async System.Threading.Tasks.Task SaveAsync(IFileInfo targetFileInfo, Stream sourceStream)
         {
             modified = true;
-            using Stream stream = GetFileStream(info.Name);
-            fileStream.Position = 0;
-            using StreamReader reader = new StreamReader(fileStream);
-            BlogEntry entry = await _formatter.GetBlogHeadAsync(info, reader).ConfigureAwait(false);
+            sourceStream.Position = 0;
+            using StreamReader reader = new StreamReader(sourceStream);
+            BlogEntry entry = await _formatter.GetBlogHeadAsync(targetFileInfo, reader).ConfigureAwait(false);
             BlogItem item = new BlogItem { Title = entry.Title,
                 Content = await ReadContent(reader).ConfigureAwait(false),
-                CreationDate = entry.Date, ModificationDate = GetModificationDate(info, entry.Date),
+                CreationDate = entry.Date,
+                ModificationDate = GetModificationDate(targetFileInfo, entry.Date),
                 Tags = entry.Tags };
             entry.Summary = _formatter.GetSummary(item.Content);
-            await JsonSerializer.SerializeAsync(stream, item).ConfigureAwait(false);
+            using MemoryStream resultStream = new MemoryStream();
+            await JsonSerializer.SerializeAsync(resultStream, item).ConfigureAwait(false);
+            resultStream.Position = 0;
+            await base.SaveAsync(targetFileInfo, resultStream);
 
             //generate categories
             _tagManager.AddTag(entry.Tags, entry);

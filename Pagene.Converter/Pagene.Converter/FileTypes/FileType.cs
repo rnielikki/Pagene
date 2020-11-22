@@ -20,13 +20,13 @@ namespace Pagene.Converter.FileTypes
             _fileSystem = fileSystem;
         }
 
-        internal virtual async Task SaveAsync(IFileInfo info, Stream fileStream)
+        internal virtual async Task SaveAsync(IFileInfo targetFileInfo, Stream sourceStream)
         {
-            fileStream.Position = 0;
-            Stream writeTarget = GetFileStream(info.Name);
+            sourceStream.Position = 0;
+            Stream writeTarget = GetFileStream(targetFileInfo.Name);
             try
             {
-                await fileStream.CopyToAsync(writeTarget).ConfigureAwait(false);
+                await sourceStream.CopyToAsync(writeTarget).ConfigureAwait(false);
             }
             finally
             {
@@ -35,7 +35,7 @@ namespace Pagene.Converter.FileTypes
         }
         protected Stream GetFileStream(string fileName)
         {
-            return _fileSystem.File.Open(GetOutputPath(fileName), FileMode.OpenOrCreate);
+            return _fileSystem.File.Open(GetOutputPath(fileName), FileMode.Create);
         }
 
         protected string GetOutputPath(string fileName)

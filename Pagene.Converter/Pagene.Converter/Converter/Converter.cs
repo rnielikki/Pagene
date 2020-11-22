@@ -64,7 +64,7 @@ namespace Pagene.Converter
 
         private async Task BuildFileAsync(FileType fileType, string hashDir, HashAlgorithm crypto, IFileInfo file)
         {
-            Stream fileStream = file.Open(FileMode.Open);
+            Stream fileStream = file.Open(FileMode.Open, FileAccess.Read);
             Stream hashStream = null;
             byte[] hash;
             try
