@@ -32,8 +32,10 @@ namespace Pagene.Editor
                 .GetFiles("*", SearchOption.TopDirectoryOnly)
                 .Where(IsImageFile)
                 .OrderByDescending(file => file.CreationTime);
-            var imageList = new ImageList();
-            imageList.ImageSize = new Size(48, 48);
+            var imageList = new ImageList
+            {
+                ImageSize = new Size(48, 48)
+            };
             FileList.LargeImageList = imageList;
             foreach (var file in files)
             {

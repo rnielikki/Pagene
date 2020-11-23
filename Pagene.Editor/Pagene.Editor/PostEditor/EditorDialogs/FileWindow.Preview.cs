@@ -7,7 +7,7 @@ using Svg;
 
 namespace Pagene.Editor
 {
-    partial class FileWindow
+    internal partial class FileWindow
     {
         //https://docs.microsoft.com/en-us/dotnet/api/system.drawing.imaging.imageformat?view=dotnet-plat-ext-3.1
         private readonly string[] imageExtensions = new string[] { ".bmp", ".emf", ".exif", ".gif", ".ico", ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".wmf", ".svg" };
