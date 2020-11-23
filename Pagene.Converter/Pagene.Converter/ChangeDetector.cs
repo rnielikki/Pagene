@@ -20,7 +20,7 @@ namespace Pagene.Converter
             var newHash = _crypto.ComputeHash(file);
 
             byte[] buffer = new byte[newHash.Length];
-            await hash.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+            await hash.ReadAsync(buffer.AsMemory(0, buffer.Length)).ConfigureAwait(false);
             if (buffer.Length == newHash.Length && newHash.SequenceEqual(buffer))
             {
                 return null; // same
@@ -30,10 +30,10 @@ namespace Pagene.Converter
                 return newHash; // not same
             }
         }
-        internal async Task WriteHashAsync(byte[] computedHash, Stream hashStream)
+        internal static async Task WriteHashAsync(byte[] computedHash, Stream hashStream)
         {
-            await hashStream.FlushAsync().ConfigureAwait(false);
-            await hashStream.WriteAsync(computedHash);
+            hashStream.SetLength(0);
+            await hashStream.WriteAsync(computedHash).ConfigureAwait(false);
         }
      }
 }

@@ -84,7 +84,7 @@ namespace Pagene.Converter
                 if (hash != null)
                 {
                     await fileType.SaveAsync(file, fileStream).ConfigureAwait(false);
-                    await _changeDetector.WriteHashAsync(hash, hashStream).ConfigureAwait(false);
+                    await ChangeDetector.WriteHashAsync(hash, hashStream).ConfigureAwait(false);
                 }
             }
             finally

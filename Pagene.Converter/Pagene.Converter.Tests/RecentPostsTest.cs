@@ -21,7 +21,7 @@ namespace Pagene.Converter.Tests
                     Title = "",
                     Date = fileInfo.CreationTime,
                     Url = fileInfo.Name,
-                    Tags = new string[] { }
+                    Tags = Array.Empty<string>()
                 }
             );
             IFileSystem fileSystem = new MockFileSystem(

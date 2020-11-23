@@ -42,7 +42,7 @@ namespace Pagene.Converter
             {
                 var targetTagItems = _tagMap[tag];
                 targetTagItems.Remove(Url, out _);
-                if (targetTagItems.Count == 0)
+                if (targetTagItems.IsEmpty)
                 {
                     _tagMap.Remove(tag, out _);
                     _removedTags.Add(tag);

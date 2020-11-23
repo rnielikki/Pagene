@@ -26,7 +26,7 @@ namespace Pagene.Converter
                 var mappedPosts = new ConcurrentDictionary<string, BlogEntry>(tagInfo.Posts.ToDictionary(info => info.Url, info => info));
                 if (!_tagMap.TryAdd(tag, mappedPosts))
                 {
-                    new FileLoadException("Failed to load tag list", file.Name);
+                    throw new FileLoadException("Failed to load tag list", file.Name);
                 }
             }
         }
@@ -40,11 +40,11 @@ namespace Pagene.Converter
                 string path = $"{_dirName}{fileName}.json";
                 var item = new TagInfo { Tag = tagPair.Key, Posts = tagPair.Value.Values.OrderByDescending(post => post.Date) };
                 using var file = _fileSystem.File.Open(path, FileMode.Create);
-                await file.WriteAsync(JsonSerializer.Serialize(item));
+                await file.WriteAsync(JsonSerializer.Serialize(item)).ConfigureAwait(false);
                 metaMap.Add(tagPair.Key, new TagMeta { Url = Path.Combine(RoutePathInfo.TagPath, fileName.ToString()).Replace('\\', '/'), Count = tagPair.Value.Count });
                 fileName++;
             }
-            await tagMeta.WriteAsync(JsonSerializer.Serialize(metaMap));
+            await tagMeta.WriteAsync(JsonSerializer.Serialize(metaMap)).ConfigureAwait(false);
         }
     }
 }

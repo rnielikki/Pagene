@@ -43,7 +43,7 @@ namespace Pagene.Converter.FileTypes
             using MemoryStream resultStream = new MemoryStream();
             await JsonSerializer.SerializeAsync(resultStream, item).ConfigureAwait(false);
             resultStream.Position = 0;
-            await base.SaveAsync(targetFileInfo, resultStream);
+            await base.SaveAsync(targetFileInfo, resultStream).ConfigureAwait(false);
 
             //generate categories
             _tagManager.AddTag(entry.Tags, entry);
@@ -60,7 +60,7 @@ namespace Pagene.Converter.FileTypes
             await postManager.Serialize(await postManager.GetRecentPosts(ConvertingInfo.RecentPostsCount).ConfigureAwait(false)).ConfigureAwait(false);
         }
         //Let me think where to move this...
-        internal async System.Threading.Tasks.Task<string> ReadContent(StreamReader contentStreamReader)
+        internal static async System.Threading.Tasks.Task<string> ReadContent(StreamReader contentStreamReader)
         {
             StringBuilder result = new StringBuilder();
             int contentChar;

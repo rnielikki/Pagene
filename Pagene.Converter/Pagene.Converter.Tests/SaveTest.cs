@@ -81,15 +81,20 @@ namespace Pagene.Converter.Tests
                     { contentPath, new MockFileData(content) }
                       }
                   );
-            Mock abstractMock = new Mock<FileType>(fileSystem, "");
-            abstractMock.CallBase = true;
+            Mock abstractMock = new Mock<FileType>(fileSystem, "")
+            {
+                CallBase = true
+            };
 
+#pragma warning disable RCS1202 // Avoid NullReferenceException. It will cause test failure anyway as intended.
             await (abstractMock.Object as FileType)
+
                 .SaveAsync(
                     fileSystem.FileInfo.FromFileName(anyPath),
                     new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(replaceContent)
                  )
-            );
+            ).ConfigureAwait(false);
+#pragma warning restore RCS1202 // Avoid NullReferenceException.
 
             using var openedFile = fileSystem.File.Open(anyPath, System.IO.FileMode.Open);
             using var reader = new System.IO.StreamReader(openedFile);
