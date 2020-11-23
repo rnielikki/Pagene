@@ -8,7 +8,7 @@ using Pagene.BlogSettings;
 
 namespace Pagene.Editor
 {
-    public partial class FileWindow : Form
+    internal partial class FileWindow : Form
     {
         private readonly string fullPath;
         private readonly int _thumbWidth;
