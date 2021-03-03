@@ -16,10 +16,16 @@ namespace Pagene.Reader.PostSerializer
         /// <returns>String of tags as IEnumerable.</returns>
         public IEnumerable<string> ParseTag(string raw)
         {
-            if (raw.Length < 2 || raw[0] != '[' || raw[^1] != ']')
+            if (string.IsNullOrWhiteSpace(raw))
             {
                 return Array.Empty<string>();
             }
+
+            if (raw.Length < 2 || raw[0] != '[' || raw[^1] != ']')
+            {
+                throw new FormatException();
+            }
+
             return raw[1..^1].Split(',', StringSplitOptions.RemoveEmptyEntries).Select(tag=>tag.Trim()).Distinct();
         }
         /// <summary>

@@ -69,7 +69,6 @@ namespace Pagene.Converter
             byte[] hash;
             try
             {
-                string fileName = file.Name;
                 if (_hashFileMap.TryGetValue(file.Name, out IFileInfo hashFile))
                 {
                     hashStream = hashFile.Open(FileMode.OpenOrCreate);
