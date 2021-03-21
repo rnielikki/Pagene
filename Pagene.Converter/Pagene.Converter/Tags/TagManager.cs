@@ -10,7 +10,6 @@ namespace Pagene.Converter
 {
     internal partial class TagManager
     {
-        //sometimes can be replaced to ConcurrentDictionary
         private readonly ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> _tagMap;
         internal IEnumerable<string> GetTags() => _tagMap.Keys;
         private readonly IFileSystem _fileSystem;

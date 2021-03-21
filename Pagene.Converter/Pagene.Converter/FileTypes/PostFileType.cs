@@ -12,20 +12,23 @@ namespace Pagene.Converter.FileTypes
     internal class PostFileType : FileType
     {
         internal override string Type => "*.md";
-        internal override string OutputType => ".json";
+        internal static string OutputType => ".json";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
+
         private bool modified;
+
         internal PostFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager) : base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = formatter;
             _tagManager = tagManager;
+            DirectorySearchOption = SearchOption.TopDirectoryOnly;
         }
 
-        internal PostFileType(IFileSystem fileSystem, TagManager tagManager) : base(fileSystem, AppPathInfo.ContentPath)
+        internal PostFileType(IFileSystem fileSystem) : base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = new Formatter();
-            _tagManager = tagManager;
+            _tagManager = new TagManager(fileSystem);
         }
 
         internal override async System.Threading.Tasks.Task SaveAsync(IFileInfo targetFileInfo, Stream sourceStream)
@@ -59,8 +62,13 @@ namespace Pagene.Converter.FileTypes
             var postManager = new RecentPostManager(_fileSystem, _formatter);
             await postManager.Serialize(await postManager.GetRecentPosts(ConvertingInfo.RecentPostsCount).ConfigureAwait(false)).ConfigureAwait(false);
         }
-        //Let me think where to move this...
-        internal static async System.Threading.Tasks.Task<string> ReadContent(StreamReader contentStreamReader)
+
+        //Represents logic to change "files" to "contents/files"
+        //If you use Visual Studio Code to edit *.md file or GitHub to public editing *.md file, this is useful.
+
+        //Note: possible replacement for future (to one of "text filter pipelines").
+        //related test: ContentParseTest.cs
+        private static async System.Threading.Tasks.Task<string> ReadContent(StreamReader contentStreamReader)
         {
             StringBuilder result = new StringBuilder();
             int contentChar;
@@ -96,6 +104,10 @@ namespace Pagene.Converter.FileTypes
         }
         private DateTime GetModificationDate(IFileInfo info, DateTime defaultDate) {
             return _fileSystem.File.Exists(GetOutputPath(info.Name))?info.LastWriteTime:defaultDate;
+        }
+        protected override string GetOutputPath(string fileName)
+        {
+            return Path.Combine(AppPathInfo.OutputPath, FilePath, Path.GetFileNameWithoutExtension(fileName)+OutputType);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Pagene.BlogSettings
         public const string HashPath = ".hash/";
 
         /// <summary>
-        /// Path, which cRelative to main program (or user-defined) path.ontains unconverted blog posts. (*.md format) Relative to main program (or user-defined) path.
+        /// Path, which is relative to main program (or user-defined) path. Contains unconverted blog posts. (*.md format) Relative to main program (or user-defined) path.
         /// </summary>
         /// <note>Converting from subdirectory of this directory doesn't work.</note>
         public static string BlogInputPath { get => Path.Combine(InputPath, ContentPath); }

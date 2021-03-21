@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using Pagene.BlogSettings;
 using System.Threading.Tasks;
 
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace Pagene.Converter.FileTypes
 {
     internal abstract class FileType
     {
         internal string FilePath { get; }
         internal virtual string Type { get; }
-        internal virtual string OutputType { get; }
 
         protected readonly IFileSystem _fileSystem;
-        internal FileType(IFileSystem fileSystem, string path)
+
+        public virtual SearchOption DirectorySearchOption { get; protected set; } = SearchOption.AllDirectories;
+
+        protected FileType(IFileSystem fileSystem, string path)
         {
             FilePath = path;
             _fileSystem = fileSystem;
@@ -33,14 +34,15 @@ namespace Pagene.Converter.FileTypes
                 writeTarget.Close();
             }
         }
+
         protected Stream GetFileStream(string fileName)
         {
             return _fileSystem.File.Open(GetOutputPath(fileName), FileMode.Create);
         }
 
-        protected string GetOutputPath(string fileName)
+        protected virtual string GetOutputPath(string fileName)
         {
-            return Path.Combine(AppPathInfo.OutputPath, FilePath, Path.GetFileNameWithoutExtension(fileName)+OutputType);
+            return Path.Combine(AppPathInfo.OutputPath, FilePath, fileName);
         }
 
         internal virtual Task CleanAsync(IEnumerable<string> files)

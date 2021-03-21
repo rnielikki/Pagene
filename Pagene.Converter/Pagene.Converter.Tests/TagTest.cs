@@ -23,7 +23,6 @@ namespace Pagene.Converter.Tests
 
             var resultDictionary = GetTagMap(tagManager);
             resultDictionary.Keys.OrderBy(str => str).Should().Equal(new string[] { "apple", "cheese", "ice cream", "juice", "orange" });
-            var val = resultDictionary["cheese"];
             resultDictionary["cheese"].Keys.Should().Contain(entry1.Url)
                 .And.Contain(entry2.Url);
 

@@ -1,15 +1,13 @@
-﻿
-    /*
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Pagene.BlogSettings;
+using System.IO.Abstractions;
 
 namespace Pagene.Converter.FileTypes
 {
     internal class AttachmentFileType : FileType
     {
+        internal override string Type => "*";
+        internal AttachmentFileType(IFileSystem fileSystem) : base(fileSystem, AppPathInfo.FilePath)
+        {
+        }
     }
 }
-    */
