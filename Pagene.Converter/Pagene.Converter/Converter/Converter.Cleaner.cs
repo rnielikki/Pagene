@@ -24,7 +24,7 @@ namespace Pagene.Converter
         private void CleanFiles(string path)
         {
             var directory = _fileSystem.DirectoryInfo.FromDirectoryName(path);
-            foreach (var file in directory.GetFiles("*", System.IO.SearchOption.TopDirectoryOnly))
+            foreach (var file in directory.GetFiles("*", System.IO.SearchOption.AllDirectories))
             {
                 file.Delete();
             }

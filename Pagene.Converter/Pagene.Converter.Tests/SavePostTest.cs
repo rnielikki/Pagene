@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Pagene.Models;
 using Utf8Json;
 using Pagene.BlogSettings;
+using Moq.Protected;
 
 namespace Pagene.Converter.Tests
 {
@@ -15,6 +16,8 @@ namespace Pagene.Converter.Tests
         [Fact]
         public async Task SaveDefaultTest()
         {
+            AppPathInfo.InputPath = "/inputs/";
+            AppPathInfo.OutputPath = "/";
             const string path = "tests";
             string inputPath = $"{AppPathInfo.InputPath}{path}/something.md";
             string outputPath = $"{AppPathInfo.OutputPath}{path}/something.md";
@@ -29,7 +32,9 @@ namespace Pagene.Converter.Tests
             using var fileStream = fileInfo.Open(System.IO.FileMode.Open);
 
             var fileMock = new Mock<FileType>(fileSystem, path) { CallBase = true };
+
             fileMock.SetupGet(obj => obj.Type).Returns("*");
+
             await fileMock.Object.SaveAsync(fileInfo, fileStream).ConfigureAwait(false);
             Assert.True(fileSystem.FileExists(outputPath));
 
@@ -74,10 +79,13 @@ namespace Pagene.Converter.Tests
         [Fact]
         public async Task TruncateTest()
         {
+
             const string content = "failed pass";
             const string replaceContent = "do not";
             string inputPath = Models.FormatterTestModel.InputContentPath+"meh";
             string outputPath = $"{Models.FormatterTestModel.OutputContentPath}meh";
+            AppPathInfo.InputPath = "/" + AppPathInfo.InputPath;
+            AppPathInfo.OutputPath = "/" + AppPathInfo.OutputPath;
             MockFileSystem fileSystem = new MockFileSystem(
                       new Dictionary<string, MockFileData>(){
                           { inputPath, new MockFileData(content) },

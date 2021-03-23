@@ -23,8 +23,8 @@ this one has no title.";
 
 This should thorw an error.";
 
-        internal static readonly string InputContentPath = System.IO.Path.Combine(AppPathInfo.InputPath, AppPathInfo.ContentPath);
-        internal static readonly string OutputContentPath = System.IO.Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath);
+        internal static readonly string InputContentPath = "/" + System.IO.Path.Combine(AppPathInfo.InputPath, AppPathInfo.ContentPath);
+        internal static readonly string OutputContentPath = "/" + System.IO.Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath);
         private static readonly string filePath1 = InputContentPath + "test.md";
         private static readonly string filePath2 = InputContentPath + "test2.md";
         private static readonly string errorPath1 = InputContentPath + "err1.md";

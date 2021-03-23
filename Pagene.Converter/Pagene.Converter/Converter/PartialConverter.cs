@@ -23,12 +23,14 @@ namespace Pagene.Converter
         }
         internal async Task BuildAsync()
         {
-            string hashDir = Path.Combine(AppPathInfo.BlogHashPath, _fileType.FilePath);
             var files = InitializationHelper.InitDirectory(_fileSystem, Path.Combine(AppPathInfo.InputPath, _fileType.FilePath))
                 .GetFiles(_fileType.Type, _fileType.DirectorySearchOption);
+
+            string hashDir = Path.Combine(AppPathInfo.BlogHashPath, _fileType.FilePath);
             _hashFileMap = InitializationHelper.InitDirectory(_fileSystem, hashDir)
                 .GetFiles($"{_fileType.Type}.hashfile", _fileType.DirectorySearchOption)
-                .ToDictionary(info => Path.GetFileNameWithoutExtension(info.Name), info => info);
+                .ToDictionary(info => info.Name[0..^9], info => info);
+
             using var crypto = SHA1.Create();
             _changeDetector = new ChangeDetector(crypto);
 

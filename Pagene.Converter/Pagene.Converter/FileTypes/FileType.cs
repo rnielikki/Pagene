@@ -24,7 +24,9 @@ namespace Pagene.Converter.FileTypes
         internal virtual async Task SaveAsync(IFileInfo targetFileInfo, Stream sourceStream)
         {
             sourceStream.Position = 0;
-            Stream writeTarget = GetFileStream(targetFileInfo.Name);
+            string relativeFilePath = Path.GetRelativePath(AppPathInfo.InputPath, targetFileInfo.FullName);
+
+            Stream writeTarget = GetFileStream(relativeFilePath);
             try
             {
                 await sourceStream.CopyToAsync(writeTarget).ConfigureAwait(false);
@@ -42,7 +44,8 @@ namespace Pagene.Converter.FileTypes
 
         protected virtual string GetOutputPath(string fileName)
         {
-            return Path.Combine(AppPathInfo.OutputPath, FilePath, fileName);
+            _fileSystem.Directory.CreateDirectoriesIfNotExist(AppPathInfo.OutputPath, fileName);
+            return Path.Combine(AppPathInfo.OutputPath, fileName);
         }
 
         internal virtual Task CleanAsync(IEnumerable<string> files)

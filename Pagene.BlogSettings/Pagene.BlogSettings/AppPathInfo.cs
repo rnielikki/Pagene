@@ -1,5 +1,6 @@
 ﻿using System.IO;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Pagene.Converter.Tests")]
 namespace Pagene.BlogSettings
 {
     /// <summary>
@@ -30,7 +31,7 @@ namespace Pagene.BlogSettings
         /// Path name of any blog attachments, relative to content path.
         /// Blog post can reference by linkining to the filePath.
         /// </summary>
-        public const string FilePath = "files/";
+        public const string FilePath = ContentPath + "files/";
         /// <summary>
         /// Tag file path name, inside entry path. Contains tag files as number and meta.tags.json for the list of tags.
         /// </summary>
@@ -49,7 +50,7 @@ namespace Pagene.BlogSettings
         /// Attachment file path relative to the output path.
         /// Can contain not only pictures, but texts, documents, codes and anything etc.
         /// </summary>
-        public static string BlogFilePath { get => Path.Combine(OutputPath, ContentPath, FilePath); }
+        public static string BlogFilePath { get => Path.Combine(OutputPath, FilePath); }
         /// <summary>
         /// Content file path relative to the output path.
         /// </summary>
