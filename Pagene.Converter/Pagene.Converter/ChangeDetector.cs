@@ -30,7 +30,7 @@ namespace Pagene.Converter
                 return newHash; // not same
             }
         }
-        internal static async Task WriteHashAsync(byte[] computedHash, Stream hashStream)
+        internal async Task WriteHashAsync(byte[] computedHash, Stream hashStream)
         {
             hashStream.SetLength(0);
             await hashStream.WriteAsync(computedHash).ConfigureAwait(false);

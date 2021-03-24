@@ -9,10 +9,10 @@ namespace Pagene.Converter.Tests.Models
     {
         public const string title1 = "title";
         public const string title2 = "random to say";
-        private static readonly string content1 = @$"[{string.Join(", ", TagsTestModel.tags1Duplicated)}]
+        public static readonly string content1 = @$"[{string.Join(", ", TagsTestModel.tags1Duplicated)}]
 # {title1}
 content";
-        private static readonly string content2 = @$"[{string.Join(", ", TagsTestModel.tags2)}]
+        public static readonly string content2 = @$"[{string.Join(", ", TagsTestModel.tags2)}]
 # {title2}
 I have nothing.";
 
