@@ -1,5 +1,6 @@
 ﻿using Pagene.BlogSettings;
 using Pagene.Converter.FileTypes;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
@@ -14,7 +15,8 @@ namespace Pagene.Converter
         private readonly FileType _fileType;
         private readonly IFileSystem _fileSystem;
         private ChangeDetector _changeDetector;
-        private Dictionary<string, IFileInfo> _hashFileMap;
+        private ConcurrentDictionary<string, IFileInfo> _hashFileMap;
+        private string _filePath;
 
         internal PartialConverter(FileType fileType, IFileSystem fileSystem)
         {
@@ -23,13 +25,16 @@ namespace Pagene.Converter
         }
         internal async Task BuildAsync()
         {
-            var files = InitializationHelper.InitDirectory(_fileSystem, Path.Combine(AppPathInfo.InputPath, _fileType.FilePath))
+            _filePath = Path.Combine(AppPathInfo.InputPath, _fileType.FilePath);
+            var files = InitializationHelper.InitDirectory(_fileSystem, _filePath)
                 .GetFiles(_fileType.Type, _fileType.DirectorySearchOption);
 
             string hashDir = Path.Combine(AppPathInfo.BlogHashPath, _fileType.FilePath);
-            _hashFileMap = InitializationHelper.InitDirectory(_fileSystem, hashDir)
+            _hashFileMap = new (
+                InitializationHelper.InitDirectory(_fileSystem, hashDir)
                 .GetFiles($"{_fileType.Type}.hashfile", _fileType.DirectorySearchOption)
-                .ToDictionary(info => info.Name[0..^9], info => info);
+                .ToDictionary(info => info.GetRelativeName(hashDir, _fileType.DirectorySearchOption)[0..^9], info => info)
+            );
 
             using var crypto = SHA1.Create();
             _changeDetector = new ChangeDetector(crypto);
@@ -52,23 +57,27 @@ namespace Pagene.Converter
             Stream fileStream = file.Open(FileMode.Open, FileAccess.Read);
             Stream hashStream = null;
             byte[] hash;
+
             try
             {
-                if (_hashFileMap.TryGetValue(file.Name, out IFileInfo hashFile))
+                string fileName = file.GetRelativeName(_filePath, _fileType.DirectorySearchOption);
+                if (_hashFileMap.TryGetValue(fileName, out IFileInfo hashFile))
                 {
                     hashStream = hashFile.Open(FileMode.OpenOrCreate);
                     hash = await _changeDetector.DetectAsync(fileStream, hashStream).ConfigureAwait(false);
-                    _hashFileMap.Remove(file.Name);
+                    _hashFileMap.TryRemove(fileName, out _);
                 }
                 else
                 {
-                    hashStream = _fileSystem.File.Create($"{hashDir}{file.Name}.hashfile");
+                    //new hash
+                    _fileSystem.Directory.CreateDirectoriesIfNotExist(hashDir, fileName);
+                    hashStream = _fileSystem.File.Create($"{Path.Combine(hashDir, fileName)}.hashfile");
                     hash = crypto.ComputeHash(fileStream);
                 }
                 if (hash != null)
                 {
                     await _fileType.SaveAsync(file, fileStream).ConfigureAwait(false);
-                    await ChangeDetector.WriteHashAsync(hash, hashStream).ConfigureAwait(false);
+                    await _changeDetector.WriteHashAsync(hash, hashStream).ConfigureAwait(false);
                 }
             }
             finally

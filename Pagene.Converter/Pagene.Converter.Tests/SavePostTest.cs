@@ -13,11 +13,8 @@ namespace Pagene.Converter.Tests
 {
     public class SavePostTest
     {
-        [Fact]
         public async Task SaveDefaultTest()
         {
-            AppPathInfo.InputPath = "/inputs/";
-            AppPathInfo.OutputPath = "/";
             const string path = "tests";
             string inputPath = $"{AppPathInfo.InputPath}{path}/something.md";
             string outputPath = $"{AppPathInfo.OutputPath}{path}/something.md";
@@ -79,13 +76,10 @@ namespace Pagene.Converter.Tests
         [Fact]
         public async Task TruncateTest()
         {
-
             const string content = "failed pass";
             const string replaceContent = "do not";
             string inputPath = Models.FormatterTestModel.InputContentPath+"meh";
             string outputPath = $"{Models.FormatterTestModel.OutputContentPath}meh";
-            AppPathInfo.InputPath = "/" + AppPathInfo.InputPath;
-            AppPathInfo.OutputPath = "/" + AppPathInfo.OutputPath;
             MockFileSystem fileSystem = new MockFileSystem(
                       new Dictionary<string, MockFileData>(){
                           { inputPath, new MockFileData(content) },
@@ -99,7 +93,6 @@ namespace Pagene.Converter.Tests
 
 #pragma warning disable RCS1202 // Avoid NullReferenceException. Exception will cause test failure anyway as intended.
             await (abstractMock.Object as FileType)
-
                 .SaveAsync(
                     fileSystem.FileInfo.FromFileName(inputPath),
                     new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(replaceContent)

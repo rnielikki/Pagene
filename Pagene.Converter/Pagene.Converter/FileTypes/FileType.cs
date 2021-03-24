@@ -24,7 +24,16 @@ namespace Pagene.Converter.FileTypes
         internal virtual async Task SaveAsync(IFileInfo targetFileInfo, Stream sourceStream)
         {
             sourceStream.Position = 0;
-            string relativeFilePath = Path.GetRelativePath(AppPathInfo.InputPath, targetFileInfo.FullName);
+            string relativeFilePath;
+
+            if (DirectorySearchOption == SearchOption.AllDirectories)
+            {
+                relativeFilePath = Path.GetRelativePath(_fileSystem.Path.GetFullPath(AppPathInfo.InputPath), targetFileInfo.FullName);
+            }
+            else
+            {
+                relativeFilePath = targetFileInfo.Name;
+            }
 
             Stream writeTarget = GetFileStream(relativeFilePath);
             try

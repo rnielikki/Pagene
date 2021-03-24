@@ -9,10 +9,10 @@ namespace Pagene.Converter.Tests.Models
     {
         public const string title1 = "title";
         public const string title2 = "random to say";
-        private static readonly string content1 = @$"[{string.Join(", ", TagsTestModel.tags1Duplicated)}]
+        public static readonly string content1 = @$"[{string.Join(", ", TagsTestModel.tags1Duplicated)}]
 # {title1}
 content";
-        private static readonly string content2 = @$"[{string.Join(", ", TagsTestModel.tags2)}]
+        public static readonly string content2 = @$"[{string.Join(", ", TagsTestModel.tags2)}]
 # {title2}
 I have nothing.";
 
@@ -23,8 +23,8 @@ this one has no title.";
 
 This should thorw an error.";
 
-        internal static readonly string InputContentPath = "/" + System.IO.Path.Combine(AppPathInfo.InputPath, AppPathInfo.ContentPath);
-        internal static readonly string OutputContentPath = "/" + System.IO.Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath);
+        internal static readonly string InputContentPath = System.IO.Path.Combine(AppPathInfo.InputPath, AppPathInfo.ContentPath);
+        internal static readonly string OutputContentPath = System.IO.Path.Combine(AppPathInfo.OutputPath, AppPathInfo.ContentPath);
         private static readonly string filePath1 = InputContentPath + "test.md";
         private static readonly string filePath2 = InputContentPath + "test2.md";
         private static readonly string errorPath1 = InputContentPath + "err1.md";
