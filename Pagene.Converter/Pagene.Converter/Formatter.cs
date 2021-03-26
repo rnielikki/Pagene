@@ -51,7 +51,7 @@ namespace Pagene.Converter
         /// </summary>
         async Task<BlogEntry> IFormatter.GetBlogEntryAsync(IFileInfo info)
         {
-            using StreamReader reader = new StreamReader(info.OpenRead());
+            using StreamReader reader = new(info.OpenRead());
             var entry = await (this as IFormatter).GetBlogHeadAsync(info, reader).ConfigureAwait(false);
             entry.Summary = await GetSummaryAsync(reader).ConfigureAwait(false);
             return entry;

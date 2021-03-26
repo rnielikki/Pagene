@@ -69,7 +69,7 @@ namespace Pagene.Converter.Tests
             Assert.Equal(expected, summary);
         }
 
-         public static TheoryData<IFileInfo, IEnumerable<string>, string, bool> GetValidationSet() => new TheoryData<IFileInfo, IEnumerable<string>, string, bool>() {
+         public static TheoryData<IFileInfo, IEnumerable<string>, string, bool> GetValidationSet() => new() {
             { FormatterTestModel.file1, TagsTestModel.tags1, FormatterTestModel.title1, true },
             { FormatterTestModel.file2, TagsTestModel.tags2, FormatterTestModel.title2, true },
             { FormatterTestModel.error1, null, string.Empty, false },

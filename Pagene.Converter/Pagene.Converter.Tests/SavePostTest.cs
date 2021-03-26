@@ -13,13 +13,14 @@ namespace Pagene.Converter.Tests
 {
     public class SavePostTest
     {
+        [Fact]
         public async Task SaveDefaultTest()
         {
             const string path = "tests";
             string inputPath = $"{AppPathInfo.InputPath}{path}/something.md";
             string outputPath = $"{AppPathInfo.OutputPath}{path}/something.md";
             const string content = "123123";
-            MockFileSystem fileSystem = new MockFileSystem(
+            MockFileSystem fileSystem = new(
                       new Dictionary<string, MockFileData>(){
                     { path, new MockDirectoryData() },
                     { inputPath, new MockFileData(content) },
@@ -45,7 +46,7 @@ namespace Pagene.Converter.Tests
             const string content = "asdfasdf";
             string contentPath = $"{Models.FormatterTestModel.OutputContentPath}something.json";
 
-            MockFileSystem fileSystem = new MockFileSystem(
+            MockFileSystem fileSystem = new(
                       new Dictionary<string, MockFileData>(){
                     { contentPath, new MockFileData(content) },
                       }
@@ -80,7 +81,7 @@ namespace Pagene.Converter.Tests
             const string replaceContent = "do not";
             string inputPath = Models.FormatterTestModel.InputContentPath+"meh";
             string outputPath = $"{Models.FormatterTestModel.OutputContentPath}meh";
-            MockFileSystem fileSystem = new MockFileSystem(
+            MockFileSystem fileSystem = new(
                       new Dictionary<string, MockFileData>(){
                           { inputPath, new MockFileData(content) },
                           { outputPath, new MockFileData(content) }

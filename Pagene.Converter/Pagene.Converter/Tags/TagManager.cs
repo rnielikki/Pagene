@@ -22,7 +22,7 @@ namespace Pagene.Converter
         internal IEnumerable<string> GetTags() => _tagMap.Keys;
         private readonly IFileSystem _fileSystem;
         private readonly string _dirName = AppPathInfo.BlogTagPath;
-        private readonly ConcurrentBag<string> _removedTags = new ConcurrentBag<string>();
+        private readonly ConcurrentBag<string> _removedTags = new();
 
         /// <summary>
         /// Get tags that doesn't exist in posts anymore, for cleaning purpose.

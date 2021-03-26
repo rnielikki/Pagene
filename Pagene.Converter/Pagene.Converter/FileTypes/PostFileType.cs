@@ -46,15 +46,16 @@ namespace Pagene.Converter.FileTypes
         {
             modified = true;
             sourceStream.Position = 0;
-            using StreamReader reader = new StreamReader(sourceStream);
+            using StreamReader reader = new(sourceStream);
             BlogEntry entry = await _formatter.GetBlogHeadAsync(targetFileInfo, reader).ConfigureAwait(false);
-            BlogItem item = new BlogItem { Title = entry.Title,
+            BlogItem item = new()
+            { Title = entry.Title,
                 Content = await ReadContent(reader).ConfigureAwait(false),
                 CreationDate = entry.Date,
                 ModificationDate = GetModificationDate(targetFileInfo, entry.Date),
                 Tags = entry.Tags };
             entry.Summary = _formatter.GetSummary(item.Content);
-            using MemoryStream resultStream = new MemoryStream();
+            using MemoryStream resultStream = new();
             await JsonSerializer.SerializeAsync(resultStream, item).ConfigureAwait(false);
             resultStream.Position = 0;
             await base.SaveAsync(targetFileInfo, resultStream).ConfigureAwait(false);
@@ -81,7 +82,7 @@ namespace Pagene.Converter.FileTypes
         //related test: ContentParseTest.cs
         private static async System.Threading.Tasks.Task<string> ReadContent(StreamReader contentStreamReader)
         {
-            StringBuilder result = new StringBuilder();
+            StringBuilder result = new();
             int contentChar;
             do
             {

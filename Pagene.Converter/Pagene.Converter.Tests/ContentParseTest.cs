@@ -19,7 +19,7 @@ namespace Pagene.Converter.Tests
             string result = await (System.Threading.Tasks.Task<string>) readContent.Invoke(null, new[] { new StreamReader(syntaxStream) });
             Assert.Equal(expected, result);
         }
-        public static TheoryData<string, string> ContentTheoryItems() => new TheoryData<string, string>()
+        public static TheoryData<string, string> ContentTheoryItems() => new()
         {
             {$"t!!![asdfadsf]({AppPathInfo.FilePath}nnn/xxx.png)",  $"t!!![asdfadsf]({AppPathInfo.ContentPath}{AppPathInfo.FilePath}nnn/xxx.png)"},
             {"t!!![asdfadsf](meh/nnn/xxx.png)", "t!!![asdfadsf](meh/nnn/xxx.png)"},
