@@ -30,7 +30,7 @@ namespace Pagene.Converter.Tests
 
             var fileMock = new Mock<FileType>(fileSystem, path) { CallBase = true };
 
-            fileMock.SetupGet(obj => obj.Type).Returns("*");
+            fileMock.SetupGet(obj => obj.Extension).Returns("*");
 
             await fileMock.Object.SaveAsync(fileInfo, fileStream).ConfigureAwait(false);
             Assert.True(fileSystem.FileExists(outputPath));

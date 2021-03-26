@@ -10,6 +10,9 @@ namespace Pagene.Converter
 {
     internal partial class TagManager
     {
+        /// <summary>
+        /// Read all tags, reads tags and create tag map for use.
+        /// </summary>
         private void Deserialize()
         {
             var directory = _fileSystem.Directory.Exists(_dirName) ? _fileSystem.DirectoryInfo.FromDirectoryName(_dirName) : _fileSystem.Directory.CreateDirectory(_dirName);
@@ -30,6 +33,10 @@ namespace Pagene.Converter
                 }
             }
         }
+
+        /// <summary>
+        /// Create tag maps JSON file from tag map. This should be called after converting process.
+        /// </summary>
         internal async System.Threading.Tasks.Task Serialize()
         {
             using var tagMeta = _fileSystem.FileInfo.FromFileName($"{_dirName}meta.tags.json").Open(FileMode.Create);

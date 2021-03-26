@@ -8,20 +8,43 @@ using System.Linq;
 
 namespace Pagene.Converter
 {
+    /// <summary>
+    /// Represents the tag creating and managing logics.
+    /// </summary>
     internal partial class TagManager
     {
+        // ConcurrentDirectory<Tag, ConcurrentDirectory<BlogUrl, BlogEntry>>
         private readonly ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> _tagMap;
+
+        /// <summary>
+        /// Gets the tags that have been found from the posts.
+        /// </summary>
         internal IEnumerable<string> GetTags() => _tagMap.Keys;
         private readonly IFileSystem _fileSystem;
         private readonly string _dirName = AppPathInfo.BlogTagPath;
         private readonly ConcurrentBag<string> _removedTags = new ConcurrentBag<string>();
+
+        /// <summary>
+        /// Get tags that doesn't exist in posts anymore, for cleaning purpose.
+        /// </summary>
         internal IEnumerable<string> GetRemovedTags() => _removedTags.AsEnumerable();
+
+        /// <summary>
+        /// Constructor of tag managing logic class.
+        /// </summary>
+        /// <param name="fileSystem">The file system, which can be mocked or not.</param>
         internal TagManager(IFileSystem fileSystem)
         {
             _tagMap = new ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>>(StringComparer.OrdinalIgnoreCase);
             _fileSystem = fileSystem;
             Deserialize();
         }
+
+        /// <summary>
+        /// Add or update tag to blog entry and tag map, without duplication.
+        /// </summary>
+        /// <param name="tags">The tags to add.</param>
+        /// <param name="entry">The <see cref="BlogEntry"/> to apply tags.</param>
         internal void AddTag(IEnumerable<string> tags, BlogEntry entry)
         {
             var oldTags = SearchTagsByEntry(entry.Url);
@@ -35,12 +58,18 @@ namespace Pagene.Converter
             RemoveTag(oldTags.Except(tags), entry.Url);
         }
         private IEnumerable<string> SearchTagsByEntry(string url) => _tagMap.Where(kv => kv.Value.ContainsKey(url)).Select(kv => kv.Key);
-        internal void RemoveTag(IEnumerable<string> tags, string Url)
+
+        /// <summary>
+        /// Removes tags from specific blog post Url.
+        /// </summary>
+        /// <param name="tags">The tags to remove.</param>
+        /// <param name="url">The Blog Url (unique value) to remove tags.</param>
+        internal void RemoveTag(IEnumerable<string> tags, string url)
         {
             foreach (string tag in tags)
             {
                 var targetTagItems = _tagMap[tag];
-                targetTagItems.Remove(Url, out _);
+                targetTagItems.Remove(url, out _);
                 if (targetTagItems.IsEmpty)
                 {
                     _tagMap.Remove(tag, out _);
@@ -48,6 +77,11 @@ namespace Pagene.Converter
                 }
             }
         }
+
+        /// <summary>
+        /// Clean tags from the file that doesn't exist. It removes the entire tag, if the tag is not used anymore.
+        /// </summary>
+        /// <param name="fileList">The list of file that was already deleted.</param>
         internal void Clean(IEnumerable<string> fileList)
         {
             CleanFromDeletedFile(fileList);

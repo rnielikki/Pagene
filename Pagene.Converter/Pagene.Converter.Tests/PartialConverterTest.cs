@@ -48,7 +48,7 @@ namespace Pagene.Converter.Tests
         private Mock<FileType> BuildFileTypeMock()
         {
             var fileTypeMock = new Mock<FileType>(MockBehavior.Strict, _fileSystem, "");
-            fileTypeMock.SetupGet(f => f.Type).Returns("*");
+            fileTypeMock.SetupGet(f => f.Extension).Returns("*");
             fileTypeMock.Setup(f => f.CleanAsync(It.IsAny<IEnumerable<string>>())).Returns(Task.CompletedTask);
             fileTypeMock.Setup(f => f.SaveAsync(It.IsAny<IFileInfo>(), It.IsAny<Stream>())).Returns(Task.CompletedTask);
             return fileTypeMock;

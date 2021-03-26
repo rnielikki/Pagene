@@ -9,15 +9,22 @@ using System;
 
 namespace Pagene.Converter.FileTypes
 {
+    /// <inheritdoc cref="FileType"/>
     internal class PostFileType : FileType
     {
-        internal override string Type => "*.md";
+        internal override string Extension => "*.md";
         internal static string OutputType => ".json";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
 
         private bool modified;
 
+        /// <summary>
+        /// Constructor (for mocking) the converting type defintiion class, especially for post file type.
+        /// </summary>
+        /// <param name="fileSystem">The file system to apply, that is mocked or not.</param>
+        /// <param name="formatter">The formatter to check and read the blog post format.</param>
+        /// <param name="tagManager">The tag manager to generate tags from post.</param>
         internal PostFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager) : base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = formatter;
@@ -25,6 +32,10 @@ namespace Pagene.Converter.FileTypes
             DirectorySearchOption = SearchOption.TopDirectoryOnly;
         }
 
+        /// <summary>
+        /// Constructor the converting type defintiion class, especially for post file type.
+        /// </summary>
+        /// <param name="fileSystem">The file system to apply, that is mocked or not.</param>
         internal PostFileType(IFileSystem fileSystem) : base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = new Formatter();

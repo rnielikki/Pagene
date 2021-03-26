@@ -1,7 +1,6 @@
 ﻿using Pagene.BlogSettings;
 using Pagene.Converter.FileTypes;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
@@ -10,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Pagene.Converter
 {
+    /// <summary>
+    /// The real converting part for one <see cref="FileType"/>. Used by <see cref="Converter.BuildAsync()">.
+    /// </summary>
     internal class PartialConverter
     {
         private readonly FileType _fileType;
@@ -18,21 +20,30 @@ namespace Pagene.Converter
         private ConcurrentDictionary<string, IFileInfo> _hashFileMap;
         private string _filePath;
 
+        /// <summary>
+        /// The real converting part for one <see cref="FileType"/>. Used by <see cref="Converter.BuildAsync()">.
+        /// </summary>
+        /// <param name="fileType">The 'collection of converting type definition' class.</param>
+        /// <param name="fileSystem">The file system used for converting, can be mocked or not.</param>
         internal PartialConverter(FileType fileType, IFileSystem fileSystem)
         {
             _fileType = fileType;
             _fileSystem = fileSystem;
         }
+
+        /// <summary>
+        /// Starts the file converting process, for one <see cref="FileType"/> unit.
+        /// </summary>
         internal async Task BuildAsync()
         {
             _filePath = Path.Combine(AppPathInfo.InputPath, _fileType.FilePath);
             var files = InitializationHelper.InitDirectory(_fileSystem, _filePath)
-                .GetFiles(_fileType.Type, _fileType.DirectorySearchOption);
+                .GetFiles(_fileType.Extension, _fileType.DirectorySearchOption);
 
             string hashDir = Path.Combine(AppPathInfo.BlogHashPath, _fileType.FilePath);
             _hashFileMap = new (
                 InitializationHelper.InitDirectory(_fileSystem, hashDir)
-                .GetFiles($"{_fileType.Type}.hashfile", _fileType.DirectorySearchOption)
+                .GetFiles($"{_fileType.Extension}.hashfile", _fileType.DirectorySearchOption)
                 .ToDictionary(info => info.GetRelativeName(hashDir, _fileType.DirectorySearchOption)[0..^9], info => info)
             );
 
