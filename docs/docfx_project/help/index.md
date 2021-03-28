@@ -1,5 +1,8 @@
-# Getting Started
+# Get Help
+
 ## Structure
+
+See the [architecture](architecture.html).
 
 ### Path structure
 

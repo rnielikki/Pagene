@@ -32,7 +32,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: AppPathInfo
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 7
+    startLine: 8
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -76,7 +76,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: InputPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 13
+    startLine: 14
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -115,7 +115,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: OutputPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 18
+    startLine: 19
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -154,7 +154,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: ContentPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 23
+    startLine: 24
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -189,7 +189,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: EntryPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 27
+    startLine: 28
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -224,17 +224,17 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: FilePath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 32
+    startLine: 33
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
   summary: "\nPath name of any blog attachments, relative to content path.\nBlog post can reference by linkining to the filePath.\n"
   example: []
   syntax:
-    content: public const string FilePath = "files/"
+    content: public const string FilePath = "contents/files/"
     return:
       type: System.String
-    content.vb: Public Const FilePath As String = "files/"
+    content.vb: Public Const FilePath As String = "contents/files/"
   modifiers.csharp:
   - public
   - const
@@ -259,7 +259,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: TagPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 36
+    startLine: 37
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -294,7 +294,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: HashPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 40
+    startLine: 41
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -329,11 +329,11 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: BlogInputPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 46
+    startLine: 47
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
-  summary: "\nPath, which cRelative to main program (or user-defined) path.ontains unconverted blog posts. (*.md format) Relative to main program (or user-defined) path.\n"
+  summary: "\nPath, which is relative to main program (or user-defined) path. Contains unconverted blog posts. (*.md format) Relative to main program (or user-defined) path.\n"
   example: []
   syntax:
     content: public static string BlogInputPath { get; }
@@ -368,7 +368,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: BlogFilePath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 51
+    startLine: 52
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -407,7 +407,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: BlogContentPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 55
+    startLine: 56
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -446,7 +446,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: BlogEntryPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 59
+    startLine: 60
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -485,7 +485,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: BlogTagPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 63
+    startLine: 64
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings
@@ -524,7 +524,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: BlogHashPath
     path: ../../Pagene.BlogSettings/Pagene.BlogSettings/AppPathInfo.cs
-    startLine: 67
+    startLine: 68
   assemblies:
   - Pagene.BlogSettings
   namespace: Pagene.BlogSettings

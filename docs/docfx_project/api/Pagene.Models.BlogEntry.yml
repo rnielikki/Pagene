@@ -20,7 +20,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/BlogEntry.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: BlogEntry
     path: ../../Pagene.Models/Pagene.Models/BlogEntry.cs
@@ -63,7 +63,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/BlogEntry.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: Title
     path: ../../Pagene.Models/Pagene.Models/BlogEntry.cs
@@ -100,7 +100,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/BlogEntry.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: Date
     path: ../../Pagene.Models/Pagene.Models/BlogEntry.cs
@@ -137,7 +137,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/BlogEntry.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: Url
     path: ../../Pagene.Models/Pagene.Models/BlogEntry.cs
@@ -174,7 +174,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/BlogEntry.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: Summary
     path: ../../Pagene.Models/Pagene.Models/BlogEntry.cs
@@ -211,7 +211,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/BlogEntry.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: Tags
     path: ../../Pagene.Models/Pagene.Models/BlogEntry.cs

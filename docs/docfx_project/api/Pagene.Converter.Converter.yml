@@ -24,7 +24,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: Converter
     path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.Init.cs
-    startLine: 5
+    startLine: 2
   assemblies:
   - Pagene.Converter
   namespace: Pagene.Converter
@@ -135,7 +135,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: .ctor
     path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.cs
-    startLine: 27
+    startLine: 22
   assemblies:
   - Pagene.Converter
   namespace: Pagene.Converter
@@ -167,7 +167,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: BuildAsync
     path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.cs
-    startLine: 36
+    startLine: 31
   assemblies:
   - Pagene.Converter
   namespace: Pagene.Converter
@@ -202,7 +202,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: Initialize
     path: ../../Pagene.Converter/Pagene.Converter/Converter/Converter.Init.cs
-    startLine: 10
+    startLine: 7
   assemblies:
   - Pagene.Converter
   namespace: Pagene.Converter

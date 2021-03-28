@@ -31,7 +31,6 @@ items:
     content: 'public class FormatParser : IFormatParser'
     content.vb: >-
       Public Class FormatParser
-
           Implements IFormatParser
   inheritance:
   - System.Object
@@ -110,7 +109,7 @@ items:
       repo: https://github.com/rnielikki/Pagene.git
     id: ParseTitle
     path: ../../Pagene.Reader/Pagene.Reader.PostSerializer/FormatParser.cs
-    startLine: 29
+    startLine: 35
   assemblies:
   - Pagene.Reader.PostSerializer
   namespace: Pagene.Reader.PostSerializer

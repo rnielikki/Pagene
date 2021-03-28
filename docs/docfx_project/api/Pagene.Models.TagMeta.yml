@@ -17,7 +17,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/TagMeta.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: TagMeta
     path: ../../Pagene.Models/Pagene.Models/TagMeta.cs
@@ -60,7 +60,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/TagMeta.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: Url
     path: ../../Pagene.Models/Pagene.Models/TagMeta.cs
@@ -97,7 +97,7 @@ items:
   source:
     remote:
       path: Pagene.Models/Pagene.Models/TagMeta.cs
-      branch: master
+      branch: experimental
       repo: https://github.com/rnielikki/Pagene.git
     id: Count
     path: ../../Pagene.Models/Pagene.Models/TagMeta.cs
