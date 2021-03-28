@@ -8,3 +8,7 @@
   href: converting.md
 - name: Reading files
   href: reading.md
+- name: File Structure
+  href: file-structure.md
+- name: Architecture
+  href: architecture.md

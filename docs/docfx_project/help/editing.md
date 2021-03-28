@@ -18,13 +18,15 @@ If you know how to use markdown, we recommend to write it by yourself.
 
 Image files from the edit interface are from `contents/files`, not including subdirectory.
 
+> Note: The app automatically converts image that starts with `files` path to `contents/files`. This will show image preview on e.g. Visual Studio Code. If you don't want this, use `./files`.
+
 #### About the tags
 
 You can add tag by Clicking + button. You can also remove tag by clicking it.
 
 The tag suggestion is from the converted data, so tags from unconverted post may not be shown in the suggestions.
 
-> Note: Showing long/too many tags can be buggy. It'll be fixed in future when WinForms layout works.
+> Note: Currently Editor has bug with showing long/too many tags.
 
 ## Console app
 

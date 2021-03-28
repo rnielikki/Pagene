@@ -1,4 +1,7 @@
 - name: Getting Started
+  href: tutorials/
+  homepage: tutorials/index.md
+- name: Usages
   href: help/
   homepage: help/index.md
 - name: Check APIs

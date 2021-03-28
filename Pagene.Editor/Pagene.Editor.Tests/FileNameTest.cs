@@ -20,9 +20,9 @@ namespace Pagene.Editor.Tests
             var result = namer.GetName("Tämä on testI\\");
             const string shouldBe = "tama-on-testi.md";
             Assert.Equal(shouldBe, result);
-            fileSystem.File.WriteAllBytes(AppPathInfo.BlogInputPath+"tama-on-testi.md", new byte[] { });
-            fileSystem.File.WriteAllBytes(AppPathInfo.BlogInputPath+"tama-on-testi-0.md", new byte[] { });
-            fileSystem.File.WriteAllBytes(AppPathInfo.BlogInputPath+"tama-on-testi-1.md", new byte[] { });
+            fileSystem.File.WriteAllBytes(AppPathInfo.BlogInputPath+"tama-on-testi.md", System.Array.Empty<byte>());
+            fileSystem.File.WriteAllBytes(AppPathInfo.BlogInputPath+"tama-on-testi-0.md", System.Array.Empty<byte>());
+            fileSystem.File.WriteAllBytes(AppPathInfo.BlogInputPath+"tama-on-testi-1.md", System.Array.Empty<byte>());
             var duplicatedResult = namer.GetName("Tämä on testI\\");
             Assert.Equal("tama-on-testi-2.md", duplicatedResult);
         }

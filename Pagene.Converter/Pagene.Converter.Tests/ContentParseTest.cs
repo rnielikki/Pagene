@@ -9,21 +9,17 @@ namespace Pagene.Converter.Tests
 {
     public class ContentParseTest
     {
-        private PostFileType _postFileType;
-        public ContentParseTest()
-        {
-            var mockFileSystem = new MockFileSystem();
-            _postFileType = new PostFileType(mockFileSystem, new TagManager(mockFileSystem));
-        }
+        //Note: possible replacement for future (to one of "text filter pipelines").
         [Theory]
         [MemberData(nameof(ContentTheoryItems))]
         public async System.Threading.Tasks.Task ParsingContentTest(string syntax, string expected)
         {
             Stream syntaxStream = new MemoryStream(Encoding.UTF8.GetBytes(syntax));
-            string result = await _postFileType.ReadContent(new StreamReader(syntaxStream)).ConfigureAwait(false);
+            var readContent = typeof(PostFileType).GetMethod("ReadContent", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            string result = await (System.Threading.Tasks.Task<string>) readContent.Invoke(null, new[] { new StreamReader(syntaxStream) });
             Assert.Equal(expected, result);
         }
-        public static TheoryData<string, string> ContentTheoryItems() => new TheoryData<string, string>()
+        public static TheoryData<string, string> ContentTheoryItems() => new()
         {
             {$"t!!![asdfadsf]({AppPathInfo.FilePath}nnn/xxx.png)",  $"t!!![asdfadsf]({AppPathInfo.ContentPath}{AppPathInfo.FilePath}nnn/xxx.png)"},
             {"t!!![asdfadsf](meh/nnn/xxx.png)", "t!!![asdfadsf](meh/nnn/xxx.png)"},

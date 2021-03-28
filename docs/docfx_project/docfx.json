@@ -27,7 +27,9 @@
       {
         "files": [
           "help/**.md",
-          "help/**.yml"
+          "help/**.yml",
+          "tutorials/**.md",
+          "tutorials/**.yml"
         ]
       },
       {
@@ -60,7 +62,7 @@
     "fileMetadataFiles": [],
     "template": [
       "default",
-      "templates/material"
+      "templates/discordfx"
     ],
     "postProcessors": [],
     "markdownEngineName": "markdig",

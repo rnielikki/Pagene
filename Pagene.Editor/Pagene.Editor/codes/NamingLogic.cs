@@ -65,7 +65,7 @@ namespace Pagene.Editor
                 return GenerateFromDate();
             }
         }
-        private string NormalizeDiacritics(string input)
+        private static string NormalizeDiacritics(string input)
         {
             var separated = input.Normalize(NormalizationForm.FormD); // separates umlaut to other char etc.
             int length = separated.Length;
@@ -82,6 +82,6 @@ namespace Pagene.Editor
         }
         private string ReplaceSpaces(string input) => _spaceRegex.Replace(input, "-");
         private string RemoveInvalidChars(string input) => _invalidCharsRegex.Replace(input, "");
-        private string GenerateFromDate() => new DateTime().ToString("yyyyMMdd");
+        private static string GenerateFromDate() => new DateTime().ToString("yyyyMMdd");
     }
 }

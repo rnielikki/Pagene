@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using Markdig;
-using Microsoft.Web.WebView2.WinForms;
 
 namespace Pagene.Editor
 {
@@ -19,7 +18,7 @@ namespace Pagene.Editor
             Close();
         }
         private async System.Threading.Tasks.Task SetPreview(string content) {
-            await PreviewContent.EnsureCoreWebView2Async(null);
+            await PreviewContent.EnsureCoreWebView2Async(null).ConfigureAwait(true);
            PreviewContent.NavigateToString(content);
         }
     }

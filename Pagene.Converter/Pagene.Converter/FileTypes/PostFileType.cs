@@ -9,38 +9,56 @@ using System;
 
 namespace Pagene.Converter.FileTypes
 {
+    /// <inheritdoc cref="FileType"/>
     internal class PostFileType : FileType
     {
-        internal override string Type => "*.md";
-        internal override string OutputType => ".json";
+        internal override string Extension => "*.md";
+        internal static string OutputType => ".json";
         private readonly IFormatter _formatter;
         private readonly TagManager _tagManager;
+
         private bool modified;
+
+        /// <summary>
+        /// Constructor (for mocking) the converting type defintiion class, especially for post file type.
+        /// </summary>
+        /// <param name="fileSystem">The file system to apply, that is mocked or not.</param>
+        /// <param name="formatter">The formatter to check and read the blog post format.</param>
+        /// <param name="tagManager">The tag manager to generate tags from post.</param>
         internal PostFileType(IFileSystem fileSystem, IFormatter formatter, TagManager tagManager) : base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = formatter;
             _tagManager = tagManager;
+            DirectorySearchOption = SearchOption.TopDirectoryOnly;
         }
 
-        internal PostFileType(IFileSystem fileSystem, TagManager tagManager) : base(fileSystem, AppPathInfo.ContentPath)
+        /// <summary>
+        /// Constructor the converting type defintiion class, especially for post file type.
+        /// </summary>
+        /// <param name="fileSystem">The file system to apply, that is mocked or not.</param>
+        internal PostFileType(IFileSystem fileSystem) : base(fileSystem, AppPathInfo.ContentPath)
         {
             _formatter = new Formatter();
-            _tagManager = tagManager;
+            _tagManager = new TagManager(fileSystem);
         }
 
-        internal override async System.Threading.Tasks.Task SaveAsync(IFileInfo info, Stream fileStream)
+        internal override async System.Threading.Tasks.Task SaveAsync(IFileInfo targetFileInfo, Stream sourceStream)
         {
             modified = true;
-            using Stream stream = GetFileStream(info.Name);
-            fileStream.Position = 0;
-            using StreamReader reader = new StreamReader(fileStream);
-            BlogEntry entry = await _formatter.GetBlogHeadAsync(info, reader).ConfigureAwait(false);
-            BlogItem item = new BlogItem { Title = entry.Title,
+            sourceStream.Position = 0;
+            using StreamReader reader = new(sourceStream);
+            BlogEntry entry = await _formatter.GetBlogHeadAsync(targetFileInfo, reader).ConfigureAwait(false);
+            BlogItem item = new()
+            { Title = entry.Title,
                 Content = await ReadContent(reader).ConfigureAwait(false),
-                CreationDate = entry.Date, ModificationDate = GetModificationDate(info, entry.Date),
+                CreationDate = entry.Date,
+                ModificationDate = GetModificationDate(targetFileInfo, entry.Date),
                 Tags = entry.Tags };
             entry.Summary = _formatter.GetSummary(item.Content);
-            await JsonSerializer.SerializeAsync(stream, item).ConfigureAwait(false);
+            using MemoryStream resultStream = new();
+            await JsonSerializer.SerializeAsync(resultStream, item).ConfigureAwait(false);
+            resultStream.Position = 0;
+            await base.SaveAsync(targetFileInfo, resultStream).ConfigureAwait(false);
 
             //generate categories
             _tagManager.AddTag(entry.Tags, entry);
@@ -56,10 +74,15 @@ namespace Pagene.Converter.FileTypes
             var postManager = new RecentPostManager(_fileSystem, _formatter);
             await postManager.Serialize(await postManager.GetRecentPosts(ConvertingInfo.RecentPostsCount).ConfigureAwait(false)).ConfigureAwait(false);
         }
-        //Let me think where to move this...
-        internal async System.Threading.Tasks.Task<string> ReadContent(StreamReader contentStreamReader)
+
+        //Represents logic to change "files" to "contents/files"
+        //If you use Visual Studio Code to edit *.md file or GitHub to public editing *.md file, this is useful.
+
+        //Note: possible replacement for future (to one of "text filter pipelines").
+        //related test: ContentParseTest.cs
+        private static async System.Threading.Tasks.Task<string> ReadContent(StreamReader contentStreamReader)
         {
-            StringBuilder result = new StringBuilder();
+            StringBuilder result = new();
             int contentChar;
             do
             {
@@ -93,6 +116,10 @@ namespace Pagene.Converter.FileTypes
         }
         private DateTime GetModificationDate(IFileInfo info, DateTime defaultDate) {
             return _fileSystem.File.Exists(GetOutputPath(info.Name))?info.LastWriteTime:defaultDate;
+        }
+        protected override string GetOutputPath(string fileName)
+        {
+            return Path.Combine(AppPathInfo.OutputPath, FilePath, Path.GetFileNameWithoutExtension(fileName)+OutputType);
         }
     }
 }

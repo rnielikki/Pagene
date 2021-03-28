@@ -9,10 +9,10 @@ namespace Pagene.Converter.Tests.Models
     {
         public const string title1 = "title";
         public const string title2 = "random to say";
-        private static readonly string content1 = @$"[{string.Join(", ", TagsTestModel.tags1Duplicated)}]
+        public static readonly string content1 = @$"[{string.Join(", ", TagsTestModel.tags1Duplicated)}]
 # {title1}
 content";
-        private static readonly string content2 = @$"[{string.Join(", ", TagsTestModel.tags2)}]
+        public static readonly string content2 = @$"[{string.Join(", ", TagsTestModel.tags2)}]
 # {title2}
 I have nothing.";
 
@@ -29,7 +29,7 @@ This should thorw an error.";
         private static readonly string filePath2 = InputContentPath + "test2.md";
         private static readonly string errorPath1 = InputContentPath + "err1.md";
         private static readonly string errorPath2 = InputContentPath + "err2.md";
-        internal static readonly MockFileSystem fileSystem = new MockFileSystem(
+        internal static readonly MockFileSystem fileSystem = new(
              new Dictionary<string, MockFileData>(){
                     { filePath1, new MockFileData(content1) },
                     { filePath2, new MockFileData(content2) },
@@ -44,7 +44,7 @@ This should thorw an error.";
         internal static readonly IFileInfo error2 = fileSystem.FileInfo.FromFileName(errorPath2);
 
         //end test
-        internal static readonly MockFileSystem ValidFileSystem = new MockFileSystem(
+        internal static readonly MockFileSystem ValidFileSystem = new(
              new Dictionary<string, MockFileData>(){
                     { filePath1, new MockFileData(content1) },
                     { filePath2, new MockFileData(content2) }

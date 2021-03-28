@@ -23,7 +23,6 @@ namespace Pagene.Converter.Tests
 
             var resultDictionary = GetTagMap(tagManager);
             resultDictionary.Keys.OrderBy(str => str).Should().Equal(new string[] { "apple", "cheese", "ice cream", "juice", "orange" });
-            var val = resultDictionary["cheese"];
             resultDictionary["cheese"].Keys.Should().Contain(entry1.Url)
                 .And.Contain(entry2.Url);
 
@@ -81,7 +80,7 @@ namespace Pagene.Converter.Tests
                 .And.NotContainKey(Path.Combine(RoutePathInfo.ContentPath, "dos").Replace('\\', '/'));
             tagManager.GetRemovedTags().Should().Contain("milk");
         }
-        private ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> GetTagMap(TagManager instance) => typeof(TagManager)
+        private static ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>> GetTagMap(TagManager instance) => typeof(TagManager)
                 .GetField("_tagMap", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .GetValue(instance) as ConcurrentDictionary<string, ConcurrentDictionary<string, BlogEntry>>;
     }

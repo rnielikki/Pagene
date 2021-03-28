@@ -20,7 +20,7 @@ namespace Pagene.Editor
             }
             catch (FormatException ex)
             {
-                MessageBox.Show($"The operation is not completed." +
+                MessageBox.Show("The operation is not completed." +
                     $"{Environment.NewLine}Check if the blog format is corrupted." +
                     $"{Environment.NewLine}You may need to edit file manually." +
                     $"{Environment.NewLine}File : {ex.Message}");

@@ -31,7 +31,6 @@ items:
     content: 'public class PostSerializer : IPostSerializer'
     content.vb: >-
       Public Class PostSerializer
-
           Implements IPostSerializer
   inheritance:
   - System.Object

@@ -10,6 +10,9 @@ namespace Pagene.Converter
 {
     internal partial class TagManager
     {
+        /// <summary>
+        /// Read all tags, reads tags and create tag map for use.
+        /// </summary>
         private void Deserialize()
         {
             var directory = _fileSystem.Directory.Exists(_dirName) ? _fileSystem.DirectoryInfo.FromDirectoryName(_dirName) : _fileSystem.Directory.CreateDirectory(_dirName);
@@ -26,10 +29,14 @@ namespace Pagene.Converter
                 var mappedPosts = new ConcurrentDictionary<string, BlogEntry>(tagInfo.Posts.ToDictionary(info => info.Url, info => info));
                 if (!_tagMap.TryAdd(tag, mappedPosts))
                 {
-                    new FileLoadException("Failed to load tag list", file.Name);
+                    throw new FileLoadException("Failed to load tag list", file.Name);
                 }
             }
         }
+
+        /// <summary>
+        /// Create tag maps JSON file from tag map. This should be called after converting process.
+        /// </summary>
         internal async System.Threading.Tasks.Task Serialize()
         {
             using var tagMeta = _fileSystem.FileInfo.FromFileName($"{_dirName}meta.tags.json").Open(FileMode.Create);
@@ -40,11 +47,11 @@ namespace Pagene.Converter
                 string path = $"{_dirName}{fileName}.json";
                 var item = new TagInfo { Tag = tagPair.Key, Posts = tagPair.Value.Values.OrderByDescending(post => post.Date) };
                 using var file = _fileSystem.File.Open(path, FileMode.Create);
-                await file.WriteAsync(JsonSerializer.Serialize(item));
+                await file.WriteAsync(JsonSerializer.Serialize(item)).ConfigureAwait(false);
                 metaMap.Add(tagPair.Key, new TagMeta { Url = Path.Combine(RoutePathInfo.TagPath, fileName.ToString()).Replace('\\', '/'), Count = tagPair.Value.Count });
                 fileName++;
             }
-            await tagMeta.WriteAsync(JsonSerializer.Serialize(metaMap));
+            await tagMeta.WriteAsync(JsonSerializer.Serialize(metaMap)).ConfigureAwait(false);
         }
     }
 }

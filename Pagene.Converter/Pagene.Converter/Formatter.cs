@@ -8,6 +8,7 @@ using Pagene.Reader.PostSerializer;
 
 namespace Pagene.Converter
 {
+    /// <inheritdoc cref="IFormatter""/>
     internal class Formatter : IFormatter
     {
         private readonly string _path;
@@ -22,11 +23,7 @@ namespace Pagene.Converter
             _parser = parser;
         }
         internal Formatter():this(RoutePathInfo.ContentPath, new FormatParser()) { }
-        /// <summary>
-        /// Remember to add summary using GetSummary() if you need.
-        /// </summary>
-        /// <param name="info"></param>
-        /// <param name="reader"></param>
+
         async Task<BlogEntry> IFormatter.GetBlogHeadAsync(IFileInfo info, StreamReader reader)
         {
             try
@@ -48,12 +45,13 @@ namespace Pagene.Converter
                 throw new FormatException(info.Name);
             }
         }
+
         /// <summary>
         /// Use only if you don't reuse the stream/stream reader anymore.
         /// </summary>
         async Task<BlogEntry> IFormatter.GetBlogEntryAsync(IFileInfo info)
         {
-            using StreamReader reader = new StreamReader(info.OpenRead());
+            using StreamReader reader = new(info.OpenRead());
             var entry = await (this as IFormatter).GetBlogHeadAsync(info, reader).ConfigureAwait(false);
             entry.Summary = await GetSummaryAsync(reader).ConfigureAwait(false);
             return entry;

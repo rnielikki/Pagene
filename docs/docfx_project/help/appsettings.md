@@ -2,6 +2,8 @@
 
 You can create or edit `appsettings.json` to the same path as the exe file - for your own definition.
 
+The exe file path is same as Editor path if you use editor, and Converter.Entry path if you use console converter.
+
 All default settings can be found from [here](../api/Pagene.BlogSettings.html).
 
 If you don't define your own, it uses automatically the default value.

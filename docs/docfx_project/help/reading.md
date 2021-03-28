@@ -1,5 +1,7 @@
 # Reading posts and tags
 
+Related docs: [file structure](file-structure.html)
+
 ## Blog Post format
 
 A file inside `contents/` contains a post in this format:
@@ -28,7 +30,7 @@ One "entry" model looks like this:
     {
         "Title": "Title",
         "Date": "2020-05-29T13:40:26.8565100Z",
-        "Url": "posts/filename",
+        "Url": "posts/filename", //NOTE THAT IT OMITS ".json"
         "Summary": "Content, but max 50 words",
         "Tags": ["tag","separated","by","comma"]
     }
@@ -66,7 +68,21 @@ Each tag file is number and contains real tag name (Tag) and content.
 {
     "Tag": "Tag1",
     "Posts": [
-        "arrays of entry that contains this tag"
+        //arrays of "entry model" that contains this tag
+        {
+            "Title": "First",
+            "Date": "2021-05-29T13:40:26.8565100Z",
+            "Url": "posts/filename-one",
+            "Summary": "Content one and blah blah",
+            "Tags": ["tag","separated","by","comma"]
+        },
+        {
+            "Title": "Second",
+            "Date": "2021-02-29T13:40:26.8565100Z",
+            "Url": "posts/filename-two",
+            "Summary": "Content two, but whatever",
+            "Tags": ["tag","comma","test"]
+        }
     ]
 }
 ```
@@ -77,7 +93,7 @@ The [Models](../api/Pagene.Models.html) define the reading format. If you use C#
 
 Or you can implement on your own, in any language with any JSON parser.
 
-These are model documentation:
+## Model Documentation
 
 * [BlogItem](../api/Pagene.Models.BlogItem.html) for posts
 * [BlogEntry](../api/Pagene.Models.BlogItem.html) for post summary
